@@ -121,7 +121,6 @@ body.dark-mode .submenu {
 }
 
 /* Botón modo oscuro */
-/* Botón modo oscuro */
 .dark-mode-btn {
     background: none;
     border: none;
@@ -136,7 +135,7 @@ body.dark-mode .submenu {
 }
 
 .dark-mode-btn i {
-    color: white;  /* ← Agrega esta línea */
+    color: white; 
     width: 24px;
     height: 24px;
 }
@@ -286,8 +285,8 @@ body.dark-mode .card {
 }
 
 .card-icon i {
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
     color: #0e58a9;
 }
 
@@ -408,8 +407,8 @@ body.dark-mode .card-tres {
 }
 
 .card-tres-icon i {
-    width: 64px;   /* Cambia a 64px */
-    height: 64px;  /* Cambia a 64px */
+    width: 80px;   /* Cambia a 64px */
+    height: 80px;  /* Cambia a 64px */
     color: #0e58a9;
     stroke-width: 1.2;
 }
@@ -1057,33 +1056,30 @@ body.dark-mode .porque-title-nuevo span {
 
 /* Lado izquierdo - Imagen */
 .porque-imagen {
-    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    background: none;  /* ← Cambiado: sin fondo */
     border-radius: 20px;
-    padding: 3rem;
+    padding: 0;        /* ← Cambiado: sin padding */
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 400px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-body.dark-mode .porque-imagen {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-}
-
-.porque-imagen-icono {
-    width: 200px;
-    height: 200px;
-    color: white;
-    stroke-width: 1;
+    min-height: auto;  /* ← Cambiado: altura automática */
+    box-shadow: none;  /* ← Cambiado: sin sombra */
 }
 
 /* Para usar imagen real en lugar de ícono */
 .porque-imagen img {
     width: 100%;
     height: auto;
-    max-height: 300px;
+    max-height: 400px;  /* ← Más grande: de 300px a 400px */
     object-fit: contain;
+}
+
+/* Si sigues usando el ícono en lugar de imagen */
+.porque-imagen-icono {
+    width: 300px;      /* ← Más grande: de 200px a 300px */
+    height: 300px;     /* ← Más grande: de 200px a 300px */
+    color: #0e58a9;    /* ← Cambiado: ya no es blanco, es el color normal */
+    stroke-width: 1;
 }
 
 /* Lado derecho - Grid 2x2 */
