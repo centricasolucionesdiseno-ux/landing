@@ -277,6 +277,73 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sección: Formulario de Contacto -->
+        <section id="contacto" class="contacto-section">
+            <div class="contacto-container">
+                <div class="contacto-header">
+                    <h2 class="contacto-title">Solicite información técnica.</h2>
+                    <p class="contacto-subtitle">Nuestros arquitectos se pondrán en contacto con usted.</p>
+                </div>
+        
+                <form class="contacto-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">NOMBRE COMPLETO *</label>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">CORREO LABORAL *</label>
+                            <input type="email" id="email" name="email" required placeholder="juan@empresa.com">
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="empresa">EMPRESA *</label>
+                            <input type="text" id="empresa" name="empresa" required placeholder="Nombre de tu empresa">
+                        </div>
+                        <div class="form-group">
+                            <label for="cargo">CARGO</label>
+                            <select id="cargo" name="cargo">
+                                <option value="">Selecciona tu cargo</option>
+                                <option value="CTO">CTO</option>
+                                <option value="CEO">CEO</option>
+                                <option value="Director TI">Director TI</option>
+                                <option value="Gerente">Gerente</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+        
+                    <div class="form-group full-width">
+                        <label for="bd">¿QUÉ MOTOR DE BD USA ACTUALMENTE?</label>
+                        <select id="bd" name="bd">
+                            <option value="">Selecciona tu base de datos</option>
+                            <option value="PostgreSQL">PostgreSQL</option>
+                            <option value="MySQL">MySQL</option>
+                            <option value="SQL Server">SQL Server</option>
+                            <option value="Oracle">Oracle</option>
+                            <option value="MongoDB">MongoDB</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+        
+                    <div class="form-group full-width">
+                        <label for="mensaje">MENSAJE</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                    </div>
+        
+                    <button type="submit" class="submit-btn">Enviar Solicitud →</button>
+                </form>
+        
+                <!-- Mensaje de éxito (oculto inicialmente) -->
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <i data-lucide="check-circle"></i>
+                    <p>¡Solicitud enviada con éxito! Nos pondremos en contacto contigo pronto.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
