@@ -147,7 +147,7 @@ const contactForm = document.getElementById('contactForm');
 const successMessage = document.getElementById('successMessage');
 
 // Inicializar EmailJS con tu Public Key
-emailjs.init("template_bdzlqqa");  // ⚠️ REEMPLAZA ESTO
+emailjs.init("vS5vQ1DCKUxmKVffT");  // ⚠️ REEMPLAZA ESTO
 
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -181,7 +181,7 @@ if (contactForm) {
         };
         
         // Enviar usando EmailJS
-        emailjs.send('TU_SERVICE_ID', 'TU_TEMPLATE_ID', templateParams)
+        emailjs.send('service_921q6wa', 'template_bdzlqqa', templateParams)
             .then(function(response) {
                 console.log('Éxito:', response);
                 // Mostrar mensaje de éxito
