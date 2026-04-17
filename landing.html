@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Céntrica - Soluciones innovadoras</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <header>
@@ -42,8 +44,42 @@
                 No construya aislamiento, seguridad ni conmutación de bases de datos desde cero. 
                 Nosotros ya lo hicimos.
             </p>
-            <button class="btn-solicitar">Solicitar información técnica →</button>
+            <a href="#contacto" class="btn-solicitar">Solicitar información técnica →</a>
         </section>
+
+        <!-- Sección: ¿Esto le suena familiar? -->
+<section class="familiar-section">
+    <h2 class="section-title">¿Esto le suena familiar?</h2>
+    
+    <div class="cards-container">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="card-icon">
+                <!-- Ícono de Lucide -->
+                <i data-lucide="database"></i>
+            </div>
+            <p class="card-text">
+                <strong>Sus clientes o filiales comparten la misma base de datos</strong><br>
+                Cada nuevo inquilino implica duplicar infraestructura
+            </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="card-icon">
+                <i data-lucide="clock"></i>
+            </div>
+            <p class="card-text">
+                <strong>Su equipo pierde semanas implementando aislamiento, seguridad y conmutación.</strong><br>
+                Su equipo pierde semanas implementando aislamiento, seguridad y conmutación.
+            </p>
+        </div>
+    </div>
+
+    <div class="conclusion">
+        <h3>Al final, la deuda técnica lo frena al lanzar nuevas funcionalidades.</h3>
+    </div>
+</section>
     </main>
 
     <script src="script.js"></script>
