@@ -142,9 +142,12 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// ========== FORMULARIO DE CONTACTO ==========
+// ========== FORMULARIO CON EMAILJS ==========
 const contactForm = document.getElementById('contactForm');
 const successMessage = document.getElementById('successMessage');
+
+// Inicializar EmailJS con tu Public Key
+emailjs.init("template_bdzlqqa");  // ⚠️ REEMPLAZA ESTO
 
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
@@ -167,28 +170,27 @@ if (contactForm) {
             return;
         }
         
-        // Simular envío (aquí conectarías con tu backend)
-        console.log('Formulario enviado:', {
-            nombre,
-            email,
-            empresa,
+        // Preparar datos - Los nombres DEBEN coincidir con las variables del template
+        const templateParams = {
+            name: nombre,           // ← Coincide con {{name}}
+            email: email,           // ← Coincide con {{email}}
+            empresa: empresa,       // ← Coincide con {{empresa}}
             cargo: document.getElementById('cargo').value,
             bd: document.getElementById('bd').value,
             mensaje: document.getElementById('mensaje').value
-        });
+        };
         
-        // Mostrar mensaje de éxito
-        contactForm.style.display = 'none';
-        successMessage.style.display = 'block';
-        
-        // Opcional: Reiniciar formulario después de 3 segundos
-        // setTimeout(() => {
-        //     contactForm.reset();
-        //     contactForm.style.display = 'flex';
-        //     successMessage.style.display = 'none';
-        // }, 5000);
-        
-        // Re-inicializar Lucide para el nuevo ícono
-        lucide.createIcons();
+        // Enviar usando EmailJS
+        emailjs.send('TU_SERVICE_ID', 'TU_TEMPLATE_ID', templateParams)
+            .then(function(response) {
+                console.log('Éxito:', response);
+                // Mostrar mensaje de éxito
+                contactForm.style.display = 'none';
+                successMessage.style.display = 'block';
+                lucide.createIcons();
+            }, function(error) {
+                console.log('Error:', error);
+                alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
+            });
     });
 }
