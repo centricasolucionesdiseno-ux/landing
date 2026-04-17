@@ -176,6 +176,9 @@ body.dark-mode .submenu {
     margin-right: auto;
     line-height: 1.6;
 }
+
+.hero h1, 
+.hero-description, 
 .btn-solicitar {
     position: relative;
     z-index: 2;
@@ -247,7 +250,7 @@ body.dark-mode .section-title {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 24px;
 }
 
 .card {
@@ -367,6 +370,7 @@ body.dark-mode .conclusion {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
+    margin-bottom: 24px;
 }
 
 .card-tres {
