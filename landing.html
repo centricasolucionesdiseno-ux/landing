@@ -34,7 +34,9 @@
             </ul>
         </nav>
 
-        <button id="darkModeToggle" class="dark-mode-btn">🌙</button>
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
     </header>
 
     <main>
@@ -48,38 +50,45 @@
         </section>
 
         <!-- Sección: ¿Esto le suena familiar? -->
-<section class="familiar-section">
-    <h2 class="section-title">¿Esto le suena familiar?</h2>
-    
-    <div class="cards-container">
-        <!-- Card 1 -->
-        <div class="card">
-            <div class="card-icon">
-                <!-- Ícono de Lucide -->
-                <i data-lucide="database"></i>
+        <section class="familiar-section">
+            <h2 class="section-title">¿Esto le suena familiar?</h2>
+            
+            <div class="tres-cards-container">
+                <!-- Card 1 -->
+                <div class="card-tres">
+                    <div class="card-tres-icon">
+                        <i data-lucide="database"></i>
+                    </div>
+                    <h3 class="card-tres-title">Sus clientes o filiales comparten la misma base de datos</h3>
+                    <p class="card-tres-text">
+                        Riesgo de filtración de datos.
+                    </p>
+                </div>
+        
+                <!-- Card 2 -->
+                <div class="card-tres">
+                    <div class="card-tres-icon">
+                        <i data-lucide="eye"></i>
+                    </div>
+                    <h3 class="card-tres-title">Cada nuevo inquilino implica duplicar infraestructura</h3>
+                    <p class="card-tres-text">
+                        Costos que no escalan.
+                    </p>
+                </div>
+        
+                <!-- Card 3 -->
+                <div class="card-tres">
+                    <div class="card-tres-icon">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <h3 class="card-tres-title">Su equipo pierde semanas implementando aislamiento, seguridad y conmutación.</h3>
+                    
+                </div>
             </div>
-            <p class="card-text">
-                <strong>Sus clientes o filiales comparten la misma base de datos</strong><br>
-                Cada nuevo inquilino implica duplicar infraestructura
-            </p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="card">
-            <div class="card-icon">
-                <i data-lucide="clock"></i>
+            <div class="conclusion">
+                <h3>Al final, la deuda técnica lo frena al lanzar nuevas funcionalidades.</h3>
             </div>
-            <p class="card-text">
-                <strong>Su equipo pierde semanas implementando aislamiento, seguridad y conmutación.</strong><br>
-                Su equipo pierde semanas implementando aislamiento, seguridad y conmutación.
-            </p>
-        </div>
-    </div>
-
-    <div class="conclusion">
-        <h3>Al final, la deuda técnica lo frena al lanzar nuevas funcionalidades.</h3>
-    </div>
-</section>
+        </section>
     </main>
 
     <script src="script.js"></script>
