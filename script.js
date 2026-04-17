@@ -2,6 +2,9 @@
 const darkModeToggle = document.getElementById('darkModeToggle');
 const body = document.body;
 
+// Inicializar Lucide íconos
+lucide.createIcons();
+
 // Verificar preferencia guardada
 if (localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark-mode');
