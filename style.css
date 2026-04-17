@@ -1386,3 +1386,230 @@ body.dark-mode .success-message {
         max-width: 100%;
     }
 }
+/* ========== FOOTER ========== */
+.footer {
+    background: linear-gradient(135deg, #0a0a0f 0%, #14141f 100%);
+    color: #e0e0e0;
+    padding-top: 4rem;
+    margin-top: 4rem;
+}
+
+body.light-mode .footer {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+    padding: 0 2rem 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Columna del logo */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo-img {
+    max-height: 45px;
+    width: auto;
+}
+
+.footer-logo h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.footer-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #aaa;
+}
+
+.footer-contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: #bbb;
+}
+
+.footer-contact-info i {
+    width: 18px;
+    height: 18px;
+    color: #4a9eff;
+}
+
+/* Títulos de columnas */
+.footer-col-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: white;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-col-title::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #4a9eff;
+    border-radius: 2px;
+}
+
+/* Enlaces */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: #4a9eff;
+    transform: translateX(5px);
+    display: inline-block;
+}
+
+/* Newsletter */
+.footer-newsletter-text {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.footer-newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-newsletter-form input {
+    padding: 10px 14px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background: #1a1a2e;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.footer-newsletter-form input:focus {
+    outline: none;
+    border-color: #4a9eff;
+}
+
+.footer-newsletter-form button {
+    background: #0e58a9;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.footer-newsletter-form button:hover {
+    background: #1a6bc9;
+    transform: translateY(-2px);
+}
+
+.footer-unsubscribe {
+    font-size: 0.7rem;
+    color: #777;
+    margin-top: 1rem;
+}
+
+/* Copyright */
+.footer-bottom {
+    padding: 2rem;
+    text-align: center;
+}
+
+.footer-bottom-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-bottom-content p {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.footer-copyright-secondary {
+    font-size: 0.75rem;
+}
+
+.footer-unsubscribe-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-unsubscribe-link:hover {
+    color: #4a9eff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1.5rem 2rem;
+    }
+    
+    .footer-logo {
+        justify-content: center;
+    }
+    
+    .footer-description {
+        text-align: center;
+    }
+    
+    .footer-contact-info p {
+        justify-content: center;
+    }
+    
+    .footer-col {
+        text-align: center;
+    }
+    
+    .footer-col-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-newsletter-form {
+        max-width: 300px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
