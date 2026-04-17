@@ -91,6 +91,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('sliderDots');
 
+    // Aplicar imágenes de fondo a cada slide según data-image
+    const slidesConImagen = document.querySelectorAll('.slide');
+    slidesConImagen.forEach(slide => {
+        const imagenUrl = slide.getAttribute('data-image');
+        if (imagenUrl) {
+            const slideContent = slide.querySelector('.slide-content');
+            if (slideContent) {
+                slideContent.style.backgroundImage = `url('${imagenUrl}')`;
+                slideContent.style.backgroundSize = 'cover';
+                slideContent.style.backgroundPosition = 'center';
+            }
+        }
+    });
+
     if (track && slides.length > 0 && prevBtn && nextBtn && dotsContainer) {
         console.log('✅ Slider inicializado. Slides encontrados:', slides.length);
         
