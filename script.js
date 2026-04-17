@@ -1,43 +1,42 @@
+// Inicializar Lucide íconos
+lucide.createIcons();
+
 // Modo oscuro
 const darkModeToggle = document.getElementById('darkModeToggle');
 const body = document.body;
 
-// Inicializar Lucide íconos
-lucide.createIcons();
+// Función para actualizar el ícono
+function updateThemeIcon() {
+    const icon = darkModeToggle.querySelector('i');
+    if (body.classList.contains('dark-mode')) {
+        icon.setAttribute('data-lucide', 'sun');
+    } else {
+        icon.setAttribute('data-lucide', 'moon');
+    }
+    lucide.createIcons(); // Re-renderizar ícono
+}
 
 // Verificar preferencia guardada
 if (localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark-mode');
     body.classList.remove('light-mode');
-    darkModeToggle.textContent = '☀️';
 } else {
     body.classList.add('light-mode');
-    darkModeToggle.textContent = '🌙';
 }
+updateThemeIcon();
 
 // Alternar modo oscuro
 darkModeToggle.addEventListener('click', () => {
     if (body.classList.contains('dark-mode')) {
         body.classList.remove('dark-mode');
         body.classList.add('light-mode');
-        darkModeToggle.textContent = '🌙';
         localStorage.setItem('theme', 'light');
     } else {
         body.classList.remove('light-mode');
         body.classList.add('dark-mode');
-        darkModeToggle.textContent = '☀️';
         localStorage.setItem('theme', 'dark');
     }
-});
-
-// Opcional: Cerrar submenús al hacer clic fuera
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.dropdown')) {
-        const submenus = document.querySelectorAll('.submenu');
-        submenus.forEach(submenu => {
-            submenu.style.display = 'none';
-        });
-    }
+    updateThemeIcon();
 });
 
 // Mejorar experiencia: mostrar submenú solo con hover en desktop
