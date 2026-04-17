@@ -1,7 +1,11 @@
-// Inicializar Lucide íconos
+// ============================================
+// 1. INICIALIZACIÓN DE LUCIDE
+// ============================================
 lucide.createIcons();
 
-// Modo oscuro
+// ============================================
+// 2. MODO OSCURO
+// ============================================
 const darkModeToggle = document.getElementById('darkModeToggle');
 const body = document.body;
 
@@ -39,7 +43,9 @@ darkModeToggle.addEventListener('click', () => {
     updateThemeIcon();
 });
 
-// Submenús con hover
+// ============================================
+// 3. SUBMENÚS CON HOVER
+// ============================================
 const dropdowns = document.querySelectorAll('.dropdown');
 dropdowns.forEach(dropdown => {
     const submenu = dropdown.querySelector('.submenu');
@@ -57,14 +63,19 @@ dropdowns.forEach(dropdown => {
     });
 });
 
-// Slider automático (solo si existe)
+// ============================================
+// 4. SLIDER AUTOMÁTICO (CORREGIDO)
+// ============================================
 const track = document.getElementById('sliderTrack');
 const slides = document.querySelectorAll('.slide');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const dotsContainer = document.getElementById('sliderDots');
 
+// Verificar que TODOS los elementos del slider existan
 if (track && slides.length > 0 && prevBtn && nextBtn && dotsContainer) {
+    console.log('✅ Slider inicializado correctamente'); // Para debug
+    
     let currentIndex = 0;
     let slideInterval;
     const totalSlides = slides.length;
@@ -83,7 +94,8 @@ if (track && slides.length > 0 && prevBtn && nextBtn && dotsContainer) {
 
     function updateSlider() {
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        document.querySelectorAll('.dot').forEach((dot, index) => {
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
         });
     }
@@ -107,11 +119,15 @@ if (track && slides.length > 0 && prevBtn && nextBtn && dotsContainer) {
     }
 
     function startAutoPlay() {
+        if (slideInterval) clearInterval(slideInterval);
         slideInterval = setInterval(nextSlide, autoSlideInterval);
     }
 
     function stopAutoPlay() {
-        clearInterval(slideInterval);
+        if (slideInterval) {
+            clearInterval(slideInterval);
+            slideInterval = null;
+        }
     }
 
     function resetAutoPlay() {
@@ -119,21 +135,31 @@ if (track && slides.length > 0 && prevBtn && nextBtn && dotsContainer) {
         startAutoPlay();
     }
 
+    // Pausar autoplay al hacer hover
     const sliderContainer = document.querySelector('.slider-container');
     if (sliderContainer) {
         sliderContainer.addEventListener('mouseenter', stopAutoPlay);
         sliderContainer.addEventListener('mouseleave', startAutoPlay);
     }
 
+    // Event listeners
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
 
+    // Inicializar
     createDots();
     startAutoPlay();
-    lucide.createIcons();
+    
+    // Asegurar que el primer slide esté visible
+    updateSlider();
+    
+} else {
+    console.warn('⚠️ Slider no encontrado en esta página');
 }
 
-// Cerrar submenús al hacer clic fuera
+// ============================================
+// 5. CERRAR SUBMENÚS AL HACER CLIC FUERA
+// ============================================
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.dropdown')) {
         document.querySelectorAll('.submenu').forEach(submenu => {
@@ -142,66 +168,73 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// ========== FORMULARIO CON EMAILJS ==========
-const contactForm = document.getElementById('contactForm');
-const successMessage = document.getElementById('successMessage');
+// ============================================
+// 6. EMAILJS - FORMULARIO DE CONTACTO
+// ============================================
+// Verificar que EmailJS esté cargado antes de usarlo
+if (typeof emailjs !== 'undefined') {
+    emailjs.init("vS5vQ1DCKUxmKVffT");
+    
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
 
-// Inicializar EmailJS con tu Public Key
-emailjs.init("vS5vQ1DCKUxmKVffT");  // ⚠️ REEMPLAZA ESTO
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Validación básica
-        const nombre = document.getElementById('nombre').value;
-        const email = document.getElementById('email').value;
-        const empresa = document.getElementById('empresa').value;
-        
-        if (!nombre || !email || !empresa) {
-            alert('Por favor, completa los campos obligatorios (*)');
-            return;
-        }
-        
-        // Validar email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Por favor, ingresa un correo electrónico válido');
-            return;
-        }
-        
-        // Preparar datos - Los nombres DEBEN coincidir con las variables del template
-        const templateParams = {
-            name: nombre,           // ← Coincide con {{name}}
-            email: email,           // ← Coincide con {{email}}
-            empresa: empresa,       // ← Coincide con {{empresa}}
-            cargo: document.getElementById('cargo').value,
-            bd: document.getElementById('bd').value,
-            mensaje: document.getElementById('mensaje').value
-        };
-        
-        // Enviar usando EmailJS
-        emailjs.send('service_921q6wa', 'template_bdzlqqa', templateParams)
-            .then(function(response) {
-                console.log('Éxito:', response);
-                // Mostrar mensaje de éxito
-                contactForm.style.display = 'none';
-                successMessage.style.display = 'block';
-                lucide.createIcons();
-            }, function(error) {
-                console.log('Error:', error);
-                alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
-            });
-    });
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validación básica
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const empresa = document.getElementById('empresa').value;
+            
+            if (!nombre || !email || !empresa) {
+                alert('Por favor, completa los campos obligatorios (*)');
+                return;
+            }
+            
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor, ingresa un correo electrónico válido');
+                return;
+            }
+            
+            // Preparar datos
+            const templateParams = {
+                name: nombre,
+                email: email,
+                empresa: empresa,
+                cargo: document.getElementById('cargo').value,
+                bd: document.getElementById('bd').value,
+                mensaje: document.getElementById('mensaje').value
+            };
+            
+            // Enviar usando EmailJS
+            emailjs.send('service_921q6wa', 'template_bdzlqqa', templateParams)
+                .then(function(response) {
+                    console.log('Éxito:', response);
+                    contactForm.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    lucide.createIcons();
+                })
+                .catch(function(error) {
+                    console.log('Error:', error);
+                    alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
+                });
+        });
+    }
+} else {
+    console.warn('⚠️ EmailJS no está cargado. Verifica que la librería esté incluida en el HTML.');
 }
-// ========== NEWSLETTER FORM ==========
+
+// ============================================
+// 7. NEWSLETTER FORM
+// ============================================
 const newsletterForm = document.getElementById('newsletterForm');
 if (newsletterForm) {
     newsletterForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const email = this.querySelector('input[type="email"]').value;
-        
-        // Aquí puedes conectar con EmailJS también
         console.log('Newsletter suscripción:', email);
         alert('¡Gracias por suscribirte!');
         this.reset();
