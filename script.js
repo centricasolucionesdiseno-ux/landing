@@ -56,3 +56,86 @@ dropdowns.forEach(dropdown => {
         }
     });
 });
+
+// ========== SLIDER AUTOMÁTICO ==========
+const track = document.getElementById('sliderTrack');
+const slides = document.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const dotsContainer = document.getElementById('sliderDots');
+
+let currentIndex = 0;
+let slideInterval;
+const totalSlides = slides.length;
+const autoSlideInterval = 5000; // 5 segundos
+
+// Crear puntos indicadores
+function createDots() {
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === currentIndex) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+}
+
+// Actualizar slider
+function updateSlider() {
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    
+    // Actualizar dots
+    document.querySelectorAll('.dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+    });
+}
+
+// Ir a slide específico
+function goToSlide(index) {
+    currentIndex = index;
+    updateSlider();
+    resetAutoPlay();
+}
+
+// Siguiente slide
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlider();
+    resetAutoPlay();
+}
+
+// Slide anterior
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlider();
+    resetAutoPlay();
+}
+
+// Autoplay
+function startAutoPlay() {
+    slideInterval = setInterval(nextSlide, autoSlideInterval);
+}
+
+function stopAutoPlay() {
+    clearInterval(slideInterval);
+}
+
+function resetAutoPlay() {
+    stopAutoPlay();
+    startAutoPlay();
+}
+
+// Pausar autoplay al hacer hover
+const sliderContainer = document.querySelector('.slider-container');
+sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+sliderContainer.addEventListener('mouseleave', startAutoPlay);
+
+// Event listeners
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+
+// Inicializar
+createDots();
+startAutoPlay();
+
