@@ -931,6 +931,7 @@ body.dark-mode .beneficio-card:hover {
     width: 64px;
     height: 64px;
     color: #0e58a9;
+    text-align: center;
     stroke-width: 1.2;
     transition: transform 0.3s ease;
 }
