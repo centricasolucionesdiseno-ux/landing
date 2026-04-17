@@ -121,6 +121,7 @@ body.dark-mode .submenu {
 }
 
 /* Botón modo oscuro */
+/* Botón modo oscuro */
 .dark-mode-btn {
     background: none;
     border: none;
@@ -129,12 +130,20 @@ body.dark-mode .submenu {
     padding: 0.5rem;
     border-radius: 50%;
     transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-btn i {
+    color: white;  /* ← Agrega esta línea */
+    width: 24px;
+    height: 24px;
 }
 
 .dark-mode-btn:hover {
     transform: scale(1.1);
 }
-
 /* Hero section */
 .hero {
     text-align: center;
@@ -277,8 +286,8 @@ body.dark-mode .card {
 }
 
 .card-icon i {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     color: #0e58a9;
 }
 
@@ -399,10 +408,10 @@ body.dark-mode .card-tres {
 }
 
 .card-tres-icon i {
-    width: 64px;
-    height: 64px;
+    width: 64px;   /* Cambia a 64px */
+    height: 64px;  /* Cambia a 64px */
     color: #0e58a9;
-    stroke-width: 1.5;
+    stroke-width: 1.2;
 }
 
 body.dark-mode .card-tres-icon i {
@@ -701,12 +710,12 @@ body.dark-mode .slide-description {
     transform: translateX(5px);
 }
 
-/* Botones de navegación */
+/* Botones de navegación del slider */
 .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: #0e58a9;
+    background: rgba(14, 88, 169, 0.8); /* Fondo semi-transparente */
     border: none;
     width: 45px;
     height: 45px;
@@ -719,15 +728,15 @@ body.dark-mode .slide-description {
     z-index: 10;
 }
 
-.slider-btn:hover {
-    background: #1a6bc9;
-    transform: translateY(-50%) scale(1.1);
-}
-
 .slider-btn i {
+    color: white;  /* ← Agrega o asegura esta línea */
     width: 24px;
     height: 24px;
-    color: white;
+}
+
+.slider-btn:hover {
+    background: #0e58a9;
+    transform: translateY(-50%) scale(1.1);
 }
 
 .prev-btn {
@@ -1001,5 +1010,183 @@ body.dark-mode .beneficio-text {
 @media (max-width: 480px) {
     .beneficios-grid {
         grid-template-columns: 1fr;
+    }
+}
+/* Nueva sección: ¿Por qué elegir Céntrica? con imagen + grid 2x2 */
+.porque-section-nuevo {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .porque-section-nuevo {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.porque-container-nuevo {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.porque-title-nuevo {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #0e58a9;
+}
+
+body.dark-mode .porque-title-nuevo {
+    color: #4a9eff;
+}
+
+.porque-title-nuevo span {
+    color: #333;
+}
+
+body.dark-mode .porque-title-nuevo span {
+    color: #f0f0f0;
+}
+
+.porque-grid-nuevo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* Lado izquierdo - Imagen */
+.porque-imagen {
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .porque-imagen {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+}
+
+.porque-imagen-icono {
+    width: 200px;
+    height: 200px;
+    color: white;
+    stroke-width: 1;
+}
+
+/* Para usar imagen real en lugar de ícono */
+.porque-imagen img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* Lado derecho - Grid 2x2 */
+.porque-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.beneficio-card-nuevo {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+body.dark-mode .beneficio-card-nuevo {
+    background: #1e1e2e;
+    box-shadow: 0 4px 10px rgba(255,255,255,0.05);
+}
+
+.beneficio-card-nuevo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(14,88,169,0.15);
+}
+
+.beneficio-icon-nuevo {
+    margin-bottom: 1rem;
+}
+
+.beneficio-icon-nuevo i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+}
+
+body.dark-mode .beneficio-icon-nuevo i {
+    color: #4a9eff;
+}
+
+.beneficio-title-nuevo {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+body.dark-mode .beneficio-title-nuevo {
+    color: #e0e0e0;
+}
+
+.beneficio-title-nuevo strong {
+    color: #0e58a9;
+}
+
+body.dark-mode .beneficio-title-nuevo strong {
+    color: #4a9eff;
+}
+
+.beneficio-text-nuevo {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #666;
+}
+
+body.dark-mode .beneficio-text-nuevo {
+    color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .porque-grid-nuevo {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .porque-imagen {
+        min-height: 250px;
+        order: 2;
+    }
+    
+    .porque-cards-grid {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .porque-section-nuevo {
+        padding: 3rem 1.5rem;
+    }
+    
+    .porque-title-nuevo {
+        font-size: 1.8rem;
+    }
+    
+    .porque-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .porque-imagen-icono {
+        width: 120px;
+        height: 120px;
     }
 }
