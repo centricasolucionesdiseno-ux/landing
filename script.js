@@ -13,7 +13,7 @@ function updateThemeIcon() {
     } else {
         icon.setAttribute('data-lucide', 'moon');
     }
-    lucide.createIcons(); // Re-renderizar ícono
+    lucide.createIcons();
 }
 
 // Verificar preferencia guardada
@@ -39,7 +39,7 @@ darkModeToggle.addEventListener('click', () => {
     updateThemeIcon();
 });
 
-// Mejorar experiencia: mostrar submenú solo con hover en desktop
+// Submenús con hover
 const dropdowns = document.querySelectorAll('.dropdown');
 dropdowns.forEach(dropdown => {
     const submenu = dropdown.querySelector('.submenu');
@@ -57,22 +57,19 @@ dropdowns.forEach(dropdown => {
     });
 });
 
-// ========== SLIDER AUTOMÁTICO ==========
-// Verificar si el slider existe en la página
+// Slider automático (solo si existe)
 const track = document.getElementById('sliderTrack');
 const slides = document.querySelectorAll('.slide');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const dotsContainer = document.getElementById('sliderDots');
 
-// Solo ejecutar el slider si los elementos existen
 if (track && slides.length > 0 && prevBtn && nextBtn && dotsContainer) {
     let currentIndex = 0;
     let slideInterval;
     const totalSlides = slides.length;
-    const autoSlideInterval = 5000; // 5 segundos
+    const autoSlideInterval = 5000;
 
-    // Crear puntos indicadores
     function createDots() {
         dotsContainer.innerHTML = '';
         for (let i = 0; i < totalSlides; i++) {
@@ -84,38 +81,31 @@ if (track && slides.length > 0 && prevBtn && nextBtn && dotsContainer) {
         }
     }
 
-    // Actualizar slider
     function updateSlider() {
         track.style.transform = `translateX(-${currentIndex * 100}%)`;
-        
-        // Actualizar dots
         document.querySelectorAll('.dot').forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
         });
     }
 
-    // Ir a slide específico
     function goToSlide(index) {
         currentIndex = index;
         updateSlider();
         resetAutoPlay();
     }
 
-    // Siguiente slide
     function nextSlide() {
         currentIndex = (currentIndex + 1) % totalSlides;
         updateSlider();
         resetAutoPlay();
     }
 
-    // Slide anterior
     function prevSlide() {
         currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
         updateSlider();
         resetAutoPlay();
     }
 
-    // Autoplay
     function startAutoPlay() {
         slideInterval = setInterval(nextSlide, autoSlideInterval);
     }
@@ -129,30 +119,24 @@ if (track && slides.length > 0 && prevBtn && nextBtn && dotsContainer) {
         startAutoPlay();
     }
 
-    // Pausar autoplay al hacer hover
     const sliderContainer = document.querySelector('.slider-container');
     if (sliderContainer) {
         sliderContainer.addEventListener('mouseenter', stopAutoPlay);
         sliderContainer.addEventListener('mouseleave', startAutoPlay);
     }
 
-    // Event listeners
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
 
-    // Inicializar
     createDots();
     startAutoPlay();
-    
-    // Re-inicializar Lucide por si el slider agregó nuevos íconos
     lucide.createIcons();
 }
 
-// Cerrar submenús al hacer clic fuera (mejora de UX)
+// Cerrar submenús al hacer clic fuera
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.dropdown')) {
-        const submenus = document.querySelectorAll('.submenu');
-        submenus.forEach(submenu => {
+        document.querySelectorAll('.submenu').forEach(submenu => {
             submenu.style.display = 'none';
         });
     }
