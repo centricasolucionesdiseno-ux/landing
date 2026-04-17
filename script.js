@@ -141,3 +141,54 @@ document.addEventListener('click', (e) => {
         });
     }
 });
+
+// ========== FORMULARIO DE CONTACTO ==========
+const contactForm = document.getElementById('contactForm');
+const successMessage = document.getElementById('successMessage');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validación básica
+        const nombre = document.getElementById('nombre').value;
+        const email = document.getElementById('email').value;
+        const empresa = document.getElementById('empresa').value;
+        
+        if (!nombre || !email || !empresa) {
+            alert('Por favor, completa los campos obligatorios (*)');
+            return;
+        }
+        
+        // Validar email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Por favor, ingresa un correo electrónico válido');
+            return;
+        }
+        
+        // Simular envío (aquí conectarías con tu backend)
+        console.log('Formulario enviado:', {
+            nombre,
+            email,
+            empresa,
+            cargo: document.getElementById('cargo').value,
+            bd: document.getElementById('bd').value,
+            mensaje: document.getElementById('mensaje').value
+        });
+        
+        // Mostrar mensaje de éxito
+        contactForm.style.display = 'none';
+        successMessage.style.display = 'block';
+        
+        // Opcional: Reiniciar formulario después de 3 segundos
+        // setTimeout(() => {
+        //     contactForm.reset();
+        //     contactForm.style.display = 'flex';
+        //     successMessage.style.display = 'none';
+        // }, 5000);
+        
+        // Re-inicializar Lucide para el nuevo ícono
+        lucide.createIcons();
+    });
+}
