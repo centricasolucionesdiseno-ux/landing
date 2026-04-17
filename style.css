@@ -801,3 +801,201 @@ body.dark-mode .dot.active {
         right: 5px;
     }
 }
+
+/* Sección: ¿Por qué elegir Céntrica? */
+.porque-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-mode .porque-section {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+/* Decoración de fondo */
+.porque-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(14,88,169,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.porque-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(14,88,169,0.03) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.porque-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.porque-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #0e58a9;
+}
+
+body.dark-mode .porque-title {
+    color: #4a9eff;
+}
+
+.porque-title span {
+    color: #333;
+    position: relative;
+    display: inline-block;
+}
+
+body.dark-mode .porque-title span {
+    color: #f0f0f0;
+}
+
+.porque-title span::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #0e58a9, #4a9eff);
+    border-radius: 3px;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.beneficio-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem 1.8rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+body.dark-mode .beneficio-card {
+    background: #1e1e2e;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.beneficio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(14,88,169,0.15);
+}
+
+body.dark-mode .beneficio-card:hover {
+    box-shadow: 0 15px 30px rgba(74,158,255,0.15);
+}
+
+.beneficio-icon {
+    margin-bottom: 1.5rem;
+}
+
+.beneficio-icon i {
+    width: 64px;
+    height: 64px;
+    color: #0e58a9;
+    stroke-width: 1.2;
+    transition: transform 0.3s ease;
+}
+
+.beneficio-card:hover .beneficio-icon i {
+    transform: scale(1.1);
+}
+
+body.dark-mode .beneficio-icon i {
+    color: #4a9eff;
+}
+
+.beneficio-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #333;
+    line-height: 1.4;
+}
+
+body.dark-mode .beneficio-title {
+    color: #e0e0e0;
+}
+
+.beneficio-title strong {
+    color: #0e58a9;
+    font-weight: 700;
+}
+
+body.dark-mode .beneficio-title strong {
+    color: #4a9eff;
+}
+
+.beneficio-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+}
+
+body.dark-mode .beneficio-text {
+    color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .porque-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .porque-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+    
+    .beneficios-grid {
+        gap: 1.5rem;
+    }
+    
+    .beneficio-card {
+        padding: 1.5rem;
+    }
+    
+    .beneficio-icon i {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .beneficio-title {
+        font-size: 1.1rem;
+    }
+    
+    .beneficio-text {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+    }
+}
