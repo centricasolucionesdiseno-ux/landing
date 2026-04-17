@@ -41,6 +41,22 @@ body.dark-mode header {
 }
 
 /* Logo */
+
+.logo-img {
+    max-height: 64px;  /* Máximo 64px */
+    width: auto;       /* Mantiene proporción */
+    height: auto;
+    display: block;
+}
+
+/* Opcional: si quieres que sea más pequeño en móviles */
+@media (max-width: 768px) {
+    .logo-img {
+        max-height: 48px;  /* 48px en móviles */
+    }
+}
+
+/* Logo texto
 .logo h1 {
     font-size: 1.8rem;
     margin-bottom: 0.2rem;
@@ -49,7 +65,7 @@ body.dark-mode header {
 .logo p {
     font-size: 0.8rem;
     opacity: 0.9;
-}
+}*/
 
 /* Menú principal */
 .menu {
