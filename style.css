@@ -441,3 +441,145 @@ body.dark-mode .card-tres-text {
         font-size: 1.3rem;
     }
 }
+
+/* Sección: Base industrial */
+.industrial-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    margin: 2rem 0;
+}
+
+body.dark-mode .industrial-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.industrial-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.industrial-content {
+    flex: 1;
+    min-width: 280px;
+}
+
+.industrial-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #0e58a9;
+    line-height: 1.2;
+}
+
+body.dark-mode .industrial-title {
+    color: #4a9eff;
+}
+
+.industrial-title span {
+    color: #333;
+    display: block;
+}
+
+body.dark-mode .industrial-title span {
+    color: #f0f0f0;
+}
+
+.industrial-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+body.dark-mode .industrial-text {
+    color: #ccc;
+}
+
+.industrial-text strong {
+    color: #0e58a9;
+    font-weight: 700;
+}
+
+body.dark-mode .industrial-text strong {
+    color: #4a9eff;
+}
+
+.industrial-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: #0e58a9;
+    border: 2px solid #0e58a9;
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+}
+
+.industrial-btn:hover {
+    background-color: #0e58a9;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .industrial-btn {
+    color: #4a9eff;
+    border-color: #4a9eff;
+}
+
+body.dark-mode .industrial-btn:hover {
+    background-color: #4a9eff;
+    color: #1a1a2e;
+}
+
+.industrial-image {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.industrial-icon {
+    width: 280px;
+    height: 280px;
+    color: #0e58a9;
+    stroke-width: 1;
+}
+
+body.dark-mode .industrial-icon {
+    color: #4a9eff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .industrial-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .industrial-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .industrial-title {
+        font-size: 1.8rem;
+    }
+    
+    .industrial-text {
+        font-size: 1rem;
+    }
+    
+    .industrial-icon {
+        width: 180px;
+        height: 180px;
+    }
+}
