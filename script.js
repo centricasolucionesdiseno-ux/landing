@@ -194,3 +194,16 @@ if (contactForm) {
             });
     });
 }
+// ========== NEWSLETTER FORM ==========
+const newsletterForm = document.getElementById('newsletterForm');
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        
+        // Aquí puedes conectar con EmailJS también
+        console.log('Newsletter suscripción:', email);
+        alert('¡Gracias por suscribirte!');
+        this.reset();
+    });
+}
