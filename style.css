@@ -1631,3 +1631,341 @@ body.light-mode .footer {
         width: 100%;
     }
 }
+/* ========== PÁGINA SOBRE NOSOTROS ========== */
+
+/* Hero de Sobre Nosotros */
+.sobre-hero {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+body.dark-mode .sobre-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.sobre-hero-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sobre-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+.sobre-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.sobre-title span {
+    color: #ffd700;
+}
+
+.sobre-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+/* Sección Visión */
+.vision-section {
+    padding: 5rem 2rem;
+    background: #f8f9fa;
+}
+
+body.dark-mode .vision-section {
+    background: #0f0f1a;
+}
+
+.vision-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.vision-content {
+    flex: 1;
+    min-width: 280px;
+}
+
+.vision-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #0e58a9;
+}
+
+body.dark-mode .vision-title {
+    color: #4a9eff;
+}
+
+.vision-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+body.dark-mode .vision-text {
+    color: #ccc;
+}
+
+.vision-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.vision-btn-primary {
+    background: #0e58a9;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.vision-btn-primary:hover {
+    background: #1a6bc9;
+    transform: translateY(-2px);
+}
+
+.vision-btn-secondary {
+    background: transparent;
+    color: #0e58a9;
+    padding: 12px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid #0e58a9;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .vision-btn-secondary {
+    color: #4a9eff;
+    border-color: #4a9eff;
+}
+
+.vision-btn-secondary:hover {
+    background: #0e58a9;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.vision-image {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    justify-content: center;
+}
+
+.vision-icon {
+    width: 300px;
+    height: 300px;
+    color: #0e58a9;
+    stroke-width: 1;
+}
+
+body.dark-mode .vision-icon {
+    color: #4a9eff;
+}
+
+/* Sección Valores */
+.valores-section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.valores-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #0e58a9;
+}
+
+.valores-title span {
+    color: #333;
+}
+
+body.dark-mode .valores-title span {
+    color: #f0f0f0;
+}
+
+.valores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.valor-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+body.dark-mode .valor-card {
+    background: #1e1e2e;
+}
+
+.valor-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(14,88,169,0.15);
+}
+
+.valor-icon {
+    margin-bottom: 1.5rem;
+}
+
+.valor-icon i {
+    width: 64px;
+    height: 64px;
+    color: #0e58a9;
+}
+
+body.dark-mode .valor-icon i {
+    color: #4a9eff;
+}
+
+.valor-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #0e58a9;
+}
+
+.valor-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+body.dark-mode .valor-card p {
+    color: #aaa;
+}
+
+/* Sección Cifras */
+.cifras-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+}
+
+body.dark-mode .cifras-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.cifras-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.cifra-item {
+    padding: 1rem;
+}
+
+.cifra-numero {
+    font-size: 3rem;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.cifra-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Sección CTA */
+.cta-sobre {
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.cta-sobre-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-sobre h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #0e58a9;
+}
+
+.cta-sobre p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+body.dark-mode .cta-sobre p {
+    color: #aaa;
+}
+
+.cta-sobre-btn {
+    background: #0e58a9;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.cta-sobre-btn:hover {
+    background: #1a6bc9;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sobre-title {
+        font-size: 2rem;
+    }
+    
+    .vision-title {
+        font-size: 1.5rem;
+    }
+    
+    .valores-title {
+        font-size: 1.8rem;
+    }
+    
+    .cifra-numero {
+        font-size: 2rem;
+    }
+    
+    .vision-buttons {
+        flex-direction: column;
+    }
+    
+    .vision-btn-primary,
+    .vision-btn-secondary {
+        text-align: center;
+    }
+}
