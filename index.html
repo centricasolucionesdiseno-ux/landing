@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Céntrica - Sobre nosotros | Soluciones innovadoras</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
+            </div>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Servicios ▼</a>
+                    <ul class="submenu">
+                        <li><a href="#">Fábrica de software</a></li>
+                        <li><a href="#">Nebula ERP</a></li>
+                        <li><a href="#">Sicovi</a></li>
+                        <li><a href="#">Análisis con IA</a></li>
+                        <li><a href="#">Evaluaciones de Calidad</a></li>
+                        <li><a href="#">Consultoría digital</a></li>
+                    </ul>
+                </li>
+                <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Sección Hero: Acerca de nosotros -->
+        <section class="sobre-hero">
+            <div class="sobre-hero-container">
+                <span class="sobre-badge">Empresa</span>
+                <h1 class="sobre-title">Acerca de <span>Céntrica</span></h1>
+                <p class="sobre-description">
+                    Céntrica es una fábrica de software especializada en arquitectura multi-tenant. 
+                    Nuestra misión es acelerar la construcción de software empresarial con estándares industriales, 
+                    asegurando que cada proyecto herede automáticamente una infraestructura probada, segura y escalable.
+                </p>
+            </div>
+        </section>
+
+        <!-- Sección: Nuestra visión para el futuro -->
+        <section class="vision-section">
+            <div class="vision-container">
+                <div class="vision-content">
+                    <h2 class="vision-title">Nuestra visión para el futuro de la arquitectura multi-tenant</h2>
+                    <p class="vision-text">
+                        Nuestra misión es asegurar que las empresas puedan construir software empresarial 
+                        sin preocuparse por el aislamiento, la seguridad o la conmutación de bases de datos. 
+                        Creemos que la infraestructura técnica no debería ser una barrera, sino un habilitador 
+                        para la innovación.
+                    </p>
+                    <div class="vision-buttons">
+                        <a href="#" class="vision-btn-primary">Lee nuestro plan →</a>
+                        <a href="#" class="vision-btn-secondary">Lee nuestros estatutos →</a>
+                    </div>
+                </div>
+                <div class="vision-image">
+                    <i data-lucide="eye" class="vision-icon"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Valores -->
+        <section class="valores-section">
+            <h2 class="valores-title">Nuestros <span>valores</span></h2>
+            <div class="valores-grid">
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i data-lucide="shield"></i>
+                    </div>
+                    <h3>Seguridad primero</h3>
+                    <p>La seguridad no es un complemento, es la base de cada solución que construimos.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h3>Innovación constante</h3>
+                    <p>Nos mantenemos a la vanguardia tecnológica para ofrecer soluciones modernas.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3>Compromiso con el cliente</h3>
+                    <p>Tu éxito es nuestro éxito. Trabajamos contigo en cada paso del camino.</p>
+                </div>
+                <div class="valor-card">
+                    <div class="valor-icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h3>Escalabilidad garantizada</h3>
+                    <p>Nuestras soluciones crecen contigo, sin necesidad de reinventar la rueda.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Equipo / Cifras -->
+        <section class="cifras-section">
+            <div class="cifras-container">
+                <div class="cifra-item">
+                    <span class="cifra-numero" data-count="5">0</span>
+                    <span class="cifra-label">+ años de experiencia</span>
+                </div>
+                <div class="cifra-item">
+                    <span class="cifra-numero" data-count="50">0</span>
+                    <span class="cifra-label">+ proyectos entregados</span>
+                </div>
+                <div class="cifra-item">
+                    <span class="cifra-numero" data-count="100">0</span>
+                    <span class="cifra-label">% clientes satisfechos</span>
+                </div>
+                <div class="cifra-item">
+                    <span class="cifra-numero" data-count="24">0</span>
+                    <span class="cifra-label">/7 soporte dedicado</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Llamada a la acción -->
+        <section class="cta-sobre">
+            <div class="cta-sobre-container">
+                <h2>¿Listo para construir el futuro con nosotros?</h2>
+                <p>Contáctanos y descubre cómo podemos acelerar tu próximo desarrollo.</p>
+                <a href="index.html#contacto" class="cta-sobre-btn">Solicitar información →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (mismo que index.html) -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Céntrica" class="footer-logo-img">
+                </div>
+                <p class="footer-description">
+                    Impulsamos tu éxito a través de la innovación inteligente.
+                </p>
+                <div class="footer-contact-info">
+                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="phone"></i> +57 300 205 7325</p>
+                    <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Políticas internas</a></li>
+                    <li><a href="#">Términos de Servicio</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Mantente informado</h4>
+                <p class="footer-newsletter-text">
+                    Recibe novedades sobre nuestras soluciones.
+                </p>
+                <form class="footer-newsletter-form" id="newsletterForm2">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse →</button>
+                </form>
+                <p class="footer-unsubscribe">
+                    Puedes darte de baja en cualquier momento.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2026 Fábrica de Software Céntrica. Todos los derechos reservados.</p>
+                <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
+                <a href="#" class="footer-unsubscribe-link">Unsubscribe from communications</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Animación de cifras -->
+    <script>
+        // Animación de contador para las cifras
+        const counters = document.querySelectorAll('.cifra-numero');
+        const speed = 200;
+
+        const animateCounter = (counter) => {
+            const updateCount = () => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const current = parseInt(counter.innerText);
+                const increment = target / speed;
+                
+                if (current < target) {
+                    counter.innerText = Math.ceil(current + increment);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        };
+
+        // Intersection Observer para activar cuando el elemento sea visible
+        const observerOptions = { threshold: 0.5 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    animateCounter(counter);
+                    observer.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => observer.observe(counter));
+    </script>
+</body>
+</html>
