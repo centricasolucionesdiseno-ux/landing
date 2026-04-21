@@ -1969,3 +1969,230 @@ body.dark-mode .cta-sobre p {
         text-align: center;
     }
 }
+/* ========== PÁGINA DE UNSUBSCRIBE ========== */
+
+.unsubscribe-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .unsubscribe-section {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.unsubscribe-container {
+    max-width: 550px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.unsubscribe-card {
+    background: white;
+    border-radius: 30px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+body.dark-mode .unsubscribe-card {
+    background: #1a1a2e;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.unsubscribe-card.success-card,
+.unsubscribe-card.error-card {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.unsubscribe-icon {
+    margin-bottom: 1.5rem;
+}
+
+.unsubscribe-icon i {
+    width: 64px;
+    height: 64px;
+    color: #0e58a9;
+}
+
+.success-card .unsubscribe-icon i {
+    color: #28a745;
+}
+
+.error-card .unsubscribe-icon i {
+    color: #dc3545;
+}
+
+body.dark-mode .unsubscribe-icon i {
+    color: #4a9eff;
+}
+
+.unsubscribe-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #0e58a9;
+}
+
+body.dark-mode .unsubscribe-title {
+    color: #4a9eff;
+}
+
+.unsubscribe-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+body.dark-mode .unsubscribe-description {
+    color: #aaa;
+}
+
+.unsubscribe-form {
+    text-align: left;
+}
+
+.unsubscribe-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.unsubscribe-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+body.dark-mode .unsubscribe-form label {
+    color: #ddd;
+}
+
+.unsubscribe-form input,
+.unsubscribe-form select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .unsubscribe-form input,
+body.dark-mode .unsubscribe-form select {
+    background: #2c2c3e;
+    border-color: #444;
+    color: #f0f0f0;
+}
+
+.unsubscribe-form input:focus,
+.unsubscribe-form select:focus {
+    outline: none;
+    border-color: #0e58a9;
+    box-shadow: 0 0 0 3px rgba(14,88,169,0.1);
+}
+
+.unsubscribe-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.unsubscribe-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.unsubscribe-btn:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+.cancel-btn {
+    background: transparent;
+    color: #666;
+    border: 2px solid #ddd;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+body.dark-mode .cancel-btn {
+    color: #aaa;
+    border-color: #444;
+}
+
+.cancel-btn:hover {
+    border-color: #0e58a9;
+    color: #0e58a9;
+}
+
+.success-btn {
+    background: #28a745;
+}
+
+.success-btn:hover {
+    background: #218838;
+}
+
+.unsubscribe-note {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+body.dark-mode .unsubscribe-note {
+    color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .unsubscribe-card {
+        padding: 1.5rem;
+    }
+    
+    .unsubscribe-title {
+        font-size: 1.5rem;
+    }
+    
+    .unsubscribe-buttons {
+        flex-direction: column;
+    }
+    
+    .unsubscribe-btn,
+    .cancel-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
