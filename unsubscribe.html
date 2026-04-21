@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Céntrica - Darse de baja | Comunicaciones</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
+            </div>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="https://centricasolucionesdiseno-ux.github.io/landing/index.html">Sobre nosotros</a></li>
+                <li class="dropdown">
+                    <a href="#">Servicios ▼</a>
+                    <ul class="submenu">
+                        <li><a href="#">Fábrica de software</a></li>
+                        <li><a href="#">Nebula ERP</a></li>
+                        <li><a href="#">Sicovi</a></li>
+                        <li><a href="#">Análisis con IA</a></li>
+                        <li><a href="#">Evaluaciones de Calidad</a></li>
+                        <li><a href="#">Consultoría digital</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Sección de Unsubscribe -->
+        <section class="unsubscribe-section">
+            <div class="unsubscribe-container">
+                
+                <!-- Estado 1: Formulario inicial -->
+                <div id="unsubscribeForm" class="unsubscribe-card">
+                    <div class="unsubscribe-icon">
+                        <i data-lucide="mail-x"></i>
+                    </div>
+                    <h1 class="unsubscribe-title">Darse de baja</h1>
+                    <p class="unsubscribe-description">
+                        ¿Ya no deseas recibir nuestras comunicaciones? 
+                        Ingresa tu correo electrónico para darte de baja de nuestra lista de correos.
+                    </p>
+                    
+                    <form id="unsubscribeEmailForm" class="unsubscribe-form">
+                        <div class="form-group">
+                            <label for="unsubscribeEmail">Correo electrónico</label>
+                            <input type="email" id="unsubscribeEmail" name="email" 
+                                   placeholder="tucorreo@ejemplo.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="unsubscribeReason">¿Por qué te quieres dar de baja? (Opcional)</label>
+                            <select id="unsubscribeReason">
+                                <option value="">Selecciona una razón</option>
+                                <option value="too_many">Recibo demasiados correos</option>
+                                <option value="not_relevant">El contenido no es relevante para mí</option>
+                                <option value="never_subscribed">Nunca me suscribí</option>
+                                <option value="no_longer_interest">Ya no me interesa el tema</option>
+                                <option value="other">Otra razón</option>
+                            </select>
+                        </div>
+                        
+                        <div class="unsubscribe-buttons">
+                            <button type="submit" class="unsubscribe-btn">Darse de baja →</button>
+                            <a href="index.html" class="cancel-btn">Cancelar</a>
+                        </div>
+                    </form>
+                    
+                    <p class="unsubscribe-note">
+                        Te extrañaremos. Puedes volver a suscribirte en cualquier momento desde nuestro sitio web.
+                    </p>
+                </div>
+
+                <!-- Estado 2: Confirmación (oculto inicialmente) -->
+                <div id="confirmacionUnsubscribe" class="unsubscribe-card success-card" style="display: none;">
+                    <div class="unsubscribe-icon">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <h2 class="unsubscribe-title">¡Te has dado de baja!</h2>
+                    <p class="unsubscribe-description">
+                        Hemos procesado tu solicitud. Ya no recibirás más correos de nuestra parte.
+                    </p>
+                    <div class="unsubscribe-buttons">
+                        <a href="index.html" class="unsubscribe-btn success-btn">Volver al inicio →</a>
+                    </div>
+                </div>
+
+                <!-- Estado 3: Error (oculto inicialmente) -->
+                <div id="errorUnsubscribe" class="unsubscribe-card error-card" style="display: none;">
+                    <div class="unsubscribe-icon">
+                        <i data-lucide="alert-circle"></i>
+                    </div>
+                    <h2 class="unsubscribe-title">Error al procesar</h2>
+                    <p class="unsubscribe-description">
+                        No pudimos encontrar ese correo electrónico en nuestra base de datos. 
+                        Por favor, verifica que el correo sea correcto.
+                    </p>
+                    <div class="unsubscribe-buttons">
+                        <button onclick="location.reload()" class="unsubscribe-btn">Intentar nuevamente →</button>
+                        <a href="index.html" class="cancel-btn">Volver al inicio</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer simplificado -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Céntrica" class="footer-logo-img">
+                </div>
+                <p class="footer-description">
+                    Impulsamos tu éxito a través de la innovación inteligente.
+                </p>
+                <div class="footer-contact-info">
+                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="phone"></i> +57 300 205 7325</p>
+                    <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Enlaces</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="unsubscribe.html">Darse de baja</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos de Servicio</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2026 Fábrica de Software Céntrica. Todos los derechos reservados.</p>
+                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Script específico para unsubscribe -->
+    <script>
+        // Inicializar Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // Elementos del DOM
+        const unsubscribeForm = document.getElementById('unsubscribeEmailForm');
+        const formContainer = document.getElementById('unsubscribeForm');
+        const confirmacionContainer = document.getElementById('confirmacionUnsubscribe');
+        const errorContainer = document.getElementById('errorUnsubscribe');
+
+        // Procesar el formulario de unsubscribe
+        if (unsubscribeForm) {
+            unsubscribeForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('unsubscribeEmail').value;
+                const reason = document.getElementById('unsubscribeReason').value;
+                
+                // Validar email
+                if (!email) {
+                    alert('Por favor, ingresa tu correo electrónico');
+                    return;
+                }
+                
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Por favor, ingresa un correo electrónico válido');
+                    return;
+                }
+                
+                // Mostrar estado de carga
+                const submitBtn = unsubscribeForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Procesando...';
+                submitBtn.disabled = true;
+                
+                // Simular envío a backend (aquí conectarías con tu API real)
+                // Por ahora es una simulación exitosa
+                setTimeout(() => {
+                    // 🔴 IMPORTANTE: Reemplaza esto con tu llamada real a la API
+                    // Ejemplo con fetch:
+                    // fetch('/api/unsubscribe', {
+                    //     method: 'POST',
+                    //     headers: { 'Content-Type': 'application/json' },
+                    //     body: JSON.stringify({ email, reason })
+                    // })
+                    // .then(response => response.json())
+                    // .then(data => { ... })
+                    // .catch(error => { ... })
+                    
+                    // Simulación de éxito (elimina esto cuando tengas el backend)
+                    const success = true; // Cambia a false para probar error
+                    
+                    if (success) {
+                        // Mostrar confirmación
+                        formContainer.style.display = 'none';
+                        confirmacionContainer.style.display = 'block';
+                        lucide.createIcons();
+                        
+                        // Opcional: registrar la baja en consola
+                        console.log('Usuario dado de baja:', { email, reason });
+                    } else {
+                        // Mostrar error
+                        formContainer.style.display = 'none';
+                        errorContainer.style.display = 'block';
+                        lucide.createIcons();
+                    }
+                    
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
+            });
+        }
+
+        // Modo oscuro (compatible con el script principal)
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        if (darkModeToggle) {
+            // Verificar preferencia guardada
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-mode');
+                body.classList.remove('light-mode');
+            } else {
+                body.classList.add('light-mode');
+            }
+            
+            function updateThemeIcon() {
+                const icon = darkModeToggle.querySelector('i');
+                if (!icon) return;
+                if (body.classList.contains('dark-mode')) {
+                    icon.setAttribute('data-lucide', 'sun');
+                } else {
+                    icon.setAttribute('data-lucide', 'moon');
+                }
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                }
+            }
+            
+            setTimeout(updateThemeIcon, 100);
+            
+            darkModeToggle.addEventListener('click', () => {
+                if (body.classList.contains('dark-mode')) {
+                    body.classList.remove('dark-mode');
+                    body.classList.add('light-mode');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.classList.remove('light-mode');
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                }
+                updateThemeIcon();
+            });
+        }
+    </script>
+</body>
+</html>
