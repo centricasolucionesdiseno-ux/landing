@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Céntrica - Servicios | Soluciones empresariales</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoColor.png" alt="Logo Centrica" class="logo-img">
+            </div>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="servicios.html#fabrica">Fábrica de software</a></li>
+                        <li><a href="servicios.html#nebula">Nebula ERP</a></li>
+                        <li><a href="servicios.html#sicovi">Sicovi</a></li>
+                        <li><a href="servicios.html#ia">Análisis con IA</a></li>
+                        <li><a href="servicios.html#calidad">Evaluaciones de Calidad</a></li>
+                        <li><a href="servicios.html#consultoria">Consultoría digital</a></li>
+                    </ul>
+                </li>
+                <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Hero de Servicios -->
+        <section class="servicios-hero">
+            <div class="servicios-hero-container">
+                <h1 class="servicios-hero-title">Nuestros <span>Servicios</span></h1>
+                <p class="servicios-hero-description">
+                    Soluciones tecnológicas diseñadas para acelerar tu negocio, 
+                    desde el desarrollo ágil hasta la consultoría estratégica.
+                </p>
+            </div>
+        </section>
+
+        <!-- Grid de servicios (6 cards) -->
+        <section class="servicios-grid-section">
+            <div class="servicios-grid">
+                
+                <!-- Card 1: Fábrica de software -->
+                <div class="servicio-card" id="fabrica">
+                    <div class="servicio-icon">
+                        <i data-lucide="factory"></i>
+                    </div>
+                    <h3 class="servicio-title">Fábrica de software</h3>
+                    <p class="servicio-description">
+                        Desarrollo ágil de aplicaciones a medida con metodologías modernas, 
+                        entregas continuas y calidad asegurada en cada sprint.
+                    </p>
+                    <a href="#" class="servicio-link">Conocer más →</a>
+                </div>
+
+                <!-- Card 2: Nebula ERP -->
+                <div class="servicio-card" id="nebula">
+                    <div class="servicio-icon">
+                        <i data-lucide="cloud"></i>
+                    </div>
+                    <h3 class="servicio-title">Nebula ERP</h3>
+                    <p class="servicio-description">
+                        Plataforma integral de gestión empresarial que centraliza operaciones 
+                        financieras, de inventarios y administrativas con IA integrada.
+                    </p>
+                    <a href="#" class="servicio-link">Conocer más →</a>
+                </div>
+
+                <!-- Card 3: Sicovi -->
+                <div class="servicio-card" id="sicovi">
+                    <div class="servicio-icon">
+                        <i data-lucide="landmark"></i>
+                    </div>
+                    <h3 class="servicio-title">Sicovi</h3>
+                    <p class="servicio-description">
+                        Plataforma unificada de gestión legislativa y administrativa para 
+                        Concejos Municipales y Departamentales de Colombia.
+                    </p>
+                    <a href="#" class="servicio-link">Conocer más →</a>
+                </div>
+
+                <!-- Card 4: Análisis con IA -->
+                <div class="servicio-card" id="ia">
+                    <div class="servicio-icon">
+                        <i data-lucide="brain"></i>
+                    </div>
+                    <h3 class="servicio-title">Análisis con IA</h3>
+                    <p class="servicio-description">
+                        Implementamos inteligencia artificial para automatizar procesos, 
+                        anticipar escenarios y transformar datos en decisiones precisas.
+                    </p>
+                    <a href="#" class="servicio-link">Conocer más →</a>
+                </div>
+
+                <!-- Card 5: Evaluaciones de Calidad -->
+                <div class="servicio-card" id="calidad">
+                    <div class="servicio-icon">
+                        <i data-lucide="clipboard-check"></i>
+                    </div>
+                    <h3 class="servicio-title">Evaluaciones de Calidad</h3>
+                    <p class="servicio-description">
+                        Auditorías y mejoras de calidad de software, asegurando estándares 
+                        de rendimiento, seguridad y mantenibilidad.
+                    </p>
+                    <a href="#" class="servicio-link">Conocer más →</a>
+                </div>
+
+                <!-- Card 6: Consultoría digital -->
+                <div class="servicio-card" id="consultoria">
+                    <div class="servicio-icon">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <h3 class="servicio-title">Consultoría digital</h3>
+                    <p class="servicio-description">
+                        Acompañamiento estratégico para tu transformación digital, 
+                        desde el diagnóstico hasta la implementación de soluciones.
+                    </p>
+                    <a href="#" class="servicio-link">Conocer más →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Modelo de entrega (valor agregado) -->
+        <section class="modelo-seccion">
+            <h2 class="modelo-title">Un modelo <span>pensado para crecer</span></h2>
+            <div class="modelo-grid">
+                <div class="modelo-item">
+                    <i data-lucide="target"></i>
+                    <h3>1. Diagnóstico</h3>
+                    <p>Analizamos tus necesidades y objetivos específicos.</p>
+                </div>
+                <div class="modelo-item">
+                    <i data-lucide="git-branch"></i>
+                    <h3>2. Desarrollo ágil</h3>
+                    <p>Entregas continuas con metodologías modernas.</p>
+                </div>
+                <div class="modelo-item">
+                    <i data-lucide="shield-check"></i>
+                    <h3>3. Aseguramiento</h3>
+                    <p>Pruebas rigurosas y arquitectura multi-tenant probada.</p>
+                </div>
+                <div class="modelo-item">
+                    <i data-lucide="headphones"></i>
+                    <h3>4. Soporte continuo</h3>
+                    <p>Acompañamiento y mejora constante post-lanzamiento.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA final -->
+        <section class="servicios-cta">
+            <div class="servicios-cta-container">
+                <h2>¿Listo para transformar tu negocio?</h2>
+                <p>Contáctanos y descubre cómo podemos acelerar tu próximo desarrollo.</p>
+                <a href="index.html#contacto" class="servicios-cta-btn">Solicitar información →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (mismo que en otras páginas) -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoColor.png" alt="Céntrica" class="footer-logo-img">
+                </div>
+                <p class="footer-description">
+                    Impulsamos tu éxito a través de la innovación inteligente.
+                </p>
+                <div class="footer-contact-info">
+                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="phone"></i> +57 300 205 7325</p>
+                    <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="unsubscribe.html">Darse de baja</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos de Servicio</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Mantente informado</h4>
+                <p class="footer-newsletter-text">
+                    Recibe novedades sobre nuestras soluciones.
+                </p>
+                <form class="footer-newsletter-form" id="newsletterFormServicios">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse →</button>
+                </form>
+                <p class="footer-unsubscribe">
+                    Puedes darte de baja en cualquier momento.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2026 Fábrica de Software Céntrica. Todos los derechos reservados.</p>
+                <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
+                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Script específico para servicios -->
+    <script>
+        // Inicializar Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterFormServicios');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                console.log('Newsletter suscripción:', email);
+                alert('¡Gracias por suscribirte!');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
