@@ -1649,43 +1649,66 @@ body.light-mode .footer {
 }
 /* ========== PÁGINA SOBRE NOSOTROS ========== */
 
-/* Hero de Sobre Nosotros */
+/* Hero de Sobre Nosotros - CON IMAGEN DE FONDO */
 .sobre-hero {
-    padding: 5rem 2rem;
-    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    position: relative;
+    padding: 6rem 2rem;
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     text-align: center;
-    margin-bottom: 2rem;
+    overflow: hidden;
 }
 
-body.dark-mode .sobre-hero {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+/* Capa oscura para legibilidad */
+.sobre-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65);  /* Capa oscura del 65% */
+    z-index: 1;
 }
+
+/* También puedes usar un degradado en lugar de capa sólida */
+/*
+.sobre-hero-overlay {
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+}
+*/
 
 .sobre-hero-container {
+    position: relative;
     max-width: 900px;
     margin: 0 auto;
+    z-index: 2;
 }
 
 .sobre-badge {
     display: inline-block;
     background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(4px);
     padding: 0.5rem 1rem;
     border-radius: 50px;
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 1px;
     margin-bottom: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
 .sobre-title {
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .sobre-title span {
-    color: #2ABBE2;
+    color: #ffd700;
 }
 
 .sobre-description {
@@ -1694,8 +1717,28 @@ body.dark-mode .sobre-hero {
     max-width: 800px;
     margin: 0 auto;
     opacity: 0.95;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
+/* Modo oscuro: la imagen ya tiene capa oscura, no requiere cambios adicionales */
+body.dark-mode .sobre-hero-overlay {
+    background: rgba(0, 0, 0, 0.75);  /* Un poco más oscuro en modo dark */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sobre-hero {
+        padding: 4rem 1.5rem;
+    }
+    
+    .sobre-title {
+        font-size: 2rem;
+    }
+    
+    .sobre-description {
+        font-size: 1rem;
+    }
+}
 /* Sección Visión */
 .vision-section {
     padding: 5rem 2rem;
