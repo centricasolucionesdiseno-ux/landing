@@ -16,50 +16,64 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     // 3. MODO OSCURO (CORREGIDO)
     // ============================================
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
+    // Modo oscuro con logo dinámico
+const darkModeToggle = document.getElementById('darkModeToggle');
+const body = document.body;
 
-    function updateThemeIcon() {
-        if (!darkModeToggle) return;
-        const icon = darkModeToggle.querySelector('i');
-        if (!icon) return;
-        
-        if (body.classList.contains('dark-mode')) {
-            icon.setAttribute('data-lucide', 'sun');
-        } else {
-            icon.setAttribute('data-lucide', 'moon');
-        }
-        if (typeof lucide !== 'undefined' && lucide.createIcons) {
-            lucide.createIcons();
-        }
-    }
-
-    // Verificar preferencia guardada
-    if (localStorage.getItem('theme') === 'dark') {
-        body.classList.add('dark-mode');
-        body.classList.remove('light-mode');
-    } else {
-        body.classList.add('light-mode');
-    }
+function updateThemeIcon() {
+    if (!darkModeToggle) return;
+    const icon = darkModeToggle.querySelector('i');
+    if (!icon) return;
     
-    // Pequeño delay para asegurar que Lucide ya creó los íconos
-    setTimeout(updateThemeIcon, 100);
-
-    // Alternar modo oscuro
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', () => {
-            if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.classList.remove('light-mode');
-                body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark');
-            }
-            updateThemeIcon();
-        });
+    if (body.classList.contains('dark-mode')) {
+        icon.setAttribute('data-lucide', 'sun');
+    } else {
+        icon.setAttribute('data-lucide', 'moon');
     }
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+    }
+}
+
+function updateLogo() {
+    const logoImg = document.querySelector('.logo-img');
+    if (!logoImg) return;
+    
+    const isDarkMode = body.classList.contains('dark-mode');
+    
+    if (isDarkMode) {
+        logoImg.src = 'https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png';
+    } else {
+        logoImg.src = 'https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoColor.png';
+    }
+}
+
+// Verificar preferencia guardada
+if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    body.classList.remove('light-mode');
+} else {
+    body.classList.add('light-mode');
+}
+updateThemeIcon();
+updateLogo();  // ← Inicializar logo
+
+// Alternar modo oscuro
+if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        }
+        updateThemeIcon();
+        updateLogo();  // ← Actualizar logo al cambiar tema
+    });
+}
 
     // ============================================
     // 4. SUBMENÚS CON HOVER
@@ -270,3 +284,46 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ Script completamente cargado');
 });
+
+// ============================================
+// 9. LOGO DINÁMICO SEGÚN TEMA
+// ============================================
+function updateLogo() {
+    const logoImg = document.querySelector('.logo-img');
+    if (!logoImg) return;
+    
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    
+    if (isDarkMode) {
+        logoImg.src = 'https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png';
+    } else {
+        logoImg.src = 'https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoColor.png';
+    }
+}
+
+// Llamar a la función cuando cambie el tema
+// Busca el event listener del modo oscuro y agrega updateLogo()
+// Si ya existe, agrega la línea dentro:
+
+// En el event listener del darkModeToggle, agrega:
+// updateLogo();
+
+// Ejemplo de cómo debería quedar:
+if (darkModeToggle) {
+    darkModeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        }
+        updateThemeIcon();
+        updateLogo();  // ← Agrega esta línea
+    });
+}
+
+// Inicializar logo al cargar
+updateLogo();
