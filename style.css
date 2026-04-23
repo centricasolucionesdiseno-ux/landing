@@ -29,43 +29,17 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background-color: #2c3e50;
+    background-color: #0e58a9;  /* ← Cambiado de #2c3e50 a #0e58a9 */
     color: white;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+/* Modo oscuro - header */
 body.dark-mode header {
-    background-color: #0a0a0a;
+    background-color: #0a3d6e;  /* ← Versión más oscura pero misma gama */
 }
-
-/* Logo */
-
-.logo-img {
-    max-height: 64px;  /* Máximo 64px */
-    width: auto;       /* Mantiene proporción */
-    height: auto;
-    display: block;
-}
-
-/* Opcional: si quieres que sea más pequeño en móviles */
-@media (max-width: 768px) {
-    .logo-img {
-        max-height: 48px;  /* 48px en móviles */
-    }
-}
-
-/* Logo texto
-.logo h1 {
-    font-size: 1.8rem;
-    margin-bottom: 0.2rem;
-}
-
-.logo p {
-    font-size: 0.8rem;
-    opacity: 0.9;
-}*/
 
 /* Menú principal */
 .menu {
@@ -79,15 +53,17 @@ body.dark-mode header {
 }
 
 .menu a {
-    color: white;
+    color: white;  /* ← Texto blanco para máxima visibilidad */
     text-decoration: none;
     font-size: 1rem;
     padding: 0.5rem 0;
-    transition: color 0.3s;
+    transition: color 0.3s, opacity 0.3s;
+    font-weight: 500;
 }
 
 .menu a:hover {
-    color: #3498db;
+    color: #ffd700;  /* ← Dorado para hover, visible sobre azul */
+    opacity: 1;
 }
 
 /* Submenú */
@@ -96,52 +72,92 @@ body.dark-mode header {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #34495e;
+    background-color: #0e58a9;  /* ← Mismo color que header */
     list-style: none;
-    min-width: 200px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-width: 220px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 body.dark-mode .submenu {
-    background-color: #2c2c2c;
+    background-color: #0a3d6e;
+    border-color: rgba(255,255,255,0.05);
 }
 
 .submenu li {
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
+    transition: background-color 0.3s;
 }
 
 .submenu li:hover {
-    background-color: #3b5998;
-    border-radius: 5px;
+    background-color: #0c4a92;  /* ← Versión ligeramente más clara */
+    border-radius: 8px;
 }
 
-.dropdown:hover .submenu {
+body.dark-mode .submenu li:hover {
+    background-color: #0c4a92;
+}
+
+.submenu a {
+    color: white;
+    font-size: 0.9rem;
+}
+
+.submenu a:hover {
+    color: #ffd700;
+}
+
+/* Logo - asegurar visibilidad en ambos modos */
+.logo-img {
+    max-height: 64px;
+    width: auto;
+    height: auto;
     display: block;
+    filter: brightness(0) invert(1);  /* ← Convierte cualquier logo a blanco */
+    transition: filter 0.3s ease;
 }
 
-/* Botón modo oscuro */
+/* Modo oscuro: el logo ya es blanco por el filtro, se mantiene igual */
+body.dark-mode .logo-img {
+    filter: brightness(0) invert(1);  /* ← Mantiene blanco en modo oscuro */
+}
+
+/* Si tu logo original es oscuro y quieres que se adapte, usa esto:
+   En modo claro: logo original
+   En modo oscuro: logo blanco
+*/
+/* 
+body.light-mode .logo-img {
+    filter: none;
+}
+body.dark-mode .logo-img {
+    filter: brightness(0) invert(1);
+}
+*/
+
+/* Botón modo oscuro - mantener visible sobre azul */
 .dark-mode-btn {
-    background: none;
+    background: rgba(255,255,255,0.15);  /* ← Fondo semi-transparente para destacar */
     border: none;
-    font-size: 1.5rem;
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 50%;
-    transition: transform 0.3s;
+    transition: all 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.dark-mode-btn i {
-    color: white; 
-    width: 24px;
-    height: 24px;
+.dark-mode-btn:hover {
+    background: rgba(255,255,255,0.25);
+    transform: scale(1.1);
 }
 
-.dark-mode-btn:hover {
-    transform: scale(1.1);
+.dark-mode-btn i {
+    color: white;
+    width: 24px;
+    height: 24px;
 }
 /* Hero section */
 .hero {
