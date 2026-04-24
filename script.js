@@ -327,3 +327,35 @@ if (darkModeToggle) {
 
 // Inicializar logo al cargar
 updateLogo();
+
+// Scroll suave para páginas legales
+const legalLinks = document.querySelectorAll('.legal-sidebar a');
+const sections = document.querySelectorAll('.legal-content section');
+
+if(legalLinks.length && sections.length) {
+    legalLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if(targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // Resaltar enlace activo al hacer scroll
+    function highlightActiveLink() {
+        let scrollPosition = window.scrollY + 150;
+        let activeIndex = -1;
+        sections.forEach((sec, idx) => {
+            const offsetTop = sec.offsetTop;
+            if(scrollPosition >= offsetTop) activeIndex = idx;
+        });
+        legalLinks.forEach((link, idx) => {
+            if(idx === activeIndex) link.style.fontWeight = 'bold';
+            else link.style.fontWeight = 'normal';
+        });
+    }
+    window.addEventListener('scroll', highlightActiveLink);
+}
