@@ -2875,3 +2875,117 @@ body.dark-mode .contacto-mapa-title {
         font-size: 1.5rem;
     }
 }
+/* ========== PLANTILLA PARA PÁGINAS LEGALES ========== */
+.legal-hero {
+    background: var(--bg-header, #0e58a9);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.legal-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* Sidebar fija al hacer scroll */
+.legal-sidebar {
+    position: sticky;
+    top: 100px;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 16px;
+}
+
+body.dark-mode .legal-sidebar {
+    background: #1a1a2e;
+}
+
+.legal-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.legal-sidebar li {
+    margin-bottom: 0.75rem;
+}
+
+.legal-sidebar a {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: block;
+    padding: 0.3rem 0;
+}
+
+body.dark-mode .legal-sidebar a {
+    color: #ccc;
+}
+
+.legal-sidebar a:hover {
+    color: #0e58a9;
+    transform: translateX(5px);
+}
+
+.legal-content section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+body.dark-mode .legal-content section {
+    border-bottom-color: #2c2c2c;
+}
+
+.legal-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #0e58a9;
+}
+
+.legal-content h3 {
+    font-size: 1.3rem;
+    margin: 1.5rem 0 1rem;
+    color: #2c3e50;
+}
+
+.legal-content p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+body.dark-mode .legal-content p {
+    color: #bbb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .legal-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+    
+    .legal-sidebar {
+        position: static;
+        margin-bottom: 2rem;
+    }
+    
+    .legal-sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .legal-sidebar li {
+        margin-bottom: 0;
+    }
+}
