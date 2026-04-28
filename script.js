@@ -213,60 +213,94 @@ if (darkModeToggle) {
     // ============================================
     // 7. EMAILJS - FORMULARIO DE CONTACTO
     // ============================================
+    // Verificar que EmailJS esté cargado
     if (typeof emailjs !== 'undefined' && emailjs.init) {
+        // Inicializar con TU Public Key
         emailjs.init("vS5vQ1DCKUxmKVffT");
-        console.log('✅ EmailJS inicializado');
+        console.log('✅ EmailJS inicializado correctamente');
         
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
 
         if (contactForm) {
+            console.log('✅ Formulario de contacto encontrado');
+            
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
+                console.log('📤 Enviando formulario...');
                 
+                // Obtener valores con validación
                 const nombre = document.getElementById('nombre')?.value || '';
                 const email = document.getElementById('email')?.value || '';
                 const empresa = document.getElementById('empresa')?.value || '';
+                const cargo = document.getElementById('cargo')?.value || '';
+                const bd = document.getElementById('bd')?.value || '';
+                const mensaje = document.getElementById('mensaje')?.value || '';
                 
+                // Validación básica
                 if (!nombre || !email || !empresa) {
                     alert('Por favor, completa los campos obligatorios (*)');
                     return;
                 }
                 
+                // Validar email
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
                     alert('Por favor, ingresa un correo electrónico válido');
                     return;
                 }
                 
+                // Preparar parámetros - DEBEN coincidir con tu template
                 const templateParams = {
                     name: nombre,
                     email: email,
                     empresa: empresa,
-                    cargo: document.getElementById('cargo')?.value || '',
-                    bd: document.getElementById('bd')?.value || '',
-                    mensaje: document.getElementById('mensaje')?.value || ''
+                    cargo: cargo,
+                    bd: bd,
+                    mensaje: mensaje
                 };
                 
-                emailjs.send('service_921q6wa', 'template_bdzlqqa', templateParams)
+                console.log('📧 Enviando a EmailJS:', templateParams);
+                
+                // Enviar usando TUS IDs
+                emailjs.send('service_r3bh1qv', 'template_54jibgs', templateParams)
                     .then(function(response) {
-                        console.log('✅ Email enviado:', response);
-                        if (contactForm) contactForm.style.display = 'none';
-                        if (successMessage) successMessage.style.display = 'block';
-                        if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                            lucide.createIcons();
+                        console.log('✅ Correo enviado exitosamente:', response.status, response.text);
+                        // Mostrar mensaje de éxito
+                        contactForm.style.display = 'none';
+                        if (successMessage) {
+                            successMessage.style.display = 'block';
+                            if (typeof lucide !== 'undefined') {
+                                lucide.createIcons();
+                            }
                         }
+                        // Opcional: Resetear formulario después de 5 segundos
+                        setTimeout(() => {
+                            contactForm.style.display = 'flex';
+                            if (successMessage) successMessage.style.display = 'none';
+                            contactForm.reset();
+                        }, 5000);
                     })
                     .catch(function(error) {
-                        console.error('❌ Error EmailJS:', error);
-                        alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
+                        console.error('❌ Error detallado de EmailJS:', error);
+                        let errorMsg = 'Hubo un error al enviar el mensaje. ';
+                        if (error.text) {
+                            errorMsg += error.text;
+                        } else if (error.message) {
+                            errorMsg += error.message;
+                        } else {
+                            errorMsg += 'Por favor, verifica tu conexión e intenta nuevamente.';
+                        }
+                        alert(errorMsg);
                     });
             });
+        } else {
+            console.error('❌ No se encontró el formulario con id "contactForm"');
         }
     } else {
-        console.warn('⚠️ EmailJS no está cargado correctamente');
+        console.error('❌ EmailJS no está cargado. Verifica que la librería esté en el HTML.');
     }
-
+});
     // ============================================
     // 8. NEWSLETTER FORM
     // ============================================
