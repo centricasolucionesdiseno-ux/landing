@@ -16,64 +16,63 @@ document.addEventListener('DOMContentLoaded', function() {
     // ============================================
     // 3. MODO OSCURO (CORREGIDO)
     // ============================================
-    // Modo oscuro con logo dinámico
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
 
-function updateThemeIcon() {
-    if (!darkModeToggle) return;
-    const icon = darkModeToggle.querySelector('i');
-    if (!icon) return;
-    
-    if (body.classList.contains('dark-mode')) {
-        icon.setAttribute('data-lucide', 'sun');
-    } else {
-        icon.setAttribute('data-lucide', 'moon');
-    }
-    if (typeof lucide !== 'undefined' && lucide.createIcons) {
-        lucide.createIcons();
-    }
-}
-
-function updateLogo() {
-    const logoImg = document.querySelector('.logo-img');
-    if (!logoImg) return;
-    
-    const isDarkMode = body.classList.contains('dark-mode');
-    
-    if (isDarkMode) {
-        logoImg.src = 'https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png';
-    } else {
-        logoImg.src = 'https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoColor.png';
-    }
-}
-
-// Verificar preferencia guardada
-if (localStorage.getItem('theme') === 'dark') {
-    body.classList.add('dark-mode');
-    body.classList.remove('light-mode');
-} else {
-    body.classList.add('light-mode');
-}
-updateThemeIcon();
-updateLogo();  // ← Inicializar logo
-
-// Alternar modo oscuro
-if (darkModeToggle) {
-    darkModeToggle.addEventListener('click', () => {
+    function updateThemeIcon() {
+        if (!darkModeToggle) return;
+        const icon = darkModeToggle.querySelector('i');
+        if (!icon) return;
+        
         if (body.classList.contains('dark-mode')) {
-            body.classList.remove('dark-mode');
-            body.classList.add('light-mode');
-            localStorage.setItem('theme', 'light');
+            icon.setAttribute('data-lucide', 'sun');
         } else {
-            body.classList.remove('light-mode');
-            body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark');
+            icon.setAttribute('data-lucide', 'moon');
         }
-        updateThemeIcon();
-        updateLogo();  // ← Actualizar logo al cambiar tema
-    });
-}
+        if (typeof lucide !== 'undefined' && lucide.createIcons) {
+            lucide.createIcons();
+        }
+    }
+
+    function updateLogo() {
+        const logoImg = document.querySelector('.logo-img');
+        if (!logoImg) return;
+        
+        const isDarkMode = body.classList.contains('dark-mode');
+        
+        if (isDarkMode) {
+            logoImg.src = 'https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png';
+        } else {
+            logoImg.src = 'https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoColor.png';
+        }
+    }
+
+    // Verificar preferencia guardada
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-mode');
+        body.classList.remove('light-mode');
+    } else {
+        body.classList.add('light-mode');
+    }
+    updateThemeIcon();
+    updateLogo();
+
+    // Alternar modo oscuro
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateThemeIcon();
+            updateLogo();
+        });
+    }
 
     // ============================================
     // 4. SUBMENÚS CON HOVER
@@ -213,9 +212,7 @@ if (darkModeToggle) {
     // ============================================
     // 7. EMAILJS - FORMULARIO DE CONTACTO
     // ============================================
-    // Verificar que EmailJS esté cargado
     if (typeof emailjs !== 'undefined' && emailjs.init) {
-        // Inicializar con TU Public Key
         emailjs.init("vS5vQ1DCKUxmKVffT");
         console.log('✅ EmailJS inicializado correctamente');
         
@@ -229,7 +226,6 @@ if (darkModeToggle) {
                 e.preventDefault();
                 console.log('📤 Enviando formulario...');
                 
-                // Obtener valores con validación
                 const nombre = document.getElementById('nombre')?.value || '';
                 const email = document.getElementById('email')?.value || '';
                 const empresa = document.getElementById('empresa')?.value || '';
@@ -237,20 +233,17 @@ if (darkModeToggle) {
                 const bd = document.getElementById('bd')?.value || '';
                 const mensaje = document.getElementById('mensaje')?.value || '';
                 
-                // Validación básica
                 if (!nombre || !email || !empresa) {
                     alert('Por favor, completa los campos obligatorios (*)');
                     return;
                 }
                 
-                // Validar email
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email)) {
                     alert('Por favor, ingresa un correo electrónico válido');
                     return;
                 }
                 
-                // Preparar parámetros - DEBEN coincidir con tu template
                 const templateParams = {
                     name: nombre,
                     email: email,
@@ -262,11 +255,9 @@ if (darkModeToggle) {
                 
                 console.log('📧 Enviando a EmailJS:', templateParams);
                 
-                // Enviar usando TUS IDs
                 emailjs.send('service_r3bh1qv', 'template_54jibgs', templateParams)
                     .then(function(response) {
-                        console.log('✅ Correo enviado exitosamente:', response.status, response.text);
-                        // Mostrar mensaje de éxito
+                        console.log('✅ Correo enviado exitosamente:', response.status);
                         contactForm.style.display = 'none';
                         if (successMessage) {
                             successMessage.style.display = 'block';
@@ -274,7 +265,6 @@ if (darkModeToggle) {
                                 lucide.createIcons();
                             }
                         }
-                        // Opcional: Resetear formulario después de 5 segundos
                         setTimeout(() => {
                             contactForm.style.display = 'flex';
                             if (successMessage) successMessage.style.display = 'none';
@@ -283,15 +273,7 @@ if (darkModeToggle) {
                     })
                     .catch(function(error) {
                         console.error('❌ Error detallado de EmailJS:', error);
-                        let errorMsg = 'Hubo un error al enviar el mensaje. ';
-                        if (error.text) {
-                            errorMsg += error.text;
-                        } else if (error.message) {
-                            errorMsg += error.message;
-                        } else {
-                            errorMsg += 'Por favor, verifica tu conexión e intenta nuevamente.';
-                        }
-                        alert(errorMsg);
+                        alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
                     });
             });
         } else {
@@ -300,7 +282,7 @@ if (darkModeToggle) {
     } else {
         console.error('❌ EmailJS no está cargado. Verifica que la librería esté en el HTML.');
     }
-});
+
     // ============================================
     // 8. NEWSLETTER FORM
     // ============================================
@@ -316,80 +298,38 @@ if (darkModeToggle) {
         });
     }
     
-    console.log('✅ Script completamente cargado');
-});
+    // ============================================
+    // 9. SCROLL SUAVE PARA PÁGINAS LEGALES
+    // ============================================
+    const legalLinks = document.querySelectorAll('.legal-sidebar a');
+    const sections = document.querySelectorAll('.legal-content section');
 
-// ============================================
-// 9. LOGO DINÁMICO SEGÚN TEMA
-// ============================================
-function updateLogo() {
-    const logoImg = document.querySelector('.logo-img');
-    if (!logoImg) return;
-    
-    const isDarkMode = document.body.classList.contains('dark-mode');
-    
-    if (isDarkMode) {
-        logoImg.src = 'https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png';
-    } else {
-        logoImg.src = 'https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoColor.png';
-    }
-}
+    if (legalLinks.length && sections.length) {
+        legalLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
 
-// Llamar a la función cuando cambie el tema
-// Busca el event listener del modo oscuro y agrega updateLogo()
-// Si ya existe, agrega la línea dentro:
-
-// En el event listener del darkModeToggle, agrega:
-// updateLogo();
-
-// Ejemplo de cómo debería quedar:
-if (darkModeToggle) {
-    darkModeToggle.addEventListener('click', () => {
-        if (body.classList.contains('dark-mode')) {
-            body.classList.remove('dark-mode');
-            body.classList.add('light-mode');
-            localStorage.setItem('theme', 'light');
-        } else {
-            body.classList.remove('light-mode');
-            body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark');
+        function highlightActiveLink() {
+            let scrollPosition = window.scrollY + 150;
+            let activeIndex = -1;
+            sections.forEach((sec, idx) => {
+                const offsetTop = sec.offsetTop;
+                if (scrollPosition >= offsetTop) activeIndex = idx;
+            });
+            legalLinks.forEach((link, idx) => {
+                if (idx === activeIndex) link.style.fontWeight = 'bold';
+                else link.style.fontWeight = 'normal';
+            });
         }
-        updateThemeIcon();
-        updateLogo();  // ← Agrega esta línea
-    });
-}
-
-// Inicializar logo al cargar
-updateLogo();
-
-// Scroll suave para páginas legales
-const legalLinks = document.querySelectorAll('.legal-sidebar a');
-const sections = document.querySelectorAll('.legal-content section');
-
-if(legalLinks.length && sections.length) {
-    legalLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            if(targetSection) {
-                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
-    // Resaltar enlace activo al hacer scroll
-    function highlightActiveLink() {
-        let scrollPosition = window.scrollY + 150;
-        let activeIndex = -1;
-        sections.forEach((sec, idx) => {
-            const offsetTop = sec.offsetTop;
-            if(scrollPosition >= offsetTop) activeIndex = idx;
-        });
-        legalLinks.forEach((link, idx) => {
-            if(idx === activeIndex) link.style.fontWeight = 'bold';
-            else link.style.fontWeight = 'normal';
-        });
+        window.addEventListener('scroll', highlightActiveLink);
     }
-    window.addEventListener('scroll', highlightActiveLink);
-}
+    
+    console.log('✅ Script completamente cargado');
+}); // ← ESTA ES LA ÚNICA LLAVE DE CIERRE DEL DOMContentLoaded
