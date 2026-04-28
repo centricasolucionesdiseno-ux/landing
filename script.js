@@ -332,4 +332,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     console.log('✅ Script completamente cargado');
-}); // ← ESTA ES LA ÚNICA LLAVE DE CIERRE DEL DOMContentLoaded
+});
