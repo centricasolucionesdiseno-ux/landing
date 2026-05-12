@@ -3838,4 +3838,87 @@ body.dark-mode .medida-card {
     padding: 2rem;
     border-radius: 20px;
     background: white;
-    box-shadow: 0
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+body.dark-mode .sector-card {
+    background: #1e1e2e;
+}
+
+.sector-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+.sector-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sector-card li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.sector-card li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #0e58a9;
+}
+
+/* CTA Final */
+.fabrica-cta-final {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+}
+
+.fabrica-cta-final h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.fabrica-cta-final p {
+    margin-bottom: 2rem;
+}
+
+.fabrica-cta-final .btn-solicitar {
+    background: white;
+    color: #0e58a9;
+}
+
+.fabrica-cta-final .btn-solicitar:hover {
+    background: #f0f2f5;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .fabrica-hero-title {
+        font-size: 2rem;
+    }
+    
+    .fabrica-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .patron-flujo {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+        border-radius: 20px;
+    }
+    
+    .multisectorial-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .fabrica-cta-final h2 {
+        font-size: 1.5rem;
+    }
+}
