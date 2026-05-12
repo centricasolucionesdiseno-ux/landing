@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Céntrica - Análisis con IA | Inteligencia artificial para tu negocio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+        <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
+            </div>
+        </div>
+
+       <nav>
+            <ul class="menu">
+                <li><a href="index.html">Sobre nosotros</a></li>
+                <li class="dropdown">
+                    <a href="servicios.html">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="fabrica.html">Fábrica de software</a></li>
+                        <li><a href="nebula.html">Nebula ERP</a></li>
+                        <li><a href="sicovi.html">Sicovi</a></li>
+                        <li><a href="ia.html">Análisis con IA</a></li>
+                        <li><a href="calidad.html">Evaluaciones de Calidad</a></li>
+                        <li><a href="consultoria.html">Consultoría digital</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="ia-hero">
+            <div class="ia-hero-overlay"></div>
+            <div class="ia-hero-container">
+                <div class="ia-hero-icon">
+                    <i data-lucide="brain"></i>
+                </div>
+                <h1 class="ia-hero-title">Análisis con <span>IA</span></h1>
+                <p class="ia-hero-subtitle">Inteligencia artificial para transformar sus datos en decisiones</p>
+                <p class="ia-hero-description">Implementamos inteligencia artificial para automatizar procesos operativos, anticipar escenarios y transformar datos en decisiones precisas y accionables.</p>
+                <div class="ia-hero-buttons">
+                    <a href="#contacto" class="btn-solicitar">Solicitar asesoría →</a>
+                    <a href="#casos-uso" class="btn-secundario">Ver casos de uso →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ¿Qué es Análisis con IA? -->
+        <section class="ia-que-es">
+            <div class="container">
+                <div class="que-es-grid">
+                    <div class="que-es-content">
+                        <h2 class="section-title">¿Qué es el <span>Análisis con IA</span>?</h2>
+                        <p>Es un conjunto de soluciones basadas en inteligencia artificial diseñadas para extraer valor de sus datos, automatizar procesos y generar insights predictivos que impulsan la toma de decisiones estratégicas.</p>
+                        <p>Nuestro enfoque combina técnicas de machine learning, procesamiento de lenguaje natural y análisis predictivo para ofrecer soluciones adaptadas a las necesidades específicas de su negocio.</p>
+                        <div class="que-es-pilares">
+                            <div class="pilar">
+                                <i data-lucide="trending-up"></i>
+                                <div>
+                                    <h3>Predictivo</h3>
+                                    <p>Anticipe escenarios futuros basados en datos históricos.</p>
+                                </div>
+                            </div>
+                            <div class="pilar">
+                                <i data-lucide="zap"></i>
+                                <div>
+                                    <h3>Automatización</h3>
+                                    <p>Elimine tareas repetitivas y libere talento humano.</p>
+                                </div>
+                            </div>
+                            <div class="pilar">
+                                <i data-lucide="pie-chart"></i>
+                                <div>
+                                    <h3>Accionable</h3>
+                                    <p>Recomendaciones concretas basadas en datos.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="que-es-image">
+                        <i data-lucide="brain-circuit" class="que-es-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capacidades Clave -->
+        <section class="ia-capacidades">
+            <div class="container">
+                <h2 class="section-title">Capacidades <span>Clave</span></h2>
+                <div class="capacidades-grid">
+                    <div class="capacidad-card">
+                        <i data-lucide="bar-chart-3"></i>
+                        <h3>Machine Learning</h3>
+                        <p>Modelos predictivos y de clasificación entrenados con sus datos para generar insights precisos y accionables.</p>
+                    </div>
+                    <div class="capacidad-card">
+                        <i data-lucide="message-square"></i>
+                        <h3>Procesamiento de Lenguaje Natural</h3>
+                        <p>Análisis de textos, documentos y sentimientos para extraer información valiosa de fuentes no estructuradas.</p>
+                    </div>
+                    <div class="capacidad-card">
+                        <i data-lucide="eye"></i>
+                        <h3>Visión por Computador</h3>
+                        <p>Reconocimiento de imágenes, documentos escaneados y análisis visual automatizado.</p>
+                    </div>
+                    <div class="capacidad-card">
+                        <i data-lucide="bot"></i>
+                        <h3>Automatización Inteligente</h3>
+                        <p>Robotic Process Automation (RPA) combinado con IA para procesos complejos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios -->
+        <section class="ia-beneficios">
+            <div class="container">
+                <h2 class="section-title">Beneficios <span>para su Negocio</span></h2>
+                <div class="beneficios-grid">
+                    <div class="beneficio-card">
+                        <i data-lucide="clock"></i>
+                        <h3>Ahorro de Tiempo</h3>
+                        <p>Automatice tareas repetitivas que consumen horas de trabajo manual.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="dollar-sign"></i>
+                        <h3>Reducción de Costos</h3>
+                        <p>Optimice recursos y reduzca errores operativos con IA.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="target"></i>
+                        <h3>Precisión Mejorada</h3>
+                        <p>Tome decisiones basadas en datos, no en intuiciones.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="scale"></i>
+                        <h3>Escalabilidad</h3>
+                        <p>Soluciones que crecen con su negocio y se adaptan a nuevos desafíos.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="shield"></i>
+                        <h3>Ventaja Competitiva</h3>
+                        <p>Diferénciese en el mercado con capacidades avanzadas de IA.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="lightbulb"></i>
+                        <h3>Insights Ocultos</h3>
+                        <p>Descubra patrones y tendencias que no son evidentes a simple vista.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Casos de Uso por Industria -->
+        <section id="casos-uso" class="ia-casos-uso">
+            <div class="container">
+                <h2 class="section-title">Casos de <span>Uso</span></h2>
+                <div class="casos-grid">
+                    <div class="caso-card">
+                        <i data-lucide="building"></i>
+                        <h3>Sector Financiero</h3>
+                        <ul>
+                            <li>Detección de fraudes en tiempo real</li>
+                            <li>Scoring crediticio con IA</li>
+                            <li>Análisis de riesgos financieros</li>
+                            <li>Atención al cliente con chatbots</li>
+                        </ul>
+                    </div>
+                    <div class="caso-card">
+                        <i data-lucide="shopping-cart"></i>
+                        <h3>Retail y E-commerce</h3>
+                        <ul>
+                            <li>Recomendación de productos personalizada</li>
+                            <li>Predicción de demanda y stock</li>
+                            <li>Segmentación de clientes</li>
+                            <li>Optimización de precios dinámicos</li>
+                        </ul>
+                    </div>
+                    <div class="caso-card">
+                        <i data-lucide="factory"></i>
+                        <h3>Manufactura</h3>
+                        <ul>
+                            <li>Mantenimiento predictivo de maquinaria</li>
+                            <li>Control de calidad automatizado</li>
+                            <li>Optimización de cadena de suministro</li>
+                            <li>Detección de anomalías en producción</li>
+                        </ul>
+                    </div>
+                    <div class="caso-card">
+                        <i data-lucide="landmark"></i>
+                        <h3>Sector Público</h3>
+                        <ul>
+                            <li>Análisis de datos abiertos</li>
+                            <li>Detección de patrones en servicios públicos</li>
+                            <li>Optimización de recursos</li>
+                            <li>Transparencia y control ciudadano</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tecnologías que Utilizamos -->
+        <section class="ia-tecnologias">
+            <div class="container">
+                <h2 class="section-title">Tecnologías que <span>Utilizamos</span></h2>
+                <div class="tecnologias-grid">
+                    <div class="tecnologia-card">
+                        <i data-lucide="code-2"></i>
+                        <h3>Frameworks ML</h3>
+                        <p>TensorFlow, PyTorch, Scikit-learn, Keras</p>
+                    </div>
+                    <div class="tecnologia-card">
+                        <i data-lucide="database"></i>
+                        <h3>Procesamiento de Datos</h3>
+                        <p>Pandas, NumPy, Spark, SQL</p>
+                    </div>
+                    <div class="tecnologia-card">
+                        <i data-lucide="cloud"></i>
+                        <h3>Cloud AI Services</h3>
+                        <p>AWS SageMaker, Google AI, Azure ML</p>
+                    </div>
+                    <div class="tecnologia-card">
+                        <i data-lucide="globe"></i>
+                        <h3>LLMs y NLP</h3>
+                        <p>OpenAI GPT, Hugging Face, LangChain</p>
+                    </div>
+                    <div class="tecnologia-card">
+                        <i data-lucide="bar-chart-2"></i>
+                        <h3>Visualización</h3>
+                        <p>Power BI, Tableau, Matplotlib, Plotly</p>
+                    </div>
+                    <div class="tecnologia-card">
+                        <i data-lucide="git-branch"></i>
+                        <h3>MLOps</h3>
+                        <p>Docker, Kubernetes, MLflow, Kubeflow</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metodología -->
+        <section class="ia-metodologia">
+            <div class="container">
+                <h2 class="section-title">Nuestra <span>Metodología</span></h2>
+                <div class="metodologia-grid">
+                    <div class="metodologia-paso">
+                        <div class="paso-numero">1</div>
+                        <div class="paso-content">
+                            <h3>Descubrimiento</h3>
+                            <p>Identificamos las oportunidades de negocio donde la IA puede generar mayor impacto.</p>
+                        </div>
+                    </div>
+                    <div class="metodologia-paso">
+                        <div class="paso-numero">2</div>
+                        <div class="paso-content">
+                            <h3>Preparación de Datos</h3>
+                            <p>Recopilamos, limpiamos y preparamos sus datos para el entrenamiento de modelos.</p>
+                        </div>
+                    </div>
+                    <div class="metodologia-paso">
+                        <div class="paso-numero">3</div>
+                        <div class="paso-content">
+                            <h3>Modelado</h3>
+                            <p>Desarrollamos y entrenamos modelos de IA adaptados a su caso específico.</p>
+                        </div>
+                    </div>
+                    <div class="metodologia-paso">
+                        <div class="paso-numero">4</div>
+                        <div class="paso-content">
+                            <h3>Despliegue</h3>
+                            <p>Integramos el modelo en sus sistemas operativos y procesos diarios.</p>
+                        </div>
+                    </div>
+                    <div class="metodologia-paso">
+                        <div class="paso-numero">5</div>
+                        <div class="paso-content">
+                            <h3>Monitoreo y Evolución</h3>
+                            <p>Aseguramos el rendimiento continuo y actualizamos modelos según sea necesario.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impacto y Resultados -->
+        <section class="ia-impacto">
+            <div class="container">
+                <h2 class="section-title">Impacto <span>Medible</span></h2>
+                <div class="impacto-grid">
+                    <div class="impacto-card">
+                        <i data-lucide="trending-up"></i>
+                        <div>
+                            <h3>+95%</h3>
+                            <p>Precisión en modelos predictivos</p>
+                        </div>
+                    </div>
+                    <div class="impacto-card">
+                        <i data-lucide="clock"></i>
+                        <div>
+                            <h3>-70%</h3>
+                            <p>Reducción en tiempos de procesamiento</p>
+                        </div>
+                    </div>
+                    <div class="impacto-card">
+                        <i data-lucide="alert-circle"></i>
+                        <div>
+                            <h3>-85%</h3>
+                            <p>Disminución de errores operativos</p>
+                        </div>
+                    </div>
+                    <div class="impacto-card">
+                        <i data-lucide="dollar-sign"></i>
+                        <div>
+                            <h3>+40%</h3>
+                            <p>Incremento en eficiencia operativa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Por qué elegirnos -->
+        <section class="ia-porque">
+            <div class="container">
+                <h2 class="section-title">¿Por qué <span>elegirnos</span>?</h2>
+                <div class="porque-grid">
+                    <div class="porque-card">
+                        <i data-lucide="check-circle"></i>
+                        <h3>Experiencia Comprobada</h3>
+                        <p>Múltiples proyectos exitosos en diversas industrias.</p>
+                    </div>
+                    <div class="porque-card">
+                        <i data-lucide="users"></i>
+                        <h3>Equipo Especializado</h3>
+                        <p>Científicos de datos, ingenieros ML y expertos de negocio.</p>
+                    </div>
+                    <div class="porque-card">
+                        <i data-lucide="target"></i>
+                        <h3>Enfoque en Resultados</h3>
+                        <p>Nos enfocamos en métricas de negocio, no solo en tecnología.</p>
+                    </div>
+                    <div class="porque-card">
+                        <i data-lucide="shield"></i>
+                        <h3>Ética y Transparencia</h3>
+                        <p>Modelos explicables y cumplimiento normativo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section id="contacto" class="ia-cta-final">
+            <div class="container">
+                <h2>¿Listo para potenciar su negocio con inteligencia artificial?</h2>
+                <p>Contáctenos y descubramos juntos cómo la IA puede transformar sus operaciones.</p>
+                <a href="contacto.html" class="btn-solicitar">Solicitar asesoría técnica →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Céntrica" class="footer-logo-img">
+                </div>
+                <p class="footer-description">
+                    Impulsamos tu éxito a través de la innovación inteligente.
+                </p>
+                <div class="footer-contact-info">
+                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="phone"></i> +57 300 205 7325</p>
+                    <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Sobre nosotros</a></li>
+                    <li><a href="terminos.html">Términos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="politicas.html">Políticas internas</a></li>
+                    <li><a href="terservicios.html">Términos de Servicio</a></li>
+                    <li><a href="legal.html">Aviso Legal</a></li>
+                    <li><a href="cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Mantente informado</h4>
+                <p class="footer-newsletter-text">
+                    Recibe novedades sobre nuestras soluciones.
+                </p>
+                <form class="footer-newsletter-form" id="newsletterForm2">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse →</button>
+                </form>
+                <p class="footer-unsubscribe">
+                    Puedes darte de baja en cualquier momento.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
+                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Script específico para Análisis con IA -->
+    <script>
+        // Inicializar Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterFormIa');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                console.log('Newsletter suscripción:', email);
+                alert('¡Gracias por suscribirte!');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
