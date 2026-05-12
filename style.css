@@ -4828,3 +4828,386 @@ body.dark-mode .otro-card {
         font-size: 1.5rem;
     }
 }
+/* ========== PÁGINA ANÁLISIS CON IA ========== */
+
+/* Hero */
+.ia-hero {
+    position: relative;
+    padding: 5rem 2rem;
+    background-image: url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1600');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+.ia-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.ia-hero-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.ia-hero-icon i {
+    width: 80px;
+    height: 80px;
+    color: #4a9eff;
+    margin-bottom: 1rem;
+}
+
+.ia-hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.ia-hero-title span {
+    color: #4a9eff;
+}
+
+.ia-hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+}
+
+.ia-hero-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+/* Capacidades Clave */
+.ia-capacidades {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.capacidades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.capacidad-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .capacidad-card {
+    background: #1e1e2e;
+}
+
+.capacidad-card:hover {
+    transform: translateY(-5px);
+}
+
+.capacidad-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Beneficios IA */
+.ia-beneficios {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .ia-beneficios {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+/* Casos de Uso */
+.ia-casos-uso {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.casos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.caso-card {
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .caso-card {
+    background: #1e1e2e;
+}
+
+.caso-card:hover {
+    transform: translateY(-5px);
+}
+
+.caso-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+.caso-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.caso-card li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.caso-card li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #0e58a9;
+}
+
+/* Tecnologías */
+.ia-tecnologias {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .ia-tecnologias {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.tecnologias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tecnologia-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+}
+
+body.dark-mode .tecnologia-card {
+    background: #1e1e2e;
+}
+
+.tecnologia-card i {
+    width: 40px;
+    height: 40px;
+    color: #0e58a9;
+    margin-bottom: 0.75rem;
+}
+
+.tecnologia-card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+body.dark-mode .tecnologia-card p {
+    color: #aaa;
+}
+
+/* Metodología */
+.ia-metodologia {
+    padding: 4rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.metodologia-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.metodologia-paso {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .metodologia-paso {
+    background: #1e1e2e;
+}
+
+.metodologia-paso:hover {
+    transform: translateX(10px);
+}
+
+.paso-numero {
+    width: 50px;
+    height: 50px;
+    background: #0e58a9;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.paso-content h3 {
+    margin-bottom: 0.5rem;
+    color: #0e58a9;
+}
+
+/* Impacto */
+.ia-impacto {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+}
+
+.impacto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.impacto-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(4px);
+}
+
+.impacto-card i {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.impacto-card h3 {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Por qué elegirnos */
+.ia-porque {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.porque-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.porque-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .porque-card {
+    background: #1e1e2e;
+}
+
+.porque-card:hover {
+    transform: translateY(-5px);
+}
+
+.porque-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* CTA Final */
+.ia-cta-final {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+}
+
+.ia-cta-final h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.ia-cta-final p {
+    margin-bottom: 2rem;
+}
+
+.ia-cta-final .btn-solicitar {
+    background: white;
+    color: #0e58a9;
+}
+
+.ia-cta-final .btn-solicitar:hover {
+    background: #f0f2f5;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ia-hero-title {
+        font-size: 2rem;
+    }
+    
+    .ia-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .metodologia-paso {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .impacto-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .impacto-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .ia-cta-final h2 {
+        font-size: 1.5rem;
+    }
+}
