@@ -5211,3 +5211,385 @@ body.dark-mode .porque-card {
         font-size: 1.5rem;
     }
 }
+/* ========== PÁGINA EVALUACIONES DE CALIDAD ========== */
+
+/* Hero */
+.calidad-hero {
+    position: relative;
+    padding: 5rem 2rem;
+    background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+.calidad-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.calidad-hero-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.calidad-hero-icon i {
+    width: 80px;
+    height: 80px;
+    color: #4a9eff;
+    margin-bottom: 1rem;
+}
+
+.calidad-hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.calidad-hero-title span {
+    color: #4a9eff;
+}
+
+.calidad-hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+}
+
+.calidad-hero-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+/* Servicios de Calidad Grid */
+.calidad-servicios {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.servicio-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+body.dark-mode .servicio-card {
+    background: #1e1e2e;
+}
+
+.servicio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.servicio-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Metodología */
+.calidad-metodologia {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .calidad-metodologia {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.metodologia-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.metodologia-paso {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .metodologia-paso {
+    background: #1e1e2e;
+}
+
+.metodologia-paso:hover {
+    transform: translateX(10px);
+}
+
+.paso-numero {
+    width: 50px;
+    height: 50px;
+    background: #0e58a9;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.paso-content h3 {
+    margin-bottom: 0.5rem;
+    color: #0e58a9;
+}
+
+/* Estándares */
+.calidad-estandares {
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.estandares-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+}
+
+.estandar-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .estandar-card {
+    background: #1e1e2e;
+}
+
+.estandar-card i {
+    width: 40px;
+    height: 40px;
+    color: #0e58a9;
+    flex-shrink: 0;
+}
+
+/* Beneficios IA Reutilizado */
+.calidad-beneficios {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .calidad-beneficios {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+/* Herramientas */
+.calidad-herramientas {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.herramientas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.herramienta-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .herramienta-card {
+    background: #1e1e2e;
+}
+
+.herramienta-card:hover {
+    transform: translateY(-3px);
+}
+
+.herramienta-card i {
+    width: 40px;
+    height: 40px;
+    color: #0e58a9;
+    margin-bottom: 0.75rem;
+}
+
+.herramienta-card p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+body.dark-mode .herramienta-card p {
+    color: #aaa;
+}
+
+/* Tipos de Evaluación */
+.calidad-tipos {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .calidad-tipos {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.tipos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tipo-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .tipo-card {
+    background: #1e1e2e;
+}
+
+.tipo-card:hover {
+    transform: translateY(-5px);
+}
+
+.tipo-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Resultados */
+.calidad-resultados {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+}
+
+.resultados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.resultado-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(4px);
+}
+
+.resultado-card i {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.resultado-card h3 {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+}
+
+/* CTA Final */
+.calidad-cta-final {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+}
+
+.calidad-cta-final h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.calidad-cta-final p {
+    margin-bottom: 2rem;
+}
+
+.calidad-cta-final .btn-solicitar {
+    background: white;
+    color: #0e58a9;
+}
+
+.calidad-cta-final .btn-solicitar:hover {
+    background: #f0f2f5;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .calidad-hero-title {
+        font-size: 2rem;
+    }
+    
+    .calidad-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .servicios-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metodologia-paso {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .estandares-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resultado-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .resultado-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .calidad-cta-final h2 {
+        font-size: 1.5rem;
+    }
+}
