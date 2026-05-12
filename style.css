@@ -5593,3 +5593,389 @@ body.dark-mode .tipo-card {
         font-size: 1.5rem;
     }
 }
+/* ========== PÁGINA CONSULTORÍA DIGITAL ========== */
+
+/* Hero */
+.consultoria-hero {
+    position: relative;
+    padding: 5rem 2rem;
+    background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+.consultoria-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.consultoria-hero-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.consultoria-hero-icon i {
+    width: 80px;
+    height: 80px;
+    color: #4a9eff;
+    margin-bottom: 1rem;
+}
+
+.consultoria-hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.consultoria-hero-title span {
+    color: #4a9eff;
+}
+
+.consultoria-hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+}
+
+.consultoria-hero-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+/* Servicios de Consultoría */
+.consultoria-servicios {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.servicio-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+body.dark-mode .servicio-card {
+    background: #1e1e2e;
+}
+
+.servicio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.servicio-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Metodología */
+.consultoria-metodologia {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .consultoria-metodologia {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.metodologia-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.metodologia-paso {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .metodologia-paso {
+    background: #1e1e2e;
+}
+
+.metodologia-paso:hover {
+    transform: translateX(10px);
+}
+
+.paso-numero {
+    width: 50px;
+    height: 50px;
+    background: #0e58a9;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.paso-content h3 {
+    margin-bottom: 0.5rem;
+    color: #0e58a9;
+}
+
+/* Beneficios */
+.consultoria-beneficios {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.beneficio-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .beneficio-card {
+    background: #1e1e2e;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-5px);
+}
+
+.beneficio-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Casos de Éxito */
+.consultoria-casos {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .consultoria-casos {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.casos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.caso-card {
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .caso-card {
+    background: #1e1e2e;
+}
+
+.caso-card:hover {
+    transform: translateY(-5px);
+}
+
+.caso-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+.caso-card p {
+    color: #555;
+    line-height: 1.6;
+}
+
+body.dark-mode .caso-card p {
+    color: #ccc;
+}
+
+/* Por qué elegirnos */
+.consultoria-porque {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.porque-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.porque-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .porque-card {
+    background: #1e1e2e;
+}
+
+.porque-card:hover {
+    transform: translateY(-5px);
+}
+
+.porque-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Tecnologías Habilitadoras */
+.consultoria-tecnologias {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .consultoria-tecnologias {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.tecnologias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tecnologia-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+}
+
+body.dark-mode .tecnologia-card {
+    background: #1e1e2e;
+}
+
+.tecnologia-card i {
+    width: 40px;
+    height: 40px;
+    color: #0e58a9;
+    margin-bottom: 0.75rem;
+}
+
+.tecnologia-card p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+body.dark-mode .tecnologia-card p {
+    color: #aaa;
+}
+
+/* CTA Final */
+.consultoria-cta-final {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+}
+
+.consultoria-cta-final h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.consultoria-cta-final p {
+    margin-bottom: 2rem;
+}
+
+.consultoria-cta-final .btn-solicitar {
+    background: white;
+    color: #0e58a9;
+}
+
+.consultoria-cta-final .btn-solicitar:hover {
+    background: #f0f2f5;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .consultoria-hero-title {
+        font-size: 2rem;
+    }
+    
+    .consultoria-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .servicios-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .metodologia-paso {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .casos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .porque-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tecnologias-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .consultoria-cta-final h2 {
+        font-size: 1.5rem;
+    }
+}
