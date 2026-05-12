@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Céntrica - Consultoría Digital | Transformación estratégica</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
+            </div>
+        </div>
+
+       <nav>
+            <ul class="menu">
+                <li><a href="index.html">Sobre nosotros</a></li>
+                <li class="dropdown">
+                    <a href="servicios.html">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="fabrica.html">Fábrica de software</a></li>
+                        <li><a href="nebula.html">Nebula ERP</a></li>
+                        <li><a href="sicovi.html">Sicovi</a></li>
+                        <li><a href="ia.html">Análisis con IA</a></li>
+                        <li><a href="calidad.html">Evaluaciones de Calidad</a></li>
+                        <li><a href="consultoria.html">Consultoría digital</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="consultoria-hero">
+            <div class="consultoria-hero-overlay"></div>
+            <div class="consultoria-hero-container">
+                <div class="consultoria-hero-icon">
+                    <i data-lucide="trending-up"></i>
+                </div>
+                <h1 class="consultoria-hero-title">Consultoría <span>Digital</span></h1>
+                <p class="consultoria-hero-subtitle">Transformación estratégica para la era digital</p>
+                <p class="consultoria-hero-description">Acompañamos a las organizaciones en su evolución hacia la madurez digital, garantizando una adopción tecnológica eficiente, segura y alineada con sus objetivos estratégicos.</p>
+                <div class="consultoria-hero-buttons">
+                    <a href="#contacto" class="btn-solicitar">Solicitar diagnóstico →</a>
+                    <a href="#servicios-c" class="btn-secundario">Ver servicios →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ¿Qué es Consultoría Digital? -->
+        <section class="consultoria-que-es">
+            <div class="container">
+                <div class="que-es-grid">
+                    <div class="que-es-content">
+                        <h2 class="section-title">¿Qué es la <span>Consultoría Digital</span>?</h2>
+                        <p>Es un servicio estratégico que ayuda a las organizaciones a navegar su transformación digital, desde la definición de la hoja de ruta hasta la implementación de soluciones tecnológicas que generan valor real y sostenible.</p>
+                        <p>Nuestro enfoque combina experiencia técnica, conocimiento del negocio y visión estratégica para asegurar que la tecnología sea un habilitador del crecimiento, no un fin en sí mismo.</p>
+                        <div class="que-es-pilares">
+                            <div class="pilar">
+                                <i data-lucide="map"></i>
+                                <div>
+                                    <h3>Estrategia</h3>
+                                    <p>Definimos la hoja de ruta tecnológica alineada a sus objetivos.</p>
+                                </div>
+                            </div>
+                            <div class="pilar">
+                                <i data-lucide="zap"></i>
+                                <div>
+                                    <h3>Implementación</h3>
+                                    <p>Acompañamos la ejecución de cada fase del plan.</p>
+                                </div>
+                            </div>
+                            <div class="pilar">
+                                <i data-lucide="trending-up"></i>
+                                <div>
+                                    <h3>Optimización</h3>
+                                    <p>Medimos resultados y mejoramos continuamente.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="que-es-image">
+                        <i data-lucide="compass" class="que-es-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios de Consultoría -->
+        <section id="servicios-c" class="consultoria-servicios">
+            <div class="container">
+                <h2 class="section-title">Áreas de <span>Consultoría</span></h2>
+                <div class="servicios-grid">
+                    <div class="servicio-card">
+                        <i data-lucide="clipboard-list"></i>
+                        <h3>Diagnóstico Digital</h3>
+                        <p>Evaluación exhaustiva de la madurez digital de su organización, identificando brechas, oportunidades y riesgos.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <i data-lucide="map"></i>
+                        <h3>Hoja de Ruta Tecnológica</h3>
+                        <p>Definición de un plan estratégico con fases claras, prioridades y métricas de éxito para su transformación digital.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <i data-lucide="git-branch"></i>
+                        <h3>Transformación de Procesos</h3>
+                        <p>Rediseño de procesos operativos para aprovechar al máximo las capacidades de las tecnologías digitales.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <i data-lucide="users"></i>
+                        <h3>Gestión del Cambio</h3>
+                        <p>Acompañamiento a equipos y colaboradores para asegurar la adopción exitosa de nuevas tecnologías.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <i data-lucide="shield"></i>
+                        <h3>Ciberseguridad Estratégica</h3>
+                        <p>Definición de políticas y arquitecturas de seguridad alineadas con el negocio.</p>
+                    </div>
+                    <div class="servicio-card">
+                        <i data-lucide="bar-chart-3"></i>
+                        <h3>Analítica y Datos</h3>
+                        <p>Estrategias para convertir datos en insights accionables que impulsen decisiones.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metodología de Consultoría -->
+        <section class="consultoria-metodologia">
+            <div class="container">
+                <h2 class="section-title">Nuestra <span>Metodología</span></h2>
+                <div class="metodologia-grid">
+                    <div class="metodologia-paso">
+                        <div class="paso-numero">1</div>
+                        <div class="paso-content">
+                            <h3>Descubrimiento</h3>
+                            <p>Entendemos su negocio, sus objetivos y los desafíos específicos que enfrenta.</p>
+                        </div>
+                    </div>
+                    <div class="metodologia-paso">
+                        <div class="paso-numero">2</div>
+                        <div class="paso-content">
+                            <h3>Diagnóstico</h3>
+                            <p>Evaluamos su madurez digital, procesos, tecnología y capacidades del equipo.</p>
+                        </div>
+                    </div>
+                    <div class="metodologia-paso">
+                        <div class="paso-numero">3</div>
+                        <div class="paso-content">
+                            <h3>Estrategia</h3>
+                            <p>Definimos la hoja de ruta, prioridades y métricas de éxito.</p>
+                        </div>
+                    </div>
+                    <div class="metodologia-paso">
+                        <div class="paso-numero">4</div>
+                        <div class="paso-content">
+                            <h3>Implementación</h3>
+                            <p>Acompañamos la ejecución de cada fase del plan estratégico.</p>
+                        </div>
+                    </div>
+                    <div class="metodologia-paso">
+                        <div class="paso-numero">5</div>
+                        <div class="paso-content">
+                            <h3>Medición y Evolución</h3>
+                            <p>Analizamos resultados y ajustamos la estrategia para mejora continua.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios -->
+        <section class="consultoria-beneficios">
+            <div class="container">
+                <h2 class="section-title">Beneficios para <span>su Organización</span></h2>
+                <div class="beneficios-grid">
+                    <div class="beneficio-card">
+                        <i data-lucide="target"></i>
+                        <h3>Alineación Estratégica</h3>
+                        <p>Tecnología alineada con los objetivos de negocio y la visión organizacional.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="zap"></i>
+                        <h3>Mayor Agilidad</h3>
+                        <p>Capacidad de respuesta rápida ante cambios del mercado y nuevas oportunidades.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="dollar-sign"></i>
+                        <h3>ROI Optimizado</h3>
+                        <p>Inversiones tecnológicas con retorno medible y sostenible en el tiempo.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="users"></i>
+                        <h3>Cultura Digital</h3>
+                        <p>Fomento de mentalidad innovadora y adopción tecnológica en toda la organización.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="shield"></i>
+                        <h3>Reducción de Riesgos</h3>
+                        <p>Identificación temprana de amenazas y mitigación proactiva.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="trending-up"></i>
+                        <h3>Ventaja Competitiva</h3>
+                        <p>Posicionamiento diferenciado en el mercado mediante innovación digital.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Casos de Uso por Industria -->
+        <section class="consultoria-casos">
+            <div class="container">
+                <h2 class="section-title">Casos de <span>Éxito</span></h2>
+                <div class="casos-grid">
+                    <div class="caso-card">
+                        <i data-lucide="building"></i>
+                        <h3>Empresa Manufacturera</h3>
+                        <p>Transformación digital de operaciones: reducción del 40% en tiempos de producción y mejora del 25% en calidad.</p>
+                    </div>
+                    <div class="caso-card">
+                        <i data-lucide="shopping-cart"></i>
+                        <h3>Cadena de Retail</h3>
+                        <p>Implementación de estrategia omnicanal: incremento del 60% en ventas digitales y mejora en experiencia de cliente.</p>
+                    </div>
+                    <div class="caso-card">
+                        <i data-lucide="landmark"></i>
+                        <h3>Entidad Gubernamental</h3>
+                        <p>Modernización de trámites ciudadanos: reducción del 70% en tiempos de respuesta y aumento de transparencia.</p>
+                    </div>
+                    <div class="caso-card">
+                        <i data-lucide="heart"></i>
+                        <h3>Organización de Salud</h3>
+                        <p>Estrategia de telemedicina y datos: mejora del 50% en acceso a servicios y optimización de recursos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Por qué elegirnos -->
+        <section class="consultoria-porque">
+            <div class="container">
+                <h2 class="section-title">¿Por qué <span>elegirnos</span>?</h2>
+                <div class="porque-grid">
+                    <div class="porque-card">
+                        <i data-lucide="briefcase"></i>
+                        <h3>Experiencia Multisectorial</h3>
+                        <p>Más de 50 proyectos exitosos en diversos sectores y tamaños de organización.</p>
+                    </div>
+                    <div class="porque-card">
+                        <i data-lucide="users"></i>
+                        <h3>Equipo Senior</h3>
+                        <p>Consultores con amplia experiencia en estrategia, tecnología y negocio.</p>
+                    </div>
+                    <div class="porque-card">
+                        <i data-lucide="target"></i>
+                        <h3>Enfoque en Resultados</h3>
+                        <p>Nos medimos por el impacto real en su negocio, no solo por entregables.</p>
+                    </div>
+                    <div class="porque-card">
+                        <i data-lucide="handshake"></i>
+                        <h3>Acompañamiento Continuo</h3>
+                        <p>Estamos con usted en cada fase, desde la estrategia hasta la ejecución.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tecnologías Habilitadoras -->
+        <section class="consultoria-tecnologias">
+            <div class="container">
+                <h2 class="section-title">Tecnologías <span>Habilitadoras</span></h2>
+                <div class="tecnologias-grid">
+                    <div class="tecnologia-card">
+                        <i data-lucide="cloud"></i>
+                        <h3>Cloud Computing</h3>
+                        <p>AWS, Azure, Google Cloud</p>
+                    </div>
+                    <div class="tecnologia-card">
+                        <i data-lucide="database"></i>
+                        <h3>Data & Analytics</h3>
+                        <p>Big Data, BI, Data Lakes</p>
+                    </div>
+                    <div class="tecnologia-card">
+                        <i data-lucide="brain"></i>
+                        <h3>Inteligencia Artificial</h3>
+                        <p>ML, NLP, Visión por Computador</p>
+                    </div>
+                    <div class="tecnologia-card">
+                        <i data-lucide="shield"></i>
+                        <h3>Ciberseguridad</h3>
+                        <p>Zero Trust, Compliance, GRC</p>
+                    </div>
+                    <div class="tecnologia-card">
+                        <i data-lucide="git-branch"></i>
+                        <h3>DevOps & Agilidad</h3>
+                        <p>CI/CD, Scrum, Kanban</p>
+                    </div>
+                    <div class="tecnologia-card">
+                        <i data-lucide="smartphone"></i>
+                        <h3>Digital Experience</h3>
+                        <p>UX/UI, Omnicanalidad, Mobile</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section id="contacto" class="consultoria-cta-final">
+            <div class="container">
+                <h2>¿Listo para iniciar su transformación digital?</h2>
+                <p>Solicite un diagnóstico inicial sin costo y descubramos juntos las oportunidades para su organización.</p>
+                <a href="contacto.html" class="btn-solicitar">Solicitar diagnóstico →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Céntrica" class="footer-logo-img">
+                </div>
+                <p class="footer-description">
+                    Impulsamos tu éxito a través de la innovación inteligente.
+                </p>
+                <div class="footer-contact-info">
+                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="phone"></i> +57 300 205 7325</p>
+                    <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Sobre nosotros</a></li>
+                    <li><a href="terminos.html">Términos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="politicas.html">Políticas internas</a></li>
+                    <li><a href="terservicios.html">Términos de Servicio</a></li>
+                    <li><a href="legal.html">Aviso Legal</a></li>
+                    <li><a href="cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Mantente informado</h4>
+                <p class="footer-newsletter-text">
+                    Recibe novedades sobre nuestras soluciones.
+                </p>
+                <form class="footer-newsletter-form" id="newsletterForm2">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse →</button>
+                </form>
+                <p class="footer-unsubscribe">
+                    Puedes darte de baja en cualquier momento.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
+                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Script específico para Consultoría Digital -->
+    <script>
+        // Inicializar Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterFormConsultoria');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                console.log('Newsletter suscripción:', email);
+                alert('¡Gracias por suscribirte!');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
