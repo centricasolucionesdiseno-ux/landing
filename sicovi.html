@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Céntrica - SICOVI | Sistema de gestión legislativa para Concejos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+        <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
+            </div>
+        </div>
+
+       <nav>
+            <ul class="menu">
+                <li><a href="index.html">Sobre nosotros</a></li>
+                <li class="dropdown">
+                    <a href="servicios.html">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="fabrica.html">Fábrica de software</a></li>
+                        <li><a href="nebula.html">Nebula ERP</a></li>
+                        <li><a href="sicovi.html">Sicovi</a></li>
+                        <li><a href="ia.html">Análisis con IA</a></li>
+                        <li><a href="calidad.html">Evaluaciones de Calidad</a></li>
+                        <li><a href="consultoria.html">Consultoría digital</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="sicovi-hero">
+            <div class="sicovi-hero-overlay"></div>
+            <div class="sicovi-hero-container">
+                <div class="sicovi-hero-icon">
+                    <i data-lucide="landmark"></i>
+                </div>
+                <h1 class="sicovi-hero-title">SICOVI</h1>
+                <p class="sicovi-hero-subtitle">Sistema Concejo Visible</p>
+                <p class="sicovi-hero-description">Plataforma unificada de gestión legislativa y administrativa para la transparencia ciudadana de los Concejos Municipales y Departamentales de Colombia.</p>
+                <div class="sicovi-hero-buttons">
+                    <a href="#contacto" class="btn-solicitar">Solicitar información →</a>
+                    <a href="#valor" class="btn-secundario">Conocer más →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ¿Qué es SICOVI? -->
+        <section class="sicovi-que-es">
+            <div class="container">
+                <div class="que-es-grid">
+                    <div class="que-es-content">
+                        <h2 class="section-title">¿Qué es <span>SICOVI</span>?</h2>
+                        <p>Plataforma integral de los Concejos Municipales y Departamentales de Colombia que centraliza, gestiona y da visibilidad a toda la actividad legislativa y administrativa, transformando la transparencia en acción.</p>
+                        <div class="que-es-pilares">
+                            <div class="pilar">
+                                <i data-lucide="layers"></i>
+                                <div>
+                                    <h3>Unifica</h3>
+                                    <p>Centraliza información de acuerdos, proyectos, sesiones, comisiones y agenda en un solo punto de acceso.</p>
+                                </div>
+                            </div>
+                            <div class="pilar">
+                                <i data-lucide="shield"></i>
+                                <div>
+                                    <h3>Garantiza</h3>
+                                    <p>Trazabilidad completa y acceso público a todos los procesos del Concejo en tiempo real.</p>
+                                </div>
+                            </div>
+                            <div class="pilar">
+                                <i data-lucide="file-digit"></i>
+                                <div>
+                                    <h3>Digitaliza</h3>
+                                    <p>Elimina silos de información y automatiza el flujo de trabajo interno del Concejo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="que-es-image">
+                        <i data-lucide="building-2" class="que-es-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Valor para el Ciudadano y la Entidad -->
+        <section id="valor" class="sicovi-valor">
+            <div class="container">
+                <h2 class="section-title">Valor para <span>el Ciudadano y la Entidad</span></h2>
+                <div class="valor-grid">
+                    <div class="valor-card">
+                        <i data-lucide="eye"></i>
+                        <h3>Transparencia Total</h3>
+                        <p>Acceso ciudadano en línea a acuerdos, proyectos, sesiones y toda la actividad legislativa del Concejo.</p>
+                    </div>
+                    <div class="valor-card">
+                        <i data-lucide="zap"></i>
+                        <h3>Eficiencia Operativa</h3>
+                        <p>Centralización de procesos que reduce duplicidades y tiempos administrativos de manera significativa.</p>
+                    </div>
+                    <div class="valor-card">
+                        <i data-lucide="git-pull-request"></i>
+                        <h3>Trazabilidad y Control</h3>
+                        <p>Seguimiento digital completo de cada etapa legislativa con auditoría y respaldo permanente.</p>
+                    </div>
+                    <div class="valor-card">
+                        <i data-lucide="microchip"></i>
+                        <h3>Modernización Tecnológica</h3>
+                        <p>Plataforma robusta, escalable y basada en estándares abiertos de última generación.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Oferta Técnica -->
+        <section class="sicovi-oferta">
+            <div class="container">
+                <h2 class="section-title">Nuestra <span>Oferta Técnica</span></h2>
+                <div class="oferta-grid">
+                    <div class="oferta-card">
+                        <i data-lucide="users"></i>
+                        <h3>Organización Especializada</h3>
+                        <p>Equipos funcionales (Squads) especializados por módulo: acuerdos, proyectos, sesiones, agenda y comisiones.</p>
+                    </div>
+                    <div class="oferta-card">
+                        <i data-lucide="git-branch"></i>
+                        <h3>Metodologías Ágiles</h3>
+                        <p>Trabajamos con Scrum/Kanban combinadas con DevOps para entregas rápidas, confiables y continuas.</p>
+                    </div>
+                    <div class="oferta-card">
+                        <i data-lucide="refresh-cw"></i>
+                        <h3>Modernización Continua</h3>
+                        <p>Actualización constante de la plataforma con nuevas funcionalidades y mejoras de rendimiento.</p>
+                    </div>
+                    <div class="oferta-card">
+                        <i data-lucide="git-pull-request"></i>
+                        <h3>Desarrollo Greenfield</h3>
+                        <p>Creación de nuevos módulos desde cero, adaptados a las necesidades específicas del Concejo.</p>
+                    </div>
+                    <div class="oferta-card">
+                        <i data-lucide="briefcase"></i>
+                        <h3>Consultoría Técnica</h3>
+                        <p>Acompañamiento técnico-funcional continuo para optimizar procesos y maximizar el valor de la inversión.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enfoque Sectorial -->
+        <section class="sicovi-enfoque">
+            <div class="container">
+                <h2 class="section-title">Enfoque <span>Sectorial</span></h2>
+                <div class="enfoque-grid">
+                    <div class="enfoque-card sector-publico">
+                        <i data-lucide="landmark"></i>
+                        <h3>Sector Público (Principal)</h3>
+                        <ul>
+                            <li><strong>Gobierno Local y Concejos:</strong> Gestión integral de acuerdos, proyectos, sesiones y comisiones con trazabilidad completa.</li>
+                            <li><strong>Ciudadanía:</strong> Acceso público a información legislativa, fortaleciendo la participación ciudadana y el control social.</li>
+                        </ul>
+                    </div>
+                    <div class="enfoque-card sector-privado">
+                        <i data-lucide="building"></i>
+                        <h3>Sector Privado (Potencial)</h3>
+                        <ul>
+                            <li><strong>Arquitectura modular:</strong> Adaptable a organizaciones que requieran trazabilidad documental y gestión de procesos complejos.</li>
+                            <li><strong>Flexibilidad:</strong> Implementación en corporaciones, ONGs y entidades que necesiten auditoría y transparencia.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Multi-tenencia y Flexibilidad -->
+        <section class="sicovi-multitenant">
+            <div class="container">
+                <h2 class="section-title">Multi-tenencia y <span>Flexibilidad</span></h2>
+                <div class="multitenant-grid">
+                    <div class="multitenant-card">
+                        <i data-lucide="database"></i>
+                        <h3>Flexibilidad de Datos</h3>
+                        <p>Soportamos múltiples motores de base de datos (PostgreSQL, Oracle, SQL Server) para adaptarnos a la infraestructura existente.</p>
+                    </div>
+                    <div class="multitenant-card">
+                        <i data-lucide="shield"></i>
+                        <h3>Aislamiento Total</h3>
+                        <p>Cada Concejo posee su propia base de datos física o esquema lógico aislado. No hay mezcla de información.</p>
+                    </div>
+                    <div class="multitenant-card">
+                        <i data-lucide="zap"></i>
+                        <h3>Conmutación Transparente</h3>
+                        <p>El sistema conmuta entre bases de datos en milisegundos, ofreciendo una experiencia unificada y segura.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Aceleración del Desarrollo a Medida -->
+        <section class="sicovi-aceleracion">
+            <div class="container">
+                <h2 class="section-title">Aceleración del <span>Desarrollo a Medida</span></h2>
+                <p class="aceleracion-intro">Impulsado por Arquitectura Base</p>
+                <div class="aceleracion-grid">
+                    <div class="aceleracion-card">
+                        <i data-lucide="factory"></i>
+                        <h3>Plantillas (Archetypes)</h3>
+                        <p>Generación rápida de nuevos módulos con Maven archetypes.</p>
+                    </div>
+                    <div class="aceleracion-card">
+                        <i data-lucide="repeat"></i>
+                        <h3>Reutilización</h3>
+                        <p>Componentes comunes de seguridad, persistencia e interfaz.</p>
+                    </div>
+                    <div class="aceleracion-card">
+                        <i data-lucide="star"></i>
+                        <h3>Calidad heredada</h3>
+                        <p>Todo desarrollo a medida se basa en MVC + JPA + JSF, garantizando consistencia y mantenibilidad.</p>
+                    </div>
+                    <div class="aceleracion-card">
+                        <i data-lucide="git-merge"></i>
+                        <h3>CI/CD integrado</h3>
+                        <p>Nuevas funcionalidades se incorporan con el mismo pipeline de calidad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resultados y Referencias -->
+        <section class="sicovi-resultados">
+            <div class="container">
+                <h2 class="section-title">Resultados y <span>Referencias</span></h2>
+                <div class="resultados-destacado">
+                    <h3>Impacto en el Concejo de Medellín</h3>
+                    <div class="resultados-grid">
+                        <div class="resultado-card">
+                            <i data-lucide="clock"></i>
+                            <h4>Reducción de tiempos</h4>
+                            <p>Gestión documental y citaciones más ágiles.</p>
+                        </div>
+                        <div class="resultado-card">
+                            <i data-lucide="users"></i>
+                            <h4>Mayor participación ciudadana</h4>
+                            <p>Acceso público en línea a la actividad legislativa.</p>
+                        </div>
+                        <div class="resultado-card">
+                            <i data-lucide="alert-circle"></i>
+                            <h4>Disminución de errores</h4>
+                            <p>Información unificada y trazable.</p>
+                        </div>
+                        <div class="resultado-card">
+                            <i data-lucide="award"></i>
+                            <h4>Plataforma oficial</h4>
+                            <p>Utilizada por corporados y funcionarios como herramienta principal de gestión legislativa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Otros servicios -->
+        <section class="sicovi-otros-servicios">
+            <div class="container">
+                <h2 class="section-title">Otros <span>servicios</span></h2>
+                <div class="otros-grid">
+                    <div class="otro-card">
+                        <i data-lucide="factory"></i>
+                        <h3>Fábrica de Software</h3>
+                        <p>Desarrollo de soluciones tecnológicas a la medida: aplicaciones, plataformas y sistemas escalables diseñados para evolucionar con el negocio.</p>
+                        <a href="fabrica-software.html" class="otro-link">Conocer más →</a>
+                    </div>
+                    <div class="otro-card">
+                        <i data-lucide="cloud"></i>
+                        <h3>Nebula ERP</h3>
+                        <p>Plataforma integral de gestión empresarial que centraliza operaciones, optimiza recursos y permite tomar decisiones en tiempo real con visión estratégica.</p>
+                        <a href="nebula-erp.html" class="otro-link">Conocer más →</a>
+                    </div>
+                    <div class="otro-card">
+                        <i data-lucide="brain"></i>
+                        <h3>Análisis con IA</h3>
+                        <p>Implementación de Inteligencia Artificial para automatizar procesos, anticipar escenarios y transformar datos en decisiones precisas.</p>
+                        <a href="servicios.html#ia" class="otro-link">Conocer más →</a>
+                    </div>
+                    <div class="otro-card">
+                        <i data-lucide="trending-up"></i>
+                        <h3>Consultoría digital</h3>
+                        <p>Acompañamiento estratégico en la transformación digital: desde el diagnóstico hasta la implementación y optimización de soluciones.</p>
+                        <a href="servicios.html#consultoria" class="otro-link">Conocer más →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section id="contacto" class="sicovi-cta-final">
+            <div class="container">
+                <h2>¿Listo para transformar la gestión legislativa de su Concejo?</h2>
+                <p>Contáctenos y descubra cómo SICOVI puede llevar la transparencia y eficiencia a su entidad.</p>
+                <a href="contacto.html" class="btn-solicitar">Solicitar información técnica →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Céntrica" class="footer-logo-img">
+                </div>
+                <p class="footer-description">
+                    Impulsamos tu éxito a través de la innovación inteligente.
+                </p>
+                <div class="footer-contact-info">
+                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="phone"></i> +57 300 205 7325</p>
+                    <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Sobre nosotros</a></li>
+                    <li><a href="terminos.html">Términos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="politicas.html">Políticas internas</a></li>
+                    <li><a href="terservicios.html">Términos de Servicio</a></li>
+                    <li><a href="legal.html">Aviso Legal</a></li>
+                    <li><a href="cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Mantente informado</h4>
+                <p class="footer-newsletter-text">
+                    Recibe novedades sobre nuestras soluciones.
+                </p>
+                <form class="footer-newsletter-form" id="newsletterForm2">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse →</button>
+                </form>
+                <p class="footer-unsubscribe">
+                    Puedes darte de baja en cualquier momento.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
+                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Script específico para SICOVI -->
+    <script>
+        // Inicializar Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterFormSicovi');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                console.log('Newsletter suscripción:', email);
+                alert('¡Gracias por suscribirte!');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
