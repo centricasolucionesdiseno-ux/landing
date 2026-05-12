@@ -3922,3 +3922,429 @@ body.dark-mode .sector-card {
         font-size: 1.5rem;
     }
 }
+/* ========== PÁGINA NEBULA ERP ========== */
+
+/* Hero */
+.nebula-hero {
+    position: relative;
+    padding: 5rem 2rem;
+    background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+.nebula-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.nebula-hero-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.nebula-hero-icon i {
+    width: 80px;
+    height: 80px;
+    color: #4a9eff;
+    margin-bottom: 1rem;
+}
+
+.nebula-hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.nebula-hero-title span {
+    color: #4a9eff;
+}
+
+.nebula-hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+}
+
+.nebula-hero-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.nebula-hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ¿Qué es Nebula? */
+.nebula-que-es {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.que-es-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.que-es-content p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+body.dark-mode .que-es-content p {
+    color: #ccc;
+}
+
+.que-es-icon {
+    width: 300px;
+    height: 300px;
+    color: #0e58a9;
+}
+
+/* Características Principales */
+.nebula-caracteristicas {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .nebula-caracteristicas {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.caracteristicas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.caracteristica-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .caracteristica-card {
+    background: #1e1e2e;
+}
+
+.caracteristica-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.caracteristica-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Módulos */
+.nebula-modulos {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.modulos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.modulo-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+body.dark-mode .modulo-card {
+    background: #1e1e2e;
+    border-color: #333;
+}
+
+.modulo-card:hover {
+    transform: translateY(-3px);
+    border-color: #0e58a9;
+}
+
+.modulo-card i {
+    width: 40px;
+    height: 40px;
+    color: #0e58a9;
+    margin-bottom: 0.75rem;
+}
+
+.modulo-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.modulo-card p {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+body.dark-mode .modulo-card p {
+    color: #aaa;
+}
+
+/* Arquitectura */
+.nebula-arquitectura {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+}
+
+.arquitectura-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.arquitectura-card {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.arquitectura-card i {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+}
+
+.arquitectura-ventaja {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Multi-Tenant */
+.nebula-multitenant {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Beneficios */
+.nebula-beneficios {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .nebula-beneficios {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.beneficio-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .beneficio-card {
+    background: #1e1e2e;
+}
+
+.beneficio-card:hover {
+    transform: translateY(-5px);
+}
+
+.beneficio-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Sectores */
+.nebula-sectores {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sectores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.sector-card {
+    padding: 2rem;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+body.dark-mode .sector-card {
+    background: #1e1e2e;
+}
+
+.sector-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+.sector-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sector-card li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.sector-card li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #0e58a9;
+}
+
+/* Comparativa */
+.nebula-comparativa {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .nebula-comparativa {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.comparativa-grid {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.comparativa-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+}
+
+body.dark-mode .comparativa-item {
+    background: #1e1e2e;
+}
+
+.comparativa-item i {
+    width: 28px;
+    height: 28px;
+    color: #28a745;
+    flex-shrink: 0;
+}
+
+/* CTA Final */
+.nebula-cta-final {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+}
+
+.nebula-cta-final h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.nebula-cta-final p {
+    margin-bottom: 2rem;
+}
+
+.nebula-cta-final .btn-solicitar {
+    background: white;
+    color: #0e58a9;
+}
+
+.nebula-cta-final .btn-solicitar:hover {
+    background: #f0f2f5;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nebula-hero-title {
+        font-size: 2rem;
+    }
+    
+    .nebula-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .que-es-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .caracteristicas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sectores-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparativa-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .comparativa-item i {
+        margin: 0 auto;
+    }
+    
+    .nebula-cta-final h2 {
+        font-size: 1.5rem;
+    }
+}
