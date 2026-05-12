@@ -3343,3 +3343,499 @@ body.dark-mode .politica-signature input {
         font-size: 1.2rem;
     }
 }
+/* ========== PÁGINA FÁBRICA DE SOFTWARE ========== */
+
+/* Hero */
+.fabrica-hero {
+    position: relative;
+    padding: 5rem 2rem;
+    background-image: url('https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1600');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+.fabrica-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.fabrica-hero-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.fabrica-hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.fabrica-hero-title span {
+    color: #4a9eff;
+}
+
+.fabrica-hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+}
+
+.fabrica-hero-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.fabrica-hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-secundario {
+    display: inline-block;
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-secundario:hover {
+    background: white;
+    color: #0e58a9;
+    transform: translateY(-2px);
+}
+
+/* Sección Valor */
+.fabrica-valor {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .fabrica-valor {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.valor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.valor-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .valor-card {
+    background: #1e1e2e;
+}
+
+.valor-card:hover {
+    transform: translateY(-8px);
+}
+
+.valor-card i {
+    width: 64px;
+    height: 64px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+.valor-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: #0e58a9;
+}
+
+/* Oferta Técnica */
+.fabrica-oferta {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.oferta-destacado {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    border-radius: 20px;
+    color: white;
+}
+
+.oferta-destacado i {
+    width: 64px;
+    height: 64px;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.ejes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.eje-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+body.dark-mode .eje-card {
+    background: #1e1e2e;
+}
+
+.eje-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Stack Tecnológico */
+.fabrica-stack {
+    padding: 4rem 2rem;
+    background: #f0f2f5;
+}
+
+body.dark-mode .fabrica-stack {
+    background: #0a0a0f;
+}
+
+.stack-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: #666;
+}
+
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stack-category {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+}
+
+body.dark-mode .stack-category {
+    background: #1e1e2e;
+}
+
+.stack-category i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Calidad */
+.fabrica-calidad {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.calidad-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.calidad-card {
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .calidad-card {
+    background: #1e1e2e;
+}
+
+.calidad-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* SIMAPPE */
+.fabrica-simappe {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+}
+
+.simappe-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.simappe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.simappe-card {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.simappe-card i {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+}
+
+.simappe-nota {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estrategia de Dos Capas */
+.fabrica-capas {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.capas-intro {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0e58a9;
+    margin-bottom: 2rem;
+}
+
+.capas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.capa-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+body.dark-mode .capa-card {
+    background: #1e1e2e;
+}
+
+.capa-icon i {
+    width: 64px;
+    height: 64px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+.ventaja-destacada {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #e8f4fd;
+    border-radius: 12px;
+}
+
+body.dark-mode .ventaja-destacada {
+    background: #1a3a5c;
+}
+
+/* Patrón de Capas */
+.fabrica-patron {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+}
+
+body.dark-mode .fabrica-patron {
+    background: #0f0f1a;
+}
+
+.patron-flujo {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.dark-mode .patron-flujo {
+    background: #1e1e2e;
+}
+
+.patron-flujo span {
+    color: #0e58a9;
+}
+
+.patron-beneficios {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.patron-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.patron-item i {
+    width: 24px;
+    height: 24px;
+    color: #28a745;
+    flex-shrink: 0;
+}
+
+/* Multi-Tenant */
+.fabrica-multitenant {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.multitenant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.multitenant-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+}
+
+body.dark-mode .multitenant-card {
+    background: #1e1e2e;
+}
+
+.multitenant-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Desarrollo a Medida */
+.fabrica-medida {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .fabrica-medida {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.medida-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0e58a9;
+    margin-bottom: 2rem;
+}
+
+.medida-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.medida-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .medida-card {
+    background: #1e1e2e;
+}
+
+.medida-card:hover {
+    transform: translateY(-5px);
+}
+
+.medida-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Enfoque Multisectorial */
+.fabrica-multisectorial {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.multisectorial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.sector-card {
+    padding: 2rem;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0
