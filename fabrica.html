@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Céntrica - Fábrica de software | Ingeniería de alto nivel</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+        <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
+            </div>
+        </div>
+
+       <nav>
+            <ul class="menu">
+                <li><a href="index.html">Sobre nosotros</a></li>
+                <li class="dropdown">
+                    <a href="servicios.html">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="fabrica.html">Fábrica de software</a></li>
+                        <li><a href="nebula.html">Nebula ERP</a></li>
+                        <li><a href="sicovi.html">Sicovi</a></li>
+                        <li><a href="ia.html">Análisis con IA</a></li>
+                        <li><a href="calidad.html">Evaluaciones de Calidad</a></li>
+                        <li><a href="consultoria.html">Consultoría digital</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="fabrica-hero">
+            <div class="fabrica-hero-overlay"></div>
+            <div class="fabrica-hero-container">
+                <h1 class="fabrica-hero-title">Fábrica de <span>Software</span> Céntrica</h1>
+                <p class="fabrica-hero-subtitle">Ingeniería de Alto Nivel para Desafíos Corporativos</p>
+                <p class="fabrica-hero-description">La industrialización de la ingeniería de software. La transición de modelos de desarrollo convencionales hacia un centro de producción basado en procesos estandarizados, medibles y optimizables.</p>
+                <div class="fabrica-hero-buttons">
+                    <a href="#contacto" class="btn-solicitar">Solicitar información →</a>
+                    <a href="#oferta" class="btn-secundario">Conocer oferta →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Valor para el cliente -->
+        <section class="fabrica-valor">
+            <div class="container">
+                <h2 class="section-title">Valor para el <span>Cliente</span></h2>
+                <div class="valor-grid">
+                    <div class="valor-card">
+                        <i data-lucide="calendar-check"></i>
+                        <h3>Previsibilidad</h3>
+                        <p>Seguridad en el cumplimiento de tiempos y presupuestos.</p>
+                    </div>
+                    <div class="valor-card">
+                        <i data-lucide="layers"></i>
+                        <h3>Consistencia</h3>
+                        <p>Calidad técnica uniforme en cada entrega.</p>
+                    </div>
+                    <div class="valor-card">
+                        <i data-lucide="trending-up"></i>
+                        <h3>Escalabilidad</h3>
+                        <p>Capacidad de respuesta industrializada ante la demanda del negocio.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Oferta Técnica (Squads) -->
+        <section id="oferta" class="fabrica-oferta">
+            <div class="container">
+                <h2 class="section-title">Nuestra <span>Oferta Técnica</span></h2>
+                <div class="oferta-destacado">
+                    <div class="oferta-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3>Células de Ingeniería (Squads)</h3>
+                    <p>Equipos multidisciplinarios integrados para el desarrollo ágil de productos.</p>
+                </div>
+                <div class="ejes-grid">
+                    <div class="eje-card">
+                        <i data-lucide="refresh-cw"></i>
+                        <h3>Modernización de Aplicativos</h3>
+                        <p>Evolución de sistemas legacy hacia arquitecturas modernas y escalables.</p>
+                    </div>
+                    <div class="eje-card">
+                        <i data-lucide="git-pull-request"></i>
+                        <h3>Desarrollo Greenfield</h3>
+                        <p>Construcción de soluciones innovadoras desde cero con arquitectura Cloud Native.</p>
+                    </div>
+                    <div class="eje-card">
+                        <i data-lucide="map"></i>
+                        <h3>Consultoría de Arquitectura</h3>
+                        <p>Definición de mapas de ruta tecnológicos y gobierno de ecosistemas digitales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stack Tecnológico -->
+        <section class="fabrica-stack">
+            <div class="container">
+                <h2 class="section-title">El <span>Stack Tecnológico</span></h2>
+                <p class="stack-intro">Flexibilidad y Estándar - Neutralidad tecnológica orientada a la mejor solución para el reto específico, priorizando siempre la estabilidad y longevidad del software.</p>
+                <div class="stack-grid">
+                    <div class="stack-category">
+                        <i data-lucide="server"></i>
+                        <h3>Backend</h3>
+                        <p>Arquitecturas robustas (Java, .NET, Node.js, Python)</p>
+                    </div>
+                    <div class="stack-category">
+                        <i data-lucide="monitor"></i>
+                        <h3>Frontend</h3>
+                        <p>Experiencias de usuario de vanguardia (Angular, React, Vue)</p>
+                    </div>
+                    <div class="stack-category">
+                        <i data-lucide="git-branch"></i>
+                        <h3>Interoperabilidad</h3>
+                        <p>APIs RESTful y comunicación asíncrona como estándar</p>
+                    </div>
+                    <div class="stack-category">
+                        <i data-lucide="cloud"></i>
+                        <h3>Infraestructura & DevOps</h3>
+                        <p>Contenedores, orquestadores y CI/CD automatizado</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calidad e Ingeniería de Procesos -->
+        <section class="fabrica-calidad">
+            <div class="container">
+                <h2 class="section-title">Calidad e <span>Ingeniería de Procesos</span></h2>
+                <div class="calidad-grid">
+                    <div class="calidad-card">
+                        <i data-lucide="shield-check"></i>
+                        <h3>Gobernanza Técnica</h3>
+                        <p>Operamos bajo un modelo de Gobernanza de Arquitectura Estricta, donde la calidad no es un accidente, sino el resultado de procesos de ingeniería estandarizados y medibles.</p>
+                    </div>
+                    <div class="calidad-card">
+                        <i data-lucide="code-2"></i>
+                        <h3>Estándares de Ingeniería</h3>
+                        <p>Aplicación de patrones de diseño (Clean Code, SOLID) y arquitectura desacoplada como cimiento de cada proyecto.</p>
+                    </div>
+                    <div class="calidad-card">
+                        <i data-lucide="repeat"></i>
+                        <h3>SDLC Automatizado</h3>
+                        <p>Ciclo de vida de desarrollo de software soportado por flujos de CI/CD que garantizan la integridad del código en cada despliegue.</p>
+                    </div>
+                    <div class="calidad-card">
+                        <i data-lucide="clipboard-list"></i>
+                        <h3>Trazabilidad y QA</h3>
+                        <p>Implementación de pirámide de pruebas (unitarias, integración y funcionales) y auditoría constante de procesos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arquitectura SIMAPPE -->
+        <section class="fabrica-simappe">
+            <div class="container">
+                <h2 class="section-title">Arquitectura <span>SIMAPPE</span></h2>
+                <p class="simappe-intro">El Motor Nebula - Nuestra arquitectura de referencia propia que asegura que todo desarrollo inicie bajo estándares de excelencia técnica.</p>
+                <div class="simappe-grid">
+                    <div class="simappe-card">
+                        <i data-lucide="wrench"></i>
+                        <h3>Mantenibilidad</h3>
+                        <p>Reducción drástica de la deuda técnica para el futuro del cliente.</p>
+                    </div>
+                    <div class="simappe-card">
+                        <i data-lucide="link"></i>
+                        <h3>Desacoplamiento</h3>
+                        <p>Flexibilidad para evolucionar componentes tecnológicos sin afectar el sistema completo.</p>
+                    </div>
+                    <div class="simappe-card">
+                        <i data-lucide="lock"></i>
+                        <h3>Seguridad</h3>
+                        <p>Integración de procesos de validación y seguridad desde el diseño (Security by Design).</p>
+                    </div>
+                </div>
+                <div class="simappe-nota">
+                    <i data-lucide="info"></i>
+                    <p>Nebula ERP no se construye desde cero; se levanta sobre la infraestructura probada de Simappe.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estrategia de Dos Capas -->
+        <section class="fabrica-capas">
+            <div class="container">
+                <h2 class="section-title">Estrategia de <span>Dos Capas</span></h2>
+                <p class="capas-intro">SIMAPPE + NEBULA</p>
+                <div class="capas-grid">
+                    <div class="capa-card">
+                        <div class="capa-icon"><i data-lucide="layers"></i></div>
+                        <h3>Capa 1: Simappe (El Cimiento)</h3>
+                        <p>Gestiona la seguridad, multi-tenancy, auditoría y servicios base.</p>
+                    </div>
+                    <div class="capa-card">
+                        <div class="capa-icon"><i data-lucide="database"></i></div>
+                        <h3>Capa 2: Nebula (El Negocio)</h3>
+                        <p>Donde reside la lógica específica de Contabilidad, Nómina y otros procesos operativos.</p>
+                    </div>
+                </div>
+                <div class="ventaja-destacada">
+                    <p><strong>Ventaja:</strong> El equipo se enfoca 100% en resolver el problema del negocio, no en reinventar la infraestructura.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patrón de Capas - Component Pattern -->
+        <section class="fabrica-patron">
+            <div class="container">
+                <h2 class="section-title">El Patrón de <span>Capas</span></h2>
+                <p class="patron-intro">Component Pattern - Aplicamos un flujo de ingeniería estandarizado que garantiza consistencia y mantenibilidad.</p>
+                <div class="patron-flujo">
+                    <span>Controlador</span> → <span>Servicio</span> → <span>Componente</span> → <span>Repositorio</span>
+                </div>
+                <div class="patron-beneficios">
+                    <div class="patron-item">
+                        <i data-lucide="check-circle"></i>
+                        <p><strong>Estandarización:</strong> Cada funcionalidad sigue el mismo camino, lo que facilita que cualquier desarrollador pueda dar soporte a cualquier módulo.</p>
+                    </div>
+                    <div class="patron-item">
+                        <i data-lucide="check-circle"></i>
+                        <p><strong>Micro-Responsabilidades:</strong> Separamos la validación, la orquestación y la lógica de negocio para crear un software altamente mantenible.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Multi-Tenancy y Multi-Motor -->
+        <section class="fabrica-multitenant">
+            <div class="container">
+                <h2 class="section-title">Multi-Tenancy y <span>Multi-Motor</span></h2>
+                <div class="multitenant-grid">
+                    <div class="multitenant-card">
+                        <i data-lucide="database"></i>
+                        <h3>Flexibilidad de Datos</h3>
+                        <p>Soportamos los motores líderes del mercado (PostgreSQL, Oracle, SQL Server) para adaptarnos a la infraestructura que el cliente ya posea.</p>
+                    </div>
+                    <div class="multitenant-card">
+                        <i data-lucide="shield"></i>
+                        <h3>Aislamiento Total</h3>
+                        <p>Cada cliente (Tenant) posee su propia base de datos física o esquema lógico aislado. No hay mezcla de información.</p>
+                    </div>
+                    <div class="multitenant-card">
+                        <i data-lucide="zap"></i>
+                        <h3>Seguridad Dinámica</h3>
+                        <p>El sistema conmuta entre bases de datos en milisegundos de forma transparente y segura.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desarrollo a Medida -->
+        <section class="fabrica-medida">
+            <div class="container">
+                <h2 class="section-title">Desarrollo a <span>Medida</span></h2>
+                <p class="medida-intro">Impulsado por SIMAPPE</p>
+                <div class="medida-grid">
+                    <div class="medida-card">
+                        <i data-lucide="target"></i>
+                        <h3>Enfoque en el Negocio</h3>
+                        <p>Al tener la seguridad, conectividad y auditoría pre-configuradas, el equipo inicia el desarrollo de la lógica específica del cliente desde el día 1.</p>
+                    </div>
+                    <div class="medida-card">
+                        <i data-lucide="star"></i>
+                        <h3>Calidad Nativa</h3>
+                        <p>Los desarrollos a medida heredan automáticamente todos los beneficios de la arquitectura (Resiliencia, Trazabilidad, Multi-tenancy).</p>
+                    </div>
+                    <div class="medida-card">
+                        <i data-lucide="shirt"></i>
+                        <h3>Flexibilidad Total</h3>
+                        <p>El cliente recibe un traje a la medida pero con la resistencia y estándares de una solución corporativa global.</p>
+                    </div>
+                    <div class="medida-card">
+                        <i data-lucide="rocket"></i>
+                        <h3>Aceleración Extrema</h3>
+                        <p>Utilizamos el Simappe Archetype, una "semilla" industrial que genera la estructura de un proyecto completo con todos los estándares Nebula en segundos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enfoque Multisectorial -->
+        <section class="fabrica-multisectorial">
+            <div class="container">
+                <h2 class="section-title">Enfoque <span>Multisectorial</span></h2>
+                <div class="multisectorial-grid">
+                    <div class="sector-card sector-privado">
+                        <i data-lucide="building"></i>
+                        <h3>Sector Privado (Corporativo)</h3>
+                        <ul>
+                            <li><strong>Agilidad Operativa:</strong> Implementación de células de ingeniería (Squads) para acelerar la innovación y el Time-to-Market.</li>
+                            <li><strong>Modernización de Core:</strong> Transformación de sistemas legacy hacia arquitecturas modernas y escalables sin impacto operativo.</li>
+                            <li><strong>Control con Nebula:</strong> Despliegue de Nebula ERP como núcleo financiero y contable de alto rendimiento con arquitectura multi-tenant.</li>
+                        </ul>
+                    </div>
+                    <div class="sector-card sector-publico">
+                        <i data-lucide="landmark"></i>
+                        <h3>Sector Público</h3>
+                        <ul>
+                            <li><strong>Transformación Digital:</strong> Automatización de trámites masivos y procesos administrativos bajo estándares de gobierno digital.</li>
+                            <li><strong>Gobierno Abierto:</strong> Implementación de esquemas de transparencia, datos abiertos e interoperabilidad nativa entre entidades.</li>
+                            <li><strong>Gestión con Nebula:</strong> Aplicación del ecosistema Nebula ERP para la administración financiera y presupuestal con total cumplimiento normativo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section id="contacto" class="fabrica-cta-final">
+            <div class="container">
+                <h2>¿Listo para industrializar su desarrollo de software?</h2>
+                <p>Contáctenos y descubra cómo nuestra fábrica de software puede acelerar sus proyectos.</p>
+                <a href="contacto.html" class="btn-solicitar">Solicitar información técnica →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Céntrica" class="footer-logo-img">
+                </div>
+                <p class="footer-description">
+                    Impulsamos tu éxito a través de la innovación inteligente.
+                </p>
+                <div class="footer-contact-info">
+                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="phone"></i> +57 300 205 7325</p>
+                    <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Sobre nosotros</a></li>
+                    <li><a href="terminos.html">Términos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="politicas.html">Políticas internas</a></li>
+                    <li><a href="terservicios.html">Términos de Servicio</a></li>
+                    <li><a href="legal.html">Aviso Legal</a></li>
+                    <li><a href="cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Mantente informado</h4>
+                <p class="footer-newsletter-text">
+                    Recibe novedades sobre nuestras soluciones.
+                </p>
+                <form class="footer-newsletter-form" id="newsletterForm2">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse →</button>
+                </form>
+                <p class="footer-unsubscribe">
+                    Puedes darte de baja en cualquier momento.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
+                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Script específico para fábrica -->
+    <script>
+        // Inicializar Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterFormFabrica');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                console.log('Newsletter suscripción:', email);
+                alert('¡Gracias por suscribirte!');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
