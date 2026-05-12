@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Céntrica - Nebula ERP | Plataforma integral de gestión empresarial</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+        <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
+            </div>
+        </div>
+
+       <nav>
+            <ul class="menu">
+                <li><a href="index.html">Sobre nosotros</a></li>
+                <li class="dropdown">
+                    <a href="servicios.html">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="fabrica.html">Fábrica de software</a></li>
+                        <li><a href="nebula.html">Nebula ERP</a></li>
+                        <li><a href="sicovi.html">Sicovi</a></li>
+                        <li><a href="ia.html">Análisis con IA</a></li>
+                        <li><a href="calidad.html">Evaluaciones de Calidad</a></li>
+                        <li><a href="consultoria.html">Consultoría digital</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="nebula-hero">
+            <div class="nebula-hero-overlay"></div>
+            <div class="nebula-hero-container">
+                <div class="nebula-hero-icon">
+                    <i data-lucide="cloud"></i>
+                </div>
+                <h1 class="nebula-hero-title">Nebula <span>ERP</span></h1>
+                <p class="nebula-hero-subtitle">Plataforma integral de gestión empresarial</p>
+                <p class="nebula-hero-description">Centraliza operaciones financieras, de inventarios y administrativas en un solo ecosistema, con inteligencia artificial integrada y reportes en tiempo real.</p>
+                <div class="nebula-hero-buttons">
+                    <a href="#contacto" class="btn-solicitar">Solicitar demo →</a>
+                    <a href="#caracteristicas" class="btn-secundario">Conocer características →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ¿Qué es Nebula ERP? -->
+        <section class="nebula-que-es">
+            <div class="container">
+                <div class="que-es-grid">
+                    <div class="que-es-content">
+                        <h2 class="section-title">¿Qué es <span>Nebula ERP</span>?</h2>
+                        <p>Nebula ERP es una plataforma integral de gestión empresarial diseñada para centralizar y optimizar todos los procesos críticos de su organización. Desde operaciones financieras hasta gestión de inventarios y administración general, Nebula ofrece un ecosistema unificado que elimina silos de información y maximiza la eficiencia operativa.</p>
+                        <p>Construida sobre la arquitectura SIMAPPE, Nebula hereda automáticamente capacidades de multi-tenancy, seguridad avanzada y auditoría completa, permitiendo que su equipo se enfoque en lo que realmente importa: hacer crecer su negocio.</p>
+                    </div>
+                    <div class="que-es-image">
+                        <i data-lucide="database" class="que-es-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Características Principales -->
+        <section id="caracteristicas" class="nebula-caracteristicas">
+            <div class="container">
+                <h2 class="section-title">Características <span>Principales</span></h2>
+                <div class="caracteristicas-grid">
+                    <div class="caracteristica-card">
+                        <i data-lucide="piggy-bank"></i>
+                        <h3>Gestión Financiera</h3>
+                        <p>Contabilidad general, cuentas por pagar y cobrar, activos fijos, conciliaciones bancarias y cierres contables automatizados.</p>
+                    </div>
+                    <div class="caracteristica-card">
+                        <i data-lucide="package"></i>
+                        <h3>Gestión de Inventarios</h3>
+                        <p>Control de stock, trazabilidad de productos, gestión de almacenes, órdenes de compra y venta, y forecasting automatizado.</p>
+                    </div>
+                    <div class="caracteristica-card">
+                        <i data-lucide="users"></i>
+                        <h3>Gestión Administrativa</h3>
+                        <p>Gestión de recursos humanos, nómina, evaluación de desempeño, reclutamiento y expedientes digitales.</p>
+                    </div>
+                    <div class="caracteristica-card">
+                        <i data-lucide="brain"></i>
+                        <h3>Inteligencia Artificial Integrada</h3>
+                        <p>Análisis predictivo, detección de anomalías, recomendaciones inteligentes y automatización de procesos repetitivos.</p>
+                    </div>
+                    <div class="caracteristica-card">
+                        <i data-lucide="bar-chart-3"></i>
+                        <h3>Reportes en Tiempo Real</h3>
+                        <p>Dashboards interactivos, reportes personalizables, indicadores clave de rendimiento (KPIs) y alertas automáticas.</p>
+                    </div>
+                    <div class="caracteristica-card">
+                        <i data-lucide="shield"></i>
+                        <h3>Seguridad Multi-Tenant</h3>
+                        <p>Aislamiento total de datos, auditoría completa, cifrado de información y cumplimiento normativo garantizado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulos de Nebula -->
+        <section class="nebula-modulos">
+            <div class="container">
+                <h2 class="section-title">Módulos <span>Especializados</span></h2>
+                <div class="modulos-grid">
+                    <div class="modulo-card">
+                        <i data-lucide="calculator"></i>
+                        <h3>Contabilidad</h3>
+                        <p>Plan de cuentas parametrizable, asientos automáticos, libros oficiales y cierres mensuales.</p>
+                    </div>
+                    <div class="modulo-card">
+                        <i data-lucide="credit-card"></i>
+                        <h3>Cuentas por Pagar</h3>
+                        <p>Gestión de facturas, programación de pagos, conciliación y flujo de caja proyectado.</p>
+                    </div>
+                    <div class="modulo-card">
+                        <i data-lucide="receipt"></i>
+                        <h3>Cuentas por Cobrar</h3>
+                        <p>Facturación electrónica, gestión de cartera, cobranzas y reporte de antigüedad de saldos.</p>
+                    </div>
+                    <div class="modulo-card">
+                        <i data-lucide="briefcase"></i>
+                        <h3>Nómina</h3>
+                        <p>Cálculo automático de salarios, prestaciones sociales, seguridad social y parafiscales.</p>
+                    </div>
+                    <div class="modulo-card">
+                        <i data-lucide="shopping-cart"></i>
+                        <h3>Compras</h3>
+                        <p>Solicitudes de cotización, órdenes de compra, recepción de mercancía y evaluación de proveedores.</p>
+                    </div>
+                    <div class="modulo-card">
+                        <i data-lucide="truck"></i>
+                        <h3>Ventas</h3>
+                        <p>Gestión de clientes, cotizaciones, pedidos, facturación y seguimiento post-venta.</p>
+                    </div>
+                    <div class="modulo-card">
+                        <i data-lucide="warehouse"></i>
+                        <h3>Inventarios</h3>
+                        <p>Control multialmacén, kardex valorado, inventarios cíclicos y puntos de reorden.</p>
+                    </div>
+                    <div class="modulo-card">
+                        <i data-lucide="file-text"></i>
+                        <h3>Activos Fijos</h3>
+                        <p>Registro de activos, depreciación automática, bajas y seguimiento de ubicación.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arquitectura SIMAPPE + Nebula -->
+        <section class="nebula-arquitectura">
+            <div class="container">
+                <h2 class="section-title">La <span>Arquitectura</span> detrás de Nebula</h2>
+                <div class="arquitectura-grid">
+                    <div class="arquitectura-card simappe">
+                        <i data-lucide="layers"></i>
+                        <h3>SIMAPPE - El Cimiento</h3>
+                        <p>Gestiona la seguridad, multi-tenancy, auditoría y servicios base que toda aplicación empresarial requiere.</p>
+                    </div>
+                    <div class="arquitectura-card nebula">
+                        <i data-lucide="cloud"></i>
+                        <h3>Nebula - El Negocio</h3>
+                        <p>Contiene la lógica específica de Contabilidad, Nómina, Inventarios y demás procesos operativos.</p>
+                    </div>
+                </div>
+                <div class="arquitectura-ventaja">
+                    <p><strong>Ventaja competitiva:</strong> Su equipo se enfoca 100% en resolver el problema del negocio, no en reinventar la infraestructura técnica.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Multi-Tenancy y Multi-Motor -->
+        <section class="nebula-multitenant">
+            <div class="container">
+                <h2 class="section-title">Multi-Tenancy y <span>Multi-Motor</span></h2>
+                <div class="multitenant-grid">
+                    <div class="multitenant-card">
+                        <i data-lucide="database"></i>
+                        <h3>Flexibilidad de Datos</h3>
+                        <p>Soportamos los motores líderes del mercado (PostgreSQL, Oracle, SQL Server) para adaptarnos a su infraestructura existente.</p>
+                    </div>
+                    <div class="multitenant-card">
+                        <i data-lucide="shield"></i>
+                        <h3>Aislamiento Total</h3>
+                        <p>Cada cliente posee su propia base de datos física o esquema lógico aislado. No hay mezcla de información.</p>
+                    </div>
+                    <div class="multitenant-card">
+                        <i data-lucide="zap"></i>
+                        <h3>Conmutación Transparente</h3>
+                        <p>El sistema conmuta entre bases de datos en milisegundos, ofreciendo una experiencia unificada y segura.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios para el Negocio -->
+        <section class="nebula-beneficios">
+            <div class="container">
+                <h2 class="section-title">Beneficios para <span>su Negocio</span></h2>
+                <div class="beneficios-grid">
+                    <div class="beneficio-card">
+                        <i data-lucide="trending-up"></i>
+                        <h3>Eficiencia Operativa</h3>
+                        <p>Automatice procesos repetitivos y reduzca tiempos de ejecución hasta en un 70%.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="eye"></i>
+                        <h3>Visibilidad Total</h3>
+                        <p>Acceda a información consolidada de toda la organización desde un solo lugar.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="git-pull-request"></i>
+                        <h3>Toma de Decisiones Ágil</h3>
+                        <p>Reportes en tiempo real e indicadores clave al alcance de su mano.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="shield-check"></i>
+                        <h3>Cumplimiento Normativo</h3>
+                        <p>Auditoría completa y trazabilidad de cada transacción para cumplir con requisitos legales.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="scale"></i>
+                        <h3>Escalabilidad Garantizada</h3>
+                        <p>La plataforma crece con su negocio, sin necesidad de migraciones complejas.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i data-lucide="smartphone"></i>
+                        <h3>Acceso Multiplataforma</h3>
+                        <p>Disponible en web, dispositivos móviles y tabletas, con experiencia de usuario consistente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Casos de Uso por Sector -->
+        <section class="nebula-sectores">
+            <div class="container">
+                <h2 class="section-title">Nebula en <span>Acción</span></h2>
+                <div class="sectores-grid">
+                    <div class="sector-card sector-privado">
+                        <i data-lucide="building"></i>
+                        <h3>Sector Privado</h3>
+                        <ul>
+                            <li><strong>Manufactura:</strong> Control de producción, costos y cadena de suministro.</li>
+                            <li><strong>Retail:</strong> Gestión multicanal, inventarios y promociones.</li>
+                            <li><strong>Servicios:</strong> Facturación recurrente, proyectos y CRM integrado.</li>
+                            <li><strong>Construcción:</strong> Control de obras, presupuestos y subcontratistas.</li>
+                        </ul>
+                    </div>
+                    <div class="sector-card sector-publico">
+                        <i data-lucide="landmark"></i>
+                        <h3>Sector Público</h3>
+                        <ul>
+                            <li><strong>Presupuesto:</strong> Ejecución presupuestal y control de gasto público.</li>
+                            <li><strong>Contratación:</strong> Gestión de procesos de contratación estatal.</li>
+                            <li><strong>Tesorería:</strong> Administración de recursos y pagos a proveedores.</li>
+                            <li><strong>Transparencia:</strong> Portales de datos abiertos y rendición de cuentas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparativa competitiva -->
+        <section class="nebula-comparativa">
+            <div class="container">
+                <h2 class="section-title">¿Por qué <span>Nebula ERP</span>?</h2>
+                <div class="comparativa-grid">
+                    <div class="comparativa-item">
+                        <i data-lucide="check-circle"></i>
+                        <div>
+                            <h3>Arquitectura Moderna</h3>
+                            <p>Construido sobre SIMAPPE, no hereda deuda técnica de sistemas legacy.</p>
+                        </div>
+                    </div>
+                    <div class="comparativa-item">
+                        <i data-lucide="check-circle"></i>
+                        <div>
+                            <h3>IA Integrada</h3>
+                            <p>A diferencia de otros ERPs, Nebula incorpora inteligencia artificial en el núcleo.</p>
+                        </div>
+                    </div>
+                    <div class="comparativa-item">
+                        <i data-lucide="check-circle"></i>
+                        <div>
+                            <h3>Multi-Tenancy Nativa</h3>
+                            <p>Diseñado desde cero para servir a múltiples clientes con aislamiento total.</p>
+                        </div>
+                    </div>
+                    <div class="comparativa-item">
+                        <i data-lucide="check-circle"></i>
+                        <div>
+                            <h3>Personalizable</h3>
+                            <p>Sin necesidad de costosos desarrollos, la plataforma se adapta a sus procesos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section id="contacto" class="nebula-cta-final">
+            <div class="container">
+                <h2>¿Listo para transformar la gestión de su empresa?</h2>
+                <p>Solicite una demo personalizada y descubra cómo Nebula ERP puede optimizar sus operaciones.</p>
+                <a href="contacto.html" class="btn-solicitar">Solicitar información técnica →</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Céntrica" class="footer-logo-img">
+                </div>
+                <p class="footer-description">
+                    Impulsamos tu éxito a través de la innovación inteligente.
+                </p>
+                <div class="footer-contact-info">
+                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="phone"></i> +57 300 205 7325</p>
+                    <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Sobre nosotros</a></li>
+                    <li><a href="terminos.html">Términos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="politicas.html">Políticas internas</a></li>
+                    <li><a href="terservicios.html">Términos de Servicio</a></li>
+                    <li><a href="legal.html">Aviso Legal</a></li>
+                    <li><a href="cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Mantente informado</h4>
+                <p class="footer-newsletter-text">
+                    Recibe novedades sobre nuestras soluciones.
+                </p>
+                <form class="footer-newsletter-form" id="newsletterForm2">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse →</button>
+                </form>
+                <p class="footer-unsubscribe">
+                    Puedes darte de baja en cualquier momento.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
+                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Script específico para Nebula -->
+    <script>
+        // Inicializar Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterFormNebula');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                console.log('Newsletter suscripción:', email);
+                alert('¡Gracias por suscribirte!');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
