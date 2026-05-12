@@ -4348,3 +4348,483 @@ body.dark-mode .comparativa-item {
         font-size: 1.5rem;
     }
 }
+/* ========== PÁGINA SICOVI ========== */
+
+/* Hero */
+.sicovi-hero {
+    position: relative;
+    padding: 5rem 2rem;
+    background-image: url('https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=1600');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+}
+
+.sicovi-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.sicovi-hero-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.sicovi-hero-icon i {
+    width: 80px;
+    height: 80px;
+    color: #4a9eff;
+    margin-bottom: 1rem;
+}
+
+.sicovi-hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.sicovi-hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+}
+
+.sicovi-hero-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+}
+
+.sicovi-hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ¿Qué es SICOVI? */
+.sicovi-que-es {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.que-es-pilares {
+    margin-top: 2rem;
+}
+
+.pilar {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+body.dark-mode .pilar {
+    background: #1e1e2e;
+}
+
+.pilar i {
+    width: 40px;
+    height: 40px;
+    color: #0e58a9;
+    flex-shrink: 0;
+}
+
+.pilar h3 {
+    margin-bottom: 0.25rem;
+    color: #0e58a9;
+}
+
+.pilar p {
+    color: #555;
+}
+
+body.dark-mode .pilar p {
+    color: #ccc;
+}
+
+.que-es-icon {
+    width: 300px;
+    height: 300px;
+    color: #0e58a9;
+}
+
+/* Valor */
+.sicovi-valor {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .sicovi-valor {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.valor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.valor-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .valor-card {
+    background: #1e1e2e;
+}
+
+.valor-card:hover {
+    transform: translateY(-5px);
+}
+
+.valor-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Oferta Técnica */
+.sicovi-oferta {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.oferta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.oferta-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+body.dark-mode .oferta-card {
+    background: #1e1e2e;
+}
+
+.oferta-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Enfoque Sectorial */
+.sicovi-enfoque {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .sicovi-enfoque {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.enfoque-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.enfoque-card {
+    padding: 2rem;
+    border-radius: 20px;
+    background: white;
+}
+
+body.dark-mode .enfoque-card {
+    background: #1e1e2e;
+}
+
+.enfoque-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+.enfoque-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.enfoque-card li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.enfoque-card li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #0e58a9;
+}
+
+/* Multi-tenencia */
+.sicovi-multitenant {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.multitenant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.multitenant-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+body.dark-mode .multitenant-card {
+    background: #1e1e2e;
+}
+
+.multitenant-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Aceleración */
+.sicovi-aceleracion {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .sicovi-aceleracion {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.aceleracion-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0e58a9;
+    margin-bottom: 2rem;
+}
+
+.aceleracion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.aceleracion-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+}
+
+body.dark-mode .aceleracion-card {
+    background: #1e1e2e;
+}
+
+.aceleracion-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+/* Resultados */
+.sicovi-resultados {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.resultados-destacado {
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    border-radius: 30px;
+    padding: 2rem;
+    color: white;
+}
+
+.resultados-destacado h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.resultados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.resultado-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(4px);
+}
+
+.resultado-card i {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+}
+
+.resultado-card h4 {
+    margin-bottom: 0.5rem;
+}
+
+/* Otros servicios */
+.sicovi-otros-servicios {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+body.dark-mode .sicovi-otros-servicios {
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+.otros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.otro-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .otro-card {
+    background: #1e1e2e;
+}
+
+.otro-card:hover {
+    transform: translateY(-5px);
+}
+
+.otro-card i {
+    width: 48px;
+    height: 48px;
+    color: #0e58a9;
+    margin-bottom: 1rem;
+}
+
+.otro-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #0e58a9;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.otro-link:hover {
+    text-decoration: underline;
+}
+
+/* CTA Final */
+.sicovi-cta-final {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+    color: white;
+}
+
+.sicovi-cta-final h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.sicovi-cta-final p {
+    margin-bottom: 2rem;
+}
+
+.sicovi-cta-final .btn-solicitar {
+    background: white;
+    color: #0e58a9;
+}
+
+.sicovi-cta-final .btn-solicitar:hover {
+    background: #f0f2f5;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sicovi-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .sicovi-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .que-es-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .pilar {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pilar i {
+        margin: 0 auto;
+    }
+    
+    .enfoque-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .resultados-destacado h3 {
+        font-size: 1.3rem;
+    }
+    
+    .resultados-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sicovi-cta-final h2 {
+        font-size: 1.5rem;
+    }
+}
