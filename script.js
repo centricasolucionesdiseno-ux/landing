@@ -1,11 +1,6 @@
-// ============================================
-// 1. ESPERAR A QUE EL DOM ESTÉ LISTO
-// ============================================
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ============================================
     // 2. INICIALIZACIÓN DE LUCIDE
-    // ============================================
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
         lucide.createIcons();
         console.log('✅ Lucide inicializado');
@@ -13,9 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('⚠️ Lucide no está disponible');
     }
 
-    // ============================================
-    // 3. MODO OSCURO (CORREGIDO)
-    // ============================================
+    // 3. MODO OSCURO
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
@@ -74,9 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ============================================
     // 4. SUBMENÚS CON HOVER
-    // ============================================
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dropdown => {
         const submenu = dropdown.querySelector('.submenu');
@@ -95,9 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ============================================
     // 5. SLIDER AUTOMÁTICO
-    // ============================================
     const track = document.getElementById('sliderTrack');
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.getElementById('prevBtn');
@@ -198,9 +187,164 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('⚠️ Slider no encontrado o elementos faltantes');
     }
 
-    // ============================================
+    // ========== CARRUSEL UNIFICADO (NUEVO) ==========
+    class Carousel {
+        constructor(element, options = {}) {
+            this.carousel = element;
+            this.track = this.carousel.querySelector('.carousel-track');
+            this.slides = Array.from(this.track.children);
+            this.prevBtn = this.carousel.querySelector('.carousel-prev');
+            this.nextBtn = this.carousel.querySelector('.carousel-next');
+            this.dotsContainer = this.carousel.querySelector('.carousel-dots');
+            this.autoPlay = options.autoPlay || false;
+            this.intervalTime = options.intervalTime || 5000;
+            this.currentIndex = 0;
+            this.slideWidth = 0;
+            this.autoPlayInterval = null;
+            
+            this.init();
+        }
+        
+        init() {
+            if (this.slides.length === 0) return;
+            
+            // Configurar el ancho de los slides
+            this.setSlideWidth();
+            
+            // Crear dots
+            if (this.dotsContainer) {
+                this.createDots();
+            }
+            
+            // Event listeners
+            if (this.prevBtn) {
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
+            }
+            if (this.nextBtn) {
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+            }
+            
+            // Auto-play
+            if (this.autoPlay) {
+                this.startAutoPlay();
+                this.carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
+                this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+            }
+            
+            // Responsive
+            window.addEventListener('resize', () => {
+                this.setSlideWidth();
+                this.goToSlide(this.currentIndex);
+            });
+            
+            // Ir al primer slide
+            this.goToSlide(0);
+            
+            // Re-inicializar Lucide por si hay nuevos íconos
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+        }
+        
+        setSlideWidth() {
+            const isMultiple = this.carousel.classList.contains('carousel-multiple');
+            if (isMultiple) {
+                const container = this.carousel.querySelector('.carousel-track-container');
+                if (container) {
+                    const containerWidth = container.getBoundingClientRect().width;
+                    const slidesPerView = window.innerWidth > 968 ? 3 : (window.innerWidth > 768 ? 2 : 1);
+                    this.slideWidth = containerWidth / slidesPerView;
+                }
+            } else {
+                if (this.slides[0]) {
+                    this.slideWidth = this.slides[0].getBoundingClientRect().width;
+                }
+            }
+            
+            this.slides.forEach(slide => {
+                slide.style.minWidth = `${this.slideWidth}px`;
+            });
+        }
+        
+        createDots() {
+            this.dotsContainer.innerHTML = '';
+            this.slides.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                dot.addEventListener('click', () => this.goToSlide(index));
+                this.dotsContainer.appendChild(dot);
+            });
+        }
+        
+        updateDots() {
+            if (!this.dotsContainer) return;
+            const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                if (index === this.currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        goToSlide(index) {
+            if (index < 0) {
+                index = this.slides.length - 1;
+            } else if (index >= this.slides.length) {
+                index = 0;
+            }
+            
+            this.currentIndex = index;
+            const moveAmount = -this.slideWidth * this.currentIndex;
+            this.track.style.transform = `translateX(${moveAmount}px)`;
+            
+            if (this.dotsContainer) {
+                this.updateDots();
+            }
+            
+            // Agregar animación al slide activo
+            this.slides.forEach((slide, i) => {
+                if (i === this.currentIndex) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+        }
+        
+        nextSlide() {
+            this.goToSlide(this.currentIndex + 1);
+        }
+        
+        prevSlide() {
+            this.goToSlide(this.currentIndex - 1);
+        }
+        
+        startAutoPlay() {
+            if (this.autoPlay) {
+                this.autoPlayInterval = setInterval(() => this.nextSlide(), this.intervalTime);
+            }
+        }
+        
+        stopAutoPlay() {
+            if (this.autoPlayInterval) {
+                clearInterval(this.autoPlayInterval);
+                this.autoPlayInterval = null;
+            }
+        }
+    }
+
+    // Inicializar todos los carruseles
+    const carousels = document.querySelectorAll('.carousel');
+    carousels.forEach(carousel => {
+        const autoPlay = carousel.hasAttribute('data-autoplay');
+        const intervalTime = parseInt(carousel.getAttribute('data-interval')) || 5000;
+        new Carousel(carousel, { autoPlay, intervalTime });
+    });
+    // ========== FIN CARRUSEL UNIFICADO ==========
+
     // 6. CERRAR SUBMENÚS AL HACER CLIC FUERA
-    // ============================================
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.dropdown')) {
             document.querySelectorAll('.submenu').forEach(submenu => {
@@ -209,9 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ============================================
     // 7. EMAILJS - FORMULARIO DE CONTACTO
-    // ============================================
     if (typeof emailjs !== 'undefined' && emailjs.init) {
         emailjs.init("vS5vQ1DCKUxmKVffT");
         console.log('✅ EmailJS inicializado correctamente');
@@ -283,9 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('❌ EmailJS no está cargado. Verifica que la librería esté en el HTML.');
     }
 
-    // ============================================
     // 8. NEWSLETTER FORM
-    // ============================================
     const newsletterForm = document.getElementById('newsletterForm');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(e) {
@@ -298,9 +438,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // ============================================
     // 9. SCROLL SUAVE PARA PÁGINAS LEGALES
-    // ============================================
     const legalLinks = document.querySelectorAll('.legal-sidebar a');
     const sections = document.querySelectorAll('.legal-content section');
 
