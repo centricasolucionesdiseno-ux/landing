@@ -135,12 +135,26 @@
             color: #1a1a2e;
         }
         
-        /* Imagen en el hero */
+        /* Hero icon image */
         .hero-icon img {
             width: 80px;
             height: 80px;
             object-fit: contain;
             margin-bottom: 1rem;
+            border-radius: 16px;
+        }
+        
+        /* Illustration image */
+        .illustration-img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        body.dark-mode .illustration-img {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
     </style>
 </head>
@@ -178,13 +192,13 @@
     <main>
         <!-- Hero con Video -->
         <section class="hero-video">
-            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/calidad-bg.jpg">
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600">
                 <source src="https://cdn.pixabay.com/video/2023/06/20/169164-838278688_large.mp4" type="video/mp4">
             </video>
             <div class="hero-video-overlay"></div>
             <div class="hero-container">
                 <div class="hero-icon">
-                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Iconos/calidad-icon.png" alt="Calidad" onerror="this.src='https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoColor.png'">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&h=200&fit=crop" alt="Calidad">
                 </div>
                 <h1 class="hero-title">Evaluaciones de <span>Calidad</span></h1>
                 <p class="hero-subtitle">Aseguramiento y mejora continua del software</p>
@@ -229,8 +243,7 @@
                         </div>
                     </div>
                     <div style="display: flex; justify-content: center; align-items: center;">
-                        <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Ilustraciones/calidad-ilustracion.png" alt="Calidad Ilustración" style="width: 100%; max-width: 300px; height: auto;" onerror="this.style.display='none'">
-                        <i data-lucide="award" style="width: 200px; height: 200px; color: #0e58a9; display: none;" class="fallback-icon"></i>
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=400&fit=crop" alt="Calidad Ilustración" class="illustration-img">
                     </div>
                 </div>
             </div>
@@ -555,31 +568,6 @@
             </div>
         </section>
 
-        <!-- Resultados Medibles -->
-        <section class="stats-section bg-primary">
-            <div class="container">
-                <h2 class="section-title" style="color: white;">Resultados <span style="color: #4a9eff;">Medibles</span></h2>
-                <div class="stats-grid">
-                    <div class="stat-item" style="text-align: center; color: white;">
-                        <span class="stat-number">-85%</span>
-                        <span class="stat-label">Reducción de defectos en producción</span>
-                    </div>
-                    <div class="stat-item" style="text-align: center; color: white;">
-                        <span class="stat-number">-60%</span>
-                        <span class="stat-label">Menor tiempo en ciclos de prueba</span>
-                    </div>
-                    <div class="stat-item" style="text-align: center; color: white;">
-                        <span class="stat-number">+95%</span>
-                        <span class="stat-label">Cobertura de pruebas críticas</span>
-                    </div>
-                    <div class="stat-item" style="text-align: center; color: white;">
-                        <span class="stat-number">+40%</span>
-                        <span class="stat-label">Incremento en satisfacción de usuarios</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- CTA Final -->
         <section id="contacto" class="section bg-primary" style="text-align: center;">
             <div class="container">
@@ -601,7 +589,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p><i data-lucide="mail"></i> gerenciacomercial@centricasoluciones.com</p>
+                    <p>gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
