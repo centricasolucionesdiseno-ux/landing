@@ -16,7 +16,7 @@
             </div>
         </div>
 
-       <nav>
+        <nav>
             <ul class="menu">
                 <li><a href="index.html">Sobre nosotros</a></li>
                 <li class="dropdown">
@@ -40,138 +40,138 @@
     </header>
 
     <main>
-        <!-- Hero -->
-        <section class="calidad-hero">
-            <div class="calidad-hero-overlay"></div>
-            <div class="calidad-hero-container">
-                <div class="calidad-hero-icon">
+        <!-- Hero Estático con imagen de fondo -->
+        <section class="hero-static" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600');">
+            <div class="hero-static-overlay"></div>
+            <div class="hero-container">
+                <div class="hero-icon">
                     <i data-lucide="clipboard-check"></i>
                 </div>
-                <h1 class="calidad-hero-title">Evaluaciones de <span>Calidad</span></h1>
-                <p class="calidad-hero-subtitle">Aseguramiento y mejora continua del software</p>
-                <p class="calidad-hero-description">Auditorías y mejoras de calidad de software, asegurando estándares de rendimiento, seguridad y mantenibilidad para garantizar la excelencia en cada entrega.</p>
-                <div class="calidad-hero-buttons">
-                    <a href="#contacto" class="btn-solicitar">Solicitar auditoría →</a>
-                    <a href="#servicios-q" class="btn-secundario">Ver servicios →</a>
+                <h1 class="hero-title">Evaluaciones de <span>Calidad</span></h1>
+                <p class="hero-subtitle">Aseguramiento y mejora continua del software</p>
+                <p class="hero-description">Auditorías y mejoras de calidad de software, asegurando estándares de rendimiento, seguridad y mantenibilidad para garantizar la excelencia en cada entrega.</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary">Solicitar auditoría →</a>
+                    <a href="#servicios-q" class="btn btn-secondary">Ver servicios →</a>
                 </div>
             </div>
         </section>
 
         <!-- ¿Qué son las Evaluaciones de Calidad? -->
-        <section class="calidad-que-es">
+        <section class="section">
             <div class="container">
-                <div class="que-es-grid">
-                    <div class="que-es-content">
+                <div class="grid-2">
+                    <div>
                         <h2 class="section-title">¿Qué son las <span>Evaluaciones de Calidad</span>?</h2>
                         <p>Es un conjunto de servicios especializados en el aseguramiento de la calidad del software, que incluye pruebas sistemáticas, auditorías técnicas y procesos de mejora continua para garantizar que sus aplicaciones cumplan con los más altos estándares de la industria.</p>
-                        <p>Aplicamos metodologías reconocidas internacionalmente (ISTQB, ISO 25000) y buenas prácticas de ingeniería de software para identificar y corregir riesgos antes de que impacten su operación.</p>
-                        <div class="que-es-pilares">
-                            <div class="pilar">
-                                <i data-lucide="check-circle"></i>
+                        <p style="margin-top: 1rem;">Aplicamos metodologías reconocidas internacionalmente (ISTQB, ISO 25000) y buenas prácticas de ingeniería de software para identificar y corregir riesgos antes de que impacten su operación.</p>
+                        <div style="margin-top: 2rem;">
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                                <i data-lucide="check-circle" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
-                                    <h3>Prevención</h3>
+                                    <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Prevención</h3>
                                     <p>Identifique y corrija defectos tempranamente.</p>
                                 </div>
                             </div>
-                            <div class="pilar">
-                                <i data-lucide="bar-chart-3"></i>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                                <i data-lucide="bar-chart-3" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
-                                    <h3>Medición</h3>
+                                    <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Medición</h3>
                                     <p>Métricas objetivas de calidad de software.</p>
                                 </div>
                             </div>
-                            <div class="pilar">
-                                <i data-lucide="trending-up"></i>
+                            <div style="display: flex; gap: 1rem;">
+                                <i data-lucide="trending-up" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
-                                    <h3>Mejora Continua</h3>
+                                    <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Mejora Continua</h3>
                                     <p>Optimización constante de procesos y productos.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="que-es-image">
-                        <i data-lucide="award" class="que-es-icon"></i>
+                    <div style="display: flex; justify-content: center; align-items: center;">
+                        <i data-lucide="award" style="width: 300px; height: 300px; color: #0e58a9;"></i>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Servicios de Calidad -->
-        <section id="servicios-q" class="calidad-servicios">
+        <!-- Servicios de Calidad (Tarjetas tipo card-float) -->
+        <section id="servicios-q" class="section bg-light">
             <div class="container">
                 <h2 class="section-title">Servicios de <span>Calidad</span></h2>
-                <div class="servicios-grid">
-                    <div class="servicio-card">
-                        <i data-lucide="bug"></i>
-                        <h3>Pruebas Funcionales</h3>
-                        <p>Validación de requisitos, pruebas de caja negra, pruebas de regresión y aceptación para garantizar que el software funciona según lo esperado.</p>
+                <div class="grid-auto">
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="bug"></i></div>
+                        <h3 class="card-title">Pruebas Funcionales</h3>
+                        <p class="card-text">Validación de requisitos, pruebas de caja negra, pruebas de regresión y aceptación para garantizar que el software funciona según lo esperado.</p>
                     </div>
-                    <div class="servicio-card">
-                        <i data-lucide="gauge"></i>
-                        <h3>Pruebas de Rendimiento</h3>
-                        <p>Pruebas de carga, estrés y resistencia para asegurar que su aplicación responde adecuadamente bajo condiciones extremas de uso.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="gauge"></i></div>
+                        <h3 class="card-title">Pruebas de Rendimiento</h3>
+                        <p class="card-text">Pruebas de carga, estrés y resistencia para asegurar que su aplicación responde adecuadamente bajo condiciones extremas de uso.</p>
                     </div>
-                    <div class="servicio-card">
-                        <i data-lucide="shield"></i>
-                        <h3>Pruebas de Seguridad</h3>
-                        <p>Análisis de vulnerabilidades, pruebas de penetración y auditorías de seguridad para proteger sus datos y sistemas.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="shield"></i></div>
+                        <h3 class="card-title">Pruebas de Seguridad</h3>
+                        <p class="card-text">Análisis de vulnerabilidades, pruebas de penetración y auditorías de seguridad para proteger sus datos y sistemas.</p>
                     </div>
-                    <div class="servicio-card">
-                        <i data-lucide="smartphone"></i>
-                        <h3>Pruebas de Usabilidad</h3>
-                        <p>Evaluación de experiencia de usuario, accesibilidad y satisfacción para garantizar interfaces intuitivas y efectivas.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="smartphone"></i></div>
+                        <h3 class="card-title">Pruebas de Usabilidad</h3>
+                        <p class="card-text">Evaluación de experiencia de usuario, accesibilidad y satisfacción para garantizar interfaces intuitivas y efectivas.</p>
                     </div>
-                    <div class="servicio-card">
-                        <i data-lucide="git-branch"></i>
-                        <h3>Automatización de Pruebas</h3>
-                        <p>Implementación de frameworks de automatización (Selenium, Cypress, JUnit) para pruebas continuas y regresión eficiente.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="git-branch"></i></div>
+                        <h3 class="card-title">Automatización de Pruebas</h3>
+                        <p class="card-text">Implementación de frameworks de automatización (Selenium, Cypress, JUnit) para pruebas continuas y regresión eficiente.</p>
                     </div>
-                    <div class="servicio-card">
-                        <i data-lucide="file-search"></i>
-                        <h3>Auditoría de Código</h3>
-                        <p>Revisión sistemática de código fuente para identificar malas prácticas, deuda técnica y oportunidades de mejora.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="file-search"></i></div>
+                        <h3 class="card-title">Auditoría de Código</h3>
+                        <p class="card-text">Revisión sistemática de código fuente para identificar malas prácticas, deuda técnica y oportunidades de mejora.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Metodología de Calidad -->
-        <section class="calidad-metodologia">
+        <section class="section">
             <div class="container">
                 <h2 class="section-title">Nuestra <span>Metodología</span></h2>
-                <div class="metodologia-grid">
-                    <div class="metodologia-paso">
-                        <div class="paso-numero">1</div>
-                        <div class="paso-content">
-                            <h3>Análisis de Requisitos</h3>
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">1</div>
+                        <div>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Análisis de Requisitos</h3>
                             <p>Comprendemos las necesidades del negocio y definimos la estrategia de calidad.</p>
                         </div>
                     </div>
-                    <div class="metodologia-paso">
-                        <div class="paso-numero">2</div>
-                        <div class="paso-content">
-                            <h3>Diseño de Casos de Prueba</h3>
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">2</div>
+                        <div>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Diseño de Casos de Prueba</h3>
                             <p>Creamos escenarios de prueba basados en criterios de aceptación y riesgos.</p>
                         </div>
                     </div>
-                    <div class="metodologia-paso">
-                        <div class="paso-numero">3</div>
-                        <div class="paso-content">
-                            <h3>Ejecución de Pruebas</h3>
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">3</div>
+                        <div>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Ejecución de Pruebas</h3>
                             <p>Realizamos pruebas manuales y automatizadas documentando cada resultado.</p>
                         </div>
                     </div>
-                    <div class="metodologia-paso">
-                        <div class="paso-numero">4</div>
-                        <div class="paso-content">
-                            <h3>Reporte y Análisis</h3>
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;">
+                        <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">4</div>
+                        <div>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Reporte y Análisis</h3>
                             <p>Entregamos informes detallados con métricas, hallazgos y recomendaciones.</p>
                         </div>
                     </div>
-                    <div class="metodologia-paso">
-                        <div class="paso-numero">5</div>
-                        <div class="paso-content">
-                            <h3>Seguimiento y Mejora</h3>
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                        <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">5</div>
+                        <div>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Seguimiento y Mejora</h3>
                             <p>Acompañamos la corrección de defectos y validamos las soluciones implementadas.</p>
                         </div>
                     </div>
@@ -179,36 +179,36 @@
             </div>
         </section>
 
-        <!-- Estándares y Certificaciones -->
-        <section class="calidad-estandares">
+        <!-- Estándares y Certificaciones (Tarjetas tipo card-highlight) -->
+        <section class="section bg-light">
             <div class="container">
                 <h2 class="section-title">Estándares y <span>Certificaciones</span></h2>
-                <div class="estandares-grid">
-                    <div class="estandar-card">
-                        <i data-lucide="book-open"></i>
+                <div class="grid-2">
+                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <i data-lucide="book-open" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                         <div>
-                            <h3>ISO 25000</h3>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">ISO 25000</h3>
                             <p>Estándar internacional para la evaluación de la calidad del producto software.</p>
                         </div>
                     </div>
-                    <div class="estandar-card">
-                        <i data-lucide="book-open"></i>
+                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <i data-lucide="book-open" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                         <div>
-                            <h3>ISTQB</h3>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">ISTQB</h3>
                             <p>Certificación internacional en pruebas de software.</p>
                         </div>
                     </div>
-                    <div class="estandar-card">
-                        <i data-lucide="book-open"></i>
+                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <i data-lucide="book-open" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                         <div>
-                            <h3>ISO 27001</h3>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">ISO 27001</h3>
                             <p>Seguridad de la información aplicada a pruebas.</p>
                         </div>
                     </div>
-                    <div class="estandar-card">
-                        <i data-lucide="book-open"></i>
+                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;">
+                        <i data-lucide="book-open" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                         <div>
-                            <h3>OWASP</h3>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">OWASP</h3>
                             <p>Estándares de seguridad en aplicaciones web.</p>
                         </div>
                     </div>
@@ -216,162 +216,150 @@
             </div>
         </section>
 
-        <!-- Beneficios -->
-        <section class="calidad-beneficios">
+        <!-- Beneficios (Tarjetas tipo card-float) -->
+        <section class="section">
             <div class="container">
                 <h2 class="section-title">Beneficios para <span>su Organización</span></h2>
-                <div class="beneficios-grid">
-                    <div class="beneficio-card">
-                        <i data-lucide="check-circle"></i>
-                        <h3>Reducción de Defectos</h3>
-                        <p>Hasta un 80% menos de errores en producción.</p>
+                <div class="grid-auto">
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="check-circle"></i></div>
+                        <h3 class="card-title">Reducción de Defectos</h3>
+                        <p class="card-text">Hasta un 80% menos de errores en producción.</p>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="clock"></i>
-                        <h3>Time-to-Market Acelerado</h3>
-                        <p>Entregas más rápidas con calidad garantizada.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="clock"></i></div>
+                        <h3 class="card-title">Time-to-Market Acelerado</h3>
+                        <p class="card-text">Entregas más rápidas con calidad garantizada.</p>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="dollar-sign"></i>
-                        <h3>Ahorro Significativo</h3>
-                        <p>Los defectos tempranos cuestan hasta 100 veces menos.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="dollar-sign"></i></div>
+                        <h3 class="card-title">Ahorro Significativo</h3>
+                        <p class="card-text">Los defectos tempranos cuestan hasta 100 veces menos.</p>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="users"></i>
-                        <h3>Satisfacción del Usuario</h3>
-                        <p>Productos confiables que generan confianza.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="users"></i></div>
+                        <h3 class="card-title">Satisfacción del Usuario</h3>
+                        <p class="card-text">Productos confiables que generan confianza.</p>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="shield"></i>
-                        <h3>Mitigación de Riesgos</h3>
-                        <p>Identifique vulnerabilidades antes de que impacten.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="shield"></i></div>
+                        <h3 class="card-title">Mitigación de Riesgos</h3>
+                        <p class="card-text">Identifique vulnerabilidades antes de que impacten.</p>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="trending-up"></i>
-                        <h3>Mejora Continua</h3>
-                        <p>Procesos optimizados basados en métricas objetivas.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="trending-up"></i></div>
+                        <h3 class="card-title">Mejora Continua</h3>
+                        <p class="card-text">Procesos optimizados basados en métricas objetivas.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Herramientas y Tecnologías -->
-        <section class="calidad-herramientas">
+        <!-- Herramientas y Tecnologías (Tarjetas tipo card-highlight) -->
+        <section class="section bg-light">
             <div class="container">
                 <h2 class="section-title">Herramientas que <span>Utilizamos</span></h2>
-                <div class="herramientas-grid">
-                    <div class="herramienta-card">
-                        <i data-lucide="code-2"></i>
-                        <h3>Automatización</h3>
-                        <p>Selenium, Cypress, Playwright, JUnit, TestNG</p>
+                <div class="grid-auto">
+                    <div class="card card-highlight" style="text-align: center;">
+                        <div class="card-icon"><i data-lucide="code-2"></i></div>
+                        <h3 class="card-title">Automatización</h3>
+                        <p class="card-text">Selenium, Cypress, Playwright, JUnit, TestNG</p>
                     </div>
-                    <div class="herramienta-card">
-                        <i data-lucide="gauge"></i>
-                        <h3>Rendimiento</h3>
-                        <p>JMeter, Gatling, k6, LoadRunner</p>
+                    <div class="card card-highlight" style="text-align: center;">
+                        <div class="card-icon"><i data-lucide="gauge"></i></div>
+                        <h3 class="card-title">Rendimiento</h3>
+                        <p class="card-text">JMeter, Gatling, k6, LoadRunner</p>
                     </div>
-                    <div class="herramienta-card">
-                        <i data-lucide="shield"></i>
-                        <h3>Seguridad</h3>
-                        <p>Burp Suite, OWASP ZAP, SonarQube</p>
+                    <div class="card card-highlight" style="text-align: center;">
+                        <div class="card-icon"><i data-lucide="shield"></i></div>
+                        <h3 class="card-title">Seguridad</h3>
+                        <p class="card-text">Burp Suite, OWASP ZAP, SonarQube</p>
                     </div>
-                    <div class="herramienta-card">
-                        <i data-lucide="clipboard-list"></i>
-                        <h3>Gestión</h3>
-                        <p>JIRA, TestRail, Xray, Zephyr</p>
+                    <div class="card card-highlight" style="text-align: center;">
+                        <div class="card-icon"><i data-lucide="clipboard-list"></i></div>
+                        <h3 class="card-title">Gestión</h3>
+                        <p class="card-text">JIRA, TestRail, Xray, Zephyr</p>
                     </div>
-                    <div class="herramienta-card">
-                        <i data-lucide="git-branch"></i>
-                        <h3>CI/CD</h3>
-                        <p>Jenkins, GitHub Actions, GitLab CI</p>
+                    <div class="card card-highlight" style="text-align: center;">
+                        <div class="card-icon"><i data-lucide="git-branch"></i></div>
+                        <h3 class="card-title">CI/CD</h3>
+                        <p class="card-text">Jenkins, GitHub Actions, GitLab CI</p>
                     </div>
-                    <div class="herramienta-card">
-                        <i data-lucide="smartphone"></i>
-                        <h3>Móvil</h3>
-                        <p>Appium, Detox, XCUITest, Espresso</p>
+                    <div class="card card-highlight" style="text-align: center;">
+                        <div class="card-icon"><i data-lucide="smartphone"></i></div>
+                        <h3 class="card-title">Móvil</h3>
+                        <p class="card-text">Appium, Detox, XCUITest, Espresso</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Tipos de Evaluación -->
-        <section class="calidad-tipos">
+        <!-- Tipos de Evaluación (Tarjetas tipo card-float) -->
+        <section class="section">
             <div class="container">
                 <h2 class="section-title">Tipos de <span>Evaluación</span></h2>
-                <div class="tipos-grid">
-                    <div class="tipo-card">
-                        <i data-lucide="search"></i>
-                        <h3>Diagnóstico Rápido</h3>
-                        <p>Evaluación exprés de 2-3 días para identificar riesgos críticos en su software.</p>
+                <div class="grid-auto">
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="search"></i></div>
+                        <h3 class="card-title">Diagnóstico Rápido</h3>
+                        <p class="card-text">Evaluación exprés de 2-3 días para identificar riesgos críticos en su software.</p>
                     </div>
-                    <div class="tipo-card">
-                        <i data-lucide="folder-check"></i>
-                        <h3>Auditoría Completa</h3>
-                        <p>Análisis exhaustivo de calidad, seguridad y rendimiento (4-6 semanas).</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="folder-check"></i></div>
+                        <h3 class="card-title">Auditoría Completa</h3>
+                        <p class="card-text">Análisis exhaustivo de calidad, seguridad y rendimiento (4-6 semanas).</p>
                     </div>
-                    <div class="tipo-card">
-                        <i data-lucide="repeat"></i>
-                        <h3>QA Continuo</h3>
-                        <p>Servicio de aseguramiento de calidad integrado a su ciclo de desarrollo.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="repeat"></i></div>
+                        <h3 class="card-title">QA Continuo</h3>
+                        <p class="card-text">Servicio de aseguramiento de calidad integrado a su ciclo de desarrollo.</p>
                     </div>
-                    <div class="tipo-card">
-                        <i data-lucide="graduation-cap"></i>
-                        <h3>Capacitación</h3>
-                        <p>Entrenamiento a su equipo interno en prácticas de pruebas de software.</p>
+                    <div class="card card-float">
+                        <div class="card-icon"><i data-lucide="graduation-cap"></i></div>
+                        <h3 class="card-title">Capacitación</h3>
+                        <p class="card-text">Entrenamiento a su equipo interno en prácticas de pruebas de software.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonios / Resultados -->
-        <section class="calidad-resultados">
+        <!-- Resultados Medibles (Estilo stats) -->
+        <section class="stats-section bg-primary">
             <div class="container">
-                <h2 class="section-title">Resultados <span>Medibles</span></h2>
-                <div class="resultados-grid">
-                    <div class="resultado-card">
-                        <i data-lucide="bug"></i>
-                        <div>
-                            <h3>-85%</h3>
-                            <p>Reducción de defectos en producción</p>
-                        </div>
+                <h2 class="section-title" style="color: white;">Resultados <span style="color: #4a9eff;">Medibles</span></h2>
+                <div class="stats-grid">
+                    <div class="stat-item" style="text-align: center; color: white;">
+                        <span class="stat-number">-85%</span>
+                        <span class="stat-label">Reducción de defectos en producción</span>
                     </div>
-                    <div class="resultado-card">
-                        <i data-lucide="clock"></i>
-                        <div>
-                            <h3>-60%</h3>
-                            <p>Menor tiempo en ciclos de prueba</p>
-                        </div>
+                    <div class="stat-item" style="text-align: center; color: white;">
+                        <span class="stat-number">-60%</span>
+                        <span class="stat-label">Menor tiempo en ciclos de prueba</span>
                     </div>
-                    <div class="resultado-card">
-                        <i data-lucide="shield"></i>
-                        <div>
-                            <h3>+95%</h3>
-                            <p>Cobertura de pruebas críticas</p>
-                        </div>
+                    <div class="stat-item" style="text-align: center; color: white;">
+                        <span class="stat-number">+95%</span>
+                        <span class="stat-label">Cobertura de pruebas críticas</span>
                     </div>
-                    <div class="resultado-card">
-                        <i data-lucide="smile"></i>
-                        <div>
-                            <h3>+40%</h3>
-                            <p>Incremento en satisfacción de usuarios</p>
-                        </div>
+                    <div class="stat-item" style="text-align: center; color: white;">
+                        <span class="stat-number">+40%</span>
+                        <span class="stat-label">Incremento en satisfacción de usuarios</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Final -->
-        <section id="contacto" class="calidad-cta-final">
+        <section id="contacto" class="section bg-primary" style="text-align: center;">
             <div class="container">
-                <h2>¿Listo para asegurar la calidad de su software?</h2>
-                <p>Contáctenos y realicemos juntos una evaluación inicial sin compromiso.</p>
-                <a href="contacto.html" class="btn-solicitar">Solicitar auditoría →</a>
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;">¿Listo para asegurar la calidad de su software?</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: rgba(255,255,255,0.95);">Contáctenos y realicemos juntos una evaluación inicial sin compromiso.</p>
+                <a href="contacto.html" class="btn btn-primary" style="background: white; color: #0e58a9;">Solicitar auditoría →</a>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-        <footer class="footer">
+    <footer class="footer">
         <div class="footer-container">
             <div class="footer-col">
                 <div class="footer-logo">
@@ -412,7 +400,7 @@
                 <p class="footer-newsletter-text">
                     Recibe novedades sobre nuestras soluciones.
                 </p>
-                <form class="footer-newsletter-form" id="newsletterForm2">
+                <form class="footer-newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse →</button>
                 </form>
@@ -440,7 +428,7 @@
         }
         
         // Newsletter form
-        const newsletterForm = document.getElementById('newsletterFormCalidad');
+        const newsletterForm = document.getElementById('newsletterForm');
         if (newsletterForm) {
             newsletterForm.addEventListener('submit', function(e) {
                 e.preventDefault();
