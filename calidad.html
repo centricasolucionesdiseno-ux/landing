@@ -7,6 +7,142 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        /* Estilos adicionales para el footer y consistencia */
+        .footer-newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-newsletter-form input {
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-newsletter-form input:focus {
+            outline: none;
+            border-color: #4a9eff;
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .footer-newsletter-form input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .footer-newsletter-form button {
+            background: #0e58a9;
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Open Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-newsletter-form button:hover {
+            background: #1a6bc9;
+            transform: translateY(-2px);
+        }
+        
+        .footer-contact-info {
+            margin-top: 1rem;
+        }
+        
+        .footer-contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.85rem;
+            color: #bbb;
+        }
+        
+        .footer-contact-info i {
+            width: 18px;
+            height: 18px;
+            color: #4a9eff;
+        }
+        
+        .footer-unsubscribe {
+            font-size: 0.7rem;
+            color: #777;
+            margin-top: 1rem;
+        }
+        
+        .footer-unsubscribe-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-size: 0.75rem;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-unsubscribe-link:hover {
+            color: #4a9eff;
+        }
+        
+        /* Ajustes para el grid de flip */
+        .flip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Asegurar altura consistente para tarjetas flip */
+        .card-flip {
+            height: 100%;
+            min-height: 320px;
+            cursor: pointer;
+        }
+        
+        .card-flip-inner {
+            height: 100%;
+        }
+        
+        .card-flip-front,
+        .card-flip-back {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        /* Badge para las tarjetas del carrusel */
+        .badge {
+            display: inline-block;
+            background: #0e58a9;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        body.dark-mode .badge {
+            background: #4a9eff;
+            color: #1a1a2e;
+        }
+        
+        /* Imagen en el hero */
+        .hero-icon img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -40,16 +176,15 @@
     </header>
 
     <main>
-        <!-- Hero -->
+        <!-- Hero con Video -->
         <section class="hero-video">
-            <video class="hero-video-bg" autoplay loop muted playsinline>
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/calidad-bg.jpg">
                 <source src="https://cdn.pixabay.com/video/2023/06/20/169164-838278688_large.mp4" type="video/mp4">
             </video>
             <div class="hero-video-overlay"></div>
             <div class="hero-container">
                 <div class="hero-icon">
-                    <!-- Reemplazar ícono por imagen -->
-                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Iconos/calidad-icon.png" alt="Calidad" style="width: 80px; height: 80px; margin-bottom: 1rem;">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Iconos/calidad-icon.png" alt="Calidad" onerror="this.src='https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoColor.png'">
                 </div>
                 <h1 class="hero-title">Evaluaciones de <span>Calidad</span></h1>
                 <p class="hero-subtitle">Aseguramiento y mejora continua del software</p>
@@ -94,7 +229,8 @@
                         </div>
                     </div>
                     <div style="display: flex; justify-content: center; align-items: center;">
-                        <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Iconos/calidad-illustration.png" alt="Calidad Ilustración" style="width: 300px; height: auto; max-width: 100%;">
+                        <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Ilustraciones/calidad-ilustracion.png" alt="Calidad Ilustración" style="width: 100%; max-width: 300px; height: auto;" onerror="this.style.display='none'">
+                        <i data-lucide="award" style="width: 200px; height: 200px; color: #0e58a9; display: none;" class="fallback-icon"></i>
                     </div>
                 </div>
             </div>
@@ -224,7 +360,7 @@
         <section class="section">
             <div class="container">
                 <h2 class="section-title">Beneficios para <span>su Organización</span></h2>
-                <div class="flip-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="flip-grid">
                     
                     <!-- Tarjeta Flip 1 -->
                     <div class="card-flip">
@@ -232,7 +368,7 @@
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="check-circle"></i></div>
                                 <h3 class="card-title">Reducción de Defectos</h3>
-                                <p class="card-text">Haga clic para más información →</p>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
                             </div>
                             <div class="card-flip-back">
                                 <i data-lucide="trending-down" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
@@ -248,7 +384,7 @@
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="clock"></i></div>
                                 <h3 class="card-title">Time-to-Market Acelerado</h3>
-                                <p class="card-text">Haga clic para más información →</p>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
                             </div>
                             <div class="card-flip-back">
                                 <i data-lucide="rocket" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
@@ -264,7 +400,7 @@
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="dollar-sign"></i></div>
                                 <h3 class="card-title">Ahorro Significativo</h3>
-                                <p class="card-text">Haga clic para más información →</p>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
                             </div>
                             <div class="card-flip-back">
                                 <i data-lucide="piggy-bank" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
@@ -280,7 +416,7 @@
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="users"></i></div>
                                 <h3 class="card-title">Satisfacción del Usuario</h3>
-                                <p class="card-text">Haga clic para más información →</p>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
                             </div>
                             <div class="card-flip-back">
                                 <i data-lucide="smile" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
@@ -296,7 +432,7 @@
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="shield"></i></div>
                                 <h3 class="card-title">Mitigación de Riesgos</h3>
-                                <p class="card-text">Haga clic para más información →</p>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
                             </div>
                             <div class="card-flip-back">
                                 <i data-lucide="lock" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
@@ -312,7 +448,7 @@
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="trending-up"></i></div>
                                 <h3 class="card-title">Mejora Continua</h3>
-                                <p class="card-text">Haga clic para más información →</p>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
                             </div>
                             <div class="card-flip-back">
                                 <i data-lucide="refresh-cw" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
@@ -377,9 +513,7 @@
                                     <div class="card-icon"><i data-lucide="search"></i></div>
                                     <h3 class="card-title">Diagnóstico Rápido</h3>
                                     <p class="card-text">Evaluación exprés de 2-3 días para identificar riesgos críticos en su software.</p>
-                                    <div style="margin-top: 1rem;">
-                                        <span class="badge" style="background: #0e58a9; color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem;">Ideal para startups</span>
-                                    </div>
+                                    <span class="badge">Ideal para startups</span>
                                 </div>
                             </div>
                             <div class="carousel-slide">
@@ -387,9 +521,7 @@
                                     <div class="card-icon"><i data-lucide="folder-check"></i></div>
                                     <h3 class="card-title">Auditoría Completa</h3>
                                     <p class="card-text">Análisis exhaustivo de calidad, seguridad y rendimiento (4-6 semanas).</p>
-                                    <div style="margin-top: 1rem;">
-                                        <span class="badge" style="background: #0e58a9; color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem;">Certificación ISO</span>
-                                    </div>
+                                    <span class="badge">Certificación ISO</span>
                                 </div>
                             </div>
                             <div class="carousel-slide">
@@ -397,9 +529,7 @@
                                     <div class="card-icon"><i data-lucide="repeat"></i></div>
                                     <h3 class="card-title">QA Continuo</h3>
                                     <p class="card-text">Servicio de aseguramiento de calidad integrado a su ciclo de desarrollo.</p>
-                                    <div style="margin-top: 1rem;">
-                                        <span class="badge" style="background: #0e58a9; color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem;">CI/CD Ready</span>
-                                    </div>
+                                    <span class="badge">CI/CD Ready</span>
                                 </div>
                             </div>
                             <div class="carousel-slide">
@@ -407,9 +537,7 @@
                                     <div class="card-icon"><i data-lucide="graduation-cap"></i></div>
                                     <h3 class="card-title">Capacitación</h3>
                                     <p class="card-text">Entrenamiento a su equipo interno en prácticas de pruebas de software.</p>
-                                    <div style="margin-top: 1rem;">
-                                        <span class="badge" style="background: #0e58a9; color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem;">Certificación ISTQB</span>
-                                    </div>
+                                    <span class="badge">Certificación ISTQB</span>
                                 </div>
                             </div>
                         </div>
@@ -423,6 +551,31 @@
                     </button>
                     
                     <div class="carousel-dots"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resultados Medibles -->
+        <section class="stats-section bg-primary">
+            <div class="container">
+                <h2 class="section-title" style="color: white;">Resultados <span style="color: #4a9eff;">Medibles</span></h2>
+                <div class="stats-grid">
+                    <div class="stat-item" style="text-align: center; color: white;">
+                        <span class="stat-number">-85%</span>
+                        <span class="stat-label">Reducción de defectos en producción</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;">
+                        <span class="stat-number">-60%</span>
+                        <span class="stat-label">Menor tiempo en ciclos de prueba</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;">
+                        <span class="stat-number">+95%</span>
+                        <span class="stat-label">Cobertura de pruebas críticas</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;">
+                        <span class="stat-number">+40%</span>
+                        <span class="stat-label">Incremento en satisfacción de usuarios</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -448,7 +601,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="mail"></i> gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -485,6 +638,8 @@
                 </form>
                 <p class="footer-unsubscribe">
                     Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
                 </p>
             </div>
         </div>
@@ -492,7 +647,6 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
-                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
             </div>
         </div>
     </footer>
