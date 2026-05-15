@@ -40,12 +40,17 @@
     </header>
 
     <main>
-        <!-- Hero Estático con imagen de fondo -->
-        <section class="hero-static" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600');">
-            <div class="hero-static-overlay"></div>
+        <!-- Hero con Video -->
+        <section class="hero-video">
+            <video class="hero-video-bg" autoplay loop muted playsinline>
+                <source src="https://cdn.pixabay.com/video/2023/06/20/169164-838278688_large.mp4" type="video/mp4">
+                <!-- Reemplazar con tu propio video si es necesario -->
+            </video>
+            <div class="hero-video-overlay"></div>
             <div class="hero-container">
                 <div class="hero-icon">
-                    <i data-lucide="clipboard-check"></i>
+                    <!-- Reemplazar ícono por imagen -->
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Iconos/calidad-icon.png" alt="Calidad" style="width: 80px; height: 80px; margin-bottom: 1rem;">
                 </div>
                 <h1 class="hero-title">Evaluaciones de <span>Calidad</span></h1>
                 <p class="hero-subtitle">Aseguramiento y mejora continua del software</p>
@@ -90,7 +95,7 @@
                         </div>
                     </div>
                     <div style="display: flex; justify-content: center; align-items: center;">
-                        <i data-lucide="award" style="width: 300px; height: 300px; color: #0e58a9;"></i>
+                        <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Iconos/calidad-illustration.png" alt="Calidad Ilustración" style="width: 300px; height: auto; max-width: 100%;">
                     </div>
                 </div>
             </div>
@@ -216,40 +221,106 @@
             </div>
         </section>
 
-        <!-- Beneficios (Tarjetas tipo card-float) -->
+        <!-- Beneficios para su Organización (Tarjetas FLIP) -->
         <section class="section">
             <div class="container">
                 <h2 class="section-title">Beneficios para <span>su Organización</span></h2>
-                <div class="grid-auto">
-                    <div class="card card-float">
-                        <div class="card-icon"><i data-lucide="check-circle"></i></div>
-                        <h3 class="card-title">Reducción de Defectos</h3>
-                        <p class="card-text">Hasta un 80% menos de errores en producción.</p>
+                <div class="flip-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    
+                    <!-- Tarjeta Flip 1 -->
+                    <div class="card-flip">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="check-circle"></i></div>
+                                <h3 class="card-title">Reducción de Defectos</h3>
+                                <p class="card-text">Haga clic para más información →</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="trending-down" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">-85%</h3>
+                                <p class="card-text">Reducción de defectos en producción después de implementar nuestras evaluaciones.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card card-float">
-                        <div class="card-icon"><i data-lucide="clock"></i></div>
-                        <h3 class="card-title">Time-to-Market Acelerado</h3>
-                        <p class="card-text">Entregas más rápidas con calidad garantizada.</p>
+                    
+                    <!-- Tarjeta Flip 2 -->
+                    <div class="card-flip">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="clock"></i></div>
+                                <h3 class="card-title">Time-to-Market Acelerado</h3>
+                                <p class="card-text">Haga clic para más información →</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="rocket" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">-60%</h3>
+                                <p class="card-text">Menor tiempo en ciclos de prueba, entregas más rápidas con calidad garantizada.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card card-float">
-                        <div class="card-icon"><i data-lucide="dollar-sign"></i></div>
-                        <h3 class="card-title">Ahorro Significativo</h3>
-                        <p class="card-text">Los defectos tempranos cuestan hasta 100 veces menos.</p>
+                    
+                    <!-- Tarjeta Flip 3 -->
+                    <div class="card-flip">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="dollar-sign"></i></div>
+                                <h3 class="card-title">Ahorro Significativo</h3>
+                                <p class="card-text">Haga clic para más información →</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="piggy-bank" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">-100x</h3>
+                                <p class="card-text">Los defectos detectados temprano cuestan hasta 100 veces menos que en producción.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card card-float">
-                        <div class="card-icon"><i data-lucide="users"></i></div>
-                        <h3 class="card-title">Satisfacción del Usuario</h3>
-                        <p class="card-text">Productos confiables que generan confianza.</p>
+                    
+                    <!-- Tarjeta Flip 4 -->
+                    <div class="card-flip">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="users"></i></div>
+                                <h3 class="card-title">Satisfacción del Usuario</h3>
+                                <p class="card-text">Haga clic para más información →</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="smile" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">+40%</h3>
+                                <p class="card-text">Incremento en satisfacción de usuarios con productos confiables y sin errores.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card card-float">
-                        <div class="card-icon"><i data-lucide="shield"></i></div>
-                        <h3 class="card-title">Mitigación de Riesgos</h3>
-                        <p class="card-text">Identifique vulnerabilidades antes de que impacten.</p>
+                    
+                    <!-- Tarjeta Flip 5 -->
+                    <div class="card-flip">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="shield"></i></div>
+                                <h3 class="card-title">Mitigación de Riesgos</h3>
+                                <p class="card-text">Haga clic para más información →</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="lock" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">+95%</h3>
+                                <p class="card-text">Identifique vulnerabilidades antes de que impacten su operación.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card card-float">
-                        <div class="card-icon"><i data-lucide="trending-up"></i></div>
-                        <h3 class="card-title">Mejora Continua</h3>
-                        <p class="card-text">Procesos optimizados basados en métricas objetivas.</p>
+                    
+                    <!-- Tarjeta Flip 6 -->
+                    <div class="card-flip">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="trending-up"></i></div>
+                                <h3 class="card-title">Mejora Continua</h3>
+                                <p class="card-text">Haga clic para más información →</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="refresh-cw" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">Procesos Optimizados</h3>
+                                <p class="card-text">Basados en métricas objetivas y mejora constante.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -294,36 +365,70 @@
             </div>
         </section>
 
-        <!-- Tipos de Evaluación (Tarjetas tipo card-float) -->
+        <!-- Tipos de Evaluación con CARRUSEL -->
         <section class="section">
             <div class="container">
                 <h2 class="section-title">Tipos de <span>Evaluación</span></h2>
-                <div class="grid-auto">
-                    <div class="card card-float">
-                        <div class="card-icon"><i data-lucide="search"></i></div>
-                        <h3 class="card-title">Diagnóstico Rápido</h3>
-                        <p class="card-text">Evaluación exprés de 2-3 días para identificar riesgos críticos en su software.</p>
+                
+                <div class="carousel" id="tiposCarousel" data-autoplay="true" data-interval="6000">
+                    <div class="carousel-track-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center;">
+                                    <div class="card-icon"><i data-lucide="search"></i></div>
+                                    <h3 class="card-title">Diagnóstico Rápido</h3>
+                                    <p class="card-text">Evaluación exprés de 2-3 días para identificar riesgos críticos en su software.</p>
+                                    <div style="margin-top: 1rem;">
+                                        <span class="badge" style="background: #0e58a9; color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem;">Ideal para startups</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center;">
+                                    <div class="card-icon"><i data-lucide="folder-check"></i></div>
+                                    <h3 class="card-title">Auditoría Completa</h3>
+                                    <p class="card-text">Análisis exhaustivo de calidad, seguridad y rendimiento (4-6 semanas).</p>
+                                    <div style="margin-top: 1rem;">
+                                        <span class="badge" style="background: #0e58a9; color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem;">Certificación ISO</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center;">
+                                    <div class="card-icon"><i data-lucide="repeat"></i></div>
+                                    <h3 class="card-title">QA Continuo</h3>
+                                    <p class="card-text">Servicio de aseguramiento de calidad integrado a su ciclo de desarrollo.</p>
+                                    <div style="margin-top: 1rem;">
+                                        <span class="badge" style="background: #0e58a9; color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem;">CI/CD Ready</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center;">
+                                    <div class="card-icon"><i data-lucide="graduation-cap"></i></div>
+                                    <h3 class="card-title">Capacitación</h3>
+                                    <p class="card-text">Entrenamiento a su equipo interno en prácticas de pruebas de software.</p>
+                                    <div style="margin-top: 1rem;">
+                                        <span class="badge" style="background: #0e58a9; color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem;">Certificación ISTQB</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card card-float">
-                        <div class="card-icon"><i data-lucide="folder-check"></i></div>
-                        <h3 class="card-title">Auditoría Completa</h3>
-                        <p class="card-text">Análisis exhaustivo de calidad, seguridad y rendimiento (4-6 semanas).</p>
-                    </div>
-                    <div class="card card-float">
-                        <div class="card-icon"><i data-lucide="repeat"></i></div>
-                        <h3 class="card-title">QA Continuo</h3>
-                        <p class="card-text">Servicio de aseguramiento de calidad integrado a su ciclo de desarrollo.</p>
-                    </div>
-                    <div class="card card-float">
-                        <div class="card-icon"><i data-lucide="graduation-cap"></i></div>
-                        <h3 class="card-title">Capacitación</h3>
-                        <p class="card-text">Entrenamiento a su equipo interno en prácticas de pruebas de software.</p>
-                    </div>
+                    
+                    <button class="carousel-btn carousel-prev">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                    
+                    <div class="carousel-dots"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Resultados Medibles (Estilo stats) -->
+        <!-- Resultados Medibles -->
         <section class="stats-section bg-primary">
             <div class="container">
                 <h2 class="section-title" style="color: white;">Resultados <span style="color: #4a9eff;">Medibles</span></h2>
@@ -419,25 +524,5 @@
     </footer>
 
     <script src="script.js"></script>
-    
-    <!-- Script específico para Evaluaciones de Calidad -->
-    <script>
-        // Inicializar Lucide
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-        
-        // Newsletter form
-        const newsletterForm = document.getElementById('newsletterForm');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                console.log('Newsletter suscripción:', email);
-                alert('¡Gracias por suscribirte!');
-                this.reset();
-            });
-        }
-    </script>
 </body>
 </html>
