@@ -552,6 +552,26 @@ body.dark-mode .card-flip-back {
     justify-content: center;
 }
 
+.flip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Responsive: 2 columnas en tablet */
+@media (max-width: 968px) {
+    .flip-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Responsive: 1 columna en móvil */
+@media (max-width: 768px) {
+    .flip-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Elementos comunes de tarjetas */
 .card-icon {
     margin-bottom: 1.5rem;
