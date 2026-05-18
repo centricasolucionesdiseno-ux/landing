@@ -9,14 +9,14 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
-        <header>
+    <header>
         <div class="logo-container">
             <div class="logo">
                 <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
             </div>
         </div>
 
-       <nav>
+        <nav>
             <ul class="menu">
                 <li><a href="index.html">Sobre nosotros</a></li>
                 <li class="dropdown">
@@ -40,141 +40,142 @@
     </header>
 
     <main>
-        <!-- Hero -->
-        <section class="sicovi-hero">
-            <div class="sicovi-hero-overlay"></div>
-            <div class="sicovi-hero-container">
-                <div class="sicovi-hero-icon">
-                    <i data-lucide="landmark"></i>
-                </div>
-                <h1 class="sicovi-hero-title">SICOVI</h1>
-                <p class="sicovi-hero-subtitle">Sistema Concejo Visible</p>
-                <p class="sicovi-hero-description">Plataforma unificada de gestión legislativa y administrativa para la transparencia ciudadana de los Concejos Municipales y Departamentales de Colombia.</p>
-                <div class="sicovi-hero-buttons">
-                    <a href="#contacto" class="btn-solicitar">Solicitar información →</a>
-                    <a href="#valor" class="btn-secundario">Conocer más →</a>
+        <!-- Hero con Video -->
+        <section class="hero-video" data-animation="fade-in" data-delay="0">
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=1600">
+                <source src="https://cdn.coverr.co/videos/coverr-government-building-1582641684459/1080p.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-container">
+                
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">SICOVI</h1>
+                <p class="hero-subtitle" data-animation="fade-up" data-delay="0.5">Sistema Concejo Visible</p>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.7">Plataforma unificada de gestión legislativa y administrativa para la transparencia ciudadana de los Concejos Municipales y Departamentales de Colombia.</p>
+                <div class="hero-buttons" data-animation="fade-up" data-delay="0.9">
+                    <a href="#contacto" class="btn btn-primary">Solicitar información →</a>
+                    <a href="#valor" class="btn btn-secondary">Conocer más →</a>
                 </div>
             </div>
         </section>
 
         <!-- ¿Qué es SICOVI? -->
-        <section class="sicovi-que-es">
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <div class="que-es-grid">
-                    <div class="que-es-content">
+                <div class="grid-2">
+                    <div data-animation="fade-right" data-delay="0.2">
                         <h2 class="section-title">¿Qué es <span>SICOVI</span>?</h2>
                         <p>Plataforma integral de los Concejos Municipales y Departamentales de Colombia que centraliza, gestiona y da visibilidad a toda la actividad legislativa y administrativa, transformando la transparencia en acción.</p>
-                        <div class="que-es-pilares">
-                            <div class="pilar">
-                                <i data-lucide="layers"></i>
+                        <div style="margin-top: 2rem;">
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;" data-animation="fade-left" data-delay="0.4">
+                                <i data-lucide="layers" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
-                                    <h3>Unifica</h3>
+                                    <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Unifica</h3>
                                     <p>Centraliza información de acuerdos, proyectos, sesiones, comisiones y agenda en un solo punto de acceso.</p>
                                 </div>
                             </div>
-                            <div class="pilar">
-                                <i data-lucide="shield"></i>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;" data-animation="fade-left" data-delay="0.6">
+                                <i data-lucide="shield" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
-                                    <h3>Garantiza</h3>
+                                    <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Garantiza</h3>
                                     <p>Trazabilidad completa y acceso público a todos los procesos del Concejo en tiempo real.</p>
                                 </div>
                             </div>
-                            <div class="pilar">
-                                <i data-lucide="file-digit"></i>
+                            <div style="display: flex; gap: 1rem;" data-animation="fade-left" data-delay="0.8">
+                                <i data-lucide="file-digit" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
-                                    <h3>Digitaliza</h3>
+                                    <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Digitaliza</h3>
                                     <p>Elimina silos de información y automatiza el flujo de trabajo interno del Concejo.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="que-es-image">
-                        <i data-lucide="building-2" class="que-es-icon"></i>
+                    <div style="display: flex; justify-content: center; align-items: center;" data-animation="zoom-in" data-delay="0.3">
+                        <img src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?w=400&h=400&fit=crop" alt="SICOVI Ilustración" style="width: 100%; max-width: 300px; height: auto; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Valor para el Ciudadano y la Entidad -->
-        <section id="valor" class="sicovi-valor">
+        <!-- Valor para el Ciudadano y la Entidad (Tarjetas tipo card-float) -->
+        <section id="valor" class="section bg-light" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Valor para <span>el Ciudadano y la Entidad</span></h2>
-                <div class="valor-grid">
-                    <div class="valor-card">
-                        <i data-lucide="eye"></i>
-                        <h3>Transparencia Total</h3>
-                        <p>Acceso ciudadano en línea a acuerdos, proyectos, sesiones y toda la actividad legislativa del Concejo.</p>
+                <h2 class="section-title" data-animation="fade-down">Valor para <span>el Ciudadano y la Entidad</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="eye"></i></div>
+                        <h3 class="card-title">Transparencia Total</h3>
+                        <p class="card-text">Acceso ciudadano en línea a acuerdos, proyectos, sesiones y toda la actividad legislativa del Concejo.</p>
                     </div>
-                    <div class="valor-card">
-                        <i data-lucide="zap"></i>
-                        <h3>Eficiencia Operativa</h3>
-                        <p>Centralización de procesos que reduce duplicidades y tiempos administrativos de manera significativa.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="zap"></i></div>
+                        <h3 class="card-title">Eficiencia Operativa</h3>
+                        <p class="card-text">Centralización de procesos que reduce duplicidades y tiempos administrativos de manera significativa.</p>
                     </div>
-                    <div class="valor-card">
-                        <i data-lucide="git-pull-request"></i>
-                        <h3>Trazabilidad y Control</h3>
-                        <p>Seguimiento digital completo de cada etapa legislativa con auditoría y respaldo permanente.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="git-pull-request"></i></div>
+                        <h3 class="card-title">Trazabilidad y Control</h3>
+                        <p class="card-text">Seguimiento digital completo de cada etapa legislativa con auditoría y respaldo permanente.</p>
                     </div>
-                    <div class="valor-card">
-                        <i data-lucide="microchip"></i>
-                        <h3>Modernización Tecnológica</h3>
-                        <p>Plataforma robusta, escalable y basada en estándares abiertos de última generación.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="microchip"></i></div>
+                        <h3 class="card-title">Modernización Tecnológica</h3>
+                        <p class="card-text">Plataforma robusta, escalable y basada en estándares abiertos de última generación.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Oferta Técnica -->
-        <section class="sicovi-oferta">
+        <!-- Oferta Técnica (Tarjetas tipo card-highlight) -->
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Nuestra <span>Oferta Técnica</span></h2>
-                <div class="oferta-grid">
-                    <div class="oferta-card">
-                        <i data-lucide="users"></i>
-                        <h3>Organización Especializada</h3>
-                        <p>Equipos funcionales (Squads) especializados por módulo: acuerdos, proyectos, sesiones, agenda y comisiones.</p>
+                <h2 class="section-title" data-animation="fade-down">Nuestra <span>Oferta Técnica</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="users"></i></div>
+                        <h3 class="card-title">Organización Especializada</h3>
+                        <p class="card-text">Equipos funcionales (Squads) especializados por módulo: acuerdos, proyectos, sesiones, agenda y comisiones.</p>
                     </div>
-                    <div class="oferta-card">
-                        <i data-lucide="git-branch"></i>
-                        <h3>Metodologías Ágiles</h3>
-                        <p>Trabajamos con Scrum/Kanban combinadas con DevOps para entregas rápidas, confiables y continuas.</p>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="git-branch"></i></div>
+                        <h3 class="card-title">Metodologías Ágiles</h3>
+                        <p class="card-text">Trabajamos con Scrum/Kanban combinadas con DevOps para entregas rápidas, confiables y continuas.</p>
                     </div>
-                    <div class="oferta-card">
-                        <i data-lucide="refresh-cw"></i>
-                        <h3>Modernización Continua</h3>
-                        <p>Actualización constante de la plataforma con nuevas funcionalidades y mejoras de rendimiento.</p>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="refresh-cw"></i></div>
+                        <h3 class="card-title">Modernización Continua</h3>
+                        <p class="card-text">Actualización constante de la plataforma con nuevas funcionalidades y mejoras de rendimiento.</p>
                     </div>
-                    <div class="oferta-card">
-                        <i data-lucide="git-pull-request"></i>
-                        <h3>Desarrollo Greenfield</h3>
-                        <p>Creación de nuevos módulos desde cero, adaptados a las necesidades específicas del Concejo.</p>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="git-pull-request"></i></div>
+                        <h3 class="card-title">Desarrollo Greenfield</h3>
+                        <p class="card-text">Creación de nuevos módulos desde cero, adaptados a las necesidades específicas del Concejo.</p>
                     </div>
-                    <div class="oferta-card">
-                        <i data-lucide="briefcase"></i>
-                        <h3>Consultoría Técnica</h3>
-                        <p>Acompañamiento técnico-funcional continuo para optimizar procesos y maximizar el valor de la inversión.</p>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.5">
+                        <div class="card-icon"><i data-lucide="briefcase"></i></div>
+                        <h3 class="card-title">Consultoría Técnica</h3>
+                        <p class="card-text">Acompañamiento técnico-funcional continuo para optimizar procesos y maximizar el valor de la inversión.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Enfoque Sectorial -->
-        <section class="sicovi-enfoque">
+        <!-- Enfoque Sectorial (Tarjetas tipo card-highlight) -->
+        <section class="section bg-light" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Enfoque <span>Sectorial</span></h2>
-                <div class="enfoque-grid">
-                    <div class="enfoque-card sector-publico">
-                        <i data-lucide="landmark"></i>
-                        <h3>Sector Público (Principal)</h3>
-                        <ul>
+                <h2 class="section-title" data-animation="fade-down">Enfoque <span>Sectorial</span></h2>
+                <div class="grid-2">
+                    <div class="card card-highlight" data-animation="fade-right" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="landmark"></i></div>
+                        <h3 class="card-title">Sector Público (Principal)</h3>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
                             <li><strong>Gobierno Local y Concejos:</strong> Gestión integral de acuerdos, proyectos, sesiones y comisiones con trazabilidad completa.</li>
                             <li><strong>Ciudadanía:</strong> Acceso público a información legislativa, fortaleciendo la participación ciudadana y el control social.</li>
                         </ul>
                     </div>
-                    <div class="enfoque-card sector-privado">
-                        <i data-lucide="building"></i>
-                        <h3>Sector Privado (Potencial)</h3>
-                        <ul>
+                    <div class="card card-highlight" data-animation="fade-left" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="building"></i></div>
+                        <h3 class="card-title">Sector Privado (Potencial)</h3>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
                             <li><strong>Arquitectura modular:</strong> Adaptable a organizaciones que requieran trazabilidad documental y gestión de procesos complejos.</li>
                             <li><strong>Flexibilidad:</strong> Implementación en corporaciones, ONGs y entidades que necesiten auditoría y transparencia.</li>
                         </ul>
@@ -183,131 +184,124 @@
             </div>
         </section>
 
-        <!-- Multi-tenencia y Flexibilidad -->
-        <section class="sicovi-multitenant">
+        <!-- Multi-tenencia y Flexibilidad (Tarjetas tipo card-float) -->
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Multi-tenencia y <span>Flexibilidad</span></h2>
-                <div class="multitenant-grid">
-                    <div class="multitenant-card">
-                        <i data-lucide="database"></i>
-                        <h3>Flexibilidad de Datos</h3>
-                        <p>Soportamos múltiples motores de base de datos (PostgreSQL, Oracle, SQL Server) para adaptarnos a la infraestructura existente.</p>
+                <h2 class="section-title" data-animation="fade-down">Multi-tenencia y <span>Flexibilidad</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="database"></i></div>
+                        <h3 class="card-title">Flexibilidad de Datos</h3>
+                        <p class="card-text">Soportamos múltiples motores de base de datos (PostgreSQL, Oracle, SQL Server) para adaptarnos a la infraestructura existente.</p>
                     </div>
-                    <div class="multitenant-card">
-                        <i data-lucide="shield"></i>
-                        <h3>Aislamiento Total</h3>
-                        <p>Cada Concejo posee su propia base de datos física o esquema lógico aislado. No hay mezcla de información.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="shield"></i></div>
+                        <h3 class="card-title">Aislamiento Total</h3>
+                        <p class="card-text">Cada Concejo posee su propia base de datos física o esquema lógico aislado. No hay mezcla de información.</p>
                     </div>
-                    <div class="multitenant-card">
-                        <i data-lucide="zap"></i>
-                        <h3>Conmutación Transparente</h3>
-                        <p>El sistema conmuta entre bases de datos en milisegundos, ofreciendo una experiencia unificada y segura.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="zap"></i></div>
+                        <h3 class="card-title">Conmutación Transparente</h3>
+                        <p class="card-text">El sistema conmuta entre bases de datos en milisegundos, ofreciendo una experiencia unificada y segura.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Aceleración del Desarrollo a Medida -->
-        <section class="sicovi-aceleracion">
+        <!-- Aceleración del Desarrollo a Medida (Tarjetas tipo card-highlight) -->
+        <section class="section bg-light" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Aceleración del <span>Desarrollo a Medida</span></h2>
-                <p class="aceleracion-intro">Impulsado por Arquitectura Base</p>
-                <div class="aceleracion-grid">
-                    <div class="aceleracion-card">
-                        <i data-lucide="factory"></i>
-                        <h3>Plantillas (Archetypes)</h3>
-                        <p>Generación rápida de nuevos módulos con Maven archetypes.</p>
+                <h2 class="section-title" data-animation="fade-down">Aceleración del <span>Desarrollo a Medida</span></h2>
+                <p class="section-subtitle" data-animation="zoom-in" data-delay="0.2" style="font-size: 1.2rem; font-weight: 600; color: #0e58a9;">Impulsado por Arquitectura Base</p>
+                <div class="grid-auto">
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="factory"></i></div>
+                        <h3 class="card-title">Plantillas (Archetypes)</h3>
+                        <p class="card-text">Generación rápida de nuevos módulos con Maven archetypes.</p>
                     </div>
-                    <div class="aceleracion-card">
-                        <i data-lucide="repeat"></i>
-                        <h3>Reutilización</h3>
-                        <p>Componentes comunes de seguridad, persistencia e interfaz.</p>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="repeat"></i></div>
+                        <h3 class="card-title">Reutilización</h3>
+                        <p class="card-text">Componentes comunes de seguridad, persistencia e interfaz.</p>
                     </div>
-                    <div class="aceleracion-card">
-                        <i data-lucide="star"></i>
-                        <h3>Calidad heredada</h3>
-                        <p>Todo desarrollo a medida se basa en MVC + JPA + JSF, garantizando consistencia y mantenibilidad.</p>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="star"></i></div>
+                        <h3 class="card-title">Calidad heredada</h3>
+                        <p class="card-text">Todo desarrollo a medida se basa en MVC + JPA + JSF, garantizando consistencia y mantenibilidad.</p>
                     </div>
-                    <div class="aceleracion-card">
-                        <i data-lucide="git-merge"></i>
-                        <h3>CI/CD integrado</h3>
-                        <p>Nuevas funcionalidades se incorporan con el mismo pipeline de calidad.</p>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="git-merge"></i></div>
+                        <h3 class="card-title">CI/CD integrado</h3>
+                        <p class="card-text">Nuevas funcionalidades se incorporan con el mismo pipeline de calidad.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Resultados y Referencias -->
-        <section class="sicovi-resultados">
+        <section class="stats-section bg-primary" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Resultados y <span>Referencias</span></h2>
-                <div class="resultados-destacado">
-                    <h3>Impacto en el Concejo de Medellín</h3>
-                    <div class="resultados-grid">
-                        <div class="resultado-card">
-                            <i data-lucide="clock"></i>
-                            <h4>Reducción de tiempos</h4>
-                            <p>Gestión documental y citaciones más ágiles.</p>
-                        </div>
-                        <div class="resultado-card">
-                            <i data-lucide="users"></i>
-                            <h4>Mayor participación ciudadana</h4>
-                            <p>Acceso público en línea a la actividad legislativa.</p>
-                        </div>
-                        <div class="resultado-card">
-                            <i data-lucide="alert-circle"></i>
-                            <h4>Disminución de errores</h4>
-                            <p>Información unificada y trazable.</p>
-                        </div>
-                        <div class="resultado-card">
-                            <i data-lucide="award"></i>
-                            <h4>Plataforma oficial</h4>
-                            <p>Utilizada por corporados y funcionarios como herramienta principal de gestión legislativa.</p>
-                        </div>
+                <h2 class="section-title" style="color: white;" data-animation="fade-down">Impacto en el <span style="color: #4a9eff;">Concejo de Medellín</span></h2>
+                <div class="stats-grid">
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.1">
+                        <span class="stat-number">-70%</span>
+                        <span class="stat-label">Reducción en tiempos de gestión documental</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.2">
+                        <span class="stat-number">+100%</span>
+                        <span class="stat-label">Mayor participación ciudadana</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.3">
+                        <span class="stat-number">-85%</span>
+                        <span class="stat-label">Disminución de errores administrativos</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.4">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Plataforma oficial de gestión legislativa</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Otros servicios -->
-        <section class="sicovi-otros-servicios">
+        <!-- Otros servicios (Tarjetas tipo card-float) -->
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Otros <span>servicios</span></h2>
-                <div class="otros-grid">
-                    <div class="otro-card">
-                        <i data-lucide="factory"></i>
-                        <h3>Fábrica de Software</h3>
-                        <p>Desarrollo de soluciones tecnológicas a la medida: aplicaciones, plataformas y sistemas escalables diseñados para evolucionar con el negocio.</p>
-                        <a href="fabrica-software.html" class="otro-link">Conocer más →</a>
+                <h2 class="section-title" data-animation="fade-down">Otros <span>servicios</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="factory"></i></div>
+                        <h3 class="card-title">Fábrica de Software</h3>
+                        <p class="card-text">Desarrollo de soluciones tecnológicas a la medida: aplicaciones, plataformas y sistemas escalables diseñados para evolucionar con el negocio.</p>
+                        <a href="fabrica.html" class="btn btn-secondary" style="margin-top: 1rem;">Conocer más →</a>
                     </div>
-                    <div class="otro-card">
-                        <i data-lucide="cloud"></i>
-                        <h3>Nebula ERP</h3>
-                        <p>Plataforma integral de gestión empresarial que centraliza operaciones, optimiza recursos y permite tomar decisiones en tiempo real con visión estratégica.</p>
-                        <a href="nebula-erp.html" class="otro-link">Conocer más →</a>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="cloud"></i></div>
+                        <h3 class="card-title">Nebula ERP</h3>
+                        <p class="card-text">Plataforma integral de gestión empresarial que centraliza operaciones, optimiza recursos y permite tomar decisiones en tiempo real con visión estratégica.</p>
+                        <a href="nebula.html" class="btn btn-secondary" style="margin-top: 1rem;">Conocer más →</a>
                     </div>
-                    <div class="otro-card">
-                        <i data-lucide="brain"></i>
-                        <h3>Análisis con IA</h3>
-                        <p>Implementación de Inteligencia Artificial para automatizar procesos, anticipar escenarios y transformar datos en decisiones precisas.</p>
-                        <a href="servicios.html#ia" class="otro-link">Conocer más →</a>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="brain"></i></div>
+                        <h3 class="card-title">Análisis con IA</h3>
+                        <p class="card-text">Implementación de Inteligencia Artificial para automatizar procesos, anticipar escenarios y transformar datos en decisiones precisas.</p>
+                        <a href="ia.html" class="btn btn-secondary" style="margin-top: 1rem;">Conocer más →</a>
                     </div>
-                    <div class="otro-card">
-                        <i data-lucide="trending-up"></i>
-                        <h3>Consultoría digital</h3>
-                        <p>Acompañamiento estratégico en la transformación digital: desde el diagnóstico hasta la implementación y optimización de soluciones.</p>
-                        <a href="servicios.html#consultoria" class="otro-link">Conocer más →</a>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="trending-up"></i></div>
+                        <h3 class="card-title">Consultoría digital</h3>
+                        <p class="card-text">Acompañamiento estratégico en la transformación digital: desde el diagnóstico hasta la implementación y optimización de soluciones.</p>
+                        <a href="consultoria.html" class="btn btn-secondary" style="margin-top: 1rem;">Conocer más →</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Final -->
-        <section id="contacto" class="sicovi-cta-final">
+        <section id="contacto" class="section bg-primary" style="text-align: center;" data-animation="fade-up">
             <div class="container">
-                <h2>¿Listo para transformar la gestión legislativa de su Concejo?</h2>
-                <p>Contáctenos y descubra cómo SICOVI puede llevar la transparencia y eficiencia a su entidad.</p>
-                <a href="contacto.html" class="btn-solicitar">Solicitar información técnica →</a>
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;" data-animation="fade-down">¿Listo para transformar la gestión legislativa de su Concejo?</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: rgba(255,255,255,0.95);" data-animation="fade-up" data-delay="0.2">Contáctenos y descubra cómo SICOVI puede llevar la transparencia y eficiencia a su entidad.</p>
+                <a href="contacto.html" class="btn btn-primary" style="background: white; color: #0e58a9;" data-animation="zoom-in" data-delay="0.4">Solicitar información técnica →</a>
             </div>
         </section>
     </main>
@@ -323,7 +317,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p>gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -354,12 +348,14 @@
                 <p class="footer-newsletter-text">
                     Recibe novedades sobre nuestras soluciones.
                 </p>
-                <form class="footer-newsletter-form" id="newsletterForm2">
+                <form class="footer-newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="footer-unsubscribe">
                     Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
                 </p>
             </div>
         </div>
@@ -367,31 +363,10 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
-                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
-    
-    <!-- Script específico para SICOVI -->
-    <script>
-        // Inicializar Lucide
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-        
-        // Newsletter form
-        const newsletterForm = document.getElementById('newsletterFormSicovi');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                console.log('Newsletter suscripción:', email);
-                alert('¡Gracias por suscribirte!');
-                this.reset();
-            });
-        }
-    </script>
 </body>
 </html>
