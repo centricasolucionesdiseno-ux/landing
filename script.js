@@ -699,6 +699,49 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         window.addEventListener('scroll', highlightActiveLink);
     }
+
+    // ========== SISTEMA DE ACORDEÓN / PLEGABLES ==========
+function initAccordion() {
+    const accordionItems = document.querySelectorAll('.accordion-item');
     
+    accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        const content = item.querySelector('.accordion-content');
+        
+        if (header && content) {
+            // Asegurar que el contenido comience cerrado
+            content.style.maxHeight = null;
+            item.classList.remove('active');
+            
+            header.addEventListener('click', () => {
+                // Cerrar otros items si se desea comportamiento exclusivo
+                // (opcional: descomentar para tener solo uno abierto a la vez)
+                // accordionItems.forEach(otherItem => {
+                //     if (otherItem !== item && otherItem.classList.contains('active')) {
+                //         otherItem.classList.remove('active');
+                //         otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                //     }
+                // });
+                
+                // Toggle el item actual
+                item.classList.toggle('active');
+                
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+        }
+    });
+}
+
+// Inicializar acordeón
+document.addEventListener('DOMContentLoaded', function() {
+    initAccordion();
+});
+
+// Exportar para uso global si es necesario
+window.initAccordion = initAccordion;
     console.log('✅ Script completamente cargado');
 });
