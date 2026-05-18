@@ -384,24 +384,5 @@
 
     <script src="script.js"></script>
     
-    <!-- Script específico para Nebula -->
-    <script>
-        // Inicializar Lucide
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-        
-        // Newsletter form
-        const newsletterForm = document.getElementById('newsletterFormNebula');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                console.log('Newsletter suscripción:', email);
-                alert('¡Gracias por suscribirte!');
-                this.reset();
-            });
-        }
-    </script>
 </body>
 </html>
