@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Céntrica - Servicios | Soluciones empresariales</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
@@ -17,7 +16,7 @@
             </div>
         </div>
 
-       <nav>
+        <nav>
             <ul class="menu">
                 <li><a href="index.html">Sobre nosotros</a></li>
                 <li class="dropdown">
@@ -41,138 +40,141 @@
     </header>
 
     <main>
-        <!-- Hero de Servicios -->
-        <section class="servicios-hero">
-            <div class="servicios-hero-container">
-                <h1 class="servicios-hero-title">Nuestros <span>Servicios</span></h1>
-                <p class="servicios-hero-description">
+        <!-- Hero con Video -->
+        <section class="hero-video" data-animation="fade-in" data-delay="0">
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600">
+                <source src="https://cdn.coverr.co/videos/coverr-office-team-working-on-laptops-1582634531069/1080p.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-container">
+               
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Nuestros <span>Servicios</span></h1>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.5">
                     Soluciones tecnológicas diseñadas para acelerar tu negocio, 
                     desde el desarrollo ágil hasta la consultoría estratégica.
                 </p>
+                <div class="hero-buttons" data-animation="fade-up" data-delay="0.7">
+                    <a href="#servicios" class="btn btn-primary">Ver servicios →</a>
+                    <a href="#modelo" class="btn btn-secondary">Conoce nuestro modelo →</a>
+                </div>
             </div>
         </section>
 
-        <!-- Grid de servicios (6 cards) -->
-        <section class="servicios-grid-section">
-            <div class="servicios-grid">
-                
-                <!-- Card 1: Fábrica de software -->
-                <div class="servicio-card" id="fabrica">
-                    <div class="servicio-icon">
-                        <i data-lucide="factory"></i>
+        <!-- Grid de servicios (6 cards tipo card-float) -->
+        <section id="servicios" class="section" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Nuestros <span>Servicios</span></h2>
+                <div class="grid-auto">
+                    
+                    <!-- Card 1: Fábrica de software -->
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="factory"></i></div>
+                        <h3 class="card-title">Fábrica de software</h3>
+                        <p class="card-text">
+                            Desarrollo ágil de aplicaciones a medida con metodologías modernas, 
+                            entregas continuas y calidad asegurada en cada sprint.
+                        </p>
+                        <a href="fabrica.html" class="btn btn-secondary" style="margin-top: 1rem;">Conocer más →</a>
                     </div>
-                    <h3 class="servicio-title">Fábrica de software</h3>
-                    <p class="servicio-description">
-                        Desarrollo ágil de aplicaciones a medida con metodologías modernas, 
-                        entregas continuas y calidad asegurada en cada sprint.
-                    </p>
-                    <a href="#" class="servicio-link">Conocer más →</a>
-                </div>
 
-                <!-- Card 2: Nebula ERP -->
-                <div class="servicio-card" id="nebula">
-                    <div class="servicio-icon">
-                        <i data-lucide="cloud"></i>
+                    <!-- Card 2: Nebula ERP -->
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="cloud"></i></div>
+                        <h3 class="card-title">Nebula ERP</h3>
+                        <p class="card-text">
+                            Plataforma integral de gestión empresarial que centraliza operaciones 
+                            financieras, de inventarios y administrativas con IA integrada.
+                        </p>
+                        <a href="nebula.html" class="btn btn-secondary" style="margin-top: 1rem;">Conocer más →</a>
                     </div>
-                    <h3 class="servicio-title">Nebula ERP</h3>
-                    <p class="servicio-description">
-                        Plataforma integral de gestión empresarial que centraliza operaciones 
-                        financieras, de inventarios y administrativas con IA integrada.
-                    </p>
-                    <a href="#" class="servicio-link">Conocer más →</a>
-                </div>
 
-                <!-- Card 3: Sicovi -->
-                <div class="servicio-card" id="sicovi">
-                    <div class="servicio-icon">
-                        <i data-lucide="landmark"></i>
+                    <!-- Card 3: Sicovi -->
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="landmark"></i></div>
+                        <h3 class="card-title">Sicovi</h3>
+                        <p class="card-text">
+                            Plataforma unificada de gestión legislativa y administrativa para 
+                            Concejos Municipales y Departamentales de Colombia.
+                        </p>
+                        <a href="sicovi.html" class="btn btn-secondary" style="margin-top: 1rem;">Conocer más →</a>
                     </div>
-                    <h3 class="servicio-title">Sicovi</h3>
-                    <p class="servicio-description">
-                        Plataforma unificada de gestión legislativa y administrativa para 
-                        Concejos Municipales y Departamentales de Colombia.
-                    </p>
-                    <a href="#" class="servicio-link">Conocer más →</a>
-                </div>
 
-                <!-- Card 4: Análisis con IA -->
-                <div class="servicio-card" id="ia">
-                    <div class="servicio-icon">
-                        <i data-lucide="brain"></i>
+                    <!-- Card 4: Análisis con IA -->
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="brain"></i></div>
+                        <h3 class="card-title">Análisis con IA</h3>
+                        <p class="card-text">
+                            Implementamos inteligencia artificial para automatizar procesos, 
+                            anticipar escenarios y transformar datos en decisiones precisas.
+                        </p>
+                        <a href="ia.html" class="btn btn-secondary" style="margin-top: 1rem;">Conocer más →</a>
                     </div>
-                    <h3 class="servicio-title">Análisis con IA</h3>
-                    <p class="servicio-description">
-                        Implementamos inteligencia artificial para automatizar procesos, 
-                        anticipar escenarios y transformar datos en decisiones precisas.
-                    </p>
-                    <a href="#" class="servicio-link">Conocer más →</a>
-                </div>
 
-                <!-- Card 5: Evaluaciones de Calidad -->
-                <div class="servicio-card" id="calidad">
-                    <div class="servicio-icon">
-                        <i data-lucide="clipboard-check"></i>
+                    <!-- Card 5: Evaluaciones de Calidad -->
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.5">
+                        <div class="card-icon"><i data-lucide="clipboard-check"></i></div>
+                        <h3 class="card-title">Evaluaciones de Calidad</h3>
+                        <p class="card-text">
+                            Auditorías y mejoras de calidad de software, asegurando estándares 
+                            de rendimiento, seguridad y mantenibilidad.
+                        </p>
+                        <a href="calidad.html" class="btn btn-secondary" style="margin-top: 1rem;">Conocer más →</a>
                     </div>
-                    <h3 class="servicio-title">Evaluaciones de Calidad</h3>
-                    <p class="servicio-description">
-                        Auditorías y mejoras de calidad de software, asegurando estándares 
-                        de rendimiento, seguridad y mantenibilidad.
-                    </p>
-                    <a href="#" class="servicio-link">Conocer más →</a>
-                </div>
 
-                <!-- Card 6: Consultoría digital -->
-                <div class="servicio-card" id="consultoria">
-                    <div class="servicio-icon">
-                        <i data-lucide="trending-up"></i>
+                    <!-- Card 6: Consultoría digital -->
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.6">
+                        <div class="card-icon"><i data-lucide="trending-up"></i></div>
+                        <h3 class="card-title">Consultoría digital</h3>
+                        <p class="card-text">
+                            Acompañamiento estratégico para tu transformación digital, 
+                            desde el diagnóstico hasta la implementación de soluciones.
+                        </p>
+                        <a href="consultoria.html" class="btn btn-secondary" style="margin-top: 1rem;">Conocer más →</a>
                     </div>
-                    <h3 class="servicio-title">Consultoría digital</h3>
-                    <p class="servicio-description">
-                        Acompañamiento estratégico para tu transformación digital, 
-                        desde el diagnóstico hasta la implementación de soluciones.
-                    </p>
-                    <a href="#" class="servicio-link">Conocer más →</a>
                 </div>
             </div>
         </section>
 
         <!-- Sección: Modelo de entrega (valor agregado) -->
-        <section class="modelo-seccion">
-            <h2 class="modelo-title">Un modelo <span>pensado para crecer</span></h2>
-            <div class="modelo-grid">
-                <div class="modelo-item">
-                    <i data-lucide="target"></i>
-                    <h3>1. Diagnóstico</h3>
-                    <p>Analizamos tus necesidades y objetivos específicos.</p>
-                </div>
-                <div class="modelo-item">
-                    <i data-lucide="git-branch"></i>
-                    <h3>2. Desarrollo ágil</h3>
-                    <p>Entregas continuas con metodologías modernas.</p>
-                </div>
-                <div class="modelo-item">
-                    <i data-lucide="shield-check"></i>
-                    <h3>3. Aseguramiento</h3>
-                    <p>Pruebas rigurosas y arquitectura multi-tenant probada.</p>
-                </div>
-                <div class="modelo-item">
-                    <i data-lucide="headphones"></i>
-                    <h3>4. Soporte continuo</h3>
-                    <p>Acompañamiento y mejora constante post-lanzamiento.</p>
+        <section id="modelo" class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Un modelo <span>pensado para crecer</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="target"></i></div>
+                        <h3 class="card-title">1. Diagnóstico</h3>
+                        <p class="card-text">Analizamos tus necesidades y objetivos específicos.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="git-branch"></i></div>
+                        <h3 class="card-title">2. Desarrollo ágil</h3>
+                        <p class="card-text">Entregas continuas con metodologías modernas.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="shield-check"></i></div>
+                        <h3 class="card-title">3. Aseguramiento</h3>
+                        <p class="card-text">Pruebas rigurosas y arquitectura multi-tenant probada.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="headphones"></i></div>
+                        <h3 class="card-title">4. Soporte continuo</h3>
+                        <p class="card-text">Acompañamiento y mejora constante post-lanzamiento.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA final -->
-        <section class="servicios-cta">
-            <div class="servicios-cta-container">
-                <h2>¿Listo para transformar tu negocio?</h2>
-                <p>Contáctanos y descubre cómo podemos acelerar tu próximo desarrollo.</p>
-                <a href="index.html#contacto" class="servicios-cta-btn">Solicitar información →</a>
+        <section class="section bg-primary" style="text-align: center;" data-animation="fade-up">
+            <div class="container">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;" data-animation="fade-down">¿Listo para transformar tu negocio?</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: rgba(255,255,255,0.95);" data-animation="fade-up" data-delay="0.2">Contáctanos y descubre cómo podemos acelerar tu próximo desarrollo.</p>
+                <a href="contacto.html" class="btn btn-primary" style="background: white; color: #0e58a9;" data-animation="zoom-in" data-delay="0.4">Solicitar información →</a>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-col">
@@ -183,7 +185,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="mail"></i> gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -214,12 +216,14 @@
                 <p class="footer-newsletter-text">
                     Recibe novedades sobre nuestras soluciones.
                 </p>
-                <form class="footer-newsletter-form" id="newsletterForm2">
+                <form class="footer-newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="footer-unsubscribe">
                     Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
                 </p>
             </div>
         </div>
@@ -227,31 +231,11 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
-                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
-    
-    <!-- Script específico para servicios -->
-    <script>
-        // Inicializar Lucide
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-        
-        // Newsletter form
-        const newsletterForm = document.getElementById('newsletterFormServicios');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                console.log('Newsletter suscripción:', email);
-                alert('¡Gracias por suscribirte!');
-                this.reset();
-            });
-        }
-    </script>
+
 </body>
 </html>
