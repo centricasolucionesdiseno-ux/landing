@@ -474,6 +474,98 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // ========== MODAL UNIFICADO ==========
+class Modal {
+    constructor(modalId, options = {}) {
+        this.modal = document.getElementById(modalId);
+        this.closeBtn = this.modal ? this.modal.querySelector('.modal-close') : null;
+        this.autoClose = options.autoClose || false;
+        this.autoCloseTime = options.autoCloseTime || 3000;
+        this.onOpen = options.onOpen || null;
+        this.onClose = options.onClose || null;
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.modal) return;
+        
+        // Cerrar con botón X
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => this.close());
+        }
+        
+        // Cerrar al hacer clic fuera del contenido
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) {
+                this.close();
+            }
+        });
+        
+        // Cerrar con tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isOpen()) {
+                this.close();
+            }
+        });
+    }
+    
+    open() {
+        if (!this.modal) return;
+        this.modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        if (this.onOpen) this.onOpen();
+        
+        if (this.autoClose) {
+            setTimeout(() => this.close(), this.autoCloseTime);
+        }
+    }
+    
+    close() {
+        if (!this.modal) return;
+        this.modal.style.display = 'none';
+        document.body.style.overflow = '';
+        
+        if (this.onClose) this.onClose();
+    }
+    
+    isOpen() {
+        return this.modal && this.modal.style.display === 'flex';
+    }
+    
+    setContent(content) {
+        const body = this.modal.querySelector('.modal-body');
+        if (body) body.innerHTML = content;
+    }
+    
+    setTitle(title) {
+        const header = this.modal.querySelector('.modal-header h2');
+        if (header) header.textContent = title;
+    }
+}
+
+// Función para inicializar modales dinámicamente
+function initModals() {
+    const modals = document.querySelectorAll('.modal');
+    const modalInstances = [];
+    
+    modals.forEach(modal => {
+        const modalId = modal.id;
+        if (modalId) {
+            const instance = new Modal(modalId);
+            modalInstances.push(instance);
+        }
+    });
+    
+    return modalInstances;
+}
+
+// Inicializar modales automáticamente
+document.addEventListener('DOMContentLoaded', () => {
+    window.modalInstances = initModals();
+});
+
     // ========== 9. CONTADORES (para stats-section) ==========
     const counters = document.querySelectorAll('.stat-number[data-count]');
     const speed = 200;
