@@ -1409,3 +1409,53 @@ body.dark-mode .legal-sidebar a.active {
         padding: 0 1rem 1rem 1rem;
     }
 }
+
+/* Mejoras para el acordeón - cursor pointer en toda la card */
+.accordion-item {
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    cursor: pointer; /* ← Manito en toda la card */
+}
+
+body.dark-mode .accordion-item {
+    background: #1e1e2e;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Efecto hover en toda la card */
+.accordion-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(14,88,169,0.15);
+}
+
+body.dark-mode .accordion-item:hover {
+    box-shadow: 0 4px 15px rgba(74,158,255,0.15);
+}
+
+/* El header mantiene estilos pero sin cursor pointer extra */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Los enlaces dentro del contenido no deben heredar el cursor pointer */
+.accordion-content a {
+    cursor: pointer;
+}
+
+/* Indicador visual de que la card es clickeable */
+.accordion-item.active {
+    border-left: 4px solid #0e58a9;
+}
+
+body.dark-mode .accordion-item.active {
+    border-left-color: #4a9eff;
+}
