@@ -9,14 +9,14 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
-        <header>
+    <header>
         <div class="logo-container">
             <div class="logo">
                 <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
             </div>
         </div>
 
-       <nav>
+        <nav>
             <ul class="menu">
                 <li><a href="index.html">Sobre nosotros</a></li>
                 <li class="dropdown">
@@ -40,231 +40,297 @@
     </header>
 
     <main>
-        <!-- Hero -->
-        <section class="nebula-hero">
-            <div class="nebula-hero-overlay"></div>
-            <div class="nebula-hero-container">
-                <div class="nebula-hero-icon">
-                    <i data-lucide="cloud"></i>
-                </div>
-                <h1 class="nebula-hero-title">Nebula <span>ERP</span></h1>
-                <p class="nebula-hero-subtitle">Plataforma integral de gestión empresarial</p>
-                <p class="nebula-hero-description">Centraliza operaciones financieras, de inventarios y administrativas en un solo ecosistema, con inteligencia artificial integrada y reportes en tiempo real.</p>
-                <div class="nebula-hero-buttons">
-                    <a href="#contacto" class="btn-solicitar">Solicitar demo →</a>
-                    <a href="#caracteristicas" class="btn-secundario">Conocer características →</a>
+        <!-- Hero con Video -->
+        <section class="hero-video" data-animation="fade-in" data-delay="0">
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600">
+                <source src="https://cdn.coverr.co/videos/coverr-cloud-computing-technology-1573572662432/720p.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-container">
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Nebula <span>ERP</span></h1>
+                <p class="hero-subtitle" data-animation="fade-up" data-delay="0.5">Plataforma integral de gestión empresarial</p>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.7">Centraliza operaciones financieras, de inventarios y administrativas en un solo ecosistema, con inteligencia artificial integrada y reportes en tiempo real.</p>
+                <div class="hero-buttons" data-animation="fade-up" data-delay="0.9">
+                    <a href="#contacto" class="btn btn-primary">Solicitar demo →</a>
+                    <a href="#caracteristicas" class="btn btn-secondary">Conocer características →</a>
                 </div>
             </div>
         </section>
 
         <!-- ¿Qué es Nebula ERP? -->
-        <section class="nebula-que-es">
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <div class="que-es-grid">
-                    <div class="que-es-content">
+                <div class="grid-2">
+                    <div data-animation="fade-right" data-delay="0.2">
                         <h2 class="section-title">¿Qué es <span>Nebula ERP</span>?</h2>
                         <p>Nebula ERP es una plataforma integral de gestión empresarial diseñada para centralizar y optimizar todos los procesos críticos de su organización. Desde operaciones financieras hasta gestión de inventarios y administración general, Nebula ofrece un ecosistema unificado que elimina silos de información y maximiza la eficiencia operativa.</p>
-                        <p>Construida sobre la arquitectura SIMAPPE, Nebula hereda automáticamente capacidades de multi-tenancy, seguridad avanzada y auditoría completa, permitiendo que su equipo se enfoque en lo que realmente importa: hacer crecer su negocio.</p>
+                        <p style="margin-top: 1rem;">Construida sobre la arquitectura SIMAPPE, Nebula hereda automáticamente capacidades de multi-tenancy, seguridad avanzada y auditoría completa, permitiendo que su equipo se enfoque en lo que realmente importa: hacer crecer su negocio.</p>
                     </div>
-                    <div class="que-es-image">
-                        <i data-lucide="database" class="que-es-icon"></i>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Características Principales -->
-        <section id="caracteristicas" class="nebula-caracteristicas">
-            <div class="container">
-                <h2 class="section-title">Características <span>Principales</span></h2>
-                <div class="caracteristicas-grid">
-                    <div class="caracteristica-card">
-                        <i data-lucide="piggy-bank"></i>
-                        <h3>Gestión Financiera</h3>
-                        <p>Contabilidad general, cuentas por pagar y cobrar, activos fijos, conciliaciones bancarias y cierres contables automatizados.</p>
-                    </div>
-                    <div class="caracteristica-card">
-                        <i data-lucide="package"></i>
-                        <h3>Gestión de Inventarios</h3>
-                        <p>Control de stock, trazabilidad de productos, gestión de almacenes, órdenes de compra y venta, y forecasting automatizado.</p>
-                    </div>
-                    <div class="caracteristica-card">
-                        <i data-lucide="users"></i>
-                        <h3>Gestión Administrativa</h3>
-                        <p>Gestión de recursos humanos, nómina, evaluación de desempeño, reclutamiento y expedientes digitales.</p>
-                    </div>
-                    <div class="caracteristica-card">
-                        <i data-lucide="brain"></i>
-                        <h3>Inteligencia Artificial Integrada</h3>
-                        <p>Análisis predictivo, detección de anomalías, recomendaciones inteligentes y automatización de procesos repetitivos.</p>
-                    </div>
-                    <div class="caracteristica-card">
-                        <i data-lucide="bar-chart-3"></i>
-                        <h3>Reportes en Tiempo Real</h3>
-                        <p>Dashboards interactivos, reportes personalizables, indicadores clave de rendimiento (KPIs) y alertas automáticas.</p>
-                    </div>
-                    <div class="caracteristica-card">
-                        <i data-lucide="shield"></i>
-                        <h3>Seguridad Multi-Tenant</h3>
-                        <p>Aislamiento total de datos, auditoría completa, cifrado de información y cumplimiento normativo garantizado.</p>
+                    <div style="display: flex; justify-content: center; align-items: center;" data-animation="zoom-in" data-delay="0.3">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop" alt="Nebula ERP Ilustración" style="width: 100%; max-width: 300px; height: auto; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Módulos de Nebula -->
-        <section class="nebula-modulos">
+        <!-- Características Principales (Tarjetas tipo card-float) -->
+        <section id="caracteristicas" class="section bg-light" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Módulos <span>Especializados</span></h2>
-                <div class="modulos-grid">
-                    <div class="modulo-card">
-                        <i data-lucide="calculator"></i>
-                        <h3>Contabilidad</h3>
-                        <p>Plan de cuentas parametrizable, asientos automáticos, libros oficiales y cierres mensuales.</p>
+                <h2 class="section-title" data-animation="fade-down">Características <span>Principales</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="piggy-bank"></i></div>
+                        <h3 class="card-title">Gestión Financiera</h3>
+                        <p class="card-text">Contabilidad general, cuentas por pagar y cobrar, activos fijos, conciliaciones bancarias y cierres contables automatizados.</p>
                     </div>
-                    <div class="modulo-card">
-                        <i data-lucide="credit-card"></i>
-                        <h3>Cuentas por Pagar</h3>
-                        <p>Gestión de facturas, programación de pagos, conciliación y flujo de caja proyectado.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="package"></i></div>
+                        <h3 class="card-title">Gestión de Inventarios</h3>
+                        <p class="card-text">Control de stock, trazabilidad de productos, gestión de almacenes, órdenes de compra y venta, y forecasting automatizado.</p>
                     </div>
-                    <div class="modulo-card">
-                        <i data-lucide="receipt"></i>
-                        <h3>Cuentas por Cobrar</h3>
-                        <p>Facturación electrónica, gestión de cartera, cobranzas y reporte de antigüedad de saldos.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="users"></i></div>
+                        <h3 class="card-title">Gestión Administrativa</h3>
+                        <p class="card-text">Gestión de recursos humanos, nómina, evaluación de desempeño, reclutamiento y expedientes digitales.</p>
                     </div>
-                    <div class="modulo-card">
-                        <i data-lucide="briefcase"></i>
-                        <h3>Nómina</h3>
-                        <p>Cálculo automático de salarios, prestaciones sociales, seguridad social y parafiscales.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="brain"></i></div>
+                        <h3 class="card-title">Inteligencia Artificial Integrada</h3>
+                        <p class="card-text">Análisis predictivo, detección de anomalías, recomendaciones inteligentes y automatización de procesos repetitivos.</p>
                     </div>
-                    <div class="modulo-card">
-                        <i data-lucide="shopping-cart"></i>
-                        <h3>Compras</h3>
-                        <p>Solicitudes de cotización, órdenes de compra, recepción de mercancía y evaluación de proveedores.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.5">
+                        <div class="card-icon"><i data-lucide="bar-chart-3"></i></div>
+                        <h3 class="card-title">Reportes en Tiempo Real</h3>
+                        <p class="card-text">Dashboards interactivos, reportes personalizables, indicadores clave de rendimiento (KPIs) y alertas automáticas.</p>
                     </div>
-                    <div class="modulo-card">
-                        <i data-lucide="truck"></i>
-                        <h3>Ventas</h3>
-                        <p>Gestión de clientes, cotizaciones, pedidos, facturación y seguimiento post-venta.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.6">
+                        <div class="card-icon"><i data-lucide="shield"></i></div>
+                        <h3 class="card-title">Seguridad Multi-Tenant</h3>
+                        <p class="card-text">Aislamiento total de datos, auditoría completa, cifrado de información y cumplimiento normativo garantizado.</p>
                     </div>
-                    <div class="modulo-card">
-                        <i data-lucide="warehouse"></i>
-                        <h3>Inventarios</h3>
-                        <p>Control multialmacén, kardex valorado, inventarios cíclicos y puntos de reorden.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulos de Nebula (Tarjetas tipo card-highlight) -->
+        <section class="section" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Módulos <span>Especializados</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="calculator"></i></div>
+                        <h3 class="card-title">Contabilidad</h3>
+                        <p class="card-text">Plan de cuentas parametrizable, asientos automáticos, libros oficiales y cierres mensuales.</p>
                     </div>
-                    <div class="modulo-card">
-                        <i data-lucide="file-text"></i>
-                        <h3>Activos Fijos</h3>
-                        <p>Registro de activos, depreciación automática, bajas y seguimiento de ubicación.</p>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="credit-card"></i></div>
+                        <h3 class="card-title">Cuentas por Pagar</h3>
+                        <p class="card-text">Gestión de facturas, programación de pagos, conciliación y flujo de caja proyectado.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="receipt"></i></div>
+                        <h3 class="card-title">Cuentas por Cobrar</h3>
+                        <p class="card-text">Facturación electrónica, gestión de cartera, cobranzas y reporte de antigüedad de saldos.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="briefcase"></i></div>
+                        <h3 class="card-title">Nómina</h3>
+                        <p class="card-text">Cálculo automático de salarios, prestaciones sociales, seguridad social y parafiscales.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.5">
+                        <div class="card-icon"><i data-lucide="shopping-cart"></i></div>
+                        <h3 class="card-title">Compras</h3>
+                        <p class="card-text">Solicitudes de cotización, órdenes de compra, recepción de mercancía y evaluación de proveedores.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.6">
+                        <div class="card-icon"><i data-lucide="truck"></i></div>
+                        <h3 class="card-title">Ventas</h3>
+                        <p class="card-text">Gestión de clientes, cotizaciones, pedidos, facturación y seguimiento post-venta.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.7">
+                        <div class="card-icon"><i data-lucide="warehouse"></i></div>
+                        <h3 class="card-title">Inventarios</h3>
+                        <p class="card-text">Control multialmacén, kardex valorado, inventarios cíclicos y puntos de reorden.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.8">
+                        <div class="card-icon"><i data-lucide="file-text"></i></div>
+                        <h3 class="card-title">Activos Fijos</h3>
+                        <p class="card-text">Registro de activos, depreciación automática, bajas y seguimiento de ubicación.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Arquitectura SIMAPPE + Nebula -->
-        <section class="nebula-arquitectura">
+        <section class="section bg-primary" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">La <span>Arquitectura</span> detrás de Nebula</h2>
-                <div class="arquitectura-grid">
-                    <div class="arquitectura-card simappe">
-                        <i data-lucide="layers"></i>
-                        <h3>SIMAPPE - El Cimiento</h3>
-                        <p>Gestiona la seguridad, multi-tenancy, auditoría y servicios base que toda aplicación empresarial requiere.</p>
+                <h2 class="section-title" style="color: white;" data-animation="fade-down">La <span style="color: #4a9eff;">Arquitectura</span> detrás de Nebula</h2>
+                <div class="grid-2">
+                    <div class="card" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); color: white; text-align: center;" data-animation="fade-right" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="layers" style="color: #4a9eff;"></i></div>
+                        <h3 class="card-title" style="color: white;">SIMAPPE - El Cimiento</h3>
+                        <p class="card-text" style="color: rgba(255,255,255,0.9);">Gestiona la seguridad, multi-tenancy, auditoría y servicios base que toda aplicación empresarial requiere.</p>
                     </div>
-                    <div class="arquitectura-card nebula">
-                        <i data-lucide="cloud"></i>
-                        <h3>Nebula - El Negocio</h3>
-                        <p>Contiene la lógica específica de Contabilidad, Nómina, Inventarios y demás procesos operativos.</p>
+                    <div class="card" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); color: white; text-align: center;" data-animation="fade-left" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="cloud" style="color: #4a9eff;"></i></div>
+                        <h3 class="card-title" style="color: white;">Nebula - El Negocio</h3>
+                        <p class="card-text" style="color: rgba(255,255,255,0.9);">Contiene la lógica específica de Contabilidad, Nómina, Inventarios y demás procesos operativos.</p>
                     </div>
                 </div>
-                <div class="arquitectura-ventaja">
-                    <p><strong>Ventaja competitiva:</strong> Su equipo se enfoca 100% en resolver el problema del negocio, no en reinventar la infraestructura técnica.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Multi-Tenancy y Multi-Motor -->
-        <section class="nebula-multitenant">
-            <div class="container">
-                <h2 class="section-title">Multi-Tenancy y <span>Multi-Motor</span></h2>
-                <div class="multitenant-grid">
-                    <div class="multitenant-card">
-                        <i data-lucide="database"></i>
-                        <h3>Flexibilidad de Datos</h3>
-                        <p>Soportamos los motores líderes del mercado (PostgreSQL, Oracle, SQL Server) para adaptarnos a su infraestructura existente.</p>
-                    </div>
-                    <div class="multitenant-card">
-                        <i data-lucide="shield"></i>
-                        <h3>Aislamiento Total</h3>
-                        <p>Cada cliente posee su propia base de datos física o esquema lógico aislado. No hay mezcla de información.</p>
-                    </div>
-                    <div class="multitenant-card">
-                        <i data-lucide="zap"></i>
-                        <h3>Conmutación Transparente</h3>
-                        <p>El sistema conmuta entre bases de datos en milisegundos, ofreciendo una experiencia unificada y segura.</p>
-                    </div>
+                <div class="card" style="margin-top: 2rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(4px); text-align: center;" data-animation="fade-up" data-delay="0.4">
+                    <p style="color: white;"><strong>Ventaja competitiva:</strong> Su equipo se enfoca 100% en resolver el problema del negocio, no en reinventar la infraestructura técnica.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Beneficios para el Negocio -->
-        <section class="nebula-beneficios">
+        <!-- Multi-Tenancy y Multi-Motor (Tarjetas tipo card-float) -->
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Beneficios para <span>su Negocio</span></h2>
-                <div class="beneficios-grid">
-                    <div class="beneficio-card">
-                        <i data-lucide="trending-up"></i>
-                        <h3>Eficiencia Operativa</h3>
-                        <p>Automatice procesos repetitivos y reduzca tiempos de ejecución hasta en un 70%.</p>
+                <h2 class="section-title" data-animation="fade-down">Multi-Tenancy y <span>Multi-Motor</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="database"></i></div>
+                        <h3 class="card-title">Flexibilidad de Datos</h3>
+                        <p class="card-text">Soportamos los motores líderes del mercado (PostgreSQL, Oracle, SQL Server) para adaptarnos a su infraestructura existente.</p>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="eye"></i>
-                        <h3>Visibilidad Total</h3>
-                        <p>Acceda a información consolidada de toda la organización desde un solo lugar.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="shield"></i></div>
+                        <h3 class="card-title">Aislamiento Total</h3>
+                        <p class="card-text">Cada cliente posee su propia base de datos física o esquema lógico aislado. No hay mezcla de información.</p>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="git-pull-request"></i>
-                        <h3>Toma de Decisiones Ágil</h3>
-                        <p>Reportes en tiempo real e indicadores clave al alcance de su mano.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="zap"></i></div>
+                        <h3 class="card-title">Conmutación Transparente</h3>
+                        <p class="card-text">El sistema conmuta entre bases de datos en milisegundos, ofreciendo una experiencia unificada y segura.</p>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="shield-check"></i>
-                        <h3>Cumplimiento Normativo</h3>
-                        <p>Auditoría completa y trazabilidad de cada transacción para cumplir con requisitos legales.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios para el Negocio (Tarjetas FLIP) -->
+        <section class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Beneficios para <span>su Negocio</span></h2>
+                <div class="grid-auto">
+                    
+                    <!-- Tarjeta Flip 1 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.1">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="trending-up"></i></div>
+                                <h3 class="card-title">Eficiencia Operativa</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="zap" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">-70%</h3>
+                                <p class="card-text">Automatice procesos repetitivos y reduzca tiempos de ejecución.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="scale"></i>
-                        <h3>Escalabilidad Garantizada</h3>
-                        <p>La plataforma crece con su negocio, sin necesidad de migraciones complejas.</p>
+                    
+                    <!-- Tarjeta Flip 2 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.2">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="eye"></i></div>
+                                <h3 class="card-title">Visibilidad Total</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="bar-chart-3" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">360°</h3>
+                                <p class="card-text">Acceda a información consolidada de toda la organización desde un solo lugar.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="smartphone"></i>
-                        <h3>Acceso Multiplataforma</h3>
-                        <p>Disponible en web, dispositivos móviles y tabletas, con experiencia de usuario consistente.</p>
+                    
+                    <!-- Tarjeta Flip 3 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.3">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="git-pull-request"></i></div>
+                                <h3 class="card-title">Toma de Decisiones Ágil</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="clock" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">Tiempo Real</h3>
+                                <p class="card-text">Reportes en tiempo real e indicadores clave al alcance de su mano.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tarjeta Flip 4 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.4">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="shield-check"></i></div>
+                                <h3 class="card-title">Cumplimiento Normativo</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="file-check" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">100%</h3>
+                                <p class="card-text">Auditoría completa y trazabilidad de cada transacción para cumplir con requisitos legales.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tarjeta Flip 5 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.5">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="scale"></i></div>
+                                <h3 class="card-title">Escalabilidad Garantizada</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="trending-up" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">Ilimitado</h3>
+                                <p class="card-text">La plataforma crece con su negocio, sin necesidad de migraciones complejas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tarjeta Flip 6 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.6">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="smartphone"></i></div>
+                                <h3 class="card-title">Acceso Multiplataforma</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="monitor" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">Anywhere</h3>
+                                <p class="card-text">Disponible en web, dispositivos móviles y tabletas, con experiencia de usuario consistente.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Casos de Uso por Sector -->
-        <section class="nebula-sectores">
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Nebula en <span>Acción</span></h2>
-                <div class="sectores-grid">
-                    <div class="sector-card sector-privado">
-                        <i data-lucide="building"></i>
-                        <h3>Sector Privado</h3>
-                        <ul>
+                <h2 class="section-title" data-animation="fade-down">Nebula en <span>Acción</span></h2>
+                <div class="grid-2">
+                    <div class="card card-highlight" data-animation="fade-right" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="building"></i></div>
+                        <h3 class="card-title">Sector Privado</h3>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
                             <li><strong>Manufactura:</strong> Control de producción, costos y cadena de suministro.</li>
                             <li><strong>Retail:</strong> Gestión multicanal, inventarios y promociones.</li>
                             <li><strong>Servicios:</strong> Facturación recurrente, proyectos y CRM integrado.</li>
                             <li><strong>Construcción:</strong> Control de obras, presupuestos y subcontratistas.</li>
                         </ul>
                     </div>
-                    <div class="sector-card sector-publico">
-                        <i data-lucide="landmark"></i>
-                        <h3>Sector Público</h3>
-                        <ul>
+                    <div class="card card-highlight" data-animation="fade-left" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="landmark"></i></div>
+                        <h3 class="card-title">Sector Público</h3>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
                             <li><strong>Presupuesto:</strong> Ejecución presupuestal y control de gasto público.</li>
                             <li><strong>Contratación:</strong> Gestión de procesos de contratación estatal.</li>
                             <li><strong>Tesorería:</strong> Administración de recursos y pagos a proveedores.</li>
@@ -275,49 +341,66 @@
             </div>
         </section>
 
-        <!-- Comparativa competitiva -->
-        <section class="nebula-comparativa">
+        <!-- Comparativa competitiva (Tarjetas tipo card-highlight) -->
+        <section class="section bg-light" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">¿Por qué <span>Nebula ERP</span>?</h2>
-                <div class="comparativa-grid">
-                    <div class="comparativa-item">
-                        <i data-lucide="check-circle"></i>
-                        <div>
-                            <h3>Arquitectura Moderna</h3>
-                            <p>Construido sobre SIMAPPE, no hereda deuda técnica de sistemas legacy.</p>
-                        </div>
+                <h2 class="section-title" data-animation="fade-down">¿Por qué <span>Nebula ERP</span>?</h2>
+                <div class="grid-auto">
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="check-circle"></i></div>
+                        <h3 class="card-title">Arquitectura Moderna</h3>
+                        <p class="card-text">Construido sobre SIMAPPE, no hereda deuda técnica de sistemas legacy.</p>
                     </div>
-                    <div class="comparativa-item">
-                        <i data-lucide="check-circle"></i>
-                        <div>
-                            <h3>IA Integrada</h3>
-                            <p>A diferencia de otros ERPs, Nebula incorpora inteligencia artificial en el núcleo.</p>
-                        </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="brain"></i></div>
+                        <h3 class="card-title">IA Integrada</h3>
+                        <p class="card-text">A diferencia de otros ERPs, Nebula incorpora inteligencia artificial en el núcleo.</p>
                     </div>
-                    <div class="comparativa-item">
-                        <i data-lucide="check-circle"></i>
-                        <div>
-                            <h3>Multi-Tenancy Nativa</h3>
-                            <p>Diseñado desde cero para servir a múltiples clientes con aislamiento total.</p>
-                        </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="layers"></i></div>
+                        <h3 class="card-title">Multi-Tenancy Nativa</h3>
+                        <p class="card-text">Diseñado desde cero para servir a múltiples clientes con aislamiento total.</p>
                     </div>
-                    <div class="comparativa-item">
-                        <i data-lucide="check-circle"></i>
-                        <div>
-                            <h3>Personalizable</h3>
-                            <p>Sin necesidad de costosos desarrollos, la plataforma se adapta a sus procesos.</p>
-                        </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="settings"></i></div>
+                        <h3 class="card-title">Personalizable</h3>
+                        <p class="card-text">Sin necesidad de costosos desarrollos, la plataforma se adapta a sus procesos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resultados Medibles -->
+        <section class="stats-section bg-primary" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" style="color: white;" data-animation="fade-down">Resultados <span style="color: #4a9eff;">Medibles</span></h2>
+                <div class="stats-grid">
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.1">
+                        <span class="stat-number">+40%</span>
+                        <span class="stat-label">Incremento en eficiencia operativa</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.2">
+                        <span class="stat-number">-50%</span>
+                        <span class="stat-label">Reducción en tiempos de cierre contable</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.3">
+                        <span class="stat-number">+99.9%</span>
+                        <span class="stat-label">Disponibilidad garantizada</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.4">
+                        <span class="stat-number">+60%</span>
+                        <span class="stat-label">Mejora en precisión de inventarios</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Final -->
-        <section id="contacto" class="nebula-cta-final">
+        <section id="contacto" class="section bg-primary" style="text-align: center;" data-animation="fade-up">
             <div class="container">
-                <h2>¿Listo para transformar la gestión de su empresa?</h2>
-                <p>Solicite una demo personalizada y descubra cómo Nebula ERP puede optimizar sus operaciones.</p>
-                <a href="contacto.html" class="btn-solicitar">Solicitar información técnica →</a>
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;" data-animation="fade-down">¿Listo para transformar la gestión de su empresa?</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: rgba(255,255,255,0.95);" data-animation="fade-up" data-delay="0.2">Solicite una demo personalizada y descubra cómo Nebula ERP puede optimizar sus operaciones.</p>
+                <a href="contacto.html" class="btn btn-primary" style="background: white; color: #0e58a9;" data-animation="zoom-in" data-delay="0.4">Solicitar información técnica →</a>
             </div>
         </section>
     </main>
@@ -333,7 +416,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p>gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -364,12 +447,14 @@
                 <p class="footer-newsletter-text">
                     Recibe novedades sobre nuestras soluciones.
                 </p>
-                <form class="footer-newsletter-form" id="newsletterForm2">
+                <form class="footer-newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="footer-unsubscribe">
                     Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
                 </p>
             </div>
         </div>
@@ -377,7 +462,6 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
-                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
             </div>
         </div>
     </footer>
