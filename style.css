@@ -1459,3 +1459,264 @@ body.dark-mode .accordion-item:hover {
 body.dark-mode .accordion-item.active {
     border-left-color: #4a9eff;
 }
+/* ========== MODAL UNIFICADO ========== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: white;
+    max-width: 800px;
+    width: 90%;
+    border-radius: 20px;
+    max-height: 85vh;
+    overflow-y: auto;
+    animation: modalFadeIn 0.3s ease;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .modal-content {
+    background: #1a1a2e;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Header del modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    background: #0e58a9;
+    color: white;
+    border-radius: 20px 20px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+body.dark-mode .modal-header {
+    background: #0e58a9;
+    border-bottom-color: #2c2c2c;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.3s;
+    line-height: 1;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.modal-close:hover {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.2);
+}
+
+/* Body del modal */
+.modal-body {
+    padding: 1.5rem;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.modal-body h3 {
+    color: #0e58a9;
+    margin: 1rem 0 0.5rem;
+    font-size: 1.25rem;
+}
+
+body.dark-mode .modal-body h3 {
+    color: #4a9eff;
+}
+
+.modal-body h4 {
+    color: #333;
+    margin: 1rem 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+body.dark-mode .modal-body h4 {
+    color: #ddd;
+}
+
+.modal-body p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+body.dark-mode .modal-body p {
+    color: #bbb;
+}
+
+.modal-body ul,
+.modal-body ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.modal-body li {
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+body.dark-mode .modal-body li {
+    color: #bbb;
+}
+
+/* Footer del modal */
+.modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+    background: #f8f9fa;
+    border-radius: 0 0 20px 20px;
+}
+
+body.dark-mode .modal-footer {
+    background: #0f0f1a;
+    border-top-color: #2c2c2c;
+}
+
+/* Elementos específicos para políticas (dentro del modal) */
+.politica-acceptance {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.politica-acceptance input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #0e58a9;
+}
+
+.politica-acceptance label {
+    cursor: pointer;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+body.dark-mode .politica-acceptance label {
+    color: #ddd;
+}
+
+.politica-signature {
+    margin-bottom: 1rem;
+}
+
+.politica-signature label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+body.dark-mode .politica-signature label {
+    color: #ddd;
+}
+
+.politica-signature input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .politica-signature input {
+    background: #2c2c3e;
+    border-color: #444;
+    color: white;
+}
+
+.politica-signature input:focus {
+    outline: none;
+    border-color: #0e58a9;
+    box-shadow: 0 0 0 3px rgba(14,88,169,0.1);
+}
+
+.signature-note {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 0.75rem;
+    text-align: center;
+}
+
+body.dark-mode .signature-note {
+    color: #777;
+}
+
+/* Responsive modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .modal-header {
+        padding: 1rem;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+    
+    .modal-footer {
+        padding: 1rem;
+    }
+    
+    .politica-acceptance {
+        gap: 0.5rem;
+    }
+    
+    .politica-acceptance label {
+        font-size: 0.85rem;
+    }
+}
