@@ -701,10 +701,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ========== SISTEMA DE ACORDEÓN / PLEGABLES ==========
+// ========== SISTEMA DE ACORDEÓN / PLEGABLES ==========
 function initAccordion() {
     const accordionItems = document.querySelectorAll('.accordion-item');
     
     accordionItems.forEach(item => {
+        // Hacer que toda la card sea clickeable, no solo el header
         const header = item.querySelector('.accordion-header');
         const content = item.querySelector('.accordion-content');
         
@@ -713,17 +715,27 @@ function initAccordion() {
             content.style.maxHeight = null;
             item.classList.remove('active');
             
-            header.addEventListener('click', () => {
-                // Cerrar otros items si se desea comportamiento exclusivo
-                // (opcional: descomentar para tener solo uno abierto a la vez)
-                // accordionItems.forEach(otherItem => {
-                //     if (otherItem !== item && otherItem.classList.contains('active')) {
-                //         otherItem.classList.remove('active');
-                //         otherItem.querySelector('.accordion-content').style.maxHeight = null;
-                //     }
-                // });
+            // Hacer click en cualquier parte de la card
+            item.addEventListener('click', function(e) {
+                // Prevenir que el click en enlaces dentro del contenido cierre el acordeón
+                if (e.target.tagName === 'A' || e.target.closest('a')) {
+                    e.stopPropagation();
+                    return;
+                }
                 
                 // Toggle el item actual
+                item.classList.toggle('active');
+                
+                if (item.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.style.maxHeight = null;
+                }
+            });
+            
+            // También mantener el click en el header (por si tiene iconos)
+            header.addEventListener('click', function(e) {
+                e.stopPropagation();
                 item.classList.toggle('active');
                 
                 if (item.classList.contains('active')) {
@@ -743,5 +755,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Exportar para uso global si es necesario
 window.initAccordion = initAccordion;
-    console.log('✅ Script completamente cargado');
-});
