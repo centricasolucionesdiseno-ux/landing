@@ -8,14 +8,14 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-        <header>
+    <header>
         <div class="logo-container">
             <div class="logo">
                 <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
             </div>
         </div>
 
-       <nav>
+        <nav>
             <ul class="menu">
                 <li><a href="index.html">Sobre nosotros</a></li>
                 <li class="dropdown">
@@ -39,109 +39,103 @@
     </header>
 
     <main>
-        <!-- Hero -->
-        <section class="politicas-hero">
-            <div class="politicas-hero-container">
-                <h1 class="politicas-hero-title">Políticas <span>Internas</span></h1>
-                <p class="politicas-hero-description">
+        <!-- Hero con Video (manteniendo la funcionalidad) -->
+        <section class="hero-video" data-animation="fade-in" data-delay="0">
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600">
+                <source src="https://cdn.coverr.co/videos/coverr-documents-on-a-desk-1582641770810/1080p.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-container">
+                <div class="hero-icon" data-animation="zoom-in" data-delay="0.2">
+                    <i data-lucide="file-text"></i>
+                </div>
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Políticas <span>Internas</span></h1>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.5">
                     Consulta, revisa y acepta las políticas internas de Céntrica.
                     Selecciona una política para ver su contenido y firmar digitalmente.
                 </p>
             </div>
         </section>
 
-        <!-- Grid de políticas -->
-        <section class="politicas-grid-section">
-            <div class="politicas-grid" id="politicasGrid">
-                
-                <!-- Política 1 - Manual de Bienvenida -->
-                <div class="politica-card" data-politica="manual">
-                    <div class="politica-icon">
-                        <i data-lucide="book-open"></i>
+        <!-- Grid de políticas (Tarjetas tipo card-float) -->
+        <section class="section" data-animation="fade-up">
+            <div class="container">
+                <div class="grid-auto" id="politicasGrid">
+                    
+                    <!-- Política 1 - Manual de Bienvenida -->
+                    <div class="card card-float" data-politica="manual" data-animation="zoom-in" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="book-open"></i></div>
+                        <h3 class="card-title">Manual de Bienvenida</h3>
+                        <p class="card-text">Normas generales, cultura y valores de la empresa.</p>
+                        <button class="btn btn-secondary politica-btn" data-id="manual" style="margin-top: 1rem;">Ver política →</button>
                     </div>
-                    <h3 class="politica-title">Manual de Bienvenida</h3>
-                    <p class="politica-description">Normas generales, cultura y valores de la empresa.</p>
-                    <button class="politica-btn" data-id="manual">Ver política →</button>
-                </div>
 
-                <!-- Política 2 - Política SSG -->
-                <div class="politica-card" data-politica="ssg">
-                    <div class="politica-icon">
-                        <i data-lucide="shield"></i>
+                    <!-- Política 2 - Política SSG -->
+                    <div class="card card-float" data-politica="ssg" data-animation="zoom-in" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="shield"></i></div>
+                        <h3 class="card-title">Política SSG</h3>
+                        <p class="card-text">Sistema de Gestión de Seguridad y Salud en el Trabajo.</p>
+                        <button class="btn btn-secondary politica-btn" data-id="ssg" style="margin-top: 1rem;">Ver política →</button>
                     </div>
-                    <h3 class="politica-title">Política SSG</h3>
-                    <p class="politica-description">Sistema de Gestión de Seguridad y Salud en el Trabajo.</p>
-                    <button class="politica-btn" data-id="ssg">Ver política →</button>
-                </div>
 
-                <!-- Política 3 - Política de Seguridad -->
-                <div class="politica-card" data-politica="seguridad">
-                    <div class="politica-icon">
-                        <i data-lucide="lock"></i>
+                    <!-- Política 3 - Política de Seguridad -->
+                    <div class="card card-float" data-politica="seguridad" data-animation="zoom-in" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="lock"></i></div>
+                        <h3 class="card-title">Política de Seguridad</h3>
+                        <p class="card-text">Seguridad de la información y protección de datos.</p>
+                        <button class="btn btn-secondary politica-btn" data-id="seguridad" style="margin-top: 1rem;">Ver política →</button>
                     </div>
-                    <h3 class="politica-title">Política de Seguridad</h3>
-                    <p class="politica-description">Seguridad de la información y protección de datos.</p>
-                    <button class="politica-btn" data-id="seguridad">Ver política →</button>
-                </div>
 
-                <!-- Política 4 - Política de TI -->
-                <div class="politica-card" data-politica="ti">
-                    <div class="politica-icon">
-                        <i data-lucide="cpu"></i>
+                    <!-- Política 4 - Política de TI -->
+                    <div class="card card-float" data-politica="ti" data-animation="zoom-in" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="cpu"></i></div>
+                        <h3 class="card-title">Política de TI</h3>
+                        <p class="card-text">Uso de recursos tecnológicos y herramientas digitales.</p>
+                        <button class="btn btn-secondary politica-btn" data-id="ti" style="margin-top: 1rem;">Ver política →</button>
                     </div>
-                    <h3 class="politica-title">Política de TI</h3>
-                    <p class="politica-description">Uso de recursos tecnológicos y herramientas digitales.</p>
-                    <button class="politica-btn" data-id="ti">Ver política →</button>
-                </div>
 
-                <!-- Política 5 - Código de Ética -->
-                <div class="politica-card" data-politica="etica">
-                    <div class="politica-icon">
-                        <i data-lucide="scale"></i>
+                    <!-- Política 5 - Código de Ética -->
+                    <div class="card card-float" data-politica="etica" data-animation="zoom-in" data-delay="0.5">
+                        <div class="card-icon"><i data-lucide="scale"></i></div>
+                        <h3 class="card-title">Código de Ética</h3>
+                        <p class="card-text">Principios éticos y conducta profesional.</p>
+                        <button class="btn btn-secondary politica-btn" data-id="etica" style="margin-top: 1rem;">Ver política →</button>
                     </div>
-                    <h3 class="politica-title">Código de Ética</h3>
-                    <p class="politica-description">Principios éticos y conducta profesional.</p>
-                    <button class="politica-btn" data-id="etica">Ver política →</button>
-                </div>
 
-                <!-- Política 6 - Política de Confidencialidad -->
-                <div class="politica-card" data-politica="confidencialidad">
-                    <div class="politica-icon">
-                        <i data-lucide="file-lock"></i>
+                    <!-- Política 6 - Política de Confidencialidad -->
+                    <div class="card card-float" data-politica="confidencialidad" data-animation="zoom-in" data-delay="0.6">
+                        <div class="card-icon"><i data-lucide="file-lock"></i></div>
+                        <h3 class="card-title">Política de Confidencialidad</h3>
+                        <p class="card-text">Manejo de información sensible y secreto empresarial.</p>
+                        <button class="btn btn-secondary politica-btn" data-id="confidencialidad" style="margin-top: 1rem;">Ver política →</button>
                     </div>
-                    <h3 class="politica-title">Política de Confidencialidad</h3>
-                    <p class="politica-description">Manejo de información sensible y secreto empresarial.</p>
-                    <button class="politica-btn" data-id="confidencialidad">Ver política →</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Modal de política (aparece al hacer clic en una tarjeta) -->
-    <div id="politicaModal" class="politica-modal">
-        <div class="politica-modal-content">
-            <div class="politica-modal-header">
+    <!-- Modal de política (funcionalidad existente) -->
+    <div id="politicaModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
                 <h2 id="modalTitle">Título de la política</h2>
                 <button class="modal-close" id="closeModal">&times;</button>
             </div>
-            <div class="politica-modal-body" id="modalBody">
+            <div class="modal-body" id="modalBody">
                 <!-- Contenido de la política se carga dinámicamente -->
             </div>
-            <div class="politica-modal-footer">
-                <!-- Checkbox de aceptación -->
+            <div class="modal-footer">
                 <div class="politica-acceptance">
                     <input type="checkbox" id="acceptCheckbox">
                     <label for="acceptCheckbox">He leído y acepto los términos de esta política</label>
                 </div>
                 
-                <!-- Campo de firma simulada -->
                 <div class="politica-signature">
                     <label for="signatureInput">Firma digital (Nombre completo)</label>
                     <input type="text" id="signatureInput" placeholder="Escribe tu nombre completo como firma">
                 </div>
                 
-                <!-- Botón de confirmación -->
-                <button id="confirmSignature" class="signature-btn" disabled>Confirmar y firmar →</button>
+                <button id="confirmSignature" class="btn btn-primary" disabled>Confirmar y firmar →</button>
                 <p class="signature-note">* Esta es una versión de demostración. La firma no será almacenada.</p>
             </div>
         </div>
@@ -158,7 +152,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="mail"></i> gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -189,12 +183,14 @@
                 <p class="footer-newsletter-text">
                     Recibe novedades sobre nuestras soluciones.
                 </p>
-                <form class="footer-newsletter-form" id="newsletterForm2">
+                <form class="footer-newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="footer-unsubscribe">
                     Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
                 </p>
             </div>
         </div>
@@ -202,28 +198,27 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
-                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
     
-    <!-- Script específico para políticas internas -->
+    <!-- Script específico para políticas internas (modal + firma) -->
     <script>
-        // Contenido simulado para cada política
+        // Contenido de cada política
         const politicasContent = {
             manual: {
                 title: "Manual de Bienvenida",
                 content: `
                     <h3>Bienvenido a Céntrica</h3>
-                    <p>Este manual contiene las normas generales, la cultura organizacional y los valores que rigen nuestra empresa. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Este manual contiene las normas generales, la cultura organizacional y los valores que rigen nuestra empresa.</p>
                     <h4>1. Misión y Visión</h4>
-                    <p>Nuestra misión es acelerar la construcción de software empresarial con estándares industriales. Lorem ipsum dolor sit amet.</p>
+                    <p>Nuestra misión es acelerar la construcción de software empresarial con estándares industriales.</p>
                     <h4>2. Valores Corporativos</h4>
-                    <p>Innovación, compromiso, calidad y trabajo en equipo son los pilares de nuestra cultura. Lorem ipsum dolor sit amet.</p>
+                    <p>Innovación, compromiso, calidad y trabajo en equipo son los pilares de nuestra cultura.</p>
                     <h4>3. Horarios y Normas</h4>
-                    <p>El horario laboral es de lunes a viernes de 8:00 am a 6:00 pm. Lorem ipsum dolor sit amet.</p>
+                    <p>El horario laboral es de lunes a viernes de 8:00 am a 6:00 pm.</p>
                     <p><em>Última actualización: Enero 2026</em></p>
                 `
             },
@@ -231,13 +226,13 @@
                 title: "Política SSG",
                 content: `
                     <h3>Sistema de Gestión de Seguridad y Salud</h3>
-                    <p>Esta política establece los lineamientos para garantizar un entorno laboral seguro y saludable. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Esta política establece los lineamientos para garantizar un entorno laboral seguro y saludable.</p>
                     <h4>1. Obligaciones de la Empresa</h4>
-                    <p>Proveer equipos de protección, capacitaciones y condiciones seguras. Lorem ipsum dolor sit amet.</p>
+                    <p>Proveer equipos de protección, capacitaciones y condiciones seguras.</p>
                     <h4>2. Obligaciones de los Colaboradores</h4>
-                    <p>Cumplir con las normas de seguridad y reportar condiciones peligrosas. Lorem ipsum dolor sit amet.</p>
+                    <p>Cumplir con las normas de seguridad y reportar condiciones peligrosas.</p>
                     <h4>3. Procedimientos en Caso de Emergencia</h4>
-                    <p>Rutas de evacuación, puntos de encuentro y primeros auxilios. Lorem ipsum dolor sit amet.</p>
+                    <p>Rutas de evacuación, puntos de encuentro y primeros auxilios.</p>
                     <p><em>Última actualización: Enero 2026</em></p>
                 `
             },
@@ -245,13 +240,13 @@
                 title: "Política de Seguridad",
                 content: `
                     <h3>Política de Seguridad de la Información</h3>
-                    <p>Esta política define los controles para proteger la información de la empresa y de los clientes. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Esta política define los controles para proteger la información de la empresa y de los clientes.</p>
                     <h4>1. Clasificación de la Información</h4>
-                    <p>Pública, interna, confidencial y restringida. Lorem ipsum dolor sit amet.</p>
+                    <p>Pública, interna, confidencial y restringida.</p>
                     <h4>2. Control de Accesos</h4>
-                    <p>Autenticación multifactor, contraseñas seguras y principio de mínimo privilegio. Lorem ipsum dolor sit amet.</p>
+                    <p>Autenticación multifactor, contraseñas seguras y principio de mínimo privilegio.</p>
                     <h4>3. Reporte de Incidentes</h4>
-                    <p>Protocolo para reportar brechas o incidentes de seguridad. Lorem ipsum dolor sit amet.</p>
+                    <p>Protocolo para reportar brechas o incidentes de seguridad.</p>
                     <p><em>Última actualización: Enero 2026</em></p>
                 `
             },
@@ -259,13 +254,13 @@
                 title: "Política de TI",
                 content: `
                     <h3>Política de Tecnologías de la Información</h3>
-                    <p>Esta política regula el uso de los recursos tecnológicos y herramientas digitales de la empresa. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Esta política regula el uso de los recursos tecnológicos y herramientas digitales de la empresa.</p>
                     <h4>1. Uso Aceptable</h4>
-                    <p>Los equipos y sistemas deben usarse exclusivamente para fines laborales. Lorem ipsum dolor sit amet.</p>
+                    <p>Los equipos y sistemas deben usarse exclusivamente para fines laborales.</p>
                     <h4>2. Software y Licencias</h4>
-                    <p>Prohibida la instalación de software no autorizado. Lorem ipsum dolor sit amet.</p>
+                    <p>Prohibida la instalación de software no autorizado.</p>
                     <h4>3. Respaldo de Información</h4>
-                    <p>Los colaboradores deben respaldar información crítica en las unidades designadas. Lorem ipsum dolor sit amet.</p>
+                    <p>Los colaboradores deben respaldar información crítica en las unidades designadas.</p>
                     <p><em>Última actualización: Enero 2026</em></p>
                 `
             },
@@ -273,13 +268,13 @@
                 title: "Código de Ética",
                 content: `
                     <h3>Código de Ética y Conducta</h3>
-                    <p>Este código establece los principios éticos que guían nuestro comportamiento profesional. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Este código establece los principios éticos que guían nuestro comportamiento profesional.</p>
                     <h4>1. Integridad y Honestidad</h4>
-                    <p>Actuar con transparencia y honestidad en todas las relaciones. Lorem ipsum dolor sit amet.</p>
+                    <p>Actuar con transparencia y honestidad en todas las relaciones.</p>
                     <h4>2. Conflicto de Intereses</h4>
-                    <p>Declarar cualquier situación que pueda generar conflicto de intereses. Lorem ipsum dolor sit amet.</p>
+                    <p>Declarar cualquier situación que pueda generar conflicto de intereses.</p>
                     <h4>3. Canal de Denuncias</h4>
-                    <p>Procedimiento confidencial para reportar violaciones al código. Lorem ipsum dolor sit amet.</p>
+                    <p>Procedimiento confidencial para reportar violaciones al código.</p>
                     <p><em>Última actualización: Enero 2026</em></p>
                 `
             },
@@ -287,13 +282,13 @@
                 title: "Política de Confidencialidad",
                 content: `
                     <h3>Política de Confidencialidad</h3>
-                    <p>Esta política protege la información sensible de la empresa y de los clientes. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Esta política protege la información sensible de la empresa y de los clientes.</p>
                     <h4>1. Información Confidencial</h4>
-                    <p>Se considera información confidencial: datos de clientes, estrategias, códigos fuente, etc. Lorem ipsum dolor sit amet.</p>
+                    <p>Se considera información confidencial: datos de clientes, estrategias, códigos fuente, etc.</p>
                     <h4>2. Obligaciones del Colaborador</h4>
-                    <p>No divulgar información confidencial durante ni después de la relación laboral. Lorem ipsum dolor sit amet.</p>
+                    <p>No divulgar información confidencial durante ni después de la relación laboral.</p>
                     <h4>3. Acuerdos de Confidencialidad</h4>
-                    <p>Todo colaborador debe firmar un acuerdo de confidencialidad. Lorem ipsum dolor sit amet.</p>
+                    <p>Todo colaborador debe firmar un acuerdo de confidencialidad.</p>
                     <p><em>Última actualización: Enero 2026</em></p>
                 `
             }
@@ -311,7 +306,6 @@
 
         let currentPolitica = null;
 
-        // Abrir modal con la política seleccionada
         function abrirPolitica(politicaId) {
             const politica = politicasContent[politicaId];
             if (politica) {
@@ -319,37 +313,31 @@
                 modalTitle.textContent = politica.title;
                 modalBody.innerHTML = politica.content;
                 
-                // Resetear formulario
                 acceptCheckbox.checked = false;
                 signatureInput.value = '';
                 confirmBtn.disabled = true;
                 
                 modal.style.display = 'flex';
-                lucide.createIcons();
+                if (typeof lucide !== 'undefined') lucide.createIcons();
             }
         }
 
-        // Cerrar modal
         function cerrarModal() {
             modal.style.display = 'none';
             currentPolitica = null;
         }
 
-        // Habilitar/deshabilitar botón de confirmación
         function validarFormulario() {
             const isChecked = acceptCheckbox.checked;
             const hasSignature = signatureInput.value.trim().length > 0;
             confirmBtn.disabled = !(isChecked && hasSignature);
         }
 
-        // Confirmar firma
         function confirmarFirma() {
             const nombre = signatureInput.value.trim();
             const politica = politicasContent[currentPolitica];
             
-            // Simular éxito
             alert(`✅ ¡Firma registrada!\n\nPolítica: ${politica.title}\nFirmado por: ${nombre}\n\n(Función de demostración - La firma no ha sido almacenada en un servidor)`);
-            
             cerrarModal();
         }
 
@@ -369,42 +357,6 @@
         acceptCheckbox.addEventListener('change', validarFormulario);
         signatureInput.addEventListener('input', validarFormulario);
         confirmBtn.addEventListener('click', confirmarFirma);
-
-        // Newsletter form
-        const newsletterForm = document.getElementById('newsletterFormPoliticas');
-        if (newsletterForm) {
-            newsletterForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                console.log('Newsletter suscripción:', email);
-                alert('¡Gracias por suscribirte!');
-                this.reset();
-            });
-        }
-
-        // Modo oscuro (por si el script principal falla)
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-        if (darkModeToggle) {
-            if (localStorage.getItem('theme') === 'dark') {
-                body.classList.add('dark-mode');
-                body.classList.remove('light-mode');
-            }
-            darkModeToggle.addEventListener('click', () => {
-                if (body.classList.contains('dark-mode')) {
-                    body.classList.remove('dark-mode');
-                    body.classList.add('light-mode');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    body.classList.remove('light-mode');
-                    body.classList.add('dark-mode');
-                    localStorage.setItem('theme', 'dark');
-                }
-                lucide.createIcons();
-            });
-        }
-        
-        lucide.createIcons();
     </script>
 </body>
 </html>
