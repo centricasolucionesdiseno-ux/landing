@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Céntrica - Política de Cookies</title>
+    <title>Céntrica - Fábrica de software | Ingeniería de alto nivel</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
     <header>
@@ -39,136 +40,334 @@
     </header>
 
     <main>
-        <!-- Hero Estático para páginas legales -->
-        <section class="hero-static" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600');" data-animation="fade-in">
-            <div class="hero-static-overlay"></div>
+        <!-- Hero con Video -->
+        <section class="hero-video" data-animation="fade-in" data-delay="0">
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1600">
+                <source src="https://cdn.coverr.co/videos/coverr-programming-code-on-screen-1586816707075/1080p.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
             <div class="hero-container">
-                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Política de <span>Cookies</span></h1>
-                <p class="hero-description" data-animation="fade-up" data-delay="0.5">Última actualización: 24 de abril de 2026</p>
+                <div class="hero-icon" data-animation="zoom-in" data-delay="0.2">
+                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=200&h=200&fit=crop" alt="Fábrica de Software" style="width: 80px; height: 80px; object-fit: cover; border-radius: 20px; margin-bottom: 1rem;">
+                </div>
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Fábrica de <span>Software</span> Céntrica</h1>
+                <p class="hero-subtitle" data-animation="fade-up" data-delay="0.5">Ingeniería de Alto Nivel para Desafíos Corporativos</p>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.7">La industrialización de la ingeniería de software. La transición de modelos de desarrollo convencionales hacia un centro de producción basado en procesos estandarizados, medibles y optimizables.</p>
+                <div class="hero-buttons" data-animation="fade-up" data-delay="0.9">
+                    <a href="#contacto" class="btn btn-primary">Solicitar información →</a>
+                    <a href="#oferta" class="btn btn-secondary">Conocer oferta →</a>
+                </div>
             </div>
         </section>
 
-        <!-- Grid legal con sidebar y acordeón -->
-        <div class="legal-grid" data-animation="fade-up">
-            <!-- Sidebar de navegación -->
-            <aside class="legal-sidebar" data-animation="fade-right" data-delay="0.2">
-                <ul>
-                    <li><a href="#que-son" data-accordion-link="que-son">🍪 1. ¿Qué son las cookies?</a></li>
-                    <li><a href="#tipos" data-accordion-link="tipos">📊 2. Tipos de cookies</a></li>
-                    <li><a href="#uso" data-accordion-link="uso">⚙️ 3. Uso de cookies</a></li>
-                    <li><a href="#gestion" data-accordion-link="gestion">🛠️ 4. Gestión de cookies</a></li>
-                    <li><a href="#cambios" data-accordion-link="cambios">🔄 5. Cambios en la política</a></li>
-                </ul>
-            </aside>
-            
-            <!-- Acordeón de contenido - Toda la card es clickeable -->
-            <div class="accordion" data-animation="fade-left" data-delay="0.3">
-                
-                <!-- Item 1 -->
-                <div class="accordion-item" id="que-son">
-                    <div class="accordion-header">
-                        <h3 class="accordion-title">
-                            <i data-lucide="info"></i>
-                            1. ¿Qué son las cookies?
-                        </h3>
-                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+        <!-- Valor para el cliente (Tarjetas tipo card-float) -->
+        <section class="section" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Valor para el <span>Cliente</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="calendar-check"></i></div>
+                        <h3 class="card-title">Previsibilidad</h3>
+                        <p class="card-text">Seguridad en el cumplimiento de tiempos y presupuestos.</p>
                     </div>
-                    <div class="accordion-content">
-                        <p>Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita un sitio web. Su finalidad es permitir el correcto funcionamiento del sitio, mejorar la experiencia del usuario y recopilar información sobre el uso de la plataforma.</p>
-                        <p>Estas cookies no dañan su dispositivo y pueden ser eliminadas en cualquier momento desde la configuración de su navegador.</p>
-                        <h4>¿Para qué sirven?</h4>
-                        <ul>
-                            <li>Recordar sus preferencias de navegación.</li>
-                            <li>Mejorar la velocidad y rendimiento del sitio.</li>
-                            <li>Recopilar datos estadísticos anónimos.</li>
-                        </ul>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="layers"></i></div>
+                        <h3 class="card-title">Consistencia</h3>
+                        <p class="card-text">Calidad técnica uniforme en cada entrega.</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="trending-up"></i></div>
+                        <h3 class="card-title">Escalabilidad</h3>
+                        <p class="card-text">Capacidad de respuesta industrializada ante la demanda del negocio.</p>
                     </div>
                 </div>
-                
-                <!-- Item 2 -->
-                <div class="accordion-item" id="tipos">
-                    <div class="accordion-header">
-                        <h3 class="accordion-title">
-                            <i data-lucide="pie-chart"></i>
-                            2. Tipos de cookies
-                        </h3>
-                        <i data-lucide="chevron-down" class="accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p><strong>Cookies técnicas:</strong> necesarias para el funcionamiento básico del sitio web. Permiten la navegación y el uso de las funciones esenciales.</p>
-                        <p><strong>Cookies de análisis:</strong> permiten medir y analizar el comportamiento de los usuarios, ayudándonos a mejorar nuestros servicios.</p>
-                        <p><strong>Cookies de personalización:</strong> adaptan la experiencia según preferencias del usuario como idioma o región.</p>
-                        <p><strong>Cookies de terceros:</strong> gestionadas por servicios externos que pueden integrarse en el sitio web (Google Analytics, redes sociales, etc.).</p>
-                    </div>
-                </div>
-                
-                <!-- Item 3 -->
-                <div class="accordion-item" id="uso">
-                    <div class="accordion-header">
-                        <h3 class="accordion-title">
-                            <i data-lucide="settings"></i>
-                            3. Uso de cookies
-                        </h3>
-                        <i data-lucide="chevron-down" class="accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Utilizamos cookies para garantizar el correcto funcionamiento del sitio, mejorar nuestros servicios y ofrecer contenido relevante a los usuarios.</p>
-                        <p>En algunos casos, las cookies pueden ser utilizadas para fines estadísticos o de mejora continua, siempre respetando la privacidad del usuario.</p>
-                        <h4>Cookies específicas que utilizamos:</h4>
-                        <ul>
-                            <li><strong>Session ID:</strong> Para mantener su sesión activa.</li>
-                            <li><strong>Preferencias de idioma:</strong> Para mostrar el contenido en su idioma.</li>
-                            <li><strong>Preferencias de tema:</strong> Para recordar si prefiere modo claro u oscuro.</li>
-                            <li><strong>Google Analytics:</strong> Para analizar el tráfico y comportamiento en el sitio.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Item 4 -->
-                <div class="accordion-item" id="gestion">
-                    <div class="accordion-header">
-                        <h3 class="accordion-title">
-                            <i data-lucide="sliders"></i>
-                            4. Gestión de cookies
-                        </h3>
-                        <i data-lucide="chevron-down" class="accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Usted puede aceptar, rechazar o configurar el uso de cookies a través de las opciones disponibles en su navegador.</p>
-                        <p>La desactivación de ciertas cookies puede afectar el funcionamiento del sitio web o limitar algunas de sus funcionalidades.</p>
-                        <h4>¿Cómo gestionar las cookies en los principales navegadores?</h4>
-                        <ul>
-                            <li><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies y otros datos de sitios.</li>
-                            <li><strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies y datos del sitio.</li>
-                            <li><strong>Safari:</strong> Preferencias → Privacidad → Cookies y datos de sitios web.</li>
-                            <li><strong>Edge:</strong> Configuración → Cookies y permisos de sitio → Administrar cookies.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Item 5 -->
-                <div class="accordion-item" id="cambios">
-                    <div class="accordion-header">
-                        <h3 class="accordion-title">
-                            <i data-lucide="refresh-cw"></i>
-                            5. Cambios en la política
-                        </h3>
-                        <i data-lucide="chevron-down" class="accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <p>Nos reservamos el derecho de modificar la presente Política de Cookies en cualquier momento para adaptarla a cambios normativos o mejoras en el servicio.</p>
-                        <p>Se recomienda revisar esta política periódicamente para mantenerse informado sobre su contenido.</p>
-                        <h4>¿Cómo notificamos los cambios?</h4>
-                        <ul>
-                            <li>Actualizaremos la fecha de "última actualización" al inicio del documento.</li>
-                            <li>Para cambios significativos, mostraremos una notificación en el sitio web.</li>
-                            <li>El uso continuado del sitio después de los cambios constituye su aceptación.</li>
-                        </ul>
-                    </div>
-                </div>
-                
             </div>
-        </div>
+        </section>
+
+        <!-- Oferta Técnica (Squads) -->
+        <section id="oferta" class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Nuestra <span>Oferta Técnica</span></h2>
+                
+                <!-- Destacado principal -->
+                <div class="card bg-primary" style="text-align: center; margin-bottom: 2rem; background: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);" data-animation="zoom-in" data-delay="0.2">
+                    <div class="card-icon"><i data-lucide="users" style="color: white;"></i></div>
+                    <h3 class="card-title" style="color: white;">Células de Ingeniería (Squads)</h3>
+                    <p class="card-text" style="color: rgba(255,255,255,0.95);">Equipos multidisciplinarios integrados para el desarrollo ágil de productos.</p>
+                </div>
+                
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="refresh-cw"></i></div>
+                        <h3 class="card-title">Modernización de Aplicativos</h3>
+                        <p class="card-text">Evolución de sistemas legacy hacia arquitecturas modernas y escalables.</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="git-pull-request"></i></div>
+                        <h3 class="card-title">Desarrollo Greenfield</h3>
+                        <p class="card-text">Construcción de soluciones innovadoras desde cero con arquitectura Cloud Native.</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.5">
+                        <div class="card-icon"><i data-lucide="map"></i></div>
+                        <h3 class="card-title">Consultoría de Arquitectura</h3>
+                        <p class="card-text">Definición de mapas de ruta tecnológicos y gobierno de ecosistemas digitales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stack Tecnológico -->
+        <section class="section" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">El <span>Stack Tecnológico</span></h2>
+                <p class="section-subtitle" data-animation="fade-up" data-delay="0.2">Flexibilidad y Estándar - Neutralidad tecnológica orientada a la mejor solución para el reto específico, priorizando siempre la estabilidad y longevidad del software.</p>
+                <div class="grid-auto">
+                    <div class="card card-highlight" style="text-align: center;" data-animation="zoom-in" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="server"></i></div>
+                        <h3 class="card-title">Backend</h3>
+                        <p class="card-text">Arquitecturas robustas (Java, .NET, Node.js, Python)</p>
+                    </div>
+                    <div class="card card-highlight" style="text-align: center;" data-animation="zoom-in" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="monitor"></i></div>
+                        <h3 class="card-title">Frontend</h3>
+                        <p class="card-text">Experiencias de usuario de vanguardia (Angular, React, Vue)</p>
+                    </div>
+                    <div class="card card-highlight" style="text-align: center;" data-animation="zoom-in" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="git-branch"></i></div>
+                        <h3 class="card-title">Interoperabilidad</h3>
+                        <p class="card-text">APIs RESTful y comunicación asíncrona como estándar</p>
+                    </div>
+                    <div class="card card-highlight" style="text-align: center;" data-animation="zoom-in" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="cloud"></i></div>
+                        <h3 class="card-title">Infraestructura & DevOps</h3>
+                        <p class="card-text">Contenedores, orquestadores y CI/CD automatizado</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calidad e Ingeniería de Procesos -->
+        <section class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Calidad e <span>Ingeniería de Procesos</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="shield-check"></i></div>
+                        <h3 class="card-title">Gobernanza Técnica</h3>
+                        <p class="card-text">Operamos bajo un modelo de Gobernanza de Arquitectura Estricta, donde la calidad no es un accidente, sino el resultado de procesos de ingeniería estandarizados y medibles.</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="code-2"></i></div>
+                        <h3 class="card-title">Estándares de Ingeniería</h3>
+                        <p class="card-text">Aplicación de patrones de diseño (Clean Code, SOLID) y arquitectura desacoplada como cimiento de cada proyecto.</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="repeat"></i></div>
+                        <h3 class="card-title">SDLC Automatizado</h3>
+                        <p class="card-text">Ciclo de vida de desarrollo de software soportado por flujos de CI/CD que garantizan la integridad del código en cada despliegue.</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="clipboard-list"></i></div>
+                        <h3 class="card-title">Trazabilidad y QA</h3>
+                        <p class="card-text">Implementación de pirámide de pruebas (unitarias, integración y funcionales) y auditoría constante de procesos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arquitectura SIMAPPE -->
+        <section class="section bg-primary" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" style="color: white;" data-animation="fade-down">Arquitectura <span style="color: #4a9eff;">SIMAPPE</span></h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);" data-animation="fade-up" data-delay="0.2">El Motor Nebula - Nuestra arquitectura de referencia propia que asegura que todo desarrollo inicie bajo estándares de excelencia técnica.</p>
+                <div class="grid-auto">
+                    <div class="card" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); color: white; text-align: center;" data-animation="zoom-in" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="wrench" style="color: #4a9eff;"></i></div>
+                        <h3 class="card-title" style="color: white;">Mantenibilidad</h3>
+                        <p class="card-text" style="color: rgba(255,255,255,0.9);">Reducción drástica de la deuda técnica para el futuro del cliente.</p>
+                    </div>
+                    <div class="card" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); color: white; text-align: center;" data-animation="zoom-in" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="link" style="color: #4a9eff;"></i></div>
+                        <h3 class="card-title" style="color: white;">Desacoplamiento</h3>
+                        <p class="card-text" style="color: rgba(255,255,255,0.9);">Flexibilidad para evolucionar componentes tecnológicos sin afectar el sistema completo.</p>
+                    </div>
+                    <div class="card" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); color: white; text-align: center;" data-animation="zoom-in" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="lock" style="color: #4a9eff;"></i></div>
+                        <h3 class="card-title" style="color: white;">Seguridad</h3>
+                        <p class="card-text" style="color: rgba(255,255,255,0.9);">Integración de procesos de validación y seguridad desde el diseño (Security by Design).</p>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 2rem; background: rgba(255,255,255,0.15); backdrop-filter: blur(4px); text-align: center;" data-animation="fade-up" data-delay="0.4">
+                    <p style="color: white;"><i data-lucide="info" style="width: 20px; height: 20px; display: inline-block; margin-right: 0.5rem;"></i> Nebula ERP no se construye desde cero; se levanta sobre la infraestructura probada de Simappe.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estrategia de Dos Capas -->
+        <section class="section" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Estrategia de <span>Dos Capas</span></h2>
+                <p class="section-subtitle" data-animation="zoom-in" data-delay="0.2" style="font-size: 1.5rem; font-weight: 700; color: #0e58a9;">SIMAPPE + NEBULA</p>
+                <div class="grid-2">
+                    <div class="card card-float" data-animation="fade-right" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="layers"></i></div>
+                        <h3 class="card-title">Capa 1: Simappe (El Cimiento)</h3>
+                        <p class="card-text">Gestiona la seguridad, multi-tenancy, auditoría y servicios base.</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-left" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="database"></i></div>
+                        <h3 class="card-title">Capa 2: Nebula (El Negocio)</h3>
+                        <p class="card-text">Donde reside la lógica específica de Contabilidad, Nómina y otros procesos operativos.</p>
+                    </div>
+                </div>
+                <div class="card bg-light" style="margin-top: 2rem; text-align: center; border-left: 4px solid #0e58a9;" data-animation="fade-up" data-delay="0.5">
+                    <p><strong>Ventaja:</strong> El equipo se enfoca 100% en resolver el problema del negocio, no en reinventar la infraestructura.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patrón de Capas - Component Pattern -->
+        <section class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">El Patrón de <span>Capas</span></h2>
+                <p class="section-subtitle" data-animation="fade-up" data-delay="0.2">Component Pattern - Aplicamos un flujo de ingeniería estandarizado que garantiza consistencia y mantenibilidad.</p>
+                
+                <div class="card" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; text-align: center;" data-animation="zoom-in" data-delay="0.3">
+                    <span style="font-weight: 600; color: #0e58a9;">Controlador</span> → 
+                    <span style="font-weight: 600; color: #0e58a9;">Servicio</span> → 
+                    <span style="font-weight: 600; color: #0e58a9;">Componente</span> → 
+                    <span style="font-weight: 600; color: #0e58a9;">Repositorio</span>
+                </div>
+                
+                <div class="grid-auto">
+                    <div class="card card-highlight" data-animation="fade-right" data-delay="0.1">
+                        <i data-lucide="check-circle" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                        <h3 class="card-title">Estandarización</h3>
+                        <p class="card-text">Cada funcionalidad sigue el mismo camino, lo que facilita que cualquier desarrollador pueda dar soporte a cualquier módulo.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-left" data-delay="0.2">
+                        <i data-lucide="check-circle" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                        <h3 class="card-title">Micro-Responsabilidades</h3>
+                        <p class="card-text">Separamos la validación, la orquestación y la lógica de negocio para crear un software altamente mantenible.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Multi-Tenancy y Multi-Motor -->
+        <section class="section" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Multi-Tenancy y <span>Multi-Motor</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="database"></i></div>
+                        <h3 class="card-title">Flexibilidad de Datos</h3>
+                        <p class="card-text">Soportamos los motores líderes del mercado (PostgreSQL, Oracle, SQL Server) para adaptarnos a la infraestructura que el cliente ya posea.</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="shield"></i></div>
+                        <h3 class="card-title">Aislamiento Total</h3>
+                        <p class="card-text">Cada cliente (Tenant) posee su propia base de datos física o esquema lógico aislado. No hay mezcla de información.</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="zap"></i></div>
+                        <h3 class="card-title">Seguridad Dinámica</h3>
+                        <p class="card-text">El sistema conmuta entre bases de datos en milisegundos de forma transparente y segura.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desarrollo a Medida -->
+        <section class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Desarrollo a <span>Medida</span></h2>
+                <p class="section-subtitle" data-animation="zoom-in" data-delay="0.2" style="font-size: 1.2rem; font-weight: 600; color: #0e58a9;">Impulsado por SIMAPPE</p>
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="target"></i></div>
+                        <h3 class="card-title">Enfoque en el Negocio</h3>
+                        <p class="card-text">Al tener la seguridad, conectividad y auditoría pre-configuradas, el equipo inicia el desarrollo de la lógica específica del cliente desde el día 1.</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="star"></i></div>
+                        <h3 class="card-title">Calidad Nativa</h3>
+                        <p class="card-text">Los desarrollos a medida heredan automáticamente todos los beneficios de la arquitectura (Resiliencia, Trazabilidad, Multi-tenancy).</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="shirt"></i></div>
+                        <h3 class="card-title">Flexibilidad Total</h3>
+                        <p class="card-text">El cliente recibe un traje a la medida pero con la resistencia y estándares de una solución corporativa global.</p>
+                    </div>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="rocket"></i></div>
+                        <h3 class="card-title">Aceleración Extrema</h3>
+                        <p class="card-text">Utilizamos el Simappe Archetype, una "semilla" industrial que genera la estructura de un proyecto completo con todos los estándares Nebula en segundos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enfoque Multisectorial -->
+        <section class="section" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Enfoque <span>Multisectorial</span></h2>
+                <div class="grid-2">
+                    <div class="card card-highlight" data-animation="fade-right" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="building"></i></div>
+                        <h3 class="card-title">Sector Privado (Corporativo)</h3>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                            <li><strong>Agilidad Operativa:</strong> Implementación de células de ingeniería (Squads) para acelerar la innovación.</li>
+                            <li><strong>Modernización de Core:</strong> Transformación de sistemas legacy hacia arquitecturas modernas.</li>
+                            <li><strong>Control con Nebula:</strong> Despliegue de Nebula ERP como núcleo financiero y contable.</li>
+                        </ul>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-left" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="landmark"></i></div>
+                        <h3 class="card-title">Sector Público</h3>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                            <li><strong>Transformación Digital:</strong> Automatización de trámites masivos bajo estándares de gobierno digital.</li>
+                            <li><strong>Gobierno Abierto:</strong> Implementación de esquemas de transparencia, datos abiertos e interoperabilidad.</li>
+                            <li><strong>Gestión con Nebula:</strong> Aplicación del ecosistema Nebula ERP para administración financiera con cumplimiento normativo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resultados Medibles -->
+        <section class="stats-section bg-primary" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" style="color: white;" data-animation="fade-down">Resultados <span style="color: #4a9eff;">Medibles</span></h2>
+                <div class="stats-grid">
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.1">
+                        <span class="stat-number">+50%</span>
+                        <span class="stat-label">Aceleración en entregas</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.2">
+                        <span class="stat-number">-70%</span>
+                        <span class="stat-label">Reducción de deuda técnica</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.3">
+                        <span class="stat-number">+99.9%</span>
+                        <span class="stat-label">Disponibilidad garantizada</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.4">
+                        <span class="stat-number">+40%</span>
+                        <span class="stat-label">Eficiencia en QA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section id="contacto" class="section bg-primary" style="text-align: center;" data-animation="fade-up">
+            <div class="container">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;" data-animation="fade-down">¿Listo para industrializar su desarrollo de software?</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: rgba(255,255,255,0.95);" data-animation="fade-up" data-delay="0.2">Contáctenos y descubra cómo nuestra fábrica de software puede acelerar sus proyectos.</p>
+                <a href="contacto.html" class="btn btn-primary" style="background: white; color: #0e58a9;" data-animation="zoom-in" data-delay="0.4">Solicitar información técnica →</a>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -182,7 +381,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>gerenciacomercial@centricasoluciones.com</p>
+                    <p><i data-lucide="mail"></i> gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -234,7 +433,7 @@
 
     <script src="script.js"></script>
     
-    <!-- Script específico para el acordeón y navegación legal -->
+    <!-- Script específico para fábrica -->
     <script>
         // Inicializar Lucide
         if (typeof lucide !== 'undefined') {
@@ -252,62 +451,6 @@
                 this.reset();
             });
         }
-        
-        // Navegación desde el sidebar al acordeón
-        const sidebarLinks = document.querySelectorAll('[data-accordion-link]');
-        const accordionItems = document.querySelectorAll('.accordion-item');
-        
-        if (sidebarLinks.length && accordionItems.length) {
-            sidebarLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('data-accordion-link');
-                    const targetItem = document.getElementById(targetId);
-                    
-                    if (targetItem) {
-                        // Cerrar todos los items
-                        accordionItems.forEach(item => {
-                            item.classList.remove('active');
-                            const content = item.querySelector('.accordion-content');
-                            if (content) content.style.maxHeight = null;
-                        });
-                        
-                        // Abrir el item seleccionado
-                        targetItem.classList.add('active');
-                        const targetContent = targetItem.querySelector('.accordion-content');
-                        if (targetContent) targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
-                        
-                        // Scroll suave al item
-                        targetItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
-        }
-        
-        // Marcar enlace activo en el sidebar
-        function updateActiveSidebarLink() {
-            const scrollPosition = window.scrollY + 150;
-            let activeId = null;
-            
-            accordionItems.forEach(item => {
-                const itemTop = item.offsetTop;
-                const itemBottom = itemTop + item.offsetHeight;
-                if (scrollPosition >= itemTop && scrollPosition < itemBottom) {
-                    activeId = item.getAttribute('id');
-                }
-            });
-            
-            sidebarLinks.forEach(link => {
-                if (link.getAttribute('data-accordion-link') === activeId) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', updateActiveSidebarLink);
-        updateActiveSidebarLink();
     </script>
 </body>
 </html>
