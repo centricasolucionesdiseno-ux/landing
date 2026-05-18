@@ -9,14 +9,14 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
-        <header>
+    <header>
         <div class="logo-container">
             <div class="logo">
                 <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
             </div>
         </div>
 
-       <nav>
+        <nav>
             <ul class="menu">
                 <li><a href="index.html">Sobre nosotros</a></li>
                 <li class="dropdown">
@@ -40,255 +40,347 @@
     </header>
 
     <main>
-        <!-- Hero -->
-        <section class="ia-hero">
-            <div class="ia-hero-overlay"></div>
-            <div class="ia-hero-container">
-                <div class="ia-hero-icon">
-                    <i data-lucide="brain"></i>
-                </div>
-                <h1 class="ia-hero-title">Análisis con <span>IA</span></h1>
-                <p class="ia-hero-subtitle">Inteligencia artificial para transformar sus datos en decisiones</p>
-                <p class="ia-hero-description">Implementamos inteligencia artificial para automatizar procesos operativos, anticipar escenarios y transformar datos en decisiones precisas y accionables.</p>
-                <div class="ia-hero-buttons">
-                    <a href="#contacto" class="btn-solicitar">Solicitar asesoría →</a>
-                    <a href="#casos-uso" class="btn-secundario">Ver casos de uso →</a>
+        <!-- Hero con Video -->
+        <section class="hero-video" data-animation="fade-in" data-delay="0">
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1600">
+                <source src="https://cdn.coverr.co/videos/coverr-ai-technology-futuristic-blue-digits-1561127177750/720p.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-container">
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Análisis con <span>IA</span></h1>
+                <p class="hero-subtitle" data-animation="fade-up" data-delay="0.5">Inteligencia artificial para transformar sus datos en decisiones</p>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.7">Implementamos inteligencia artificial para automatizar procesos operativos, anticipar escenarios y transformar datos en decisiones precisas y accionables.</p>
+                <div class="hero-buttons" data-animation="fade-up" data-delay="0.9">
+                    <a href="#contacto" class="btn btn-primary">Solicitar asesoría →</a>
+                    <a href="#casos-uso" class="btn btn-secondary">Ver casos de uso →</a>
                 </div>
             </div>
         </section>
 
         <!-- ¿Qué es Análisis con IA? -->
-        <section class="ia-que-es">
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <div class="que-es-grid">
-                    <div class="que-es-content">
+                <div class="grid-2">
+                    <div data-animation="fade-right" data-delay="0.2">
                         <h2 class="section-title">¿Qué es el <span>Análisis con IA</span>?</h2>
                         <p>Es un conjunto de soluciones basadas en inteligencia artificial diseñadas para extraer valor de sus datos, automatizar procesos y generar insights predictivos que impulsan la toma de decisiones estratégicas.</p>
-                        <p>Nuestro enfoque combina técnicas de machine learning, procesamiento de lenguaje natural y análisis predictivo para ofrecer soluciones adaptadas a las necesidades específicas de su negocio.</p>
-                        <div class="que-es-pilares">
-                            <div class="pilar">
-                                <i data-lucide="trending-up"></i>
+                        <p style="margin-top: 1rem;">Nuestro enfoque combina técnicas de machine learning, procesamiento de lenguaje natural y análisis predictivo para ofrecer soluciones adaptadas a las necesidades específicas de su negocio.</p>
+                        <div style="margin-top: 2rem;">
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;" data-animation="fade-left" data-delay="0.4">
+                                <i data-lucide="trending-up" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
-                                    <h3>Predictivo</h3>
+                                    <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Predictivo</h3>
                                     <p>Anticipe escenarios futuros basados en datos históricos.</p>
                                 </div>
                             </div>
-                            <div class="pilar">
-                                <i data-lucide="zap"></i>
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;" data-animation="fade-left" data-delay="0.6">
+                                <i data-lucide="zap" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
-                                    <h3>Automatización</h3>
+                                    <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Automatización</h3>
                                     <p>Elimine tareas repetitivas y libere talento humano.</p>
                                 </div>
                             </div>
-                            <div class="pilar">
-                                <i data-lucide="pie-chart"></i>
+                            <div style="display: flex; gap: 1rem;" data-animation="fade-left" data-delay="0.8">
+                                <i data-lucide="pie-chart" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
-                                    <h3>Accionable</h3>
+                                    <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Accionable</h3>
                                     <p>Recomendaciones concretas basadas en datos.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="que-es-image">
-                        <i data-lucide="brain-circuit" class="que-es-icon"></i>
+                    <div style="display: flex; justify-content: center; align-items: center;" data-animation="zoom-in" data-delay="0.3">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&h=400&fit=crop" alt="IA Ilustración" style="width: 100%; max-width: 300px; height: auto; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Capacidades Clave -->
-        <section class="ia-capacidades">
+        <!-- Capacidades Clave (Tarjetas tipo card-float) -->
+        <section class="section bg-light" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Capacidades <span>Clave</span></h2>
-                <div class="capacidades-grid">
-                    <div class="capacidad-card">
-                        <i data-lucide="bar-chart-3"></i>
-                        <h3>Machine Learning</h3>
-                        <p>Modelos predictivos y de clasificación entrenados con sus datos para generar insights precisos y accionables.</p>
+                <h2 class="section-title" data-animation="fade-down">Capacidades <span>Clave</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="bar-chart-3"></i></div>
+                        <h3 class="card-title">Machine Learning</h3>
+                        <p class="card-text">Modelos predictivos y de clasificación entrenados con sus datos para generar insights precisos y accionables.</p>
                     </div>
-                    <div class="capacidad-card">
-                        <i data-lucide="message-square"></i>
-                        <h3>Procesamiento de Lenguaje Natural</h3>
-                        <p>Análisis de textos, documentos y sentimientos para extraer información valiosa de fuentes no estructuradas.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="message-square"></i></div>
+                        <h3 class="card-title">Procesamiento de Lenguaje Natural</h3>
+                        <p class="card-text">Análisis de textos, documentos y sentimientos para extraer información valiosa de fuentes no estructuradas.</p>
                     </div>
-                    <div class="capacidad-card">
-                        <i data-lucide="eye"></i>
-                        <h3>Visión por Computador</h3>
-                        <p>Reconocimiento de imágenes, documentos escaneados y análisis visual automatizado.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="eye"></i></div>
+                        <h3 class="card-title">Visión por Computador</h3>
+                        <p class="card-text">Reconocimiento de imágenes, documentos escaneados y análisis visual automatizado.</p>
                     </div>
-                    <div class="capacidad-card">
-                        <i data-lucide="bot"></i>
-                        <h3>Automatización Inteligente</h3>
-                        <p>Robotic Process Automation (RPA) combinado con IA para procesos complejos.</p>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="bot"></i></div>
+                        <h3 class="card-title">Automatización Inteligente</h3>
+                        <p class="card-text">Robotic Process Automation (RPA) combinado con IA para procesos complejos.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Beneficios -->
-        <section class="ia-beneficios">
+        <!-- Beneficios (Tarjetas FLIP) -->
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Beneficios <span>para su Negocio</span></h2>
-                <div class="beneficios-grid">
-                    <div class="beneficio-card">
-                        <i data-lucide="clock"></i>
-                        <h3>Ahorro de Tiempo</h3>
-                        <p>Automatice tareas repetitivas que consumen horas de trabajo manual.</p>
+                <h2 class="section-title" data-animation="fade-down">Beneficios <span>para su Negocio</span></h2>
+                <div class="grid-auto">
+                    
+                    <!-- Tarjeta Flip 1 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.1">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="clock"></i></div>
+                                <h3 class="card-title">Ahorro de Tiempo</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="zap" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">-70%</h3>
+                                <p class="card-text">Automatice tareas repetitivas que consumen horas de trabajo manual.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="dollar-sign"></i>
-                        <h3>Reducción de Costos</h3>
-                        <p>Optimice recursos y reduzca errores operativos con IA.</p>
+                    
+                    <!-- Tarjeta Flip 2 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.2">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="dollar-sign"></i></div>
+                                <h3 class="card-title">Reducción de Costos</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="trending-down" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">-40%</h3>
+                                <p class="card-text">Optimice recursos y reduzca errores operativos con IA.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="target"></i>
-                        <h3>Precisión Mejorada</h3>
-                        <p>Tome decisiones basadas en datos, no en intuiciones.</p>
+                    
+                    <!-- Tarjeta Flip 3 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.3">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="target"></i></div>
+                                <h3 class="card-title">Precisión Mejorada</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="bullseye" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">+95%</h3>
+                                <p class="card-text">Tome decisiones basadas en datos, no en intuiciones.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="scale"></i>
-                        <h3>Escalabilidad</h3>
-                        <p>Soluciones que crecen con su negocio y se adaptan a nuevos desafíos.</p>
+                    
+                    <!-- Tarjeta Flip 4 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.4">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="scale"></i></div>
+                                <h3 class="card-title">Escalabilidad</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="trending-up" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">Ilimitado</h3>
+                                <p class="card-text">Soluciones que crecen con su negocio y se adaptan a nuevos desafíos.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="shield"></i>
-                        <h3>Ventaja Competitiva</h3>
-                        <p>Diferénciese en el mercado con capacidades avanzadas de IA.</p>
+                    
+                    <!-- Tarjeta Flip 5 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.5">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="shield"></i></div>
+                                <h3 class="card-title">Ventaja Competitiva</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="award" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">Liderazgo</h3>
+                                <p class="card-text">Diferénciese en el mercado con capacidades avanzadas de IA.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="beneficio-card">
-                        <i data-lucide="lightbulb"></i>
-                        <h3>Insights Ocultos</h3>
-                        <p>Descubra patrones y tendencias que no son evidentes a simple vista.</p>
+                    
+                    <!-- Tarjeta Flip 6 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.6">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="lightbulb"></i></div>
+                                <h3 class="card-title">Insights Ocultos</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="search" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">+80%</h3>
+                                <p class="card-text">Descubra patrones y tendencias que no son evidentes a simple vista.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Casos de Uso por Industria -->
-        <section id="casos-uso" class="ia-casos-uso">
+        <!-- Casos de Uso por Industria (Carrusel) -->
+        <section id="casos-uso" class="section bg-light" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Casos de <span>Uso</span></h2>
-                <div class="casos-grid">
-                    <div class="caso-card">
-                        <i data-lucide="building"></i>
-                        <h3>Sector Financiero</h3>
-                        <ul>
-                            <li>Detección de fraudes en tiempo real</li>
-                            <li>Scoring crediticio con IA</li>
-                            <li>Análisis de riesgos financieros</li>
-                            <li>Atención al cliente con chatbots</li>
-                        </ul>
+                <h2 class="section-title" data-animation="fade-down">Casos de <span>Uso</span></h2>
+                
+                <div class="carousel" data-autoplay="true" data-interval="6000">
+                    <div class="carousel-track-container">
+                        <div class="carousel-track">
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center;">
+                                    <div class="card-icon"><i data-lucide="building"></i></div>
+                                    <h3 class="card-title">Sector Financiero</h3>
+                                    <ul style="text-align: left; margin-top: 1rem;">
+                                        <li>Detección de fraudes en tiempo real</li>
+                                        <li>Scoring crediticio con IA</li>
+                                        <li>Análisis de riesgos financieros</li>
+                                        <li>Atención al cliente con chatbots</li>
+                                    </ul>
+                                    <span class="badge">FinTech</span>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center;">
+                                    <div class="card-icon"><i data-lucide="shopping-cart"></i></div>
+                                    <h3 class="card-title">Retail y E-commerce</h3>
+                                    <ul style="text-align: left; margin-top: 1rem;">
+                                        <li>Recomendación de productos personalizada</li>
+                                        <li>Predicción de demanda y stock</li>
+                                        <li>Segmentación de clientes</li>
+                                        <li>Optimización de precios dinámicos</li>
+                                    </ul>
+                                    <span class="badge">Retail</span>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center;">
+                                    <div class="card-icon"><i data-lucide="factory"></i></div>
+                                    <h3 class="card-title">Manufactura</h3>
+                                    <ul style="text-align: left; margin-top: 1rem;">
+                                        <li>Mantenimiento predictivo de maquinaria</li>
+                                        <li>Control de calidad automatizado</li>
+                                        <li>Optimización de cadena de suministro</li>
+                                        <li>Detección de anomalías en producción</li>
+                                    </ul>
+                                    <span class="badge">Industria 4.0</span>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center;">
+                                    <div class="card-icon"><i data-lucide="landmark"></i></div>
+                                    <h3 class="card-title">Sector Público</h3>
+                                    <ul style="text-align: left; margin-top: 1rem;">
+                                        <li>Análisis de datos abiertos</li>
+                                        <li>Detección de patrones en servicios públicos</li>
+                                        <li>Optimización de recursos</li>
+                                        <li>Transparencia y control ciudadano</li>
+                                    </ul>
+                                    <span class="badge">GovTech</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="caso-card">
-                        <i data-lucide="shopping-cart"></i>
-                        <h3>Retail y E-commerce</h3>
-                        <ul>
-                            <li>Recomendación de productos personalizada</li>
-                            <li>Predicción de demanda y stock</li>
-                            <li>Segmentación de clientes</li>
-                            <li>Optimización de precios dinámicos</li>
-                        </ul>
-                    </div>
-                    <div class="caso-card">
-                        <i data-lucide="factory"></i>
-                        <h3>Manufactura</h3>
-                        <ul>
-                            <li>Mantenimiento predictivo de maquinaria</li>
-                            <li>Control de calidad automatizado</li>
-                            <li>Optimización de cadena de suministro</li>
-                            <li>Detección de anomalías en producción</li>
-                        </ul>
-                    </div>
-                    <div class="caso-card">
-                        <i data-lucide="landmark"></i>
-                        <h3>Sector Público</h3>
-                        <ul>
-                            <li>Análisis de datos abiertos</li>
-                            <li>Detección de patrones en servicios públicos</li>
-                            <li>Optimización de recursos</li>
-                            <li>Transparencia y control ciudadano</li>
-                        </ul>
-                    </div>
+                    
+                    <button class="carousel-btn carousel-prev">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn carousel-next">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                    
+                    <div class="carousel-dots"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Tecnologías que Utilizamos -->
-        <section class="ia-tecnologias">
+        <!-- Tecnologías que Utilizamos (Tarjetas tipo card-highlight) -->
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Tecnologías que <span>Utilizamos</span></h2>
-                <div class="tecnologias-grid">
-                    <div class="tecnologia-card">
-                        <i data-lucide="code-2"></i>
-                        <h3>Frameworks ML</h3>
-                        <p>TensorFlow, PyTorch, Scikit-learn, Keras</p>
+                <h2 class="section-title" data-animation="fade-down">Tecnologías que <span>Utilizamos</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-highlight" style="text-align: center;" data-animation="zoom-in" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="code-2"></i></div>
+                        <h3 class="card-title">Frameworks ML</h3>
+                        <p class="card-text">TensorFlow, PyTorch, Scikit-learn, Keras</p>
                     </div>
-                    <div class="tecnologia-card">
-                        <i data-lucide="database"></i>
-                        <h3>Procesamiento de Datos</h3>
-                        <p>Pandas, NumPy, Spark, SQL</p>
+                    <div class="card card-highlight" style="text-align: center;" data-animation="zoom-in" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="database"></i></div>
+                        <h3 class="card-title">Procesamiento de Datos</h3>
+                        <p class="card-text">Pandas, NumPy, Spark, SQL</p>
                     </div>
-                    <div class="tecnologia-card">
-                        <i data-lucide="cloud"></i>
-                        <h3>Cloud AI Services</h3>
-                        <p>AWS SageMaker, Google AI, Azure ML</p>
+                    <div class="card card-highlight" style="text-align: center;" data-animation="zoom-in" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="cloud"></i></div>
+                        <h3 class="card-title">Cloud AI Services</h3>
+                        <p class="card-text">AWS SageMaker, Google AI, Azure ML</p>
                     </div>
-                    <div class="tecnologia-card">
-                        <i data-lucide="globe"></i>
-                        <h3>LLMs y NLP</h3>
-                        <p>OpenAI GPT, Hugging Face, LangChain</p>
+                    <div class="card card-highlight" style="text-align: center;" data-animation="zoom-in" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="globe"></i></div>
+                        <h3 class="card-title">LLMs y NLP</h3>
+                        <p class="card-text">OpenAI GPT, Hugging Face, LangChain</p>
                     </div>
-                    <div class="tecnologia-card">
-                        <i data-lucide="bar-chart-2"></i>
-                        <h3>Visualización</h3>
-                        <p>Power BI, Tableau, Matplotlib, Plotly</p>
+                    <div class="card card-highlight" style="text-align: center;" data-animation="zoom-in" data-delay="0.5">
+                        <div class="card-icon"><i data-lucide="bar-chart-2"></i></div>
+                        <h3 class="card-title">Visualización</h3>
+                        <p class="card-text">Power BI, Tableau, Matplotlib, Plotly</p>
                     </div>
-                    <div class="tecnologia-card">
-                        <i data-lucide="git-branch"></i>
-                        <h3>MLOps</h3>
-                        <p>Docker, Kubernetes, MLflow, Kubeflow</p>
+                    <div class="card card-highlight" style="text-align: center;" data-animation="zoom-in" data-delay="0.6">
+                        <div class="card-icon"><i data-lucide="git-branch"></i></div>
+                        <h3 class="card-title">MLOps</h3>
+                        <p class="card-text">Docker, Kubernetes, MLflow, Kubeflow</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Metodología -->
-        <section class="ia-metodologia">
+        <section class="section bg-light" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Nuestra <span>Metodología</span></h2>
-                <div class="metodologia-grid">
-                    <div class="metodologia-paso">
-                        <div class="paso-numero">1</div>
-                        <div class="paso-content">
-                            <h3>Descubrimiento</h3>
+                <h2 class="section-title" data-animation="fade-down">Nuestra <span>Metodología</span></h2>
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;" data-animation="fade-right" data-delay="0.1">
+                        <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">1</div>
+                        <div>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Descubrimiento</h3>
                             <p>Identificamos las oportunidades de negocio donde la IA puede generar mayor impacto.</p>
                         </div>
                     </div>
-                    <div class="metodologia-paso">
-                        <div class="paso-numero">2</div>
-                        <div class="paso-content">
-                            <h3>Preparación de Datos</h3>
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;" data-animation="fade-right" data-delay="0.2">
+                        <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">2</div>
+                        <div>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Preparación de Datos</h3>
                             <p>Recopilamos, limpiamos y preparamos sus datos para el entrenamiento de modelos.</p>
                         </div>
                     </div>
-                    <div class="metodologia-paso">
-                        <div class="paso-numero">3</div>
-                        <div class="paso-content">
-                            <h3>Modelado</h3>
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;" data-animation="fade-right" data-delay="0.3">
+                        <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">3</div>
+                        <div>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Modelado</h3>
                             <p>Desarrollamos y entrenamos modelos de IA adaptados a su caso específico.</p>
                         </div>
                     </div>
-                    <div class="metodologia-paso">
-                        <div class="paso-numero">4</div>
-                        <div class="paso-content">
-                            <h3>Despliegue</h3>
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;" data-animation="fade-right" data-delay="0.4">
+                        <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">4</div>
+                        <div>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Despliegue</h3>
                             <p>Integramos el modelo en sus sistemas operativos y procesos diarios.</p>
                         </div>
                     </div>
-                    <div class="metodologia-paso">
-                        <div class="paso-numero">5</div>
-                        <div class="paso-content">
-                            <h3>Monitoreo y Evolución</h3>
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start;" data-animation="fade-right" data-delay="0.5">
+                        <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">5</div>
+                        <div>
+                            <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Monitoreo y Evolución</h3>
                             <p>Aseguramos el rendimiento continuo y actualizamos modelos según sea necesario.</p>
                         </div>
                     </div>
@@ -296,78 +388,32 @@
             </div>
         </section>
 
-        <!-- Impacto y Resultados -->
-        <section class="ia-impacto">
+        <!-- Por qué elegirnos (Tarjetas tipo card-highlight) -->
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Impacto <span>Medible</span></h2>
-                <div class="impacto-grid">
-                    <div class="impacto-card">
-                        <i data-lucide="trending-up"></i>
-                        <div>
-                            <h3>+95%</h3>
-                            <p>Precisión en modelos predictivos</p>
-                        </div>
+                <h2 class="section-title" data-animation="fade-down">¿Por qué <span>elegirnos</span>?</h2>
+                <div class="grid-auto">
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="check-circle"></i></div>
+                        <h3 class="card-title">Experiencia Comprobada</h3>
+                        <p class="card-text">Múltiples proyectos exitosos en diversas industrias.</p>
                     </div>
-                    <div class="impacto-card">
-                        <i data-lucide="clock"></i>
-                        <div>
-                            <h3>-70%</h3>
-                            <p>Reducción en tiempos de procesamiento</p>
-                        </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="users"></i></div>
+                        <h3 class="card-title">Equipo Especializado</h3>
+                        <p class="card-text">Científicos de datos, ingenieros ML y expertos de negocio.</p>
                     </div>
-                    <div class="impacto-card">
-                        <i data-lucide="alert-circle"></i>
-                        <div>
-                            <h3>-85%</h3>
-                            <p>Disminución de errores operativos</p>
-                        </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="target"></i></div>
+                        <h3 class="card-title">Enfoque en Resultados</h3>
+                        <p class="card-text">Nos enfocamos en métricas de negocio, no solo en tecnología.</p>
                     </div>
-                    <div class="impacto-card">
-                        <i data-lucide="dollar-sign"></i>
-                        <div>
-                            <h3>+40%</h3>
-                            <p>Incremento en eficiencia operativa</p>
-                        </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="shield"></i></div>
+                        <h3 class="card-title">Ética y Transparencia</h3>
+                        <p class="card-text">Modelos explicables y cumplimiento normativo.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Por qué elegirnos -->
-        <section class="ia-porque">
-            <div class="container">
-                <h2 class="section-title">¿Por qué <span>elegirnos</span>?</h2>
-                <div class="porque-grid">
-                    <div class="porque-card">
-                        <i data-lucide="check-circle"></i>
-                        <h3>Experiencia Comprobada</h3>
-                        <p>Múltiples proyectos exitosos en diversas industrias.</p>
-                    </div>
-                    <div class="porque-card">
-                        <i data-lucide="users"></i>
-                        <h3>Equipo Especializado</h3>
-                        <p>Científicos de datos, ingenieros ML y expertos de negocio.</p>
-                    </div>
-                    <div class="porque-card">
-                        <i data-lucide="target"></i>
-                        <h3>Enfoque en Resultados</h3>
-                        <p>Nos enfocamos en métricas de negocio, no solo en tecnología.</p>
-                    </div>
-                    <div class="porque-card">
-                        <i data-lucide="shield"></i>
-                        <h3>Ética y Transparencia</h3>
-                        <p>Modelos explicables y cumplimiento normativo.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Final -->
-        <section id="contacto" class="ia-cta-final">
-            <div class="container">
-                <h2>¿Listo para potenciar su negocio con inteligencia artificial?</h2>
-                <p>Contáctenos y descubramos juntos cómo la IA puede transformar sus operaciones.</p>
-                <a href="contacto.html" class="btn-solicitar">Solicitar asesoría técnica →</a>
             </div>
         </section>
     </main>
@@ -383,7 +429,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p>gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -414,12 +460,14 @@
                 <p class="footer-newsletter-text">
                     Recibe novedades sobre nuestras soluciones.
                 </p>
-                <form class="footer-newsletter-form" id="newsletterForm2">
+                <form class="footer-newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="footer-unsubscribe">
                     Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
                 </p>
             </div>
         </div>
@@ -427,7 +475,6 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
-                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
             </div>
         </div>
     </footer>
@@ -442,7 +489,7 @@
         }
         
         // Newsletter form
-        const newsletterForm = document.getElementById('newsletterFormIa');
+        const newsletterForm = document.getElementById('newsletterForm');
         if (newsletterForm) {
             newsletterForm.addEventListener('submit', function(e) {
                 e.preventDefault();
