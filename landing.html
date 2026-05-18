@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Céntrica - Soluciones innovadoras</title>
+    <title>Céntrica - Soluciones innovadoras | Transformación digital</title>
     <link rel="stylesheet" href="style.css">
-   <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
@@ -17,7 +16,7 @@
             </div>
         </div>
 
-       <nav>
+        <nav>
             <ul class="menu">
                 <li><a href="index.html">Sobre nosotros</a></li>
                 <li class="dropdown">
@@ -41,235 +40,244 @@
     </header>
 
     <main>
-        <section class="hero">
-            <h1>Arquitectura multi-tenant lista para su próximo desarrollo</h1>
-            <p class="hero-description">
-                No construya aislamiento, seguridad ni conmutación de bases de datos desde cero. 
-                Nosotros ya lo hicimos.
-            </p>
-            <a href="#contacto" class="btn-solicitar">Solicitar información técnica →</a>
-        </section>
-
-        <!-- Sección: ¿Esto le suena familiar? -->
-        <section class="familiar-section">
-            <h2 class="section-title">¿Esto le suena familiar?</h2>
-            
-            <div class="tres-cards-container">
-                <!-- Card 1 -->
-                <div class="card-tres">
-                    <div class="card-tres-icon">
-                        <i data-lucide="database"></i>
-                    </div>
-                    <h3 class="card-tres-title">Sus clientes o filiales comparten la misma base de datos</h3>
-                    <p class="card-tres-text">
-                        Riesgo de filtración de datos.
-                    </p>
+        <!-- Hero con Video -->
+        <section class="hero-video" data-animation="fade-in" data-delay="0">
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600">
+                <source src="https://cdn.coverr.co/videos/coverr-typing-on-laptop-keyboard-1586816218985/1080p.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-container">
+                <div class="hero-icon" data-animation="zoom-in" data-delay="0.2">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Céntrica" style="width: 80px; height: 80px; object-fit: contain; margin-bottom: 1rem;">
                 </div>
-        
-                <!-- Card 2 -->
-                <div class="card-tres">
-                    <div class="card-tres-icon">
-                        <i data-lucide="eye"></i>
-                    </div>
-                    <h3 class="card-tres-title">Cada nuevo inquilino implica duplicar infraestructura</h3>
-                    <p class="card-tres-text">
-                        Costos que no escalan.
-                    </p>
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Arquitectura multi-tenant lista para su <span>próximo desarrollo</span></h1>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.5">
+                    No construya aislamiento, seguridad ni conmutación de bases de datos desde cero. 
+                    Nosotros ya lo hicimos.
+                </p>
+                <div class="hero-buttons" data-animation="fade-up" data-delay="0.7">
+                    <a href="#contacto" class="btn btn-primary">Solicitar información técnica →</a>
+                    <a href="#soluciones" class="btn btn-secondary">Ver soluciones →</a>
                 </div>
-        
-                <!-- Card 3 -->
-                <div class="card-tres">
-                    <div class="card-tres-icon">
-                        <i data-lucide="clock"></i>
-                    </div>
-                    <h3 class="card-tres-title">Su equipo pierde semanas </h3>
-                    <p class="card-tres-text">
-                        Implementando aislamiento, seguridad y conmutación.
-                    </p>
-                    
-                </div>
-            </div>
-            <div class="conclusion">
-                <h3>Al final, la deuda técnica lo frena al lanzar nuevas funcionalidades.</h3>
             </div>
         </section>
 
-        <section class="industrial-section">
-            <div class="industrial-container">
-                <div class="industrial-content">
-                    <h2 class="industrial-title">
-                        No es un producto. <span>Es una base industrial para construir software.</span>
-                    </h2>
+        <!-- Sección: ¿Esto le suena familiar? (Tarjetas tipo card-flip) -->
+        <section class="section" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">¿Esto le suena <span>familiar</span>?</h2>
+                <div class="grid-auto">
                     
-                    <p class="industrial-text">
-                        Somos una fábrica de software. Eso significa que ofrecemos un entorno de producción 
-                        estandarizado, medible y optimizable para desarrollar aplicaciones a medida o modernizar 
-                        sistemas legacy. <strong>Nuestra diferencia: todo proyecto que iniciamos hereda 
-                        automáticamente una arquitectura multi-tenant probada.</strong>
-                    </p>
+                    <!-- Card Flip 1 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.1">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="database"></i></div>
+                                <h3 class="card-title">Sus clientes o filiales comparten la misma base de datos</h3>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="alert-triangle" style="width: 48px; height: 48px; color: #dc3545; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">Riesgo Alto</h3>
+                                <p class="card-text">Riesgo de filtración de datos y violación de segregación de información.</p>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <a href="#contacto" class="industrial-btn">APRENDE MÁS →</a>
+                    <!-- Card Flip 2 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.2">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="eye"></i></div>
+                                <h3 class="card-title">Cada nuevo inquilino implica duplicar infraestructura</h3>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="trending-up" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">Costos que no escalan</h3>
+                                <p class="card-text">Inviabilidad financiera al crecer. Multiplica costos por cada cliente.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card Flip 3 -->
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.3">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="clock"></i></div>
+                                <h3 class="card-title">Su equipo pierde semanas</h3>
+                            </div>
+                            <div class="card-flip-back">
+                                <i data-lucide="calendar" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
+                                <h3 class="card-title">Tiempo perdido</h3>
+                                <p class="card-text">Implementando aislamiento, seguridad y conmutación desde cero.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="industrial-image">
-                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Component-Pattern.png" alt="Component pattern" class="industrial-image">
+                <div class="card bg-primary" style="text-align: center; margin-top: 2rem;" data-animation="fade-up" data-delay="0.4">
+                    <h3 style="color: white; margin: 0;">Al final, la deuda técnica lo frena al lanzar nuevas funcionalidades.</h3>
                 </div>
             </div>
         </section>
 
-        <!-- Sección: Slider de productos -->
-        <section class="slider-section">
-            <h2 class="slider-main-title">Nuestras Soluciones</h2>
-            
-            <div class="slider-container">
-                <div class="slider-track" id="sliderTrack">
-                    <!-- Slide 1: Nebula ERP -->
-                    <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img1.png">
-                        <div class="slide-content">
-                            <div class="slide-icon">
-                                <i data-lucide="cloud"></i>
-                            </div>
-                            <h3 class="slide-title">Nebula ERP</h3>
-                            <p class="slide-description">
-                                Plataforma integral de gestión empresarial que centraliza operaciones financieras, 
-                                de inventarios y administrativas en un solo ecosistema, con inteligencia artificial 
-                                integrada y reportes en tiempo real.
-                            </p>
-                            <a href="#" class="slide-btn">Conocer más →</a>
+        <!-- Sección: Base industrial -->
+        <section class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <div class="grid-2">
+                    <div data-animation="fade-right" data-delay="0.2">
+                        <h2 class="section-title" style="text-align: left;">No es un producto. <span>Es una base industrial para construir software.</span></h2>
+                        <p style="font-size: 1.1rem; line-height: 1.7; color: #555; margin-top: 1rem;">
+                            Somos una fábrica de software. Eso significa que ofrecemos un entorno de producción 
+                            estandarizado, medible y optimizable para desarrollar aplicaciones a medida o modernizar 
+                            sistemas legacy. <strong>Nuestra diferencia: todo proyecto que iniciamos hereda 
+                            automáticamente una arquitectura multi-tenant probada.</strong>
+                        </p>
+                        <div class="hero-buttons" style="justify-content: flex-start; margin-top: 2rem;">
+                            <a href="fabrica.html" class="btn btn-secondary">APRENDE MÁS →</a>
                         </div>
                     </div>
-        
-                    <!-- Slide 2: Sicovi -->
-                    <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img6.png">
-                        <div class="slide-content">
-                            <div class="slide-icon">
-                                <i data-lucide="landmark"></i>
-                            </div>
-                            <h3 class="slide-title">Sicovi</h3>
-                            <p class="slide-description">
-                                Plataforma unificada de gestión legislativa y administrativa que centraliza, 
-                                gestiona y da visibilidad a toda la actividad de los Concejos Municipales y 
-                                Departamentales de Colombia, transformando la transparencia en acción.
-                            </p>
-                            <a href="#" class="slide-btn">Conocer más →</a>
-                        </div>
-                    </div>
-        
-                    <!-- Slide 3: Análisis con IA -->
-                    <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img3.png">
-                        <div class="slide-content">
-                            <div class="slide-icon">
-                                <i data-lucide="brain"></i>
-                            </div>
-                            <h3 class="slide-title">Análisis con IA</h3>
-                            <p class="slide-description">
-                                Implementamos inteligencia artificial para automatizar procesos operativos, 
-                                anticipar escenarios y transformar datos en decisiones precisas y accionables.
-                            </p>
-                            <a href="#" class="slide-btn">Conocer más →</a>
-                        </div>
-                    </div>
-        
-                    <!-- Slide 4: Consultoría Digital -->
-                    <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img2.png">
-                        <div class="slide-content">
-                            <div class="slide-icon">
-                                <i data-lucide="trending-up"></i>
-                            </div>
-                            <h3 class="slide-title">Consultoría Digital</h3>
-                            <p class="slide-description">
-                                Acompañamos a las organizaciones en su evolución hacia la madurez digital, 
-                                garantizando una adopción tecnológica eficiente, segura y alineada con sus
-                                objetivos estratégicos.
-                            </p>
-                            <a href="#" class="slide-btn">Conocer más →</a>
-                        </div>
-                    </div>
-        
-                    <!-- Slide 5: Fábrica de Software -->
-                    <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img4.png">
-                        <div class="slide-content">
-                            <div class="slide-icon">
-                                <i data-lucide="code-2"></i>
-                            </div>
-                            <h3 class="slide-title">Calidad y QA</h3>
-                            <p class="slide-description">
-                                Garantizamos que cada solución tecnológica funcione con precisión, seguridad y confiabilidad
-                                antes de llegar a sus usuarios finales.
-                            </p>
-                            <a href="#" class="slide-btn">Conocer más →</a>
-                        </div>
+                    <div style="display: flex; justify-content: center; align-items: center;" data-animation="zoom-in" data-delay="0.3">
+                        <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Component-Pattern.png" alt="Component pattern" style="width: 100%; max-width: 400px; height: auto; border-radius: 20px;">
                     </div>
                 </div>
-        
-                <!-- Botones de navegación -->
-                <button class="slider-btn prev-btn" id="prevBtn">
-                    <i data-lucide="chevron-left"></i>
-                </button>
-                <button class="slider-btn next-btn" id="nextBtn">
-                    <i data-lucide="chevron-right"></i>
-                </button>
-        
-                <!-- Indicadores -->
-                <div class="slider-dots" id="sliderDots"></div>
             </div>
         </section>
 
-       <!-- Sección: ¿Por qué elegir Céntrica? -->
-        <section class="porque-section-nuevo">
-            <div class="porque-container-nuevo">
-                <h2 class="porque-title-nuevo">¿Por qué elegir <span>Céntrica</span>?</h2>
+        <!-- Sección: Slider de productos (Nuestras Soluciones) -->
+        <section id="soluciones" class="section" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Nuestras <span>Soluciones</span></h2>
                 
-                <div class="porque-grid-nuevo">
-                    <!-- Lado izquierdo: Imagen grande -->
-                    <div class="porque-imagen">
-                        <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Flor.png" alt="Flor Centrica"> 
+                <div class="slider-container" id="mainSlider">
+                    <div class="slider-track" id="sliderTrack">
+                        <!-- Slide 1: Nebula ERP -->
+                        <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img1.png">
+                            <div class="slide-content">
+                                <div class="slide-icon">
+                                    <i data-lucide="cloud"></i>
+                                </div>
+                                <h3 class="slide-title">Nebula ERP</h3>
+                                <p class="slide-description">
+                                    Plataforma integral de gestión empresarial que centraliza operaciones financieras, 
+                                    de inventarios y administrativas en un solo ecosistema, con inteligencia artificial 
+                                    integrada y reportes en tiempo real.
+                                </p>
+                                <a href="nebula.html" class="slide-btn">Conocer más →</a>
+                            </div>
+                        </div>
+            
+                        <!-- Slide 2: Sicovi -->
+                        <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img6.png">
+                            <div class="slide-content">
+                                <div class="slide-icon">
+                                    <i data-lucide="landmark"></i>
+                                </div>
+                                <h3 class="slide-title">Sicovi</h3>
+                                <p class="slide-description">
+                                    Plataforma unificada de gestión legislativa y administrativa que centraliza, 
+                                    gestiona y da visibilidad a toda la actividad de los Concejos Municipales y 
+                                    Departamentales de Colombia.
+                                </p>
+                                <a href="sicovi.html" class="slide-btn">Conocer más →</a>
+                            </div>
+                        </div>
+            
+                        <!-- Slide 3: Análisis con IA -->
+                        <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img3.png">
+                            <div class="slide-content">
+                                <div class="slide-icon">
+                                    <i data-lucide="brain"></i>
+                                </div>
+                                <h3 class="slide-title">Análisis con IA</h3>
+                                <p class="slide-description">
+                                    Implementamos inteligencia artificial para automatizar procesos operativos, 
+                                    anticipar escenarios y transformar datos en decisiones precisas y accionables.
+                                </p>
+                                <a href="ia.html" class="slide-btn">Conocer más →</a>
+                            </div>
+                        </div>
+            
+                        <!-- Slide 4: Consultoría Digital -->
+                        <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img2.png">
+                            <div class="slide-content">
+                                <div class="slide-icon">
+                                    <i data-lucide="trending-up"></i>
+                                </div>
+                                <h3 class="slide-title">Consultoría Digital</h3>
+                                <p class="slide-description">
+                                    Acompañamos a las organizaciones en su evolución hacia la madurez digital, 
+                                    garantizando una adopción tecnológica eficiente, segura y alineada con sus
+                                    objetivos estratégicos.
+                                </p>
+                                <a href="consultoria.html" class="slide-btn">Conocer más →</a>
+                            </div>
+                        </div>
+            
+                        <!-- Slide 5: Evaluaciones de Calidad -->
+                        <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img4.png">
+                            <div class="slide-content">
+                                <div class="slide-icon">
+                                    <i data-lucide="clipboard-check"></i>
+                                </div>
+                                <h3 class="slide-title">Evaluaciones de Calidad</h3>
+                                <p class="slide-description">
+                                    Garantizamos que cada solución tecnológica funcione con precisión, seguridad y confiabilidad
+                                    antes de llegar a sus usuarios finales.
+                                </p>
+                                <a href="calidad.html" class="slide-btn">Conocer más →</a>
+                            </div>
+                        </div>
                     </div>
-        
+            
+                    <!-- Botones de navegación -->
+                    <button class="slider-btn prev-btn" id="prevBtn">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <button class="slider-btn next-btn" id="nextBtn">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+            
+                    <!-- Indicadores -->
+                    <div class="slider-dots" id="sliderDots"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: ¿Por qué elegir Céntrica? (Grid 2 columnas) -->
+        <section class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">¿Por qué elegir <span>Céntrica</span>?</h2>
+                
+                <div class="grid-2">
+                    <!-- Lado izquierdo: Imagen -->
+                    <div style="display: flex; justify-content: center; align-items: center;" data-animation="zoom-in" data-delay="0.2">
+                        <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Flor.png" alt="Flor Centrica" style="width: 100%; max-width: 300px; height: auto;">
+                    </div>
+                    
                     <!-- Lado derecho: Grid 2x2 de cards -->
-                    <div class="porque-cards-grid">
-                        <!-- Card 1 -->
-                        <div class="beneficio-card-nuevo">
-                            <div class="beneficio-icon-nuevo">
-                                <i data-lucide="ruler"></i>
-                            </div>
-                            <h3 class="beneficio-title-nuevo">Soluciones a la <strong>medida</strong></h3>
-                            <p class="beneficio-text-nuevo">
-                                Para cada cliente, adaptamos nuestras soluciones a tus necesidades específicas.
-                            </p>
+                    <div class="grid-2" style="gap: 1.5rem;">
+                        <div class="card card-highlight" data-animation="fade-up" data-delay="0.1">
+                            <div class="card-icon"><i data-lucide="ruler"></i></div>
+                            <h3 class="card-title">Soluciones a la <strong>medida</strong></h3>
+                            <p class="card-text">Para cada cliente, adaptamos nuestras soluciones a tus necesidades específicas.</p>
                         </div>
-        
-                        <!-- Card 2 -->
-                        <div class="beneficio-card-nuevo">
-                            <div class="beneficio-icon-nuevo">
-                                <i data-lucide="brain-circuit"></i>
-                            </div>
-                            <h3 class="beneficio-title-nuevo">Implementación real de <strong>Inteligencia artificial</strong></h3>
-                            <p class="beneficio-text-nuevo">
-                                Nada de promesas vacías. Integramos IA funcional que automatiza procesos.
-                            </p>
+                        
+                        <div class="card card-highlight" data-animation="fade-up" data-delay="0.2">
+                            <div class="card-icon"><i data-lucide="brain-circuit"></i></div>
+                            <h3 class="card-title">Implementación real de <strong>Inteligencia artificial</strong></h3>
+                            <p class="card-text">Nada de promesas vacías. Integramos IA funcional que automatiza procesos.</p>
                         </div>
-        
-                        <!-- Card 3 -->
-                        <div class="beneficio-card-nuevo">
-                            <div class="beneficio-icon-nuevo">
-                                <i data-lucide="trending-up"></i>
-                            </div>
-                            <h3 class="beneficio-title-nuevo">Plataformas <strong>escalables</strong></h3>
-                            <p class="beneficio-text-nuevo">
-                                Que crecen contigo. Nuestra arquitectura multi-tenant permite expansión.
-                            </p>
+                        
+                        <div class="card card-highlight" data-animation="fade-up" data-delay="0.3">
+                            <div class="card-icon"><i data-lucide="trending-up"></i></div>
+                            <h3 class="card-title">Plataformas <strong>escalables</strong></h3>
+                            <p class="card-text">Que crecen contigo. Nuestra arquitectura multi-tenant permite expansión.</p>
                         </div>
-        
-                        <!-- Card 4 -->
-                        <div class="beneficio-card-nuevo">
-                            <div class="beneficio-icon-nuevo">
-                                <i data-lucide="building-2"></i>
-                            </div>
-                            <h3 class="beneficio-title-nuevo">Alta aplicabilidad en <strong>sector público</strong> y <strong>privado</strong></h3>
-                            <p class="beneficio-text-nuevo">
-                                Soluciones versátiles que cumplen con los estándares de ambos sectores.
-                            </p>
+                        
+                        <div class="card card-highlight" data-animation="fade-up" data-delay="0.4">
+                            <div class="card-icon"><i data-lucide="building-2"></i></div>
+                            <h3 class="card-title">Alta aplicabilidad en <strong>sector público</strong> y <strong>privado</strong></h3>
+                            <p class="card-text">Soluciones versátiles que cumplen con los estándares de ambos sectores.</p>
                         </div>
                     </div>
                 </div>
@@ -277,68 +285,70 @@
         </section>
 
         <!-- Sección: Formulario de Contacto -->
-        <section id="contacto" class="contacto-section">
-            <div class="contacto-container">
-                <div class="contacto-header">
-                    <h2 class="contacto-title">Solicite información técnica.</h2>
-                    <p class="contacto-subtitle">Nuestros arquitectos se pondrán en contacto con usted.</p>
-                </div>
-        
-                <form class="contacto-form" id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="nombre">NOMBRE COMPLETO *</label>
-                            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">CORREO LABORAL *</label>
-                            <input type="email" id="email" name="email" required placeholder="juan@empresa.com">
-                        </div>
+        <section id="contacto" class="section" data-animation="fade-up">
+            <div class="container">
+                <div class="card" style="max-width: 900px; margin: 0 auto;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h2 class="section-title" style="margin-bottom: 0.5rem;">Solicite información técnica.</h2>
+                        <p class="section-subtitle" style="margin-top: 0;">Nuestros arquitectos se pondrán en contacto con usted.</p>
                     </div>
-        
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="empresa">EMPRESA *</label>
-                            <input type="text" id="empresa" name="empresa" required placeholder="Nombre de tu empresa">
+                    
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre" class="form-label">NOMBRE COMPLETO *</label>
+                                <input type="text" id="nombre" name="nombre" class="form-input" required placeholder="Ej: Juan Pérez">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">CORREO LABORAL *</label>
+                                <input type="email" id="email" name="email" class="form-input" required placeholder="juan@empresa.com">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="cargo">CARGO</label>
-                            <select id="cargo" name="cargo">
-                                <option value="">Selecciona tu cargo</option>
-                                <option value="CTO">CTO</option>
-                                <option value="CEO">CEO</option>
-                                <option value="Director TI">Director TI</option>
-                                <option value="Gerente">Gerente</option>
+            
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="empresa" class="form-label">EMPRESA *</label>
+                                <input type="text" id="empresa" name="empresa" class="form-input" required placeholder="Nombre de tu empresa">
+                            </div>
+                            <div class="form-group">
+                                <label for="cargo" class="form-label">CARGO</label>
+                                <select id="cargo" name="cargo" class="form-select">
+                                    <option value="">Selecciona tu cargo</option>
+                                    <option value="CTO">CTO</option>
+                                    <option value="CEO">CEO</option>
+                                    <option value="Director TI">Director TI</option>
+                                    <option value="Gerente">Gerente</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+            
+                        <div class="form-group full-width">
+                            <label for="bd" class="form-label">¿QUÉ MOTOR DE BD USA ACTUALMENTE?</label>
+                            <select id="bd" name="bd" class="form-select">
+                                <option value="">Selecciona tu base de datos</option>
+                                <option value="PostgreSQL">PostgreSQL</option>
+                                <option value="MySQL">MySQL</option>
+                                <option value="SQL Server">SQL Server</option>
+                                <option value="Oracle">Oracle</option>
+                                <option value="MongoDB">MongoDB</option>
                                 <option value="Otro">Otro</option>
                             </select>
                         </div>
+            
+                        <div class="form-group full-width">
+                            <label for="mensaje" class="form-label">MENSAJE</label>
+                            <textarea id="mensaje" name="mensaje" class="form-textarea" rows="5" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                        </div>
+            
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Solicitud →</button>
+                    </form>
+            
+                    <!-- Mensaje de éxito -->
+                    <div id="successMessage" class="success-message" style="display: none; margin-top: 1.5rem; text-align: center;">
+                        <i data-lucide="check-circle"></i>
+                        <p>¡Solicitud enviada con éxito! Nos pondremos en contacto contigo pronto.</p>
                     </div>
-        
-                    <div class="form-group full-width">
-                        <label for="bd">¿QUÉ MOTOR DE BD USA ACTUALMENTE?</label>
-                        <select id="bd" name="bd">
-                            <option value="">Selecciona tu base de datos</option>
-                            <option value="PostgreSQL">PostgreSQL</option>
-                            <option value="MySQL">MySQL</option>
-                            <option value="SQL Server">SQL Server</option>
-                            <option value="Oracle">Oracle</option>
-                            <option value="MongoDB">MongoDB</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                    </div>
-        
-                    <div class="form-group full-width">
-                        <label for="mensaje">MENSAJE</label>
-                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
-                    </div>
-        
-                    <button type="submit" class="submit-btn">Enviar Solicitud →</button>
-                </form>
-        
-                <!-- Mensaje de éxito (oculto inicialmente) -->
-                <div id="successMessage" class="success-message" style="display: none;">
-                    <i data-lucide="check-circle"></i>
-                    <p>¡Solicitud enviada con éxito! Nos pondremos en contacto contigo pronto.</p>
                 </div>
             </div>
         </section>
@@ -355,7 +365,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p>gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -386,12 +396,14 @@
                 <p class="footer-newsletter-text">
                     Recibe novedades sobre nuestras soluciones.
                 </p>
-                <form class="footer-newsletter-form" id="newsletterForm2">
+                <form class="footer-newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="footer-unsubscribe">
                     Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
                 </p>
             </div>
         </div>
@@ -399,11 +411,85 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
-                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    
+    <!-- Script adicional para el formulario -->
+    <script>
+        // EmailJS para formulario de contacto
+        if (typeof emailjs !== 'undefined' && emailjs.init) {
+            emailjs.init("vS5vQ1DCKUxmKVffT");
+            
+            const contactForm = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const nombre = document.getElementById('nombre').value;
+                    const email = document.getElementById('email').value;
+                    const empresa = document.getElementById('empresa').value;
+                    
+                    if (!nombre || !email || !empresa) {
+                        alert('Por favor, completa los campos obligatorios (*)');
+                        return;
+                    }
+                    
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Por favor, ingresa un correo electrónico válido');
+                        return;
+                    }
+                    
+                    const templateParams = {
+                        name: nombre,
+                        email: email,
+                        empresa: empresa,
+                        cargo: document.getElementById('cargo').value,
+                        bd: document.getElementById('bd').value,
+                        mensaje: document.getElementById('mensaje').value
+                    };
+                    
+                    emailjs.send('service_r3bh1qv', 'template_54jibgs', templateParams)
+                        .then(function(response) {
+                            console.log('✅ Email enviado:', response);
+                            contactForm.style.display = 'none';
+                            successMessage.style.display = 'block';
+                            if (typeof lucide !== 'undefined') {
+                                lucide.createIcons();
+                            }
+                            
+                            setTimeout(() => {
+                                contactForm.style.display = 'flex';
+                                contactForm.style.flexDirection = 'column';
+                                contactForm.style.gap = '1.5rem';
+                                successMessage.style.display = 'none';
+                                contactForm.reset();
+                            }, 5000);
+                        })
+                        .catch(function(error) {
+                            console.error('❌ Error EmailJS:', error);
+                            alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
+                        });
+                });
+            }
+        }
+        
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                console.log('Newsletter suscripción:', email);
+                alert('¡Gracias por suscribirte!');
+                this.reset();
+            });
+        }
+    </script>
 </body>
 </html>
