@@ -8,90 +8,184 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-
-<header>
-    <div class="logo-container">
-        <div class="logo">
-            <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
+            </div>
         </div>
-    </div>
 
-    <nav>
-        <ul class="menu">
-            <li><a href="index.html">Sobre nosotros</a></li>
-            <li class="dropdown">
-                <a href="servicios.html">Servicios</a>
-                <ul class="submenu">
-                    <li><a href="fabrica.html">Fábrica de software</a></li>
-                    <li><a href="nebula.html">Nebula ERP</a></li>
-                    <li><a href="sicovi.html">Sicovi</a></li>
-                    <li><a href="ia.html">Análisis con IA</a></li>
-                    <li><a href="calidad.html">Evaluaciones de Calidad</a></li>
-                    <li><a href="consultoria.html">Consultoría digital</a></li>
-                </ul>
-            </li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
-
-    <button id="darkModeToggle" class="dark-mode-btn">
-        <i data-lucide="moon"></i>
-    </button>
-</header>
-
-<main>
-    <div class="legal-hero">
-        <h1>Aviso Legal</h1>
-        <p>Última actualización: 24 de abril de 2026</p>
-    </div>
-
-    <div class="legal-grid">
-        <aside class="legal-sidebar">
-            <ul>
-                <li><a href="#titular">🏢 1. Titular del sitio</a></li>
-                <li><a href="#condiciones">📄 2. Condiciones de uso</a></li>
-                <li><a href="#propiedad">© 3. Propiedad intelectual</a></li>
-                <li><a href="#responsabilidad">⚠️ 4. Limitación de responsabilidad</a></li>
-                <li><a href="#jurisdiccion">⚖️ 5. Jurisdicción</a></li>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Sobre nosotros</a></li>
+                <li class="dropdown">
+                    <a href="servicios.html">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="fabrica.html">Fábrica de software</a></li>
+                        <li><a href="nebula.html">Nebula ERP</a></li>
+                        <li><a href="sicovi.html">Sicovi</a></li>
+                        <li><a href="ia.html">Análisis con IA</a></li>
+                        <li><a href="calidad.html">Evaluaciones de Calidad</a></li>
+                        <li><a href="consultoria.html">Consultoría digital</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
             </ul>
-        </aside>
-        
-        <div class="legal-content">
+        </nav>
 
-            <section id="titular">
-                <h2>1. Titular del sitio</h2>
-                <p>El presente sitio web es operado por Céntrica, entidad dedicada a la prestación de servicios tecnológicos, desarrollo de software y consultoría digital.</p>
-                <p>Para cualquier consulta relacionada con este sitio web, puede contactarnos a través de los canales oficiales disponibles en la sección de contacto.</p>
-            </section>
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
 
-            <section id="condiciones">
-                <h2>2. Condiciones de uso</h2>
-                <p>El acceso y uso de este sitio web atribuye la condición de usuario, implicando la aceptación plena de las disposiciones incluidas en este Aviso Legal.</p>
-                <p>El usuario se compromete a hacer un uso adecuado del contenido, evitando actividades ilícitas o contrarias a la buena fe y al orden público.</p>
-            </section>
+    <main>
+        <!-- Hero Estático para páginas legales -->
+        <section class="hero-static" style="background-image: url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600');" data-animation="fade-in">
+            <div class="hero-static-overlay"></div>
+            <div class="hero-container">
+                <div class="hero-icon" data-animation="zoom-in" data-delay="0.2">
+                    <i data-lucide="scale"></i>
+                </div>
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Aviso <span>Legal</span></h1>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.5">Última actualización: 24 de abril de 2026</p>
+            </div>
+        </section>
 
-            <section id="propiedad">
-                <h2>3. Propiedad intelectual</h2>
-                <p>Todos los contenidos del sitio web, incluyendo textos, imágenes, diseños, logotipos y software, son propiedad de Céntrica o cuentan con las licencias correspondientes.</p>
-                <p>Queda prohibida la reproducción, distribución o modificación total o parcial de los contenidos sin autorización previa y expresa.</p>
-            </section>
-
-            <section id="responsabilidad">
-                <h2>4. Limitación de responsabilidad</h2>
-                <p>Céntrica no se responsabiliza por los daños o perjuicios derivados del uso de la información contenida en este sitio web ni por la disponibilidad continua del mismo.</p>
-                <p>Tampoco se garantiza la ausencia de virus u otros elementos que puedan causar alteraciones en los sistemas informáticos del usuario.</p>
-            </section>
-
-            <section id="jurisdiccion">
-                <h2>5. Jurisdicción</h2>
-                <p>El presente Aviso Legal se rige por la legislación vigente en Colombia.</p>
-                <p>Cualquier controversia que pudiera derivarse del acceso o uso del sitio web será sometida a los tribunales competentes del país.</p>
-            </section>
-
+        <!-- Grid legal con sidebar y acordeón -->
+        <div class="legal-grid" data-animation="fade-up">
+            <!-- Sidebar de navegación -->
+            <aside class="legal-sidebar" data-animation="fade-right" data-delay="0.2">
+                <ul>
+                    <li><a href="#titular" data-accordion-link="titular">🏢 1. Titular del sitio</a></li>
+                    <li><a href="#condiciones" data-accordion-link="condiciones">📄 2. Condiciones de uso</a></li>
+                    <li><a href="#propiedad" data-accordion-link="propiedad">© 3. Propiedad intelectual</a></li>
+                    <li><a href="#responsabilidad" data-accordion-link="responsabilidad">⚠️ 4. Limitación de responsabilidad</a></li>
+                    <li><a href="#jurisdiccion" data-accordion-link="jurisdiccion">⚖️ 5. Jurisdicción</a></li>
+                </ul>
+            </aside>
+            
+            <!-- Acordeón de contenido -->
+            <div class="accordion" data-animation="fade-left" data-delay="0.3">
+                
+                <!-- Item 1: Titular del sitio -->
+                <div class="accordion-item" id="titular">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="building-2"></i>
+                            1. Titular del sitio
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>El presente sitio web es operado por Céntrica, entidad dedicada a la prestación de servicios tecnológicos, desarrollo de software y consultoría digital.</p>
+                        <p>Para cualquier consulta relacionada con este sitio web, puede contactarnos a través de los canales oficiales disponibles en la sección de contacto.</p>
+                        <h4>Datos de contacto:</h4>
+                        <ul>
+                            <li><strong>Email:</strong> gerenciacomercial@centricasoluciones.com</li>
+                            <li><strong>Teléfono:</strong> +57 300 205 7325</li>
+                            <li><strong>Dirección:</strong> Medellín, Colombia</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 2: Condiciones de uso -->
+                <div class="accordion-item" id="condiciones">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="file-text"></i>
+                            2. Condiciones de uso
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>El acceso y uso de este sitio web atribuye la condición de usuario, implicando la aceptación plena de las disposiciones incluidas en este Aviso Legal.</p>
+                        <p>El usuario se compromete a hacer un uso adecuado del contenido, evitando actividades ilícitas o contrarias a la buena fe y al orden público.</p>
+                        <h4>Obligaciones del usuario:</h4>
+                        <ul>
+                            <li>No utilizar el sitio para fines ilegales o no autorizados.</li>
+                            <li>No interferir con la seguridad del sitio.</li>
+                            <li>No cargar contenido malicioso o dañino.</li>
+                            <li>Respetar los derechos de propiedad intelectual.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 3: Propiedad intelectual -->
+                <div class="accordion-item" id="propiedad">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="copyright"></i>
+                            3. Propiedad intelectual
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Todos los contenidos del sitio web, incluyendo textos, imágenes, diseños, logotipos y software, son propiedad de Céntrica o cuentan con las licencias correspondientes.</p>
+                        <p>Queda prohibida la reproducción, distribución o modificación total o parcial de los contenidos sin autorización previa y expresa.</p>
+                        <h4>¿Qué está permitido?</h4>
+                        <ul>
+                            <li>Visualización y navegación personal.</li>
+                            <li>Compartir enlaces citando la fuente.</li>
+                            <li>Uso de recursos para fines informativos.</li>
+                        </ul>
+                        <h4>¿Qué está prohibido?</h4>
+                        <ul>
+                            <li>Copiar o reproducir contenido sin autorización.</li>
+                            <li>Modificar o adaptar el contenido.</li>
+                            <li>Usar logotipos o marcas sin permiso.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 4: Limitación de responsabilidad -->
+                <div class="accordion-item" id="responsabilidad">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="alert-triangle"></i>
+                            4. Limitación de responsabilidad
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Céntrica no se responsabiliza por los daños o perjuicios derivados del uso de la información contenida en este sitio web ni por la disponibilidad continua del mismo.</p>
+                        <p>Tampoco se garantiza la ausencia de virus u otros elementos que puedan causar alteraciones en los sistemas informáticos del usuario.</p>
+                        <h4>Exclusiones de responsabilidad:</h4>
+                        <ul>
+                            <li>Interrupciones o errores técnicos en el servicio.</li>
+                            <li>Pérdida de datos por causas externas.</li>
+                            <li>Contenido de enlaces a sitios de terceros.</li>
+                            <li>Uso indebido del sitio por parte del usuario.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 5: Jurisdicción -->
+                <div class="accordion-item" id="jurisdiccion">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="scale"></i>
+                            5. Jurisdicción
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>El presente Aviso Legal se rige por la legislación vigente en Colombia.</p>
+                        <p>Cualquier controversia que pudiera derivarse del acceso o uso del sitio web será sometida a los tribunales competentes del país.</p>
+                        <h4>Legislación aplicable:</h4>
+                        <ul>
+                            <li>Constitución Política de Colombia.</li>
+                            <li>Ley 527 de 1999 (Comercio Electrónico).</li>
+                            <li>Ley 1581 de 2012 (Protección de Datos).</li>
+                            <li>Normatividad vigente sobre propiedad intelectual.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-col">
@@ -102,7 +196,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p>gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -133,12 +227,14 @@
                 <p class="footer-newsletter-text">
                     Recibe novedades sobre nuestras soluciones.
                 </p>
-                <form class="footer-newsletter-form" id="newsletterForm2">
+                <form class="footer-newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="footer-unsubscribe">
                     Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
                 </p>
             </div>
         </div>
@@ -146,10 +242,86 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
-                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
             </div>
         </div>
     </footer>
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
+    
+    <!-- Script específico para navegación legal -->
+    <script>
+        // Inicializar Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                console.log('Newsletter suscripción:', email);
+                alert('¡Gracias por suscribirte!');
+                this.reset();
+            });
+        }
+        
+        // Navegación desde el sidebar al acordeón
+        const sidebarLinks = document.querySelectorAll('[data-accordion-link]');
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        
+        if (sidebarLinks.length && accordionItems.length) {
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-accordion-link');
+                    const targetItem = document.getElementById(targetId);
+                    
+                    if (targetItem) {
+                        // Cerrar todos los items
+                        accordionItems.forEach(item => {
+                            item.classList.remove('active');
+                            const content = item.querySelector('.accordion-content');
+                            if (content) content.style.maxHeight = null;
+                        });
+                        
+                        // Abrir el item seleccionado
+                        targetItem.classList.add('active');
+                        const targetContent = targetItem.querySelector('.accordion-content');
+                        if (targetContent) targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
+                        
+                        // Scroll suave al item
+                        targetItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+        
+        // Marcar enlace activo en el sidebar
+        function updateActiveSidebarLink() {
+            const scrollPosition = window.scrollY + 150;
+            let activeId = null;
+            
+            accordionItems.forEach(item => {
+                const itemTop = item.offsetTop;
+                const itemBottom = itemTop + item.offsetHeight;
+                if (scrollPosition >= itemTop && scrollPosition < itemBottom) {
+                    activeId = item.getAttribute('id');
+                }
+            });
+            
+            sidebarLinks.forEach(link => {
+                if (link.getAttribute('data-accordion-link') === activeId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateActiveSidebarLink);
+        updateActiveSidebarLink();
+    </script>
 </body>
 </html>
