@@ -7,156 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <style>
-        /* Estilos adicionales para el footer y consistencia */
-        .footer-newsletter-form {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-        
-        .footer-newsletter-form input {
-            padding: 12px 16px;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 12px;
-            background: rgba(255,255,255,0.08);
-            color: white;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-newsletter-form input:focus {
-            outline: none;
-            border-color: #4a9eff;
-            background: rgba(255,255,255,0.15);
-        }
-        
-        .footer-newsletter-form input::placeholder {
-            color: rgba(255,255,255,0.5);
-        }
-        
-        .footer-newsletter-form button {
-            background: #0e58a9;
-            color: white;
-            border: none;
-            padding: 12px 16px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 600;
-            font-family: 'Open Sans', sans-serif;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-newsletter-form button:hover {
-            background: #1a6bc9;
-            transform: translateY(-2px);
-        }
-        
-        .footer-contact-info {
-            margin-top: 1rem;
-        }
-        
-        .footer-contact-info p {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.85rem;
-            color: #bbb;
-        }
-        
-        .footer-contact-info i {
-            width: 18px;
-            height: 18px;
-            color: #4a9eff;
-        }
-        
-        .footer-unsubscribe {
-            font-size: 0.7rem;
-            color: #777;
-            margin-top: 1rem;
-        }
-        
-        .footer-unsubscribe-link {
-            display: inline-block;
-            margin-top: 0.75rem;
-            font-size: 0.75rem;
-            color: #666;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-unsubscribe-link:hover {
-            color: #4a9eff;
-        }
-        
-        /* Ajustes para el grid de flip */
-        .flip-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        /* Asegurar altura consistente para tarjetas flip */
-        .card-flip {
-            height: 100%;
-            min-height: 320px;
-            cursor: pointer;
-        }
-        
-        .card-flip-inner {
-            height: 100%;
-        }
-        
-        .card-flip-front,
-        .card-flip-back {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        
-        /* Badge para las tarjetas del carrusel */
-        .badge {
-            display: inline-block;
-            background: #0e58a9;
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            margin-top: 1rem;
-        }
-        
-        body.dark-mode .badge {
-            background: #4a9eff;
-            color: #1a1a2e;
-        }
-        
-        /* Hero icon image */
-        .hero-icon img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            margin-bottom: 1rem;
-            border-radius: 16px;
-        }
-        
-        /* Illustration image */
-        .illustration-img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        
-        body.dark-mode .illustration-img {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -193,12 +43,13 @@
         <!-- Hero con Video -->
         <section class="hero-video">
             <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600">
-                <source src="https://cdn.pixabay.com/video/2023/06/20/169164-838278688_large.mp4" type="video/mp4">
+                <!-- Video de Coverr: Technology Background -->
+                <source src="https://cdn.coverr.co/videos/coverr-typing-on-laptop-keyboard-1586816218985/1080p.mp4" type="video/mp4">
             </video>
             <div class="hero-video-overlay"></div>
             <div class="hero-container">
                 <div class="hero-icon">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&h=200&fit=crop" alt="Calidad">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&h=200&fit=crop" alt="Calidad" style="width: 80px; height: 80px; object-fit: cover; border-radius: 20px; margin-bottom: 1rem;">
                 </div>
                 <h1 class="hero-title">Evaluaciones de <span>Calidad</span></h1>
                 <p class="hero-subtitle">Aseguramiento y mejora continua del software</p>
@@ -589,7 +440,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>gerenciacomercial@centricasoluciones.com</p>
+                    <p><i data-lucide="mail"></i> comercialcentrica1@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
