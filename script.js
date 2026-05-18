@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // 2. INICIALIZACIÓN DE LUCIDE
+    // 1. INICIALIZACIÓN DE LUCIDE
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
         lucide.createIcons();
         console.log('✅ Lucide inicializado');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('⚠️ Lucide no está disponible');
     }
 
-    // 3. MODO OSCURO
+    // 2. MODO OSCURO
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 4. SUBMENÚS CON HOVER
+    // 3. SUBMENÚS CON HOVER (CORREGIDO)
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dropdown => {
         const submenu = dropdown.querySelector('.submenu');
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 5. SLIDER AUTOMÁTICO
+    // 4. SLIDER AUTOMÁTICO
     const track = document.getElementById('sliderTrack');
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.getElementById('prevBtn');
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('⚠️ Slider no encontrado o elementos faltantes');
     }
 
-    // ========== CARRUSEL UNIFICADO ==========
+    // 5. CARRUSEL UNIFICADO
     class Carousel {
         constructor(element, options = {}) {
             this.carousel = element;
@@ -208,15 +208,12 @@ document.addEventListener('DOMContentLoaded', function() {
         init() {
             if (this.slides.length === 0) return;
             
-            // Configurar el ancho de los slides
             this.setSlideWidth();
             
-            // Crear dots
             if (this.dotsContainer) {
                 this.createDots();
             }
             
-            // Event listeners
             if (this.prevBtn) {
                 this.prevBtn.addEventListener('click', () => this.prevSlide());
             }
@@ -224,23 +221,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.nextBtn.addEventListener('click', () => this.nextSlide());
             }
             
-            // Auto-play
             if (this.autoPlay) {
                 this.startAutoPlay();
                 this.carousel.addEventListener('mouseenter', () => this.stopAutoPlay());
                 this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
             }
             
-            // Responsive
             window.addEventListener('resize', () => {
                 this.setSlideWidth();
                 this.goToSlide(this.currentIndex);
             });
             
-            // Ir al primer slide
             this.goToSlide(0);
             
-            // Re-inicializar Lucide por si hay nuevos íconos
             if (typeof lucide !== 'undefined' && lucide.createIcons) {
                 lucide.createIcons();
             }
@@ -303,7 +296,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.updateDots();
             }
             
-            // Agregar animación al slide activo
             this.slides.forEach((slide, i) => {
                 if (i === this.currentIndex) {
                     slide.classList.add('active');
@@ -335,135 +327,53 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Inicializar todos los carruseles
+    // Inicializar carruseles
     const carousels = document.querySelectorAll('.carousel');
     carousels.forEach(carousel => {
         const autoPlay = carousel.hasAttribute('data-autoplay');
         const intervalTime = parseInt(carousel.getAttribute('data-interval')) || 5000;
         new Carousel(carousel, { autoPlay, intervalTime });
     });
-    // ========== FIN CARRUSEL UNIFICADO ==========
 
-    // ========== SISTEMA DE ANIMACIONES AL SCROLL ==========
+    // 6. SISTEMA DE ANIMACIONES AL SCROLL (CORREGIDO - No interfiere con otros estilos)
+    const animatedElements = document.querySelectorAll('[data-animation]');
     
-    // Definir los diferentes tipos de animaciones
-    const animations = {
-        'fade-up': {
-            initial: { opacity: 0, transform: 'translateY(30px)' },
-            visible: { opacity: 1, transform: 'translateY(0)' }
-        },
-        'fade-down': {
-            initial: { opacity: 0, transform: 'translateY(-30px)' },
-            visible: { opacity: 1, transform: 'translateY(0)' }
-        },
-        'fade-left': {
-            initial: { opacity: 0, transform: 'translateX(-30px)' },
-            visible: { opacity: 1, transform: 'translateX(0)' }
-        },
-        'fade-right': {
-            initial: { opacity: 0, transform: 'translateX(30px)' },
-            visible: { opacity: 1, transform: 'translateX(0)' }
-        },
-        'zoom-in': {
-            initial: { opacity: 0, transform: 'scale(0.9)' },
-            visible: { opacity: 1, transform: 'scale(1)' }
-        },
-        'zoom-out': {
-            initial: { opacity: 0, transform: 'scale(1.1)' },
-            visible: { opacity: 1, transform: 'scale(1)' }
-        },
-        'rotate': {
-            initial: { opacity: 0, transform: 'rotate(-5deg) scale(0.95)' },
-            visible: { opacity: 1, transform: 'rotate(0) scale(1)' }
-        },
-        'flip': {
-            initial: { opacity: 0, transform: 'perspective(400px) rotateX(90deg)' },
-            visible: { opacity: 1, transform: 'perspective(400px) rotateX(0)' }
-        }
-    };
-
-    // Elementos que se animarán al scroll
-    const animatedElements = [
-        // Secciones completas
-        { selector: '.section', animation: 'fade-up', delay: 0, threshold: 0.15 },
-        { selector: '.hero-static', animation: 'fade-down', delay: 0, threshold: 0.1 },
-        { selector: '.hero-video', animation: 'zoom-in', delay: 0, threshold: 0.1 },
-        
-        // Tarjetas individuales
-        { selector: '.card', animation: 'fade-up', delay: 0.1, threshold: 0.2, stagger: true },
-        { selector: '.card-flip', animation: 'zoom-in', delay: 0.1, threshold: 0.2, stagger: true },
-        { selector: '.card-float', animation: 'fade-up', delay: 0.1, threshold: 0.2, stagger: true },
-        { selector: '.card-highlight', animation: 'fade-left', delay: 0.1, threshold: 0.2, stagger: true },
-        
-        // Grids y contenedores
-        { selector: '.grid-2', animation: 'fade-up', delay: 0, threshold: 0.2 },
-        { selector: '.grid-auto', animation: 'fade-up', delay: 0, threshold: 0.2 },
-        { selector: '.flip-grid', animation: 'fade-up', delay: 0, threshold: 0.2 },
-        
-        // Elementos de hero
-        { selector: '.hero-title', animation: 'fade-down', delay: 0, threshold: 0.1 },
-        { selector: '.hero-subtitle', animation: 'fade-up', delay: 0.1, threshold: 0.1 },
-        { selector: '.hero-description', animation: 'fade-up', delay: 0.2, threshold: 0.1 },
-        { selector: '.hero-buttons', animation: 'fade-up', delay: 0.3, threshold: 0.1 },
-        
-        // Títulos de sección
-        { selector: '.section-title', animation: 'fade-down', delay: 0, threshold: 0.2 },
-        { selector: '.section-subtitle', animation: 'fade-up', delay: 0.1, threshold: 0.2 },
-        
-        // Elementos de metodología
-        { selector: '.metodologia-paso', animation: 'fade-right', delay: 0.1, threshold: 0.2, stagger: true },
-        
-        // Elementos de estadísticas
-        { selector: '.stat-item', animation: 'zoom-in', delay: 0.1, threshold: 0.3, stagger: true },
-        
-        // Elementos del carrusel
-        { selector: '.carousel-slide', animation: 'fade-up', delay: 0, threshold: 0.2 },
-        
-        // Badges y elementos pequeños
-        { selector: '.badge', animation: 'zoom-in', delay: 0.2, threshold: 0.2, stagger: true }
-    ];
-
-    // Función para aplicar la animación a un elemento
-    function applyAnimation(element, animationType, delay = 0) {
-        const animation = animations[animationType];
-        if (!animation) return;
-        
-        // Aplicar estilos iniciales
-        Object.assign(element.style, animation.initial);
-        element.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
-        element.style.willChange = 'opacity, transform';
-        
-        // Marcar como animado
-        element.setAttribute('data-animated', 'false');
-        element.setAttribute('data-animation-type', animationType);
-        
-        // Función para mostrar el elemento
-        const showElement = () => {
-            if (element.getAttribute('data-animated') === 'true') return;
-            Object.assign(element.style, animation.visible);
-            element.setAttribute('data-animated', 'true');
-        };
-        
-        // Verificar si ya es visible
-        const checkVisibility = () => {
-            const rect = element.getBoundingClientRect();
-            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-            const threshold = parseFloat(element.getAttribute('data-threshold') || '0.2');
-            const isVisible = rect.top <= windowHeight - (windowHeight * threshold) && rect.bottom >= 0;
+    // Solo aplicar animaciones a elementos que tengan el atributo data-animation
+    if (animatedElements.length > 0) {
+        // Configurar estilos iniciales
+        animatedElements.forEach(element => {
+            const animation = element.getAttribute('data-animation');
+            const delay = parseFloat(element.getAttribute('data-delay')) || 0;
             
-            if (isVisible) {
-                showElement();
-                window.removeEventListener('scroll', checkVisibility);
-                window.removeEventListener('resize', checkVisibility);
+            // Guardar estilos originales si es necesario
+            if (!element.hasAttribute('data-original-display')) {
+                element.setAttribute('data-original-display', window.getComputedStyle(element).display);
             }
-        };
+            
+            // Aplicar opacidad inicial
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`;
+            element.setAttribute('data-animated', 'false');
+        });
         
-        // Guardar threshold personalizado si existe
-        const parentConfig = animatedElements.find(cfg => 
-            element.matches && element.matches(cfg.selector)
-        );
-        if (parentConfig) {
-            element.setAttribute('data-threshold', parentConfig.threshold);
+        // Función para verificar visibilidad
+        function checkVisibility() {
+            animatedElements.forEach(element => {
+                if (element.getAttribute('data-animated') === 'true') return;
+                
+                const rect = element.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                const threshold = 0.15; // 15% visible para activar
+                
+                const isVisible = rect.top <= windowHeight - (windowHeight * threshold) && rect.bottom >= 0;
+                
+                if (isVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                    element.setAttribute('data-animated', 'true');
+                }
+            });
         }
         
         // Escuchar eventos
@@ -472,110 +382,43 @@ document.addEventListener('DOMContentLoaded', function() {
         checkVisibility(); // Verificar inmediatamente
     }
 
-    // Función para aplicar animaciones escalonadas (stagger)
-    function applyStaggerAnimation(elements, animationType, baseDelay, threshold) {
-        elements.forEach((element, index) => {
-            const delay = baseDelay + (index * 0.05);
-            const animation = animations[animationType];
-            if (!animation) return;
+    // 7. SISTEMA DE ACORDEÓN (PÁGINAS LEGALES)
+    function initAccordion() {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        
+        accordionItems.forEach(item => {
+            // Hacer que toda la card sea clickeable
+            const content = item.querySelector('.accordion-content');
             
-            Object.assign(element.style, animation.initial);
-            element.style.transition = `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
-            element.style.willChange = 'opacity, transform';
-            element.setAttribute('data-animated', 'false');
-            element.setAttribute('data-animation-type', animationType);
-            
-            const showElement = () => {
-                if (element.getAttribute('data-animated') === 'true') return;
-                Object.assign(element.style, animation.visible);
-                element.setAttribute('data-animated', 'true');
-            };
-            
-            const checkVisibility = () => {
-                const rect = element.getBoundingClientRect();
-                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-                const isVisible = rect.top <= windowHeight - (windowHeight * threshold) && rect.bottom >= 0;
+            if (content) {
+                // Asegurar que el contenido comience cerrado
+                content.style.maxHeight = null;
+                item.classList.remove('active');
                 
-                if (isVisible) {
-                    showElement();
-                    window.removeEventListener('scroll', checkVisibility);
-                    window.removeEventListener('resize', checkVisibility);
-                }
-            };
-            
-            window.addEventListener('scroll', checkVisibility);
-            window.addEventListener('resize', checkVisibility);
-            checkVisibility();
-        });
-    }
-
-    // Inicializar todas las animaciones
-    function initAnimations() {
-        animatedElements.forEach(config => {
-            const elements = document.querySelectorAll(config.selector);
-            
-            if (elements.length === 0) return;
-            
-            if (config.stagger && elements.length > 1) {
-                // Animación escalonada para múltiples elementos
-                applyStaggerAnimation(
-                    Array.from(elements),
-                    config.animation,
-                    config.delay,
-                    config.threshold
-                );
-            } else {
-                // Animación individual
-                elements.forEach(element => {
-                    applyAnimation(element, config.animation, config.delay);
+                // Hacer click en cualquier parte de la card
+                item.addEventListener('click', function(e) {
+                    // Prevenir que el click en enlaces dentro del contenido cierre el acordeón
+                    if (e.target.tagName === 'A' || e.target.closest('a')) {
+                        e.stopPropagation();
+                        return;
+                    }
+                    
+                    // Toggle el item actual
+                    item.classList.toggle('active');
+                    
+                    if (item.classList.contains('active')) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = null;
+                    }
                 });
             }
         });
-        
-        console.log('✅ Sistema de animaciones inicializado');
     }
+    
+    initAccordion();
 
-    // Observador de scroll para elementos dinámicos (como carrusel)
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && entry.target.getAttribute('data-animated') !== 'true') {
-                const animationType = entry.target.getAttribute('data-animation-type');
-                if (animationType && animations[animationType]) {
-                    const animation = animations[animationType];
-                    Object.assign(entry.target.style, animation.visible);
-                    entry.target.setAttribute('data-animated', 'true');
-                }
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2 });
-
-    // Observar elementos que se cargan dinámicamente
-    function observeDynamicElements() {
-        const allAnimatedElements = document.querySelectorAll('[data-animation-type]');
-        allAnimatedElements.forEach(el => {
-            if (el.getAttribute('data-animated') === 'false') {
-                observer.observe(el);
-            }
-        });
-    }
-
-    // Inicializar animaciones cuando el DOM esté listo
-    initAnimations();
-    
-    // Re-evaluar animaciones después de que el carrusel se inicialice
-    setTimeout(() => {
-        observeDynamicElements();
-    }, 500);
-    
-    // Re-evaluar en cambios de ventana
-    window.addEventListener('resize', () => {
-        setTimeout(observeDynamicElements, 100);
-    });
-    
-    // ========== FIN SISTEMA DE ANIMACIONES ==========
-    
-    // 6. CERRAR SUBMENÚS AL HACER CLIC FUERA
+    // 8. CERRAR SUBMENÚS AL HACER CLIC FUERA
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.dropdown')) {
             document.querySelectorAll('.submenu').forEach(submenu => {
@@ -584,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 7. EMAILJS - FORMULARIO DE CONTACTO
+    // 9. EMAILJS - FORMULARIO DE CONTACTO
     if (typeof emailjs !== 'undefined' && emailjs.init) {
         emailjs.init("vS5vQ1DCKUxmKVffT");
         console.log('✅ EmailJS inicializado correctamente');
@@ -656,7 +499,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('❌ EmailJS no está cargado. Verifica que la librería esté en el HTML.');
     }
 
-    // 8. NEWSLETTER FORM
+    // 10. NEWSLETTER FORM
     const newsletterForm = document.getElementById('newsletterForm');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(e) {
@@ -669,7 +512,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 9. SCROLL SUAVE PARA PÁGINAS LEGALES
+    // 11. SCROLL SUAVE PARA PÁGINAS LEGALES
     const legalLinks = document.querySelectorAll('.legal-sidebar a');
     const sections = document.querySelectorAll('.legal-content section');
 
@@ -699,59 +542,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         window.addEventListener('scroll', highlightActiveLink);
     }
-
-    // ========== SISTEMA DE ACORDEÓN / PLEGABLES ==========
-// ========== SISTEMA DE ACORDEÓN / PLEGABLES ==========
-function initAccordion() {
-    const accordionItems = document.querySelectorAll('.accordion-item');
     
-    accordionItems.forEach(item => {
-        // Hacer que toda la card sea clickeable, no solo el header
-        const header = item.querySelector('.accordion-header');
-        const content = item.querySelector('.accordion-content');
-        
-        if (header && content) {
-            // Asegurar que el contenido comience cerrado
-            content.style.maxHeight = null;
-            item.classList.remove('active');
-            
-            // Hacer click en cualquier parte de la card
-            item.addEventListener('click', function(e) {
-                // Prevenir que el click en enlaces dentro del contenido cierre el acordeón
-                if (e.target.tagName === 'A' || e.target.closest('a')) {
-                    e.stopPropagation();
-                    return;
-                }
-                
-                // Toggle el item actual
-                item.classList.toggle('active');
-                
-                if (item.classList.contains('active')) {
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                } else {
-                    content.style.maxHeight = null;
-                }
-            });
-            
-            // También mantener el click en el header (por si tiene iconos)
-            header.addEventListener('click', function(e) {
-                e.stopPropagation();
-                item.classList.toggle('active');
-                
-                if (item.classList.contains('active')) {
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                } else {
-                    content.style.maxHeight = null;
-                }
-            });
-        }
-    });
-}
-
-// Inicializar acordeón
-document.addEventListener('DOMContentLoaded', function() {
-    initAccordion();
+    console.log('✅ Script completamente cargado');
 });
-
-// Exportar para uso global si es necesario
-window.initAccordion = initAccordion;
