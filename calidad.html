@@ -40,21 +40,20 @@
     </header>
 
     <main>
-        <!-- Hero con Video -->
-        <section class="hero-video">
+        <!-- Hero con Video (animación fade-in) -->
+        <section class="hero-video" data-animation="fade-in" data-delay="0">
             <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600">
-                <!-- Video de Coverr: Technology Background -->
                 <source src="https://cdn.coverr.co/videos/coverr-typing-on-laptop-keyboard-1586816218985/1080p.mp4" type="video/mp4">
             </video>
             <div class="hero-video-overlay"></div>
             <div class="hero-container">
-                <div class="hero-icon">
+                <div class="hero-icon" data-animation="zoom-in" data-delay="0.2">
                     <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&h=200&fit=crop" alt="Calidad" style="width: 80px; height: 80px; object-fit: cover; border-radius: 20px; margin-bottom: 1rem;">
                 </div>
-                <h1 class="hero-title">Evaluaciones de <span>Calidad</span></h1>
-                <p class="hero-subtitle">Aseguramiento y mejora continua del software</p>
-                <p class="hero-description">Auditorías y mejoras de calidad de software, asegurando estándares de rendimiento, seguridad y mantenibilidad para garantizar la excelencia en cada entrega.</p>
-                <div class="hero-buttons">
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Evaluaciones de <span>Calidad</span></h1>
+                <p class="hero-subtitle" data-animation="fade-up" data-delay="0.5">Aseguramiento y mejora continua del software</p>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.7">Auditorías y mejoras de calidad de software, asegurando estándares de rendimiento, seguridad y mantenibilidad para garantizar la excelencia en cada entrega.</p>
+                <div class="hero-buttons" data-animation="fade-up" data-delay="0.9">
                     <a href="#contacto" class="btn btn-primary">Solicitar auditoría →</a>
                     <a href="#servicios-q" class="btn btn-secondary">Ver servicios →</a>
                 </div>
@@ -62,29 +61,29 @@
         </section>
 
         <!-- ¿Qué son las Evaluaciones de Calidad? -->
-        <section class="section">
+        <section class="section" data-animation="fade-up">
             <div class="container">
                 <div class="grid-2">
-                    <div>
+                    <div data-animation="fade-right" data-delay="0.2">
                         <h2 class="section-title">¿Qué son las <span>Evaluaciones de Calidad</span>?</h2>
                         <p>Es un conjunto de servicios especializados en el aseguramiento de la calidad del software, que incluye pruebas sistemáticas, auditorías técnicas y procesos de mejora continua para garantizar que sus aplicaciones cumplan con los más altos estándares de la industria.</p>
                         <p style="margin-top: 1rem;">Aplicamos metodologías reconocidas internacionalmente (ISTQB, ISO 25000) y buenas prácticas de ingeniería de software para identificar y corregir riesgos antes de que impacten su operación.</p>
                         <div style="margin-top: 2rem;">
-                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;" data-animation="fade-left" data-delay="0.4">
                                 <i data-lucide="check-circle" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
                                     <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Prevención</h3>
                                     <p>Identifique y corrija defectos tempranamente.</p>
                                 </div>
                             </div>
-                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;" data-animation="fade-left" data-delay="0.6">
                                 <i data-lucide="bar-chart-3" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
                                     <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Medición</h3>
                                     <p>Métricas objetivas de calidad de software.</p>
                                 </div>
                             </div>
-                            <div style="display: flex; gap: 1rem;">
+                            <div style="display: flex; gap: 1rem;" data-animation="fade-left" data-delay="0.8">
                                 <i data-lucide="trending-up" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                                 <div>
                                     <h3 style="color: #0e58a9; margin-bottom: 0.25rem;">Mejora Continua</h3>
@@ -93,44 +92,44 @@
                             </div>
                         </div>
                     </div>
-                    <div style="display: flex; justify-content: center; align-items: center;">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=400&fit=crop" alt="Calidad Ilustración" class="illustration-img">
+                    <div style="display: flex; justify-content: center; align-items: center;" data-animation="zoom-in" data-delay="0.3">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=400&fit=crop" alt="Calidad Ilustración" style="width: 100%; max-width: 300px; height: auto; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Servicios de Calidad (Tarjetas tipo card-float) -->
-        <section id="servicios-q" class="section bg-light">
+        <section id="servicios-q" class="section bg-light" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Servicios de <span>Calidad</span></h2>
+                <h2 class="section-title" data-animation="fade-down">Servicios de <span>Calidad</span></h2>
                 <div class="grid-auto">
-                    <div class="card card-float">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
                         <div class="card-icon"><i data-lucide="bug"></i></div>
                         <h3 class="card-title">Pruebas Funcionales</h3>
                         <p class="card-text">Validación de requisitos, pruebas de caja negra, pruebas de regresión y aceptación para garantizar que el software funciona según lo esperado.</p>
                     </div>
-                    <div class="card card-float">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
                         <div class="card-icon"><i data-lucide="gauge"></i></div>
                         <h3 class="card-title">Pruebas de Rendimiento</h3>
                         <p class="card-text">Pruebas de carga, estrés y resistencia para asegurar que su aplicación responde adecuadamente bajo condiciones extremas de uso.</p>
                     </div>
-                    <div class="card card-float">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
                         <div class="card-icon"><i data-lucide="shield"></i></div>
                         <h3 class="card-title">Pruebas de Seguridad</h3>
                         <p class="card-text">Análisis de vulnerabilidades, pruebas de penetración y auditorías de seguridad para proteger sus datos y sistemas.</p>
                     </div>
-                    <div class="card card-float">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.4">
                         <div class="card-icon"><i data-lucide="smartphone"></i></div>
                         <h3 class="card-title">Pruebas de Usabilidad</h3>
                         <p class="card-text">Evaluación de experiencia de usuario, accesibilidad y satisfacción para garantizar interfaces intuitivas y efectivas.</p>
                     </div>
-                    <div class="card card-float">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.5">
                         <div class="card-icon"><i data-lucide="git-branch"></i></div>
                         <h3 class="card-title">Automatización de Pruebas</h3>
                         <p class="card-text">Implementación de frameworks de automatización (Selenium, Cypress, JUnit) para pruebas continuas y regresión eficiente.</p>
                     </div>
-                    <div class="card card-float">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.6">
                         <div class="card-icon"><i data-lucide="file-search"></i></div>
                         <h3 class="card-title">Auditoría de Código</h3>
                         <p class="card-text">Revisión sistemática de código fuente para identificar malas prácticas, deuda técnica y oportunidades de mejora.</p>
@@ -140,39 +139,39 @@
         </section>
 
         <!-- Metodología de Calidad -->
-        <section class="section">
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Nuestra <span>Metodología</span></h2>
+                <h2 class="section-title" data-animation="fade-down">Nuestra <span>Metodología</span></h2>
                 <div style="max-width: 900px; margin: 0 auto;">
-                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;">
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;" data-animation="fade-right" data-delay="0.1">
                         <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">1</div>
                         <div>
                             <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Análisis de Requisitos</h3>
                             <p>Comprendemos las necesidades del negocio y definimos la estrategia de calidad.</p>
                         </div>
                     </div>
-                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;">
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;" data-animation="fade-right" data-delay="0.2">
                         <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">2</div>
                         <div>
                             <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Diseño de Casos de Prueba</h3>
                             <p>Creamos escenarios de prueba basados en criterios de aceptación y riesgos.</p>
                         </div>
                     </div>
-                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;">
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;" data-animation="fade-right" data-delay="0.3">
                         <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">3</div>
                         <div>
                             <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Ejecución de Pruebas</h3>
                             <p>Realizamos pruebas manuales y automatizadas documentando cada resultado.</p>
                         </div>
                     </div>
-                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;">
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1rem;" data-animation="fade-right" data-delay="0.4">
                         <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">4</div>
                         <div>
                             <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Reporte y Análisis</h3>
                             <p>Entregamos informes detallados con métricas, hallazgos y recomendaciones.</p>
                         </div>
                     </div>
-                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                    <div class="card" style="display: flex; gap: 1.5rem; align-items: flex-start;" data-animation="fade-right" data-delay="0.5">
                         <div style="width: 50px; height: 50px; background: #0e58a9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; flex-shrink: 0;">5</div>
                         <div>
                             <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">Seguimiento y Mejora</h3>
@@ -184,32 +183,32 @@
         </section>
 
         <!-- Estándares y Certificaciones (Tarjetas tipo card-highlight) -->
-        <section class="section bg-light">
+        <section class="section bg-light" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Estándares y <span>Certificaciones</span></h2>
+                <h2 class="section-title" data-animation="fade-down">Estándares y <span>Certificaciones</span></h2>
                 <div class="grid-2">
-                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;">
+                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;" data-animation="fade-left" data-delay="0.1">
                         <i data-lucide="book-open" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                         <div>
                             <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">ISO 25000</h3>
                             <p>Estándar internacional para la evaluación de la calidad del producto software.</p>
                         </div>
                     </div>
-                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;">
+                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;" data-animation="fade-right" data-delay="0.2">
                         <i data-lucide="book-open" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                         <div>
                             <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">ISTQB</h3>
                             <p>Certificación internacional en pruebas de software.</p>
                         </div>
                     </div>
-                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;">
+                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;" data-animation="fade-left" data-delay="0.3">
                         <i data-lucide="book-open" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                         <div>
                             <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">ISO 27001</h3>
                             <p>Seguridad de la información aplicada a pruebas.</p>
                         </div>
                     </div>
-                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;">
+                    <div class="card card-highlight" style="display: flex; gap: 1rem; align-items: flex-start;" data-animation="fade-right" data-delay="0.4">
                         <i data-lucide="book-open" style="width: 40px; height: 40px; color: #0e58a9; flex-shrink: 0;"></i>
                         <div>
                             <h3 style="color: #0e58a9; margin-bottom: 0.5rem;">OWASP</h3>
@@ -221,13 +220,13 @@
         </section>
 
         <!-- Beneficios para su Organización (Tarjetas FLIP) -->
-        <section class="section">
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Beneficios para <span>su Organización</span></h2>
+                <h2 class="section-title" data-animation="fade-down">Beneficios para <span>su Organización</span></h2>
                 <div class="flip-grid">
                     
                     <!-- Tarjeta Flip 1 -->
-                    <div class="card-flip">
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.1">
                         <div class="card-flip-inner">
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="check-circle"></i></div>
@@ -243,7 +242,7 @@
                     </div>
                     
                     <!-- Tarjeta Flip 2 -->
-                    <div class="card-flip">
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.2">
                         <div class="card-flip-inner">
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="clock"></i></div>
@@ -259,7 +258,7 @@
                     </div>
                     
                     <!-- Tarjeta Flip 3 -->
-                    <div class="card-flip">
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.3">
                         <div class="card-flip-inner">
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="dollar-sign"></i></div>
@@ -275,7 +274,7 @@
                     </div>
                     
                     <!-- Tarjeta Flip 4 -->
-                    <div class="card-flip">
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.4">
                         <div class="card-flip-inner">
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="users"></i></div>
@@ -291,7 +290,7 @@
                     </div>
                     
                     <!-- Tarjeta Flip 5 -->
-                    <div class="card-flip">
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.5">
                         <div class="card-flip-inner">
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="shield"></i></div>
@@ -307,7 +306,7 @@
                     </div>
                     
                     <!-- Tarjeta Flip 6 -->
-                    <div class="card-flip">
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.6">
                         <div class="card-flip-inner">
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="trending-up"></i></div>
@@ -326,36 +325,36 @@
         </section>
 
         <!-- Herramientas y Tecnologías (Tarjetas tipo card-highlight) -->
-        <section class="section bg-light">
+        <section class="section bg-light" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Herramientas que <span>Utilizamos</span></h2>
+                <h2 class="section-title" data-animation="fade-down">Herramientas que <span>Utilizamos</span></h2>
                 <div class="grid-auto">
-                    <div class="card card-highlight" style="text-align: center;">
+                    <div class="card card-highlight" style="text-align: center;" data-animation="fade-up" data-delay="0.1">
                         <div class="card-icon"><i data-lucide="code-2"></i></div>
                         <h3 class="card-title">Automatización</h3>
                         <p class="card-text">Selenium, Cypress, Playwright, JUnit, TestNG</p>
                     </div>
-                    <div class="card card-highlight" style="text-align: center;">
+                    <div class="card card-highlight" style="text-align: center;" data-animation="fade-up" data-delay="0.2">
                         <div class="card-icon"><i data-lucide="gauge"></i></div>
                         <h3 class="card-title">Rendimiento</h3>
                         <p class="card-text">JMeter, Gatling, k6, LoadRunner</p>
                     </div>
-                    <div class="card card-highlight" style="text-align: center;">
+                    <div class="card card-highlight" style="text-align: center;" data-animation="fade-up" data-delay="0.3">
                         <div class="card-icon"><i data-lucide="shield"></i></div>
                         <h3 class="card-title">Seguridad</h3>
                         <p class="card-text">Burp Suite, OWASP ZAP, SonarQube</p>
                     </div>
-                    <div class="card card-highlight" style="text-align: center;">
+                    <div class="card card-highlight" style="text-align: center;" data-animation="fade-up" data-delay="0.4">
                         <div class="card-icon"><i data-lucide="clipboard-list"></i></div>
                         <h3 class="card-title">Gestión</h3>
                         <p class="card-text">JIRA, TestRail, Xray, Zephyr</p>
                     </div>
-                    <div class="card card-highlight" style="text-align: center;">
+                    <div class="card card-highlight" style="text-align: center;" data-animation="fade-up" data-delay="0.5">
                         <div class="card-icon"><i data-lucide="git-branch"></i></div>
                         <h3 class="card-title">CI/CD</h3>
                         <p class="card-text">Jenkins, GitHub Actions, GitLab CI</p>
                     </div>
-                    <div class="card card-highlight" style="text-align: center;">
+                    <div class="card card-highlight" style="text-align: center;" data-animation="fade-up" data-delay="0.6">
                         <div class="card-icon"><i data-lucide="smartphone"></i></div>
                         <h3 class="card-title">Móvil</h3>
                         <p class="card-text">Appium, Detox, XCUITest, Espresso</p>
@@ -365,9 +364,9 @@
         </section>
 
         <!-- Tipos de Evaluación con CARRUSEL -->
-        <section class="section">
+        <section class="section" data-animation="fade-up">
             <div class="container">
-                <h2 class="section-title">Tipos de <span>Evaluación</span></h2>
+                <h2 class="section-title" data-animation="fade-down">Tipos de <span>Evaluación</span></h2>
                 
                 <div class="carousel" id="tiposCarousel" data-autoplay="true" data-interval="6000">
                     <div class="carousel-track-container">
@@ -419,12 +418,37 @@
             </div>
         </section>
 
-        <!-- CTA Final -->
-        <section id="contacto" class="section bg-primary" style="text-align: center;">
+        <!-- Resultados Medibles -->
+        <section class="stats-section bg-primary" data-animation="fade-up">
             <div class="container">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;">¿Listo para asegurar la calidad de su software?</h2>
-                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: rgba(255,255,255,0.95);">Contáctenos y realicemos juntos una evaluación inicial sin compromiso.</p>
-                <a href="contacto.html" class="btn btn-primary" style="background: white; color: #0e58a9;">Solicitar auditoría →</a>
+                <h2 class="section-title" style="color: white;" data-animation="fade-down">Resultados <span style="color: #4a9eff;">Medibles</span></h2>
+                <div class="stats-grid">
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.1">
+                        <span class="stat-number">-85%</span>
+                        <span class="stat-label">Reducción de defectos en producción</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.2">
+                        <span class="stat-number">-60%</span>
+                        <span class="stat-label">Menor tiempo en ciclos de prueba</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.3">
+                        <span class="stat-number">+95%</span>
+                        <span class="stat-label">Cobertura de pruebas críticas</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.4">
+                        <span class="stat-number">+40%</span>
+                        <span class="stat-label">Incremento en satisfacción de usuarios</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section id="contacto" class="section bg-primary" style="text-align: center;" data-animation="fade-up">
+            <div class="container">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;" data-animation="fade-down">¿Listo para asegurar la calidad de su software?</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: rgba(255,255,255,0.95);" data-animation="fade-up" data-delay="0.2">Contáctenos y realicemos juntos una evaluación inicial sin compromiso.</p>
+                <a href="contacto.html" class="btn btn-primary" style="background: white; color: #0e58a9;" data-animation="zoom-in" data-delay="0.4">Solicitar auditoría →</a>
             </div>
         </section>
     </main>
