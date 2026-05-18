@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Céntrica - Sobre nosotros | Soluciones innovadoras</title>
+    <title>Céntrica - Soluciones innovadoras | Transformación digital</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
@@ -17,7 +16,7 @@
             </div>
         </div>
 
-       <nav>
+        <nav>
             <ul class="menu">
                 <li><a href="index.html">Sobre nosotros</a></li>
                 <li class="dropdown">
@@ -41,110 +40,113 @@
     </header>
 
     <main>
-        <!-- Sección Hero: Acerca de nosotros -->
-        <section class="sobre-hero">
-    <div class="sobre-hero-overlay"></div>
-    <div class="sobre-hero-container">
-                <span class="sobre-badge">Empresa</span>
-                <h1 class="sobre-title">Acerca de <span>Céntrica</span></h1>
-                <p class="sobre-description">
+        <!-- Hero con Video -->
+        <section class="hero-video" data-animation="fade-in" data-delay="0">
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600">
+                <source src="https://cdn.coverr.co/videos/coverr-modern-office-working-environment-1582634454963/1080p.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-container">
+                <div class="hero-icon" data-animation="zoom-in" data-delay="0.2">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&h=200&fit=crop" alt="Céntrica" style="width: 80px; height: 80px; object-fit: cover; border-radius: 20px; margin-bottom: 1rem;">
+                </div>
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Acerca de <span>Céntrica</span></h1>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.5">
                     En Céntrica, desplegamos un ecosistema de soluciones diseñadas para trascender fronteras.
                     Nuestra oferta integra la precisión técnica de una fábrica de software de élite con el poder
                     transformador de la inteligencia artificial.
                 </p>
+                <div class="hero-buttons" data-animation="fade-up" data-delay="0.7">
+                    <a href="#vision" class="btn btn-primary">Conoce nuestra visión →</a>
+                    <a href="#valores" class="btn btn-secondary">Nuestros valores →</a>
+                </div>
             </div>
         </section>
 
         <!-- Sección: Nuestra visión para el futuro -->
-        <section class="vision-section">
-            <div class="vision-container">
-                <div class="vision-content">
-                    <h2 class="vision-title">Nuestra visión para asegurar soluciones sostenibles, seguras y alineadas con los objetivos de cada organización.</h2>
-                    <p class="vision-text">
-                        Nuestra misión es optimizar la competitividad de las organizaciones nacionales e internacionales mediante
-                        soluciones tecnológicas integrales mediante la automatización y software a la medida, el análisis de datos
-                        y la implementamos de IA para mantenerte un paso adelante.
-
-                    </p>
-                    <!-- <div class="vision-buttons">
-                        <a href="#" class="vision-btn-primary">Lee nuestro plan →</a>
-                        <a href="#" class="vision-btn-secondary">Lee nuestros estatutos →</a>
-                    </div>-->
-                </div>
-                <div class="vision-image">
-                    <i data-lucide="eye" class="vision-icon"></i>
+        <section id="vision" class="section" data-animation="fade-up">
+            <div class="container">
+                <div class="grid-2">
+                    <div data-animation="fade-right" data-delay="0.2">
+                        <h2 class="section-title" style="text-align: left;">Nuestra visión para asegurar soluciones <span>sostenibles, seguras y alineadas</span> con los objetivos de cada organización.</h2>
+                        <p style="font-size: 1.1rem; line-height: 1.7; color: #555; margin-top: 1.5rem;">
+                            Nuestra misión es optimizar la competitividad de las organizaciones nacionales e internacionales mediante
+                            soluciones tecnológicas integrales mediante la automatización y software a la medida, el análisis de datos
+                            y la implementación de IA para mantenerte un paso adelante.
+                        </p>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center;" data-animation="zoom-in" data-delay="0.3">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop" alt="Visión" style="width: 100%; max-width: 300px; height: auto; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sección: Valores -->
-        <section class="valores-section">
-            <h2 class="valores-title">Nuestros <span>valores</span></h2>
-            <div class="valores-grid">
-                <div class="valor-card">
-                    <div class="valor-icon">
-                        <i data-lucide="shield"></i>
+        <!-- Sección: Valores (Tarjetas tipo card-float) -->
+        <section id="valores" class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Nuestros <span>valores</span></h2>
+                <div class="grid-auto">
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="shield"></i></div>
+                        <h3 class="card-title">Seguridad primero</h3>
+                        <p class="card-text">La seguridad no es un complemento, es la base de cada solución que construimos.</p>
                     </div>
-                    <h3>Seguridad primero</h3>
-                    <p>La seguridad no es un complemento, es la base de cada solución que construimos.</p>
-                </div>
-                <div class="valor-card">
-                    <div class="valor-icon">
-                        <i data-lucide="zap"></i>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="zap"></i></div>
+                        <h3 class="card-title">Innovación constante</h3>
+                        <p class="card-text">Nos mantenemos a la vanguardia tecnológica para ofrecer soluciones modernas.</p>
                     </div>
-                    <h3>Innovación constante</h3>
-                    <p>Nos mantenemos a la vanguardia tecnológica para ofrecer soluciones modernas.</p>
-                </div>
-                <div class="valor-card">
-                    <div class="valor-icon">
-                        <i data-lucide="users"></i>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="users"></i></div>
+                        <h3 class="card-title">Compromiso con el cliente</h3>
+                        <p class="card-text">Tu éxito es nuestro éxito. Trabajamos contigo en cada paso del camino.</p>
                     </div>
-                    <h3>Compromiso con el cliente</h3>
-                    <p>Tu éxito es nuestro éxito. Trabajamos contigo en cada paso del camino.</p>
-                </div>
-                <div class="valor-card">
-                    <div class="valor-icon">
-                        <i data-lucide="trending-up"></i>
+                    <div class="card card-float" data-animation="fade-up" data-delay="0.4">
+                        <div class="card-icon"><i data-lucide="trending-up"></i></div>
+                        <h3 class="card-title">Escalabilidad garantizada</h3>
+                        <p class="card-text">Nuestras soluciones crecen contigo, sin necesidad de reinventar la rueda.</p>
                     </div>
-                    <h3>Escalabilidad garantizada</h3>
-                    <p>Nuestras soluciones crecen contigo, sin necesidad de reinventar la rueda.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Sección: Equipo / Cifras
-        <section class="cifras-section">
-            <div class="cifras-container">
-                <div class="cifra-item">
-                    <span class="cifra-numero" data-count="5">0</span>
-                    <span class="cifra-label">+ años de experiencia</span>
-                </div>
-                <div class="cifra-item">
-                    <span class="cifra-numero" data-count="50">0</span>
-                    <span class="cifra-label">+ proyectos entregados</span>
-                </div>
-                <div class="cifra-item">
-                    <span class="cifra-numero" data-count="100">0</span>
-                    <span class="cifra-label">% clientes satisfechos</span>
-                </div>
-                <div class="cifra-item">
-                    <span class="cifra-numero" data-count="24">0</span>
-                    <span class="cifra-label">/7 soporte dedicado</span>
+        <!-- Sección: Cifras / Resultados -->
+        <section class="stats-section bg-primary" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" style="color: white;" data-animation="fade-down">Nuestro <span style="color: #4a9eff;">impacto</span></h2>
+                <div class="stats-grid">
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.1">
+                        <span class="stat-number" data-count="5">0</span>
+                        <span class="stat-label">+ años de experiencia</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.2">
+                        <span class="stat-number" data-count="50">0</span>
+                        <span class="stat-label">+ proyectos entregados</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.3">
+                        <span class="stat-number" data-count="100">0</span>
+                        <span class="stat-label">% clientes satisfechos</span>
+                    </div>
+                    <div class="stat-item" style="text-align: center; color: white;" data-animation="zoom-in" data-delay="0.4">
+                        <span class="stat-number" data-count="24">0</span>
+                        <span class="stat-label">/7 soporte dedicado</span>
+                    </div>
                 </div>
             </div>
-        </section> -->
+        </section>
 
         <!-- Sección: Llamada a la acción -->
-        <section class="cta-sobre">
-            <div class="cta-sobre-container">
-                <h2>¿Listo para construir el futuro con nosotros?</h2>
-                <p>Contáctanos y descubre cómo podemos acelerar tu próximo desarrollo.</p>
-                <a href="contacto.html" class="cta-sobre-btn">Solicitar información →</a>
+        <section id="contacto" class="section bg-primary" style="text-align: center;" data-animation="fade-up">
+            <div class="container">
+                <h2 style="font-size: 2rem; margin-bottom: 1rem; color: white;" data-animation="fade-down">¿Listo para construir el futuro con nosotros?</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: rgba(255,255,255,0.95);" data-animation="fade-up" data-delay="0.2">Contáctanos y descubre cómo podemos acelerar tu próximo desarrollo.</p>
+                <a href="contacto.html" class="btn btn-primary" style="background: white; color: #0e58a9;" data-animation="zoom-in" data-delay="0.4">Solicitar información →</a>
             </div>
         </section>
     </main>
 
-    <!-- Footer (mismo que index.html) -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-col">
@@ -155,7 +157,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="mail"></i> gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -186,12 +188,14 @@
                 <p class="footer-newsletter-text">
                     Recibe novedades sobre nuestras soluciones.
                 </p>
-                <form class="footer-newsletter-form" id="newsletterForm2">
+                <form class="footer-newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="footer-unsubscribe">
                     Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
                 </p>
             </div>
         </div>
@@ -199,33 +203,29 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
-                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
     
-    <!-- Animación de cifras -->
+    <!-- Animación de cifras con contador -->
     <script>
-        // Animación de contador para las cifras
-        const counters = document.querySelectorAll('.cifra-numero');
+        // Inicializar contadores cuando sean visibles
+        const counters = document.querySelectorAll('.stat-number');
         const speed = 200;
 
         const animateCounter = (counter) => {
-            const updateCount = () => {
-                const target = parseInt(counter.getAttribute('data-count'));
-                const current = parseInt(counter.innerText);
-                const increment = target / speed;
-                
-                if (current < target) {
-                    counter.innerText = Math.ceil(current + increment);
-                    setTimeout(updateCount, 20);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            updateCount();
+            const target = parseInt(counter.getAttribute('data-count'));
+            const current = parseInt(counter.innerText);
+            const increment = target / speed;
+            
+            if (current < target) {
+                counter.innerText = Math.ceil(current + increment);
+                setTimeout(() => animateCounter(counter), 20);
+            } else {
+                counter.innerText = target;
+            }
         };
 
         // Intersection Observer para activar cuando el elemento sea visible
@@ -234,13 +234,32 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const counter = entry.target;
-                    animateCounter(counter);
+                    // Solo animar si tiene atributo data-count
+                    if (counter.getAttribute('data-count')) {
+                        animateCounter(counter);
+                    }
                     observer.unobserve(counter);
                 }
             });
         }, observerOptions);
 
-        counters.forEach(counter => observer.observe(counter));
+        counters.forEach(counter => {
+            if (counter.getAttribute('data-count')) {
+                observer.observe(counter);
+            }
+        });
+        
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                console.log('Newsletter suscripción:', email);
+                alert('¡Gracias por suscribirte!');
+                this.reset();
+            });
+        }
     </script>
 </body>
 </html>
