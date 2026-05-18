@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // 1. INICIALIZACIÓN DE LUCIDE
+    // ========== 1. INICIALIZACIÓN DE LUCIDE ==========
     if (typeof lucide !== 'undefined' && lucide.createIcons) {
         lucide.createIcons();
         console.log('✅ Lucide inicializado');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('⚠️ Lucide no está disponible');
     }
 
-    // 2. MODO OSCURO
+    // ========== 2. MODO OSCURO ==========
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 3. SUBMENÚS CON HOVER (CORREGIDO)
+    // ========== 3. SUBMENÚS CON HOVER ==========
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dropdown => {
         const submenu = dropdown.querySelector('.submenu');
@@ -86,14 +86,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 4. SLIDER AUTOMÁTICO
+    // ========== 4. SLIDER AUTOMÁTICO ==========
     const track = document.getElementById('sliderTrack');
     const slides = document.querySelectorAll('.slide');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const dotsContainer = document.getElementById('sliderDots');
 
-    // Aplicar imágenes de fondo a cada slide según data-image
     const slidesConImagen = document.querySelectorAll('.slide');
     slidesConImagen.forEach(slide => {
         const imagenUrl = slide.getAttribute('data-image');
@@ -182,12 +181,11 @@ document.addEventListener('DOMContentLoaded', function() {
         createDots();
         startAutoPlay();
         updateSlider();
-        
     } else {
         console.warn('⚠️ Slider no encontrado o elementos faltantes');
     }
 
-    // 5. CARRUSEL UNIFICADO
+    // ========== 5. CARRUSEL UNIFICADO ==========
     class Carousel {
         constructor(element, options = {}) {
             this.carousel = element;
@@ -335,36 +333,31 @@ document.addEventListener('DOMContentLoaded', function() {
         new Carousel(carousel, { autoPlay, intervalTime });
     });
 
-    // 6. SISTEMA DE ANIMACIONES AL SCROLL (CORREGIDO - No interfiere con otros estilos)
+    // ========== 6. SISTEMA DE ANIMACIONES AL SCROLL ==========
     const animatedElements = document.querySelectorAll('[data-animation]');
     
-    // Solo aplicar animaciones a elementos que tengan el atributo data-animation
     if (animatedElements.length > 0) {
-        // Configurar estilos iniciales
         animatedElements.forEach(element => {
             const animation = element.getAttribute('data-animation');
             const delay = parseFloat(element.getAttribute('data-delay')) || 0;
             
-            // Guardar estilos originales si es necesario
             if (!element.hasAttribute('data-original-display')) {
                 element.setAttribute('data-original-display', window.getComputedStyle(element).display);
             }
             
-            // Aplicar opacidad inicial
             element.style.opacity = '0';
             element.style.transform = 'translateY(20px)';
             element.style.transition = `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`;
             element.setAttribute('data-animated', 'false');
         });
         
-        // Función para verificar visibilidad
         function checkVisibility() {
             animatedElements.forEach(element => {
                 if (element.getAttribute('data-animated') === 'true') return;
                 
                 const rect = element.getBoundingClientRect();
                 const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-                const threshold = 0.15; // 15% visible para activar
+                const threshold = 0.15;
                 
                 const isVisible = rect.top <= windowHeight - (windowHeight * threshold) && rect.bottom >= 0;
                 
@@ -376,34 +369,28 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Escuchar eventos
         window.addEventListener('scroll', checkVisibility);
         window.addEventListener('resize', checkVisibility);
-        checkVisibility(); // Verificar inmediatamente
+        checkVisibility();
     }
 
-    // 7. SISTEMA DE ACORDEÓN (PÁGINAS LEGALES)
+    // ========== 7. SISTEMA DE ACORDEÓN (PÁGINAS LEGALES) ==========
     function initAccordion() {
         const accordionItems = document.querySelectorAll('.accordion-item');
         
         accordionItems.forEach(item => {
-            // Hacer que toda la card sea clickeable
             const content = item.querySelector('.accordion-content');
             
             if (content) {
-                // Asegurar que el contenido comience cerrado
                 content.style.maxHeight = null;
                 item.classList.remove('active');
                 
-                // Hacer click en cualquier parte de la card
                 item.addEventListener('click', function(e) {
-                    // Prevenir que el click en enlaces dentro del contenido cierre el acordeón
                     if (e.target.tagName === 'A' || e.target.closest('a')) {
                         e.stopPropagation();
                         return;
                     }
                     
-                    // Toggle el item actual
                     item.classList.toggle('active');
                     
                     if (item.classList.contains('active')) {
@@ -418,16 +405,115 @@ document.addEventListener('DOMContentLoaded', function() {
     
     initAccordion();
 
-    // 8. CERRAR SUBMENÚS AL HACER CLIC FUERA
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.dropdown')) {
-            document.querySelectorAll('.submenu').forEach(submenu => {
-                submenu.style.display = 'none';
+    // Navegación desde el sidebar al acordeón
+    const sidebarLinks = document.querySelectorAll('[data-accordion-link]');
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    
+    if (sidebarLinks.length && accordionItems.length) {
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-accordion-link');
+                const targetItem = document.getElementById(targetId);
+                
+                if (targetItem) {
+                    accordionItems.forEach(item => {
+                        item.classList.remove('active');
+                        const content = item.querySelector('.accordion-content');
+                        if (content) content.style.maxHeight = null;
+                    });
+                    
+                    targetItem.classList.add('active');
+                    const targetContent = targetItem.querySelector('.accordion-content');
+                    if (targetContent) targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
+                    
+                    targetItem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
+        });
+        
+        function updateActiveSidebarLink() {
+            const scrollPosition = window.scrollY + 150;
+            let activeId = null;
+            
+            accordionItems.forEach(item => {
+                const itemTop = item.offsetTop;
+                const itemBottom = itemTop + item.offsetHeight;
+                if (scrollPosition >= itemTop && scrollPosition < itemBottom) {
+                    activeId = item.getAttribute('id');
+                }
+            });
+            
+            sidebarLinks.forEach(link => {
+                if (link.getAttribute('data-accordion-link') === activeId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', updateActiveSidebarLink);
+        updateActiveSidebarLink();
+    }
+
+    // ========== 8. NEWSLETTER - TODOS LOS FORMULARIOS ==========
+    const allNewsletterForms = document.querySelectorAll('.footer-newsletter-form');
+    allNewsletterForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput ? emailInput.value : '';
+            if (email) {
+                console.log('📧 Newsletter suscripción:', email);
+                alert('¡Gracias por suscribirte!');
+                this.reset();
+            } else {
+                alert('Por favor, ingresa un correo electrónico válido.');
+            }
+        });
+    });
+
+    // ========== 9. CONTADORES (para stats-section) ==========
+    const counters = document.querySelectorAll('.stat-number[data-count]');
+    const speed = 200;
+
+    const animateCounter = (counter) => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const current = parseInt(counter.innerText);
+        const increment = target / speed;
+        
+        if (current < target) {
+            counter.innerText = Math.ceil(current + increment);
+            setTimeout(() => animateCounter(counter), 20);
+        } else {
+            counter.innerText = target;
+        }
+    };
+
+    const observerOptions = { threshold: 0.5 };
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                if (counter.getAttribute('data-count')) {
+                    // Reiniciar contador si estaba en 0
+                    if (parseInt(counter.innerText) === 0) {
+                        animateCounter(counter);
+                    }
+                }
+                counterObserver.unobserve(counter);
+            }
+        });
+    }, observerOptions);
+
+    counters.forEach(counter => {
+        if (counter.getAttribute('data-count')) {
+            counterObserver.observe(counter);
         }
     });
 
-    // 9. EMAILJS - FORMULARIO DE CONTACTO
+    // ========== 10. EMAILJS - FORMULARIO DE CONTACTO ==========
     if (typeof emailjs !== 'undefined' && emailjs.init) {
         emailjs.init("vS5vQ1DCKUxmKVffT");
         console.log('✅ EmailJS inicializado correctamente');
@@ -447,6 +533,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const empresa = document.getElementById('empresa')?.value || '';
                 const cargo = document.getElementById('cargo')?.value || '';
                 const bd = document.getElementById('bd')?.value || '';
+                const servicio = document.getElementById('servicio')?.value || '';
                 const mensaje = document.getElementById('mensaje')?.value || '';
                 
                 if (!nombre || !email || !empresa) {
@@ -466,6 +553,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     empresa: empresa,
                     cargo: cargo,
                     bd: bd,
+                    servicio: servicio,
                     mensaje: mensaje
                 };
                 
@@ -474,7 +562,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 emailjs.send('service_r3bh1qv', 'template_54jibgs', templateParams)
                     .then(function(response) {
                         console.log('✅ Correo enviado exitosamente:', response.status);
-                        contactForm.style.display = 'none';
+                        if (contactForm) contactForm.style.display = 'none';
                         if (successMessage) {
                             successMessage.style.display = 'block';
                             if (typeof lucide !== 'undefined') {
@@ -482,9 +570,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             }
                         }
                         setTimeout(() => {
-                            contactForm.style.display = 'flex';
+                            if (contactForm) {
+                                contactForm.style.display = 'flex';
+                                contactForm.style.flexDirection = 'column';
+                                contactForm.style.gap = '1.5rem';
+                            }
                             if (successMessage) successMessage.style.display = 'none';
-                            contactForm.reset();
+                            if (contactForm) contactForm.reset();
                         }, 5000);
                     })
                     .catch(function(error) {
@@ -493,30 +585,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
             });
         } else {
-            console.error('❌ No se encontró el formulario con id "contactForm"');
+            console.log('ℹ️ No se encontró formulario de contacto en esta página');
         }
-    } else {
-        console.error('❌ EmailJS no está cargado. Verifica que la librería esté en el HTML.');
     }
 
-    // 10. NEWSLETTER FORM
-    const newsletterForm = document.getElementById('newsletterForm');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('input[type="email"]');
-            const email = emailInput ? emailInput.value : '';
-            console.log('📧 Newsletter suscripción:', email);
-            alert('¡Gracias por suscribirte!');
-            this.reset();
-        });
-    }
-    
-    // 11. SCROLL SUAVE PARA PÁGINAS LEGALES
+    // ========== 11. CERRAR SUBMENÚS AL HACER CLIC FUERA ==========
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.submenu').forEach(submenu => {
+                submenu.style.display = 'none';
+            });
+        }
+    });
+
+    // ========== 12. SCROLL SUAVE PARA PÁGINAS LEGALES ==========
     const legalLinks = document.querySelectorAll('.legal-sidebar a');
-    const sections = document.querySelectorAll('.legal-content section');
+    const legalSections = document.querySelectorAll('.legal-content section');
 
-    if (legalLinks.length && sections.length) {
+    if (legalLinks.length && legalSections.length) {
         legalLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -528,10 +614,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        function highlightActiveLink() {
+        function highlightActiveLegalLink() {
             let scrollPosition = window.scrollY + 150;
             let activeIndex = -1;
-            sections.forEach((sec, idx) => {
+            legalSections.forEach((sec, idx) => {
                 const offsetTop = sec.offsetTop;
                 if (scrollPosition >= offsetTop) activeIndex = idx;
             });
@@ -540,8 +626,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 else link.style.fontWeight = 'normal';
             });
         }
-        window.addEventListener('scroll', highlightActiveLink);
+        window.addEventListener('scroll', highlightActiveLegalLink);
     }
     
-    console.log('✅ Script completamente cargado');
+    console.log('✅ Script completamente cargado - Todo centralizado');
 });
