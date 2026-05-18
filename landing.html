@@ -74,6 +74,7 @@
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="database"></i></div>
                                 <h3 class="card-title">Sus clientes o filiales comparten la misma base de datos</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
                             </div>
                             <div class="card-flip-back">
                                 <i data-lucide="alert-triangle" style="width: 48px; height: 48px; color: #dc3545; margin-bottom: 1rem;"></i>
@@ -89,6 +90,7 @@
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="eye"></i></div>
                                 <h3 class="card-title">Cada nuevo inquilino implica duplicar infraestructura</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
                             </div>
                             <div class="card-flip-back">
                                 <i data-lucide="trending-up" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
@@ -104,6 +106,7 @@
                             <div class="card-flip-front">
                                 <div class="card-icon"><i data-lucide="clock"></i></div>
                                 <h3 class="card-title">Su equipo pierde semanas</h3>
+                                <p class="card-text">← Haz clic o pasa el mouse</p>
                             </div>
                             <div class="card-flip-back">
                                 <i data-lucide="calendar" style="width: 48px; height: 48px; color: #0e58a9; margin-bottom: 1rem;"></i>
@@ -133,7 +136,7 @@
                             automáticamente una arquitectura multi-tenant probada.</strong>
                         </p>
                         <div class="hero-buttons" style="justify-content: flex-start; margin-top: 2rem;">
-                            <a href="fabrica.html" class="btn btn-secondary">APRENDE MÁS →</a>
+                            <a href="#contacto" class="btn btn-secondary">APRENDE MÁS →</a>
                         </div>
                     </div>
                     <div style="display: flex; justify-content: center; align-items: center;" data-animation="zoom-in" data-delay="0.3">
@@ -143,102 +146,106 @@
             </div>
         </section>
 
-        <!-- Sección: Slider de productos (Nuestras Soluciones) -->
+        <!-- Sección: Nuestras Soluciones con CARRUSEL UNIFICADO -->
         <section id="soluciones" class="section" data-animation="fade-up">
             <div class="container">
                 <h2 class="section-title" data-animation="fade-down">Nuestras <span>Soluciones</span></h2>
                 
-                <div class="slider-container" id="mainSlider">
-                    <div class="slider-track" id="sliderTrack">
-                        <!-- Slide 1: Nebula ERP -->
-                        <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img1.png">
-                            <div class="slide-content">
-                                <div class="slide-icon">
-                                    <i data-lucide="cloud"></i>
+                <div class="carousel" data-autoplay="true" data-interval="6000">
+                    <div class="carousel-track-container">
+                        <div class="carousel-track">
+                            
+                            <!-- Slide 1: Nebula ERP -->
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img1.png');">
+                                    <div class="card-icon"><i data-lucide="cloud" style="color: #4a9eff;"></i></div>
+                                    <h3 class="card-title" style="color: white;">Nebula ERP</h3>
+                                    <p class="card-text" style="color: rgba(255,255,255,0.9);">
+                                        Plataforma integral de gestión empresarial que centraliza operaciones financieras, 
+                                        de inventarios y administrativas en un solo ecosistema, con inteligencia artificial 
+                                        integrada y reportes en tiempo real.
+                                    </p>
+                                    <a href="nebula.html" class="btn btn-primary" style="margin-top: 1rem;">Conocer más →</a>
                                 </div>
-                                <h3 class="slide-title">Nebula ERP</h3>
-                                <p class="slide-description">
-                                    Plataforma integral de gestión empresarial que centraliza operaciones financieras, 
-                                    de inventarios y administrativas en un solo ecosistema, con inteligencia artificial 
-                                    integrada y reportes en tiempo real.
-                                </p>
-                                <a href="nebula.html" class="slide-btn">Conocer más →</a>
                             </div>
-                        </div>
-            
-                        <!-- Slide 2: Sicovi -->
-                        <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img6.png">
-                            <div class="slide-content">
-                                <div class="slide-icon">
-                                    <i data-lucide="landmark"></i>
+                            
+                            <!-- Slide 2: Sicovi -->
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img6.png');">
+                                    <div class="card-icon"><i data-lucide="landmark" style="color: #4a9eff;"></i></div>
+                                    <h3 class="card-title" style="color: white;">Sicovi</h3>
+                                    <p class="card-text" style="color: rgba(255,255,255,0.9);">
+                                        Plataforma unificada de gestión legislativa y administrativa que centraliza, 
+                                        gestiona y da visibilidad a toda la actividad de los Concejos Municipales y 
+                                        Departamentales de Colombia.
+                                    </p>
+                                    <a href="sicovi.html" class="btn btn-primary" style="margin-top: 1rem;">Conocer más →</a>
                                 </div>
-                                <h3 class="slide-title">Sicovi</h3>
-                                <p class="slide-description">
-                                    Plataforma unificada de gestión legislativa y administrativa que centraliza, 
-                                    gestiona y da visibilidad a toda la actividad de los Concejos Municipales y 
-                                    Departamentales de Colombia.
-                                </p>
-                                <a href="sicovi.html" class="slide-btn">Conocer más →</a>
                             </div>
-                        </div>
-            
-                        <!-- Slide 3: Análisis con IA -->
-                        <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img3.png">
-                            <div class="slide-content">
-                                <div class="slide-icon">
-                                    <i data-lucide="brain"></i>
+                            
+                            <!-- Slide 3: Análisis con IA -->
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img3.png');">
+                                    <div class="card-icon"><i data-lucide="brain" style="color: #4a9eff;"></i></div>
+                                    <h3 class="card-title" style="color: white;">Análisis con IA</h3>
+                                    <p class="card-text" style="color: rgba(255,255,255,0.9);">
+                                        Implementamos inteligencia artificial para automatizar procesos operativos, 
+                                        anticipar escenarios y transformar datos en decisiones precisas y accionables.
+                                    </p>
+                                    <a href="ia.html" class="btn btn-primary" style="margin-top: 1rem;">Conocer más →</a>
                                 </div>
-                                <h3 class="slide-title">Análisis con IA</h3>
-                                <p class="slide-description">
-                                    Implementamos inteligencia artificial para automatizar procesos operativos, 
-                                    anticipar escenarios y transformar datos en decisiones precisas y accionables.
-                                </p>
-                                <a href="ia.html" class="slide-btn">Conocer más →</a>
                             </div>
-                        </div>
-            
-                        <!-- Slide 4: Consultoría Digital -->
-                        <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img2.png">
-                            <div class="slide-content">
-                                <div class="slide-icon">
-                                    <i data-lucide="trending-up"></i>
+                            
+                            <!-- Slide 4: Consultoría Digital -->
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img2.png');">
+                                    <div class="card-icon"><i data-lucide="trending-up" style="color: #4a9eff;"></i></div>
+                                    <h3 class="card-title" style="color: white;">Consultoría Digital</h3>
+                                    <p class="card-text" style="color: rgba(255,255,255,0.9);">
+                                        Acompañamos a las organizaciones en su evolución hacia la madurez digital, 
+                                        garantizando una adopción tecnológica eficiente, segura y alineada con sus
+                                        objetivos estratégicos.
+                                    </p>
+                                    <a href="consultoria.html" class="btn btn-primary" style="margin-top: 1rem;">Conocer más →</a>
                                 </div>
-                                <h3 class="slide-title">Consultoría Digital</h3>
-                                <p class="slide-description">
-                                    Acompañamos a las organizaciones en su evolución hacia la madurez digital, 
-                                    garantizando una adopción tecnológica eficiente, segura y alineada con sus
-                                    objetivos estratégicos.
-                                </p>
-                                <a href="consultoria.html" class="slide-btn">Conocer más →</a>
                             </div>
-                        </div>
-            
-                        <!-- Slide 5: Evaluaciones de Calidad -->
-                        <div class="slide" data-image="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img4.png">
-                            <div class="slide-content">
-                                <div class="slide-icon">
-                                    <i data-lucide="clipboard-check"></i>
+                            
+                            <!-- Slide 5: Evaluaciones de Calidad -->
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img4.png');">
+                                    <div class="card-icon"><i data-lucide="clipboard-check" style="color: #4a9eff;"></i></div>
+                                    <h3 class="card-title" style="color: white;">Evaluaciones de Calidad</h3>
+                                    <p class="card-text" style="color: rgba(255,255,255,0.9);">
+                                        Garantizamos que cada solución tecnológica funcione con precisión, seguridad y confiabilidad
+                                        antes de llegar a sus usuarios finales.
+                                    </p>
+                                    <a href="calidad.html" class="btn btn-primary" style="margin-top: 1rem;">Conocer más →</a>
                                 </div>
-                                <h3 class="slide-title">Evaluaciones de Calidad</h3>
-                                <p class="slide-description">
-                                    Garantizamos que cada solución tecnológica funcione con precisión, seguridad y confiabilidad
-                                    antes de llegar a sus usuarios finales.
-                                </p>
-                                <a href="calidad.html" class="slide-btn">Conocer más →</a>
+                            </div>
+                            
+                            <!-- Slide 6: Fábrica de Software -->
+                            <div class="carousel-slide">
+                                <div class="card card-float" style="text-align: center; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img5.png');">
+                                    <div class="card-icon"><i data-lucide="code-2" style="color: #4a9eff;"></i></div>
+                                    <h3 class="card-title" style="color: white;">Fábrica de Software</h3>
+                                    <p class="card-text" style="color: rgba(255,255,255,0.9);">
+                                        Industrialización de la ingeniería de software. Desarrollo a medida con arquitecturas 
+                                        multi-tenant, escalables y seguras desde el día uno.
+                                    </p>
+                                    <a href="fabrica.html" class="btn btn-primary" style="margin-top: 1rem;">Conocer más →</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-            
-                    <!-- Botones de navegación -->
-                    <button class="slider-btn prev-btn" id="prevBtn">
+                    
+                    <button class="carousel-btn carousel-prev">
                         <i data-lucide="chevron-left"></i>
                     </button>
-                    <button class="slider-btn next-btn" id="nextBtn">
+                    <button class="carousel-btn carousel-next">
                         <i data-lucide="chevron-right"></i>
                     </button>
-            
-                    <!-- Indicadores -->
-                    <div class="slider-dots" id="sliderDots"></div>
+                    
+                    <div class="carousel-dots"></div>
                 </div>
             </div>
         </section>
