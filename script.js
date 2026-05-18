@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn('⚠️ Slider no encontrado o elementos faltantes');
     }
 
-    // ========== CARRUSEL UNIFICADO (NUEVO) ==========
+    // ========== CARRUSEL UNIFICADO ==========
     class Carousel {
         constructor(element, options = {}) {
             this.carousel = element;
@@ -344,6 +344,237 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     // ========== FIN CARRUSEL UNIFICADO ==========
 
+    // ========== SISTEMA DE ANIMACIONES AL SCROLL ==========
+    
+    // Definir los diferentes tipos de animaciones
+    const animations = {
+        'fade-up': {
+            initial: { opacity: 0, transform: 'translateY(30px)' },
+            visible: { opacity: 1, transform: 'translateY(0)' }
+        },
+        'fade-down': {
+            initial: { opacity: 0, transform: 'translateY(-30px)' },
+            visible: { opacity: 1, transform: 'translateY(0)' }
+        },
+        'fade-left': {
+            initial: { opacity: 0, transform: 'translateX(-30px)' },
+            visible: { opacity: 1, transform: 'translateX(0)' }
+        },
+        'fade-right': {
+            initial: { opacity: 0, transform: 'translateX(30px)' },
+            visible: { opacity: 1, transform: 'translateX(0)' }
+        },
+        'zoom-in': {
+            initial: { opacity: 0, transform: 'scale(0.9)' },
+            visible: { opacity: 1, transform: 'scale(1)' }
+        },
+        'zoom-out': {
+            initial: { opacity: 0, transform: 'scale(1.1)' },
+            visible: { opacity: 1, transform: 'scale(1)' }
+        },
+        'rotate': {
+            initial: { opacity: 0, transform: 'rotate(-5deg) scale(0.95)' },
+            visible: { opacity: 1, transform: 'rotate(0) scale(1)' }
+        },
+        'flip': {
+            initial: { opacity: 0, transform: 'perspective(400px) rotateX(90deg)' },
+            visible: { opacity: 1, transform: 'perspective(400px) rotateX(0)' }
+        }
+    };
+
+    // Elementos que se animarán al scroll
+    const animatedElements = [
+        // Secciones completas
+        { selector: '.section', animation: 'fade-up', delay: 0, threshold: 0.15 },
+        { selector: '.hero-static', animation: 'fade-down', delay: 0, threshold: 0.1 },
+        { selector: '.hero-video', animation: 'zoom-in', delay: 0, threshold: 0.1 },
+        
+        // Tarjetas individuales
+        { selector: '.card', animation: 'fade-up', delay: 0.1, threshold: 0.2, stagger: true },
+        { selector: '.card-flip', animation: 'zoom-in', delay: 0.1, threshold: 0.2, stagger: true },
+        { selector: '.card-float', animation: 'fade-up', delay: 0.1, threshold: 0.2, stagger: true },
+        { selector: '.card-highlight', animation: 'fade-left', delay: 0.1, threshold: 0.2, stagger: true },
+        
+        // Grids y contenedores
+        { selector: '.grid-2', animation: 'fade-up', delay: 0, threshold: 0.2 },
+        { selector: '.grid-auto', animation: 'fade-up', delay: 0, threshold: 0.2 },
+        { selector: '.flip-grid', animation: 'fade-up', delay: 0, threshold: 0.2 },
+        
+        // Elementos de hero
+        { selector: '.hero-title', animation: 'fade-down', delay: 0, threshold: 0.1 },
+        { selector: '.hero-subtitle', animation: 'fade-up', delay: 0.1, threshold: 0.1 },
+        { selector: '.hero-description', animation: 'fade-up', delay: 0.2, threshold: 0.1 },
+        { selector: '.hero-buttons', animation: 'fade-up', delay: 0.3, threshold: 0.1 },
+        
+        // Títulos de sección
+        { selector: '.section-title', animation: 'fade-down', delay: 0, threshold: 0.2 },
+        { selector: '.section-subtitle', animation: 'fade-up', delay: 0.1, threshold: 0.2 },
+        
+        // Elementos de metodología
+        { selector: '.metodologia-paso', animation: 'fade-right', delay: 0.1, threshold: 0.2, stagger: true },
+        
+        // Elementos de estadísticas
+        { selector: '.stat-item', animation: 'zoom-in', delay: 0.1, threshold: 0.3, stagger: true },
+        
+        // Elementos del carrusel
+        { selector: '.carousel-slide', animation: 'fade-up', delay: 0, threshold: 0.2 },
+        
+        // Badges y elementos pequeños
+        { selector: '.badge', animation: 'zoom-in', delay: 0.2, threshold: 0.2, stagger: true }
+    ];
+
+    // Función para aplicar la animación a un elemento
+    function applyAnimation(element, animationType, delay = 0) {
+        const animation = animations[animationType];
+        if (!animation) return;
+        
+        // Aplicar estilos iniciales
+        Object.assign(element.style, animation.initial);
+        element.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
+        element.style.willChange = 'opacity, transform';
+        
+        // Marcar como animado
+        element.setAttribute('data-animated', 'false');
+        element.setAttribute('data-animation-type', animationType);
+        
+        // Función para mostrar el elemento
+        const showElement = () => {
+            if (element.getAttribute('data-animated') === 'true') return;
+            Object.assign(element.style, animation.visible);
+            element.setAttribute('data-animated', 'true');
+        };
+        
+        // Verificar si ya es visible
+        const checkVisibility = () => {
+            const rect = element.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            const threshold = parseFloat(element.getAttribute('data-threshold') || '0.2');
+            const isVisible = rect.top <= windowHeight - (windowHeight * threshold) && rect.bottom >= 0;
+            
+            if (isVisible) {
+                showElement();
+                window.removeEventListener('scroll', checkVisibility);
+                window.removeEventListener('resize', checkVisibility);
+            }
+        };
+        
+        // Guardar threshold personalizado si existe
+        const parentConfig = animatedElements.find(cfg => 
+            element.matches && element.matches(cfg.selector)
+        );
+        if (parentConfig) {
+            element.setAttribute('data-threshold', parentConfig.threshold);
+        }
+        
+        // Escuchar eventos
+        window.addEventListener('scroll', checkVisibility);
+        window.addEventListener('resize', checkVisibility);
+        checkVisibility(); // Verificar inmediatamente
+    }
+
+    // Función para aplicar animaciones escalonadas (stagger)
+    function applyStaggerAnimation(elements, animationType, baseDelay, threshold) {
+        elements.forEach((element, index) => {
+            const delay = baseDelay + (index * 0.05);
+            const animation = animations[animationType];
+            if (!animation) return;
+            
+            Object.assign(element.style, animation.initial);
+            element.style.transition = `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`;
+            element.style.willChange = 'opacity, transform';
+            element.setAttribute('data-animated', 'false');
+            element.setAttribute('data-animation-type', animationType);
+            
+            const showElement = () => {
+                if (element.getAttribute('data-animated') === 'true') return;
+                Object.assign(element.style, animation.visible);
+                element.setAttribute('data-animated', 'true');
+            };
+            
+            const checkVisibility = () => {
+                const rect = element.getBoundingClientRect();
+                const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                const isVisible = rect.top <= windowHeight - (windowHeight * threshold) && rect.bottom >= 0;
+                
+                if (isVisible) {
+                    showElement();
+                    window.removeEventListener('scroll', checkVisibility);
+                    window.removeEventListener('resize', checkVisibility);
+                }
+            };
+            
+            window.addEventListener('scroll', checkVisibility);
+            window.addEventListener('resize', checkVisibility);
+            checkVisibility();
+        });
+    }
+
+    // Inicializar todas las animaciones
+    function initAnimations() {
+        animatedElements.forEach(config => {
+            const elements = document.querySelectorAll(config.selector);
+            
+            if (elements.length === 0) return;
+            
+            if (config.stagger && elements.length > 1) {
+                // Animación escalonada para múltiples elementos
+                applyStaggerAnimation(
+                    Array.from(elements),
+                    config.animation,
+                    config.delay,
+                    config.threshold
+                );
+            } else {
+                // Animación individual
+                elements.forEach(element => {
+                    applyAnimation(element, config.animation, config.delay);
+                });
+            }
+        });
+        
+        console.log('✅ Sistema de animaciones inicializado');
+    }
+
+    // Observador de scroll para elementos dinámicos (como carrusel)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.target.getAttribute('data-animated') !== 'true') {
+                const animationType = entry.target.getAttribute('data-animation-type');
+                if (animationType && animations[animationType]) {
+                    const animation = animations[animationType];
+                    Object.assign(entry.target.style, animation.visible);
+                    entry.target.setAttribute('data-animated', 'true');
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    // Observar elementos que se cargan dinámicamente
+    function observeDynamicElements() {
+        const allAnimatedElements = document.querySelectorAll('[data-animation-type]');
+        allAnimatedElements.forEach(el => {
+            if (el.getAttribute('data-animated') === 'false') {
+                observer.observe(el);
+            }
+        });
+    }
+
+    // Inicializar animaciones cuando el DOM esté listo
+    initAnimations();
+    
+    // Re-evaluar animaciones después de que el carrusel se inicialice
+    setTimeout(() => {
+        observeDynamicElements();
+    }, 500);
+    
+    // Re-evaluar en cambios de ventana
+    window.addEventListener('resize', () => {
+        setTimeout(observeDynamicElements, 100);
+    });
+    
+    // ========== FIN SISTEMA DE ANIMACIONES ==========
+    
     // 6. CERRAR SUBMENÚS AL HACER CLIC FUERA
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.dropdown')) {
