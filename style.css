@@ -1186,3 +1186,226 @@ body.light-mode .footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* ========== ACORDEÓN / PLEGABLES ========== */
+.accordion {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+body.dark-mode .accordion-item {
+    background: #1e1e2e;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: rgba(14, 88, 169, 0.05);
+}
+
+body.dark-mode .accordion-header:hover {
+    background-color: rgba(74, 158, 255, 0.1);
+}
+
+.accordion-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0e58a9;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+body.dark-mode .accordion-title {
+    color: #4a9eff;
+}
+
+.accordion-icon {
+    width: 24px;
+    height: 24px;
+    color: #0e58a9;
+    transition: transform 0.3s ease;
+}
+
+body.dark-mode .accordion-icon {
+    color: #4a9eff;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 1.5rem;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 1000px;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.accordion-content p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+body.dark-mode .accordion-content p {
+    color: #bbb;
+}
+
+.accordion-content h3,
+.accordion-content h4 {
+    color: #0e58a9;
+    margin: 1rem 0 0.5rem;
+}
+
+body.dark-mode .accordion-content h3,
+body.dark-mode .accordion-content h4 {
+    color: #4a9eff;
+}
+
+.accordion-content ul,
+.accordion-content ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+.accordion-content li {
+    margin-bottom: 0.5rem;
+    color: #444;
+}
+
+body.dark-mode .accordion-content li {
+    color: #bbb;
+}
+
+/* Variante para grid de 2 columnas (sidebar + acordeón) */
+.legal-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Sidebar fija al hacer scroll */
+.legal-sidebar {
+    position: sticky;
+    top: 100px;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 16px;
+    height: fit-content;
+}
+
+body.dark-mode .legal-sidebar {
+    background: #1a1a2e;
+}
+
+.legal-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.legal-sidebar li {
+    margin-bottom: 0.75rem;
+}
+
+.legal-sidebar a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .legal-sidebar a {
+    color: #ccc;
+}
+
+.legal-sidebar a:hover {
+    background: rgba(14, 88, 169, 0.1);
+    color: #0e58a9;
+    transform: translateX(5px);
+}
+
+body.dark-mode .legal-sidebar a:hover {
+    background: rgba(74, 158, 255, 0.15);
+    color: #4a9eff;
+}
+
+.legal-sidebar a.active {
+    background: #0e58a9;
+    color: white;
+}
+
+body.dark-mode .legal-sidebar a.active {
+    background: #4a9eff;
+    color: #1a1a2e;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .legal-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+    
+    .legal-sidebar {
+        position: static;
+        margin-bottom: 1rem;
+    }
+    
+    .legal-sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .legal-sidebar li {
+        margin-bottom: 0;
+    }
+    
+    .legal-sidebar a {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.75rem;
+    }
+    
+    .accordion-header {
+        padding: 1rem;
+    }
+    
+    .accordion-title {
+        font-size: 1rem;
+    }
+    
+    .accordion-item.active .accordion-content {
+        padding: 0 1rem 1rem 1rem;
+    }
+}
