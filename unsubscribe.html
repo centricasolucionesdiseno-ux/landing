@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Céntrica - Darse de baja | Comunicaciones</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
@@ -16,7 +15,7 @@
             </div>
         </div>
 
-       <nav>
+        <nav>
             <ul class="menu">
                 <li><a href="index.html">Sobre nosotros</a></li>
                 <li class="dropdown">
@@ -40,87 +39,105 @@
     </header>
 
     <main>
+        <!-- Hero con Video para Unsubscribe -->
+        <section class="hero-video" data-animation="fade-in" data-delay="0">
+            <video class="hero-video-bg" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600">
+                <source src="https://cdn.coverr.co/videos/coverr-typing-on-laptop-keyboard-1586816218985/720p.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+            <div class="hero-container">
+                <div class="hero-icon" data-animation="zoom-in" data-delay="0.2">
+                    <i data-lucide="mail-x"></i>
+                </div>
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Darse de <span>baja</span></h1>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.5">
+                    ¿Ya no deseas recibir nuestras comunicaciones? 
+                    Completa el formulario para darte de baja de nuestra lista de correos.
+                </p>
+            </div>
+        </section>
+
         <!-- Sección de Unsubscribe -->
-        <section class="unsubscribe-section">
-            <div class="unsubscribe-container">
-                
-                <!-- Estado 1: Formulario inicial -->
-                <div id="unsubscribeForm" class="unsubscribe-card">
-                    <div class="unsubscribe-icon">
-                        <i data-lucide="mail-x"></i>
-                    </div>
-                    <h1 class="unsubscribe-title">Darse de baja</h1>
-                    <p class="unsubscribe-description">
-                        ¿Ya no deseas recibir nuestras comunicaciones? 
-                        Ingresa tu correo electrónico para darte de baja de nuestra lista de correos.
-                    </p>
+        <section class="section" data-animation="fade-up">
+            <div class="container">
+                <div class="grid-auto" style="max-width: 600px; margin: 0 auto;">
                     
-                    <form id="unsubscribeEmailForm" class="unsubscribe-form">
-                        <div class="form-group">
-                            <label for="unsubscribeEmail">Correo electrónico</label>
-                            <input type="email" id="unsubscribeEmail" name="email" 
-                                   placeholder="tucorreo@ejemplo.com" required>
+                    <!-- Estado 1: Formulario inicial -->
+                    <div id="unsubscribeForm" class="card" data-animation="zoom-in" data-delay="0.2">
+                        <div class="card-icon" style="text-align: center;">
+                            <i data-lucide="mail-x" style="width: 64px; height: 64px;"></i>
                         </div>
+                        <h3 class="card-title" style="text-align: center;">Darse de baja</h3>
+                        <p class="card-text" style="text-align: center; margin-bottom: 1.5rem;">
+                            Ingresa tu correo electrónico para darte de baja de nuestra lista de correos.
+                        </p>
                         
-                        <div class="form-group">
-                            <label for="unsubscribeReason">¿Por qué te quieres dar de baja? (Opcional)</label>
-                            <select id="unsubscribeReason">
-                                <option value="">Selecciona una razón</option>
-                                <option value="too_many">Recibo demasiados correos</option>
-                                <option value="not_relevant">El contenido no es relevante para mí</option>
-                                <option value="never_subscribed">Nunca me suscribí</option>
-                                <option value="no_longer_interest">Ya no me interesa el tema</option>
-                                <option value="other">Otra razón</option>
-                            </select>
-                        </div>
+                        <form id="unsubscribeEmailForm" class="form">
+                            <div class="form-group">
+                                <label for="unsubscribeEmail" class="form-label">Correo electrónico *</label>
+                                <input type="email" id="unsubscribeEmail" name="email" 
+                                       class="form-input" placeholder="tucorreo@ejemplo.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="unsubscribeReason" class="form-label">¿Por qué te quieres dar de baja? (Opcional)</label>
+                                <select id="unsubscribeReason" class="form-select">
+                                    <option value="">Selecciona una razón</option>
+                                    <option value="too_many">Recibo demasiados correos</option>
+                                    <option value="not_relevant">El contenido no es relevante para mí</option>
+                                    <option value="never_subscribed">Nunca me suscribí</option>
+                                    <option value="no_longer_interest">Ya no me interesa el tema</option>
+                                    <option value="other">Otra razón</option>
+                                </select>
+                            </div>
+                            
+                            <div class="unsubscribe-buttons" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                <button type="submit" class="btn btn-primary" style="flex: 1;">Darse de baja →</button>
+                                <a href="index.html" class="btn btn-secondary" style="flex: 1;">Cancelar</a>
+                            </div>
+                        </form>
                         
-                        <div class="unsubscribe-buttons">
-                            <button type="submit" class="unsubscribe-btn">Darse de baja →</button>
-                            <a href="index.html" class="cancel-btn">Cancelar</a>
+                        <p class="unsubscribe-note" style="text-align: center; font-size: 0.75rem; color: #888; margin-top: 1.5rem;">
+                            Te extrañaremos. Puedes volver a suscribirte en cualquier momento desde nuestro sitio web.
+                        </p>
+                    </div>
+
+                    <!-- Estado 2: Confirmación (oculto inicialmente) -->
+                    <div id="confirmacionUnsubscribe" class="card" style="display: none; text-align: center;" data-animation="zoom-in">
+                        <div class="card-icon">
+                            <i data-lucide="check-circle" style="width: 64px; height: 64px; color: #28a745;"></i>
                         </div>
-                    </form>
-                    
-                    <p class="unsubscribe-note">
-                        Te extrañaremos. Puedes volver a suscribirte en cualquier momento desde nuestro sitio web.
-                    </p>
-                </div>
+                        <h3 class="card-title">¡Te has dado de baja!</h3>
+                        <p class="card-text">
+                            Hemos procesado tu solicitud. Ya no recibirás más correos de nuestra parte.
+                        </p>
+                        <div style="margin-top: 1.5rem;">
+                            <a href="index.html" class="btn btn-primary">Volver al inicio →</a>
+                        </div>
+                    </div>
 
-                <!-- Estado 2: Confirmación (oculto inicialmente) -->
-                <div id="confirmacionUnsubscribe" class="unsubscribe-card success-card" style="display: none;">
-                    <div class="unsubscribe-icon">
-                        <i data-lucide="check-circle"></i>
+                    <!-- Estado 3: Error (oculto inicialmente) -->
+                    <div id="errorUnsubscribe" class="card" style="display: none; text-align: center;" data-animation="zoom-in">
+                        <div class="card-icon">
+                            <i data-lucide="alert-circle" style="width: 64px; height: 64px; color: #dc3545;"></i>
+                        </div>
+                        <h3 class="card-title">Error al procesar</h3>
+                        <p class="card-text">
+                            No pudimos encontrar ese correo electrónico en nuestra base de datos. 
+                            Por favor, verifica que el correo sea correcto.
+                        </p>
+                        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                            <button onclick="location.reload()" class="btn btn-primary" style="flex: 1;">Intentar nuevamente →</button>
+                            <a href="index.html" class="btn btn-secondary" style="flex: 1;">Volver al inicio</a>
+                        </div>
                     </div>
-                    <h2 class="unsubscribe-title">¡Te has dado de baja!</h2>
-                    <p class="unsubscribe-description">
-                        Hemos procesado tu solicitud. Ya no recibirás más correos de nuestra parte.
-                    </p>
-                    <div class="unsubscribe-buttons">
-                        <a href="index.html" class="unsubscribe-btn success-btn">Volver al inicio →</a>
-                    </div>
-                </div>
 
-                <!-- Estado 3: Error (oculto inicialmente) -->
-                <div id="errorUnsubscribe" class="unsubscribe-card error-card" style="display: none;">
-                    <div class="unsubscribe-icon">
-                        <i data-lucide="alert-circle"></i>
-                    </div>
-                    <h2 class="unsubscribe-title">Error al procesar</h2>
-                    <p class="unsubscribe-description">
-                        No pudimos encontrar ese correo electrónico en nuestra base de datos. 
-                        Por favor, verifica que el correo sea correcto.
-                    </p>
-                    <div class="unsubscribe-buttons">
-                        <button onclick="location.reload()" class="unsubscribe-btn">Intentar nuevamente →</button>
-                        <a href="index.html" class="cancel-btn">Volver al inicio</a>
-                    </div>
                 </div>
-
             </div>
         </section>
     </main>
 
-    <!-- Footer simplificado -->
-    <footer class="footer">
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-col">
@@ -131,7 +148,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="mail"></i> gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -162,12 +179,14 @@
                 <p class="footer-newsletter-text">
                     Recibe novedades sobre nuestras soluciones.
                 </p>
-                <form class="footer-newsletter-form" id="newsletterForm2">
+                <form class="footer-newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="footer-unsubscribe">
                     Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
                 </p>
             </div>
         </div>
@@ -175,7 +194,6 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
-                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
             </div>
         </div>
     </footer>
@@ -184,9 +202,21 @@
     
     <!-- Script específico para unsubscribe -->
     <script>
-        // Inicializar Lucide
+        // Inicializar Lucide (respaldo)
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
+        }
+
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                console.log('Newsletter suscripción:', email);
+                alert('¡Gracias por suscribirte!');
+                this.reset();
+            });
         }
 
         // Elementos del DOM
@@ -222,82 +252,31 @@
                 submitBtn.disabled = true;
                 
                 // Simular envío a backend (aquí conectarías con tu API real)
-                // Por ahora es una simulación exitosa
+                // 🔴 IMPORTANTE: Reemplaza esto con tu llamada real a la API
                 setTimeout(() => {
-                    // 🔴 IMPORTANTE: Reemplaza esto con tu llamada real a la API
-                    // Ejemplo con fetch:
-                    // fetch('/api/unsubscribe', {
-                    //     method: 'POST',
-                    //     headers: { 'Content-Type': 'application/json' },
-                    //     body: JSON.stringify({ email, reason })
-                    // })
-                    // .then(response => response.json())
-                    // .then(data => { ... })
-                    // .catch(error => { ... })
-                    
-                    // Simulación de éxito (elimina esto cuando tengas el backend)
-                    const success = true; // Cambia a false para probar error
+                    // Simulación de éxito (cambia a false para probar error)
+                    const success = true;
                     
                     if (success) {
                         // Mostrar confirmación
-                        formContainer.style.display = 'none';
-                        confirmacionContainer.style.display = 'block';
-                        lucide.createIcons();
+                        if (formContainer) formContainer.style.display = 'none';
+                        if (confirmacionContainer) confirmacionContainer.style.display = 'block';
+                        if (typeof lucide !== 'undefined') lucide.createIcons();
                         
-                        // Opcional: registrar la baja en consola
-                        console.log('Usuario dado de baja:', { email, reason });
+                        // Registrar en consola (para depuración)
+                        console.log('✅ Usuario dado de baja:', { email, reason });
                     } else {
                         // Mostrar error
-                        formContainer.style.display = 'none';
-                        errorContainer.style.display = 'block';
-                        lucide.createIcons();
+                        if (formContainer) formContainer.style.display = 'none';
+                        if (errorContainer) errorContainer.style.display = 'block';
+                        if (typeof lucide !== 'undefined') lucide.createIcons();
+                        
+                        console.log('❌ Error al dar de baja:', { email, reason });
                     }
                     
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                 }, 1500);
-            });
-        }
-
-        // Modo oscuro (compatible con el script principal)
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-        
-        if (darkModeToggle) {
-            // Verificar preferencia guardada
-            if (localStorage.getItem('theme') === 'dark') {
-                body.classList.add('dark-mode');
-                body.classList.remove('light-mode');
-            } else {
-                body.classList.add('light-mode');
-            }
-            
-            function updateThemeIcon() {
-                const icon = darkModeToggle.querySelector('i');
-                if (!icon) return;
-                if (body.classList.contains('dark-mode')) {
-                    icon.setAttribute('data-lucide', 'sun');
-                } else {
-                    icon.setAttribute('data-lucide', 'moon');
-                }
-                if (typeof lucide !== 'undefined') {
-                    lucide.createIcons();
-                }
-            }
-            
-            setTimeout(updateThemeIcon, 100);
-            
-            darkModeToggle.addEventListener('click', () => {
-                if (body.classList.contains('dark-mode')) {
-                    body.classList.remove('dark-mode');
-                    body.classList.add('light-mode');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    body.classList.remove('light-mode');
-                    body.classList.add('dark-mode');
-                    localStorage.setItem('theme', 'dark');
-                }
-                updateThemeIcon();
             });
         }
     </script>
