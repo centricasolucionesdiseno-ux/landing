@@ -8,7 +8,6 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-
     <header>
         <div class="logo-container">
             <div class="logo">
@@ -16,7 +15,7 @@
             </div>
         </div>
 
-       <nav>
+        <nav>
             <ul class="menu">
                 <li><a href="index.html">Sobre nosotros</a></li>
                 <li class="dropdown">
@@ -39,59 +38,218 @@
         </button>
     </header>
 
-<main>
-    <div class="legal-hero">
-        <h1>Términos de Servicio</h1>
-        <p>Última actualización: 24 de abril de 2026</p>
-    </div>
+    <main>
+        <!-- Hero Estático para páginas legales -->
+        <section class="hero-static" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600');" data-animation="fade-in">
+            <div class="hero-static-overlay"></div>
+            <div class="hero-container">
+                
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0.3">Términos de <span>Servicio</span></h1>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.5">Última actualización: 24 de abril de 2026</p>
+            </div>
+        </section>
 
-    <div class="legal-grid">
-        <aside class="legal-sidebar">
-            <ul>
-                <li><a href="#alcance">📌 1. Alcance del servicio</a></li>
-                <li><a href="#uso">⚙️ 2. Uso permitido</a></li>
-                <li><a href="#cuentas">👤 3. Cuentas y acceso</a></li>
-                <li><a href="#responsabilidad">⚠️ 4. Responsabilidad</a></li>
-                <li><a href="#terminacion">❌ 5. Terminación</a></li>
-            </ul>
-        </aside>
-        
-        <div class="legal-content">
-
-            <section id="alcance">
-                <h2>1. Alcance del servicio</h2>
-                <p>Los presentes Términos de Servicio regulan el acceso y uso de las soluciones digitales ofrecidas por Céntrica, incluyendo plataformas, herramientas tecnológicas y servicios asociados.</p>
-                <p>El uso de estos servicios implica la aceptación de las condiciones aquí descritas, así como de cualquier normativa aplicable.</p>
-            </section>
-
-            <section id="uso">
-                <h2>2. Uso permitido</h2>
-                <p>El usuario se compromete a utilizar los servicios de manera responsable, legal y conforme a los fines para los cuales fueron diseñados.</p>
-                <p>Queda prohibido el uso indebido de la plataforma, incluyendo actividades que puedan afectar su funcionamiento, seguridad o integridad, así como el acceso no autorizado a sistemas o datos.</p>
-            </section>
-
-            <section id="cuentas">
-                <h2>3. Cuentas y acceso</h2>
-                <p>En caso de requerirse registro, el usuario será responsable de mantener la confidencialidad de sus credenciales de acceso.</p>
-                <p>Céntrica no será responsable por el uso indebido de cuentas derivado de negligencia en la protección de la información de acceso por parte del usuario.</p>
-            </section>
-
-            <section id="responsabilidad">
-                <h2>4. Responsabilidad</h2>
-                <p>Los servicios se proporcionan "tal cual" y según disponibilidad. No garantizamos que el servicio sea ininterrumpido o libre de errores.</p>
-                <p>En ningún caso Céntrica será responsable por daños directos o indirectos derivados del uso o la imposibilidad de uso de los servicios.</p>
-            </section>
-
-            <section id="terminacion">
-                <h2>5. Terminación</h2>
-                <p>Nos reservamos el derecho de suspender o cancelar el acceso a los servicios en caso de incumplimiento de estos términos o uso indebido de la plataforma.</p>
-                <p>El usuario puede dejar de utilizar los servicios en cualquier momento, sin perjuicio de las obligaciones adquiridas previamente.</p>
-            </section>
-
+        <!-- Grid legal con sidebar y acordeón -->
+        <div class="legal-grid" data-animation="fade-up">
+            <!-- Sidebar de navegación -->
+            <aside class="legal-sidebar" data-animation="fade-right" data-delay="0.2">
+                <ul>
+                    <li><a href="#alcance" data-accordion-link="alcance">📌 1. Alcance del servicio</a></li>
+                    <li><a href="#uso" data-accordion-link="uso">⚙️ 2. Uso permitido</a></li>
+                    <li><a href="#cuentas" data-accordion-link="cuentas">👤 3. Cuentas y acceso</a></li>
+                    <li><a href="#responsabilidad" data-accordion-link="responsabilidad">⚠️ 4. Responsabilidad</a></li>
+                    <li><a href="#terminacion" data-accordion-link="terminacion">❌ 5. Terminación</a></li>
+                    <li><a href="#propiedad" data-accordion-link="propiedad">© 6. Propiedad intelectual</a></li>
+                    <li><a href="#datos" data-accordion-link="datos">🔒 7. Protección de datos</a></li>
+                    <li><a href="#legislacion" data-accordion-link="legislacion">⚖️ 8. Legislación aplicable</a></li>
+                </ul>
+            </aside>
+            
+            <!-- Acordeón de contenido -->
+            <div class="accordion" data-animation="fade-left" data-delay="0.3">
+                
+                <!-- Item 1: Alcance del servicio -->
+                <div class="accordion-item" id="alcance">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="target"></i>
+                            1. Alcance del servicio
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Los presentes Términos de Servicio regulan el acceso y uso de las soluciones digitales ofrecidas por Céntrica, incluyendo plataformas, herramientas tecnológicas y servicios asociados.</p>
+                        <p>El uso de estos servicios implica la aceptación de las condiciones aquí descritas, así como de cualquier normativa aplicable.</p>
+                        <h4>Servicios incluidos:</h4>
+                        <ul>
+                            <li>Desarrollo y fábrica de software a medida.</li>
+                            <li>Plataforma Nebula ERP de gestión empresarial.</li>
+                            <li>Sistema SICOVI para gestión legislativa.</li>
+                            <li>Soluciones de análisis con Inteligencia Artificial.</li>
+                            <li>Evaluaciones de calidad y aseguramiento de software.</li>
+                            <li>Consultoría digital y transformación estratégica.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 2: Uso permitido -->
+                <div class="accordion-item" id="uso">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="check-circle"></i>
+                            2. Uso permitido
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>El usuario se compromete a utilizar los servicios de manera responsable, legal y conforme a los fines para los cuales fueron diseñados.</p>
+                        <p>Queda prohibido el uso indebido de la plataforma, incluyendo actividades que puedan afectar su funcionamiento, seguridad o integridad, así como el acceso no autorizado a sistemas o datos.</p>
+                        <h4>Usos prohibidos:</h4>
+                        <ul>
+                            <li>Realizar actividades ilegales o fraudulentas.</li>
+                            <li>Intentar vulnerar la seguridad del sistema.</li>
+                            <li>Distribuir malware o contenido dañino.</li>
+                            <li>Acceder a información no autorizada.</li>
+                            <li>Sobrecargar la infraestructura del servicio.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 3: Cuentas y acceso -->
+                <div class="accordion-item" id="cuentas">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="user"></i>
+                            3. Cuentas y acceso
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>En caso de requerirse registro, el usuario será responsable de mantener la confidencialidad de sus credenciales de acceso.</p>
+                        <p>Céntrica no será responsable por el uso indebido de cuentas derivado de negligencia en la protección de la información de acceso por parte del usuario.</p>
+                        <h4>Requisitos de registro:</h4>
+                        <ul>
+                            <li>Proporcionar información veraz y actualizada.</li>
+                            <li>Mantener la confidencialidad de la contraseña.</li>
+                            <li>Notificar inmediatamente cualquier uso no autorizado.</li>
+                            <li>Ser mayor de edad legalmente responsable.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 4: Responsabilidad -->
+                <div class="accordion-item" id="responsabilidad">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="shield"></i>
+                            4. Responsabilidad
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Los servicios se proporcionan "tal cual" y según disponibilidad. No garantizamos que el servicio sea ininterrumpido o libre de errores.</p>
+                        <p>En ningún caso Céntrica será responsable por daños directos o indirectos derivados del uso o la imposibilidad de uso de los servicios.</p>
+                        <h4>Limitaciones de responsabilidad:</h4>
+                        <ul>
+                            <li>Interrupciones programadas o de emergencia.</li>
+                            <li>Pérdida de datos por causas externas.</li>
+                            <li>Errores en el uso del servicio por parte del usuario.</li>
+                            <li>Contenido de terceros accesible desde el servicio.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 5: Terminación -->
+                <div class="accordion-item" id="terminacion">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="x-circle"></i>
+                            5. Terminación
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Nos reservamos el derecho de suspender o cancelar el acceso a los servicios en caso de incumplimiento de estos términos o uso indebido de la plataforma.</p>
+                        <p>El usuario puede dejar de utilizar los servicios en cualquier momento, sin perjuicio de las obligaciones adquiridas previamente.</p>
+                        <h4>Causales de terminación:</h4>
+                        <ul>
+                            <li>Incumplimiento de los términos establecidos.</li>
+                            <li>Uso fraudulento o ilegal del servicio.</li>
+                            <li>Solicitud expresa del usuario.</li>
+                            <li>Por decisión unilateral de Céntrica con previo aviso.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 6: Propiedad intelectual -->
+                <div class="accordion-item" id="propiedad">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="copyright"></i>
+                            6. Propiedad intelectual
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Todo el contenido, software, diseños, logotipos y materiales disponibles en los servicios son propiedad de Céntrica o de sus licenciantes y están protegidos por las leyes de propiedad intelectual.</p>
+                        <p>El usuario no adquiere ningún derecho de propiedad sobre los servicios o contenidos, más allá de los derechos de uso limitados otorgados en estos términos.</p>
+                        <h4>Restricciones:</h4>
+                        <ul>
+                            <li>No copiar, modificar o distribuir el software.</li>
+                            <li>No descompilar ni realizar ingeniería inversa.</li>
+                            <li>No eliminar avisos de propiedad intelectual.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 7: Protección de datos -->
+                <div class="accordion-item" id="datos">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="lock"></i>
+                            7. Protección de datos
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Céntrica trata los datos personales de acuerdo con su Política de Privacidad y la legislación aplicable en Colombia (Ley 1581 de 2012).</p>
+                        <p>El usuario garantiza que los datos proporcionados son exactos y se compromete a notificar cualquier cambio.</p>
+                        <h4>Derechos del usuario:</h4>
+                        <ul>
+                            <li>Acceder, actualizar y corregir sus datos.</li>
+                            <li>Solicitar la eliminación de sus datos.</li>
+                            <li>Revocar el consentimiento para el tratamiento.</li>
+                            <li>Presentar quejas ante la autoridad de protección de datos.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Item 8: Legislación aplicable -->
+                <div class="accordion-item" id="legislacion">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">
+                            <i data-lucide="scale"></i>
+                            8. Legislación aplicable
+                        </h3>
+                        <i data-lucide="chevron-down" class="accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Estos términos se rigen por las leyes de la República de Colombia. Cualquier disputa relacionada con estos términos será sometida a los tribunales competentes de Medellín, Colombia.</p>
+                        <h4>Normativa aplicable:</h4>
+                        <ul>
+                            <li>Constitución Política de Colombia.</li>
+                            <li>Ley 527 de 1999 (Comercio Electrónico).</li>
+                            <li>Ley 1581 de 2012 (Protección de Datos).</li>
+                            <li>Decreto 1074 de 2015 (Único Reglamentario del Sector Comercio).</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-col">
@@ -102,7 +260,7 @@
                     Impulsamos tu éxito a través de la innovación inteligente.
                 </p>
                 <div class="footer-contact-info">
-                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p>gerenciacomercial@centricasoluciones.com</p>
                     <p><i data-lucide="phone"></i> +57 300 205 7325</p>
                     <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
                 </div>
@@ -133,12 +291,14 @@
                 <p class="footer-newsletter-text">
                     Recibe novedades sobre nuestras soluciones.
                 </p>
-                <form class="footer-newsletter-form" id="newsletterForm2">
+                <form class="footer-newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Tu correo electrónico" required>
                     <button type="submit">Suscribirse →</button>
                 </form>
                 <p class="footer-unsubscribe">
                     Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
                 </p>
             </div>
         </div>
@@ -146,11 +306,11 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
-                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
             </div>
         </div>
     </footer>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
+
 </body>
 </html>
