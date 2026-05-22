@@ -851,14 +851,14 @@ body.dark-mode .carousel-dot.active {
 
 /* ========== FOOTER UNIFICADO ========== */
 .footer {
-    background: linear-gradient(135deg, #0a0a0f 0%, #14141f 100%);
+    background: #0e58a9;  /* ← Cambiado de degradado a color sólido */
     color: #e0e0e0;
     padding-top: 4rem;
     margin-top: 4rem;
 }
 
-body.light-mode .footer {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+body.dark-mode .footer {
+    background: #0a3d6e;  /* ← Versión más oscura para modo oscuro */
 }
 
 .footer-container {
@@ -930,7 +930,7 @@ body.light-mode .footer {
     left: 0;
     width: 40px;
     height: 2px;
-    background: #4a9eff;
+    background: white;  /* ← Cambiado de #4a9eff a blanco */
     border-radius: 2px;
 }
 
@@ -945,16 +945,16 @@ body.light-mode .footer {
 }
 
 .footer-links a {
-    color: #bbb;
+    color: rgba(255,255,255,0.8);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     font-size: 0.9rem;
 }
 
 .footer-links a:hover {
-    color: #4a9eff;
+    color: white;
+    opacity: 1;
     transform: translateX(5px);
-    display: inline-block;
 }
 
 /* Newsletter */
