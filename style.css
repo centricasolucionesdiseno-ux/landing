@@ -575,6 +575,9 @@ body.dark-mode .card-flip-back {
 /* Elementos comunes de tarjetas */
 .card-icon {
     margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-icon i {
@@ -597,6 +600,7 @@ body.dark-mode .card-icon i {
     font-weight: 700;
     margin-bottom: 1rem;
     color: #0e58a9;
+    text-align: center;
 }
 
 body.dark-mode .card-title {
@@ -607,6 +611,9 @@ body.dark-mode .card-title {
     font-size: 1rem;
     line-height: 1.6;
     color: #555;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 body.dark-mode .card-text {
@@ -1200,6 +1207,7 @@ body.light-mode .footer {
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
     overflow: hidden;
+    cursor: pointer;
 }
 
 body.dark-mode .accordion-item {
@@ -1207,13 +1215,22 @@ body.dark-mode .accordion-item {
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
+.accordion-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(14,88,169,0.15);
+}
+
+body.dark-mode .accordion-item:hover {
+    box-shadow: 0 4px 15px rgba(74,158,255,0.15);
+}
+
 .accordion-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem 1.5rem;
-    cursor: pointer;
     transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .accordion-header:hover {
@@ -1299,6 +1316,18 @@ body.dark-mode .accordion-content h4 {
 
 body.dark-mode .accordion-content li {
     color: #bbb;
+}
+
+.accordion-content a {
+    cursor: pointer;
+}
+
+.accordion-item.active {
+    border-left: 4px solid #0e58a9;
+}
+
+body.dark-mode .accordion-item.active {
+    border-left-color: #4a9eff;
 }
 
 /* Variante para grid de 2 columnas (sidebar + acordeón) */
@@ -1410,55 +1439,6 @@ body.dark-mode .legal-sidebar a.active {
     }
 }
 
-/* Mejoras para el acordeón - cursor pointer en toda la card */
-.accordion-item {
-    background: white;
-    border-radius: 16px;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    transition: all 0.3s ease;
-    overflow: hidden;
-    cursor: pointer; /* ← Manito en toda la card */
-}
-
-body.dark-mode .accordion-item {
-    background: #1e1e2e;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-
-/* Efecto hover en toda la card */
-.accordion-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(14,88,169,0.15);
-}
-
-body.dark-mode .accordion-item:hover {
-    box-shadow: 0 4px 15px rgba(74,158,255,0.15);
-}
-
-/* El header mantiene estilos pero sin cursor pointer extra */
-.accordion-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 1.5rem;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-}
-
-/* Los enlaces dentro del contenido no deben heredar el cursor pointer */
-.accordion-content a {
-    cursor: pointer;
-}
-
-/* Indicador visual de que la card es clickeable */
-.accordion-item.active {
-    border-left: 4px solid #0e58a9;
-}
-
-body.dark-mode .accordion-item.active {
-    border-left-color: #4a9eff;
-}
 /* ========== MODAL UNIFICADO ========== */
 .modal {
     display: none;
