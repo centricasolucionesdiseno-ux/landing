@@ -478,6 +478,48 @@
     </footer>
 
     <script src="script.js"></script>
+
+        <script>
+        // Inicializar contadores cuando sean visibles
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        const animateCounter = (counter) => {
+            const target = parseInt(counter.getAttribute('data-count'));
+            const current = parseInt(counter.innerText);
+            const increment = target / speed;
+            
+            if (current < target) {
+                counter.innerText = Math.ceil(current + increment);
+                setTimeout(() => animateCounter(counter), 20);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        // Intersection Observer para activar cuando el elemento sea visible
+        const observerOptions = { threshold: 0.5 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    // Solo animar si tiene atributo data-count
+                    if (counter.getAttribute('data-count')) {
+                        animateCounter(counter);
+                    }
+                    observer.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => {
+            if (counter.getAttribute('data-count')) {
+                observer.observe(counter);
+            }
+        });
+        
+        }
+    </script>
     
 </body>
 </html>
