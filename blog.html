@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Céntrica - Blog | Recursos y novedades</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoColor.png" alt="Logo Centrica" class="logo-img">
+            </div>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Servicios ▼</a>
+                    <ul class="submenu">
+                        <li><a href="fabrica-software.html">Fábrica de software</a></li>
+                        <li><a href="nebula-erp.html">Nebula ERP</a></li>
+                        <li><a href="sicovi.html">SICOVI</a></li>
+                        <li><a href="analisis-ia.html">Análisis con IA</a></li>
+                        <li><a href="evaluaciones-calidad.html">Evaluaciones de Calidad</a></li>
+                        <li><a href="consultoria-digital.html">Consultoría digital</a></li>
+                    </ul>
+                </li>
+                <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Hero del Blog -->
+        <section class="blog-hero">
+            <div class="blog-hero-overlay"></div>
+            <div class="blog-hero-container">
+                <h1 class="blog-hero-title">Blog</h1>
+                <p class="blog-hero-subtitle">Recursos, tendencias y novedades del mundo tecnológico</p>
+                <div class="blog-search">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Buscar artículos..." id="blogSearch">
+                </div>
+            </div>
+        </section>
+
+        <!-- Categorías -->
+        <section class="blog-categories">
+            <div class="container">
+                <div class="categories-wrapper">
+                    <button class="category-btn active" data-category="all">Todos</button>
+                    <button class="category-btn" data-category="ia">Inteligencia Artificial</button>
+                    <button class="category-btn" data-category="arquitectura">Arquitectura</button>
+                    <button class="category-btn" data-category="multi-tenant">Multi-tenant</button>
+                    <button class="category-btn" data-category="calidad">Calidad</button>
+                    <button class="category-btn" data-category="cultura">Cultura</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid de artículos destacados -->
+        <section class="blog-featured">
+            <div class="container">
+                <div class="featured-grid">
+                    <!-- Artículo Destacado 1 -->
+                    <article class="featured-card" data-category="arquitectura">
+                        <div class="featured-image">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800" alt="Arquitectura multi-tenant">
+                            <span class="featured-category">Arquitectura</span>
+                        </div>
+                        <div class="featured-content">
+                            <div class="post-meta">
+                                <span><i data-lucide="calendar"></i> 15 Jun 2026</span>
+                                <span><i data-lucide="clock"></i> 8 min lectura</span>
+                            </div>
+                            <h2 class="featured-title">Arquitectura multi-tenant: El futuro del software empresarial</h2>
+                            <p class="featured-excerpt">Descubre cómo la arquitectura multi-tenant está revolucionando la forma en que las empresas construyen y escalan sus aplicaciones, reduciendo costos y mejorando la seguridad.</p>
+                            <div class="featured-footer">
+                                <div class="author">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Autor">
+                                    <span>Juan Pablo Hurtado</span>
+                                </div>
+                                <a href="#" class="read-more" data-post="multi-tenant">Leer más →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Artículo Destacado 2 -->
+                    <article class="featured-card" data-category="ia">
+                        <div class="featured-image">
+                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800" alt="IA Generativa">
+                            <span class="featured-category">IA</span>
+                        </div>
+                        <div class="featured-content">
+                            <div class="post-meta">
+                                <span><i data-lucide="calendar"></i> 10 Jun 2026</span>
+                                <span><i data-lucide="clock"></i> 12 min lectura</span>
+                            </div>
+                            <h2 class="featured-title">IA Generativa en el desarrollo de software: Promesas y realidades</h2>
+                            <p class="featured-excerpt">Exploramos cómo la inteligencia artificial está transformando el desarrollo de software y cuáles son las aplicaciones prácticas que ya están dando resultados.</p>
+                            <div class="featured-footer">
+                                <div class="author">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Autor">
+                                    <span>Ana Rodríguez</span>
+                                </div>
+                                <a href="#" class="read-more" data-post="ia-generativa">Leer más →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid de artículos recientes -->
+        <section class="blog-grid-section">
+            <div class="container">
+                <h2 class="section-title">Artículos <span>recientes</span></h2>
+                <div class="blog-grid" id="blogGrid">
+                    
+                    <!-- Post 1 -->
+                    <article class="blog-post" data-category="multi-tenant">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600" alt="SIMAPPE">
+                            <span class="post-category">Multi-tenant</span>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i data-lucide="calendar"></i> 05 Jun 2026</span>
+                            </div>
+                            <h3>SIMAPPE: La arquitectura que potencia a Nebula ERP</h3>
+                            <p>Conoce cómo nuestra arquitectura de referencia SIMAPPE permite que cada desarrollo inicie con los más altos estándares de calidad, seguridad y escalabilidad.</p>
+                            <div class="post-footer">
+                                <span class="read-time"><i data-lucide="clock"></i> 6 min</span>
+                                <a href="#" class="read-more" data-post="simappe">Leer más →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="blog-post" data-category="calidad">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600" alt="Pruebas de software">
+                            <span class="post-category">Calidad</span>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i data-lucide="calendar"></i> 28 May 2026</span>
+                            </div>
+                            <h3>Mejores prácticas para asegurar la calidad en el desarrollo ágil</h3>
+                            <p>Descubre las estrategias más efectivas para mantener altos estándares de calidad mientras se trabaja con metodologías ágiles.</p>
+                            <div class="post-footer">
+                                <span class="read-time"><i data-lucide="clock"></i> 10 min</span>
+                                <a href="#" class="read-more" data-post="calidad-agil">Leer más →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 3 -->
+                    <article class="blog-post" data-category="ia">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600" alt="Machine Learning">
+                            <span class="post-category">IA</span>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i data-lucide="calendar"></i> 20 May 2026</span>
+                            </div>
+                            <h3>Cómo implementar Machine Learning en tu empresa (sin morir en el intento)</h3>
+                            <p>Una guía práctica para empresas que desean iniciar su camino en la inteligencia artificial, desde la preparación de datos hasta la puesta en producción.</p>
+                            <div class="post-footer">
+                                <span class="read-time"><i data-lucide="clock"></i> 15 min</span>
+                                <a href="#" class="read-more" data-post="ml-empresas">Leer más →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 4 -->
+                    <article class="blog-post" data-category="arquitectura">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600" alt="Cloud Native">
+                            <span class="post-category">Arquitectura</span>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i data-lucide="calendar"></i> 15 May 2026</span>
+                            </div>
+                            <h3>Cloud Native: Por qué tu empresa necesita migrar a esta arquitectura</h3>
+                            <p>Beneficios, desafíos y hoja de ruta para adoptar una arquitectura cloud-native en tu organización.</p>
+                            <div class="post-footer">
+                                <span class="read-time"><i data-lucide="clock"></i> 8 min</span>
+                                <a href="#" class="read-more" data-post="cloud-native">Leer más →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 5 -->
+                    <article class="blog-post" data-category="cultura">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600" alt="Cultura DevOps">
+                            <span class="post-category">Cultura</span>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i data-lucide="calendar"></i> 10 May 2026</span>
+                            </div>
+                            <h3>Cultura DevOps: Más allá de las herramientas</h3>
+                            <p>Cómo implementar una verdadera cultura de colaboración entre desarrollo y operaciones para acelerar las entregas.</p>
+                            <div class="post-footer">
+                                <span class="read-time"><i data-lucide="clock"></i> 7 min</span>
+                                <a href="#" class="read-more" data-post="devops-cultura">Leer más →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 6 -->
+                    <article class="blog-post" data-category="seguridad">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600" alt="Seguridad en IA">
+                            <span class="post-category">Seguridad</span>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span><i data-lucide="calendar"></i> 05 May 2026</span>
+                            </div>
+                            <h3>Seguridad en sistemas de IA: Lo que necesitas saber</h3>
+                            <p>Riesgos, amenazas y buenas prácticas para proteger tus modelos e implementaciones de inteligencia artificial.</p>
+                            <div class="post-footer">
+                                <span class="read-time"><i data-lucide="clock"></i> 12 min</span>
+                                <a href="#" class="read-more" data-post="seguridad-ia">Leer más →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Botón de carga -->
+                <div class="blog-load-more">
+                    <button class="btn-nebulina-secondary" id="loadMoreBtn">Cargar más artículos →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="blog-newsletter">
+            <div class="container">
+                <div class="newsletter-wrapper">
+                    <div class="newsletter-icon">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <h3>Suscríbete a nuestro newsletter</h3>
+                    <p>Recibe los mejores artículos, tendencias y novedades directamente en tu correo.</p>
+                    <form class="newsletter-form" id="blogNewsletterForm">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit">Suscribirme →</button>
+                    </form>
+                    <p class="newsletter-note">No spam. Solo contenido de valor. Puedes darte de baja cuando quieras.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de artículo (para leer contenido completo) -->
+    <div id="postModal" class="post-modal">
+        <div class="post-modal-content">
+            <div class="post-modal-header">
+                <h2 id="modalPostTitle">Título del artículo</h2>
+                <button class="modal-close" id="closePostModal">&times;</button>
+            </div>
+            <div class="post-modal-body" id="modalPostBody">
+                <!-- Contenido del artículo se carga dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoColor.png" alt="Céntrica" class="footer-logo-img">
+                </div>
+                <p class="footer-description">
+                    Impulsamos tu éxito a través de la innovación inteligente.
+                </p>
+                <div class="footer-contact-info">
+                    <p>comercialcentrica1@centricasoluciones.com</p>
+                    <p><i data-lucide="phone"></i> +57 300 205 7325</p>
+                    <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="fabrica-software.html">Fábrica de software</a></li>
+                    <li><a href="nebula-erp.html">Nebula ERP</a></li>
+                    <li><a href="sicovi.html">SICOVI</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Documentos</h4>
+                <ul class="footer-links">
+                    <li><a href="terminos.html">Términos de Uso</a></li>
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="cookies.html">Política de Cookies</a></li>
+                    <li><a href="aviso-legal.html">Aviso Legal</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Mantente informado</h4>
+                <p class="footer-newsletter-text">
+                    Recibe novedades sobre nuestras soluciones.
+                </p>
+                <form class="footer-newsletter-form" id="footerNewsletterForm">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse →</button>
+                </form>
+                <p class="footer-unsubscribe">
+                    Puedes darte de baja en cualquier momento.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p>© 2026 Céntrica. Todos los derechos reservados.</p>
+                <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <!-- Script específico para el Blog -->
+    <script>
+        // Inicializar Lucide
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // ========== FILTRADO POR CATEGORÍAS ==========
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const blogPosts = document.querySelectorAll('.blog-post');
+        const featuredCards = document.querySelectorAll('.featured-card');
+
+        function filterPosts(category) {
+            // Filtrar posts normales
+            blogPosts.forEach(post => {
+                if (category === 'all' || post.dataset.category === category) {
+                    post.style.display = 'block';
+                    setTimeout(() => {
+                        post.style.opacity = '1';
+                        post.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    post.style.opacity = '0';
+                    post.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        post.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // Filtrar destacados
+            featuredCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const category = btn.dataset.category;
+                filterPosts(category);
+            });
+        });
+
+        // ========== BÚSQUEDA ==========
+        const searchInput = document.getElementById('blogSearch');
+        
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const allPosts = [...blogPosts, ...featuredCards];
+                
+                allPosts.forEach(post => {
+                    const title = post.querySelector('h2, h3')?.textContent.toLowerCase() || '';
+                    const excerpt = post.querySelector('p')?.textContent.toLowerCase() || '';
+                    const matches = title.includes(searchTerm) || excerpt.includes(searchTerm);
+                    
+                    if (searchTerm === '' || matches) {
+                        post.style.display = 'block';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // ========== CONTENIDO DE ARTÍCULOS (Simulado) ==========
+        const articlesContent = {
+            'multi-tenant': {
+                title: 'Arquitectura multi-tenant: El futuro del software empresarial',
+                content: `
+                    <h3>¿Qué es la arquitectura multi-tenant?</h3>
+                    <p>La arquitectura multi-tenant es un modelo de software donde una sola instancia de una aplicación sirve a múltiples clientes (inquilinos), manteniendo sus datos aislados y seguros. Este enfoque está revolucionando la forma en que las empresas construyen y escalan sus aplicaciones.</p>
+                    <h3>Beneficios clave</h3>
+                    <ul>
+                        <li><strong>Reducción de costos:</strong> Al compartir infraestructura, los costos operativos disminuyen significativamente.</li>
+                        <li><strong>Escalabilidad:</strong> Permite agregar nuevos clientes sin duplicar infraestructura.</li>
+                        <li><strong>Mantenimiento centralizado:</strong> Las actualizaciones se aplican una sola vez para todos los inquilinos.</li>
+                        <li><strong>Seguridad robusta:</strong> Aislamiento de datos garantizado a nivel de base de datos o esquema.</li>
+                    </ul>
+                    <h3>SIMAPPE: Nuestra arquitectura de referencia</h3>
+                    <p>En Céntrica, hemos desarrollado SIMAPPE, una arquitectura multi-tenant probada que permite que todo nuevo proyecto inicie con estándares de excelencia técnica. Esto significa que nuestros clientes no necesitan construir desde cero el aislamiento, la seguridad ni la conmutación de bases de datos.</p>
+                    <p>Nebula ERP, SICOVI y todos nuestros desarrollos se construyen sobre esta poderosa arquitectura, garantizando mantenibilidad, desacoplamiento y seguridad desde el diseño.</p>
+                `
+            },
+            'ia-generativa': {
+                title: 'IA Generativa en el desarrollo de software: Promesas y realidades',
+                content: `
+                    <h3>El auge de la IA Generativa</h3>
+                    <p>La inteligencia artificial generativa ha llegado para transformar radicalmente la industria del software. Herramientas como GitHub Copilot, ChatGPT y otras están cambiando la forma en que los desarrolladores escriben código, documentan y depuran aplicaciones.</p>
+                    <h3>Aplicaciones prácticas en el desarrollo</h3>
+                    <ul>
+                        <li><strong>Generación de código:</strong> Los asistentes de IA pueden sugerir bloques de código completos, reduciendo el tiempo de escritura.</li>
+                        <li><strong>Documentación automática:</strong> Generan documentación clara a partir del código fuente.</li>
+                        <li><strong>Pruebas unitarias:</strong> Crean casos de prueba automáticamente.</li>
+                        <li><strong>Refactorización:</strong> Sugieren mejoras en la estructura del código.</li>
+                    </ul>
+                    <h3>Recomendaciones para adoptar IA en tu equipo</h3>
+                    <p>En Céntrica, hemos integrado herramientas de IA en nuestros flujos de desarrollo, pero siempre con supervisión humana. Nuestra recomendación es comenzar con casos de uso específicos, entrenar al equipo y establecer políticas claras sobre el uso de código generado por IA.</p>
+                `
+            },
+            'simappe': {
+                title: 'SIMAPPE: La arquitectura que potencia a Nebula ERP',
+                content: `
+                    <h3>SIMAPPE: El cimiento de nuestras soluciones</h3>
+                    <p>SIMAPPE es nuestra arquitectura de referencia propia que asegura que todo desarrollo inicie bajo estándares de excelencia técnica. Es la base sobre la cual construimos todas nuestras soluciones, incluyendo Nebula ERP, SICOVI y desarrollos a medida.</p>
+                    <h3>Componentes clave de SIMAPPE</h3>
+                    <ul>
+                        <li><strong>Seguridad incorporada:</strong> Procesos de validación y seguridad desde el diseño (Security by Design).</li>
+                        <li><strong>Multi-tenancy nativa:</strong> Cada cliente tiene su propio espacio aislado.</li>
+                        <li><strong>Auditoría completa:</strong> Trazabilidad de todas las operaciones.</li>
+                        <li><strong>Desacoplamiento:</strong> Componentes independientes que facilitan la evolución.</li>
+                    </ul>
+                    <h3>Ventaja competitiva</h3>
+                    <p>Gracias a SIMAPPE, nuestro equipo puede enfocarse 100% en resolver los problemas de negocio de nuestros clientes, sin reinventar la infraestructura técnica. Esto se traduce en entregas más rápidas, mayor calidad y menor deuda técnica.</p>
+                `
+            }
+        };
+
+        // Modal de artículo
+        const postModal = document.getElementById('postModal');
+        const modalPostTitle = document.getElementById('modalPostTitle');
+        const modalPostBody = document.getElementById('modalPostBody');
+        const closePostModal = document.getElementById('closePostModal');
+
+        function openArticle(postId) {
+            const article = articlesContent[postId];
+            if (article) {
+                modalPostTitle.textContent = article.title;
+                modalPostBody.innerHTML = article.content;
+                postModal.style.display = 'flex';
+                lucide.createIcons();
+            } else {
+                // Contenido genérico para artículos sin contenido específico
+                modalPostTitle.textContent = 'Próximamente';
+                modalPostBody.innerHTML = '<p>Este artículo está en preparación. Pronto tendremos contenido completo para ti.</p><p>¡Gracias por tu interés!</p>';
+                postModal.style.display = 'flex';
+            }
+        }
+
+        // Event listeners para los botones "Leer más"
+        document.querySelectorAll('.read-more').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const postId = link.dataset.post;
+                openArticle(postId);
+            });
+        });
+
+        if (closePostModal) {
+            closePostModal.addEventListener('click', () => {
+                postModal.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === postModal) {
+                postModal.style.display = 'none';
+            }
+        });
+
+        // ========== NEWSLETTER ==========
+        const blogNewsletterForm = document.getElementById('blogNewsletterForm');
+        if (blogNewsletterForm) {
+            blogNewsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = blogNewsletterForm.querySelector('input[type="email"]').value;
+                console.log('Newsletter blog:', email);
+                alert('¡Gracias por suscribirte! Recibirás nuestros próximos artículos.');
+                blogNewsletterForm.reset();
+            });
+        }
+
+        // Load more (simulado)
+        let visiblePosts = 6;
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', () => {
+                alert('Próximamente más artículos. ¡Gracias por tu interés!');
+            });
+        }
+    </script>
+</body>
+</html>
