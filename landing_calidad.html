@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluaciones de Calidad - Céntrica Soluciones Innovadoras</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        /* Estilos puntuales solo para esta página: timeline de metodología y mini-diagnóstico */
+        .qa-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            counter-reset: qa-step;
+        }
+        .qa-step {
+            position: relative;
+            padding-top: 1rem;
+        }
+        .qa-step-number {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #0e58a9;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0 auto 1rem;
+        }
+        body.dark-mode .qa-step-number {
+            background: #4a9eff;
+        }
+        .qa-quiz-card {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .qa-quiz-question {
+            display: none;
+        }
+        .qa-quiz-question.active {
+            display: block;
+        }
+        .qa-quiz-options {
+            display: grid;
+            gap: 0.85rem;
+            margin-top: 1.5rem;
+        }
+        .qa-quiz-option {
+            text-align: left;
+            padding: 1rem 1.25rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 14px;
+            background: white;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #333;
+            transition: all 0.25s ease;
+        }
+        body.dark-mode .qa-quiz-option {
+            background: #1e1e2e;
+            border-color: #444;
+            color: #e0e0e0;
+        }
+        .qa-quiz-option:hover {
+            border-color: #0e58a9;
+        }
+        .qa-quiz-option.selected {
+            border-color: #0e58a9;
+            background: rgba(14,88,169,0.08);
+            font-weight: 600;
+        }
+        body.dark-mode .qa-quiz-option.selected {
+            border-color: #4a9eff;
+            background: rgba(74,158,255,0.12);
+        }
+        .qa-quiz-progress {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        .qa-quiz-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            transition: background 0.3s ease;
+        }
+        body.dark-mode .qa-quiz-dot {
+            background: #444;
+        }
+        .qa-quiz-dot.filled {
+            background: #0e58a9;
+        }
+        body.dark-mode .qa-quiz-dot.filled {
+            background: #4a9eff;
+        }
+        .qa-quiz-result {
+            display: none;
+            text-align: center;
+        }
+        .qa-quiz-result.active {
+            display: block;
+        }
+        .qa-quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+        .qa-standard-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            color: #0e58a9;
+            background: rgba(14,88,169,0.08);
+            border-radius: 20px;
+            padding: 0.2rem 0.7rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+        body.dark-mode .qa-standard-tag {
+            color: #4a9eff;
+            background: rgba(74,158,255,0.12);
+        }
+        .qa-indicator-box {
+            background: rgba(14,88,169,0.05);
+            border-left: 3px solid #0e58a9;
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+        }
+        body.dark-mode .qa-indicator-box {
+            background: rgba(74,158,255,0.08);
+            border-left-color: #4a9eff;
+        }
+        .qa-indicator-box strong {
+            color: #0e58a9;
+        }
+        body.dark-mode .qa-indicator-box strong {
+            color: #4a9eff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Logo Centrica" class="logo-img">
+            </div>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Sobre nosotros</a></li>
+                <li class="dropdown">
+                    <a href="servicios.html">Servicios</a>
+                    <ul class="submenu">
+                        <li><a href="fabrica.html">Fábrica de software</a></li>
+                        <li><a href="nebula.html">Nebula ERP</a></li>
+                        <li><a href="sicovi.html">Sicovi</a></li>
+                        <li><a href="ia.html">Análisis con IA</a></li>
+                        <li><a href="calidad.html">Evaluaciones de Calidad</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+
+        <button id="darkModeToggle" class="dark-mode-btn">
+            <i data-lucide="moon"></i>
+        </button>
+    </header>
+
+    <main>
+        <!-- Hero estático, tono calmado -->
+        <section class="hero-static" style="background-image: url('https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Img1.png');">
+            <div class="hero-static-overlay"></div>
+            <div class="hero-container">
+                <h1 class="hero-title" data-animation="fade-up" data-delay="0">Calidad que se construye <span>junto a su equipo</span></h1>
+                <p class="hero-description" data-animation="fade-up" data-delay="0.2">
+                    Trabajamos bajo el marco MOAC-001 para reducir riesgos, anticipar fallos y fortalecer la confianza en cada entrega — con metodologías y estándares verificables, no con promesas que las pruebas no pueden cumplir.
+                </p>
+                <div class="hero-buttons" data-animation="fade-up" data-delay="0.4">
+                    <a href="#contacto" class="btn btn-primary">Conversemos sobre su proyecto →</a>
+                    <a href="#metodologia" class="btn btn-secondary">Ver cómo trabajamos →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ¿Qué hacemos? -->
+        <section class="section" data-animation="fade-up">
+            <div class="container">
+                <div class="grid-2">
+                    <div data-animation="fade-right" data-delay="0.1">
+                        <h2 class="section-title" style="text-align: left;">No es un control al final. <span>Es un acompañamiento desde el inicio.</span></h2>
+                        <p style="font-size: 1.1rem; line-height: 1.7; color: #555; margin-top: 1rem; text-align: justify;">
+                            El aseguramiento de calidad es un ecosistema de trabajo enfocado en fortalecer la estabilidad, la seguridad y el rendimiento de su software — desde la ingeniería inicial de requerimientos hasta la validación operativa del producto. No nos limitamos a ejecutar pruebas reactivas: diseñamos marcos de trabajo adaptativos que ayudan a optimizar los tiempos de entrega de sus proyectos.
+                        </p>
+                    </div>
+                    <div style="display: flex; justify-content: center; align-items: center;" data-animation="zoom-in" data-delay="0.2">
+                        <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Fondos/Component-Pattern.png" alt="Proceso de calidad" style="width: 100%; max-width: 480px; height: auto; border-radius: 20px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats reales (no inventados) -->
+        <section class="stats-section bg-primary" data-animation="fade-up">
+            <div class="container">
+                <div class="stats-grid" style="color: #ffffff;">
+                    <div>
+                        <span class="stat-number" data-count="5">0</span>
+                        <span class="stat-label">soluciones de aseguramiento de calidad</span>
+                    </div>
+                    <div>
+                        <span class="stat-number" data-count="6">0</span>
+                        <span class="stat-label">etapas en nuestra metodología de pruebas</span>
+                    </div>
+                    <div>
+                        <span class="stat-number" data-count="5">0</span>
+                        <span class="stat-label">estándares y normas internacionales de referencia</span>
+                    </div>
+                    <div>
+                        <span class="stat-number">&lt;2%</span>
+                        <span class="stat-label">meta de referencia para la fuga de defectos a producción</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tres frentes de trabajo (card-flip) -->
+        <section class="section" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Tres frentes de <span>trabajo</span></h2>
+                <p class="section-subtitle">Pase el cursor o toque cada tarjeta para ver qué soluciones la componen.</p>
+                <div class="grid-auto">
+
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.1">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="search"></i></div>
+                                <h3 class="card-title">Diagnóstico y Optimización</h3>
+                                <p class="card-text">Procesos · ← Toca para ver el detalle</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <div class="card-icon"><i data-lucide="git-branch"></i></div>
+                                <h3 class="card-title">Procesos</h3>
+                                <p class="card-text">Evaluamos su ingeniería de software actual para identificar brechas y acompañar la transición hacia metodologías ágiles alineadas con las mejores prácticas. (Solución 1)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.2">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="shield-check"></i></div>
+                                <h3 class="card-title">Ingeniería de Requisitos y Gestión Predictiva</h3>
+                                <p class="card-text">Prevención · ← Toca para ver el detalle</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <div class="card-icon"><i data-lucide="file-search"></i></div>
+                                <h3 class="card-title">Prevención</h3>
+                                <p class="card-text">Intervenimos desde la fase de diseño para fortalecer las definiciones iniciales del proyecto y reducir riesgos técnicos que afecten tiempos y costos. (Soluciones 2 y 3)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-flip" data-animation="zoom-in" data-delay="0.3">
+                        <div class="card-flip-inner">
+                            <div class="card-flip-front">
+                                <div class="card-icon"><i data-lucide="flask-conical"></i></div>
+                                <h3 class="card-title">Validación Operativa y Testing Especializado</h3>
+                                <p class="card-text">Producto · ← Toca para ver el detalle</p>
+                            </div>
+                            <div class="card-flip-back">
+                                <div class="card-icon"><i data-lucide="monitor-check"></i></div>
+                                <h3 class="card-title">Producto</h3>
+                                <p class="card-text">Sometemos los sistemas en ejecución a escenarios reales de uso, buscando que el producto final sea robusto, intuitivo y con la menor cantidad de fallos críticos posible. (Soluciones 4 y 5)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Las 5 soluciones en detalle (acordeón) -->
+        <section id="soluciones" class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Las 5 soluciones, <span>una por una</span></h2>
+                <p class="section-subtitle">Explore a su ritmo. Cada solución incluye el indicador con el que medimos su impacto real.</p>
+
+                <div class="accordion">
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title"><i data-lucide="search" class="accordion-icon" style="transform:none; width:22px; height:22px;"></i> 1. Auditoría y Optimización de Procesos de QA</h3>
+                            <i data-lucide="chevron-down" class="accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Evaluamos la madurez de los procesos actuales de desarrollo y aseguramiento de calidad, tomando como referencia ISTQB y el modelo de la Pirámide de Pruebas. A partir de ahí, diseñamos un plan de trabajo adaptado que ayuda a optimizar los tiempos de entrega y a elevar la calidad técnica del equipo.</p>
+                            <div class="qa-indicator-box">
+                                <strong>Indicador:</strong> Índice de Madurez de QA (Gap Analysis Score)<br>
+                                Mide el porcentaje de alineación de los procesos actuales frente a las buenas prácticas de ISTQB y la Pirámide de Pruebas — permite ver el avance real con el tiempo (por ejemplo, pasar de un 40% a un 85% de madurez operativa).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title"><i data-lucide="file-search" class="accordion-icon" style="transform:none; width:22px; height:22px;"></i> 2. Ingeniería de Requisitos (ISO/IEC 25010)</h3>
+                            <i data-lucide="chevron-down" class="accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Acompañamos la definición, estructuración y refinamiento de historias de usuario y requerimientos técnicos. Tomando como referencia la norma ISO/IEC 25010, buscamos cubrir distintas dimensiones del software — funcionalidad, mantenibilidad, seguridad y usabilidad — para reducir sobrecostos y retrasos asociados a definiciones ambiguas.</p>
+                            <div class="qa-indicator-box">
+                                <strong>Indicador:</strong> Densidad de Defectos por Ambigüedad (Requirement Defect Density)<br>
+                                Mide cuántos errores potenciales o vacíos lógicos se detectan y corrigen antes de iniciar el desarrollo, mostrando el tiempo y los costos que se evitan más adelante.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title"><i data-lucide="target" class="accordion-icon" style="transform:none; width:22px; height:22px;"></i> 3. Gestión Predictiva y Control de Riesgos</h3>
+                            <i data-lucide="chevron-down" class="accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Diseñamos e implementamos matrices de riesgo para identificar, categorizar y monitorear las amenazas técnicas y operativas que puedan afectar los tiempos de entrega, equilibrando la transparencia del proceso con la continuidad del negocio.</p>
+                            <div class="qa-indicator-box">
+                                <strong>Indicador:</strong> Efectividad de Mitigación de Riesgos (Risk Mitigation ROI)<br>
+                                Mide qué porcentaje de los riesgos identificados en la matriz se mitigan exitosamente antes de convertirse en incidentes reales de producción.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title"><i data-lucide="monitor-check" class="accordion-icon" style="transform:none; width:22px; height:22px;"></i> 4. Aseguramiento de Calidad Formal Multiplataforma</h3>
+                            <i data-lucide="chevron-down" class="accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Validamos la estabilidad de aplicaciones Web, Mobile y Desktop a través de un ciclo formal de pruebas funcionales y manuales, desde etapas tempranas del proyecto. Cubrimos niveles de integración, sistema y pruebas de aceptación de usuario (UAT), con gestión de incidentes, bitácoras de lecciones aprendidas y reportes ejecutivos de calidad.</p>
+                            <div class="qa-indicator-box">
+                                <strong>Indicador:</strong> Tasa de Escape de Defectos (Defect Escape Rate)<br>
+                                Mide el porcentaje de fallos críticos detectados en pruebas frente a los que llegan a producción. La meta de referencia del sector es mantener este indicador por debajo del 2%.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3 class="accordion-title"><i data-lucide="zap" class="accordion-icon" style="transform:none; width:22px; height:22px;"></i> 5. Testing Exploratorio de Alta Velocidad</h3>
+                            <i data-lucide="chevron-down" class="accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Evaluamos de forma ágil y sin guiones predefinidos la operatividad y experiencia de uso de sus sistemas, simulando el comportamiento real del usuario final. Es un enfoque útil para lanzamientos rápidos, ventanas de mantenimiento o auditorías de contingencia.</p>
+                            <div class="qa-indicator-box">
+                                <strong>Indicador:</strong> Tiempo de Detección de Fallos Críticos (Time-to-Defect)<br>
+                                Mide qué tan rápido se identifican errores críticos o de usabilidad de alto impacto durante las primeras horas de exploración del sistema.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Metodología paso a paso -->
+        <section id="metodologia" class="section" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Cómo trabajamos, <span>paso a paso</span></h2>
+                <p class="section-subtitle">Las mismas seis etapas, sin importar el tamaño del proyecto.</p>
+
+                <div class="qa-timeline">
+                    <div class="qa-step" data-animation="fade-up" data-delay="0.1">
+                        <div class="qa-step-number">1</div>
+                        <h3 class="card-title" style="font-size:1.1rem;">Planificación</h3>
+                        <p class="card-text">Definimos objetivos, alcance, recursos y enfoque; acordamos qué se va a probar y qué no.</p>
+                    </div>
+                    <div class="qa-step" data-animation="fade-up" data-delay="0.15">
+                        <div class="qa-step-number">2</div>
+                        <h3 class="card-title" style="font-size:1.1rem;">Análisis</h3>
+                        <p class="card-text">Revisamos requerimientos, historias de usuario y arquitectura para identificar qué probar.</p>
+                    </div>
+                    <div class="qa-step" data-animation="fade-up" data-delay="0.2">
+                        <div class="qa-step-number">3</div>
+                        <h3 class="card-title" style="font-size:1.1rem;">Diseño</h3>
+                        <p class="card-text">Creamos los casos de prueba de alto nivel y los datos necesarios para ejecutarlos.</p>
+                    </div>
+                    <div class="qa-step" data-animation="fade-up" data-delay="0.25">
+                        <div class="qa-step-number">4</div>
+                        <h3 class="card-title" style="font-size:1.1rem;">Ejecución</h3>
+                        <p class="card-text">Corremos las pruebas, registramos resultados y reportamos los defectos encontrados.</p>
+                    </div>
+                    <div class="qa-step" data-animation="fade-up" data-delay="0.3">
+                        <div class="qa-step-number">5</div>
+                        <h3 class="card-title" style="font-size:1.1rem;">Monitorización y Control</h3>
+                        <p class="card-text">Comparamos el progreso real contra el plan y ajustamos el curso cuando es necesario.</p>
+                    </div>
+                    <div class="qa-step" data-animation="fade-up" data-delay="0.35">
+                        <div class="qa-step-number">6</div>
+                        <h3 class="card-title" style="font-size:1.1rem;">Finalización</h3>
+                        <p class="card-text">Al entregar el software, documentamos lecciones aprendidas para la siguiente iteración.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estándares y normas -->
+        <section id="estandares" class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Estándares y normas que <span>guían el trabajo</span></h2>
+                <p class="section-subtitle">No hablamos solo de un estándar: cada uno responde una pregunta distinta.</p>
+
+                <div class="grid-auto">
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="settings"></i></div>
+                        <span class="qa-standard-tag" style="display:block; text-align:center;">¿Cómo gestionar la calidad?</span>
+                        <h3 class="card-title">ISO 9001</h3>
+                        <p class="card-text">Estándar internacional de Sistemas de Gestión de Calidad, enfocado en la satisfacción del cliente y la mejora continua de los procesos.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.15">
+                        <div class="card-icon"><i data-lucide="layers"></i></div>
+                        <span class="qa-standard-tag" style="display:block; text-align:center;">¿Qué atributos evaluar?</span>
+                        <h3 class="card-title">ISO/IEC 25010</h3>
+                        <p class="card-text">Modelo de calidad que define los atributos del producto software: funcionalidad, mantenibilidad, seguridad y usabilidad.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="flask-conical"></i></div>
+                        <span class="qa-standard-tag" style="display:block; text-align:center;">¿Cómo diseñar las pruebas?</span>
+                        <h3 class="card-title">ISTQB</h3>
+                        <p class="card-text">Organización líder mundial en certificación de competencias en pruebas de software; dicta las mejores prácticas y terminología estándar del sector.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.25">
+                        <div class="card-icon"><i data-lucide="file-text"></i></div>
+                        <span class="qa-standard-tag" style="display:block; text-align:center;">¿Cómo documentar?</span>
+                        <h3 class="card-title">IEEE 829</h3>
+                        <p class="card-text">Define la forma y el contenido de la documentación de pruebas, asegurando información completa, trazable y auditable.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="compass"></i></div>
+                        <span class="qa-standard-tag" style="display:block; text-align:center;">¿Cómo anticipar riesgos?</span>
+                        <h3 class="card-title">ISO 31000</h3>
+                        <p class="card-text">Principios y lineamientos para la gestión de riesgos, útiles para identificar y analizar incertidumbres que podrían afectar el proyecto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mini diagnóstico interactivo -->
+        <section id="diagnostico" class="section" data-animation="fade-up">
+            <div class="container qa-quiz-card">
+                <h2 class="section-title" data-animation="fade-down">Una mirada rápida y <span>sin juicios</span></h2>
+                <p class="section-subtitle">Tres preguntas para conversar mejor sobre dónde está hoy y hacia dónde quiere ir.</p>
+
+                <div class="card" id="qaQuizCard">
+                    <div class="qa-quiz-progress">
+                        <span class="qa-quiz-dot" data-dot="1"></span>
+                        <span class="qa-quiz-dot" data-dot="2"></span>
+                        <span class="qa-quiz-dot" data-dot="3"></span>
+                    </div>
+
+                    <div class="qa-quiz-question active" data-question="1">
+                        <h3 class="card-title" style="text-align:left;">¿Cómo describiría hoy el proceso de calidad de su equipo?</h3>
+                        <div class="qa-quiz-options">
+                            <button class="qa-quiz-option" data-value="A">Documentado y estandarizado</button>
+                            <button class="qa-quiz-option" data-value="B">Existe, pero no siempre se sigue igual</button>
+                            <button class="qa-quiz-option" data-value="C">Es principalmente informal</button>
+                        </div>
+                    </div>
+
+                    <div class="qa-quiz-question" data-question="2">
+                        <h3 class="card-title" style="text-align:left;">¿Qué tan seguido aparecen errores ya en producción?</h3>
+                        <div class="qa-quiz-options">
+                            <button class="qa-quiz-option" data-value="A">Rara vez</button>
+                            <button class="qa-quiz-option" data-value="B">De forma ocasional</button>
+                            <button class="qa-quiz-option" data-value="C">Con cierta frecuencia</button>
+                        </div>
+                    </div>
+
+                    <div class="qa-quiz-question" data-question="3">
+                        <h3 class="card-title" style="text-align:left;">¿Sus requisitos y casos de prueba quedan documentados y son fáciles de rastrear?</h3>
+                        <div class="qa-quiz-options">
+                            <button class="qa-quiz-option" data-value="A">Sí, de forma consistente</button>
+                            <button class="qa-quiz-option" data-value="B">A veces</button>
+                            <button class="qa-quiz-option" data-value="C">No mucho todavía</button>
+                        </div>
+                    </div>
+
+                    <div class="qa-quiz-nav">
+                        <button id="qaQuizBack" class="btn btn-outline" style="visibility:hidden;">← Atrás</button>
+                        <button id="qaQuizReset" class="btn btn-outline" style="display:none;">Volver a empezar</button>
+                    </div>
+
+                    <!-- Resultados -->
+                    <div class="qa-quiz-result" data-result="A">
+                        <div class="card-icon"><i data-lucide="thumbs-up"></i></div>
+                        <h3 class="card-title">Ya tiene bases sólidas</h3>
+                        <p class="card-text">Su equipo ya cuenta con procesos relativamente maduros. Conversemos sobre cómo seguir afinándolos y medir su impacto real en el negocio.</p>
+                        <div class="hero-buttons" style="margin-top:1rem;"><a href="#contacto" class="btn btn-primary">Conversemos →</a></div>
+                    </div>
+                    <div class="qa-quiz-result" data-result="B">
+                        <div class="card-icon"><i data-lucide="trending-up"></i></div>
+                        <h3 class="card-title">Hay un buen punto de partida</h3>
+                        <p class="card-text">Existen bases y también oportunidades concretas para fortalecerlas. Podemos ayudarle a identificar por dónde empezar.</p>
+                        <div class="hero-buttons" style="margin-top:1rem;"><a href="#contacto" class="btn btn-primary">Conversemos →</a></div>
+                    </div>
+                    <div class="qa-quiz-result" data-result="C">
+                        <div class="card-icon"><i data-lucide="sprout"></i></div>
+                        <h3 class="card-title">Es un buen momento para empezar a estructurar</h3>
+                        <p class="card-text">No es necesario partir de cero: se puede construir una base más sólida de forma progresiva. Conversemos sobre cómo hacerlo a su ritmo.</p>
+                        <div class="hero-buttons" style="margin-top:1rem;"><a href="#contacto" class="btn btn-primary">Conversemos →</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Confidencialidad -->
+        <section class="section bg-light" data-animation="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-animation="fade-down">Confidencialidad y <span>gobernanza de datos</span></h2>
+                <p class="section-subtitle">La privacidad y seguridad de la información de su negocio son pilares en cada línea de servicio.</p>
+                <div class="grid-3">
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.1">
+                        <div class="card-icon"><i data-lucide="eye-off"></i></div>
+                        <h3 class="card-title">Enmascaramiento y Anonimización</h3>
+                        <p class="card-text">No manipulamos datos reales de producción ni información de identificación personal (PII). Trabajamos con técnicas de enmascaramiento y datos sintéticos.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.2">
+                        <div class="card-icon"><i data-lucide="lock"></i></div>
+                        <h3 class="card-title">Entornos Seguros de Trabajo</h3>
+                        <p class="card-text">El acceso a repositorios, documentación y plataformas de seguimiento se realiza bajo protocolos de control y perfiles restringidos.</p>
+                    </div>
+                    <div class="card card-highlight" data-animation="fade-up" data-delay="0.3">
+                        <div class="card-icon"><i data-lucide="scale"></i></div>
+                        <h3 class="card-title">Cumplimiento Ético y Legal</h3>
+                        <p class="card-text">Alineamos nuestras prácticas de auditoría y testing con normativas internacionales de protección de datos, en un entorno controlado y confidencial.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulario de Contacto -->
+        <section id="contacto" class="section" data-animation="fade-up">
+            <div class="container">
+                <div class="card" style="max-width: 900px; margin: 0 auto;">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <h2 class="section-title" style="margin-bottom: 0.5rem;">Conversemos sobre su software.</h2>
+                        <p class="section-subtitle" style="margin-top: 0;">Cuéntenos en qué punto está su proceso y un asesor se pondrá en contacto.</p>
+                    </div>
+
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre" class="form-label">NOMBRE COMPLETO *</label>
+                                <input type="text" id="nombre" name="nombre" class="form-input" required placeholder="Ej: Juan Pérez">
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">CORREO LABORAL *</label>
+                                <input type="email" id="email" name="email" class="form-input" required placeholder="juan@empresa.com">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="empresa" class="form-label">EMPRESA *</label>
+                                <input type="text" id="empresa" name="empresa" class="form-input" required placeholder="Nombre de tu empresa">
+                            </div>
+                            <div class="form-group">
+                                <label for="cargo" class="form-label">CARGO</label>
+                                <select id="cargo" name="cargo" class="form-select">
+                                    <option value="">Selecciona tu cargo</option>
+                                    <option value="CTO">CTO</option>
+                                    <option value="CEO">CEO</option>
+                                    <option value="Director TI">Director TI</option>
+                                    <option value="Gerente">Gerente</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="plataforma" class="form-label">¿QUÉ TIPO DE APLICACIÓN MANEJA?</label>
+                            <select id="plataforma" name="plataforma" class="form-select">
+                                <option value="">Selecciona una opción</option>
+                                <option value="Web">Web</option>
+                                <option value="Mobile">Mobile</option>
+                                <option value="Desktop">Desktop</option>
+                                <option value="Varias plataformas">Varias plataformas</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="mensaje" class="form-label">MENSAJE</label>
+                            <textarea id="mensaje" name="mensaje" class="form-textarea" rows="5" placeholder="Cuéntanos en qué punto está tu proceso de calidad..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.5rem">Enviar Solicitud →</button>
+                    </form>
+
+                    <div id="successMessage" class="success-message" style="display: none; margin-top: 1.5rem; text-align: center;">
+                        <i data-lucide="check-circle"></i>
+                        <p>¡Solicitud enviada con éxito! Nos pondremos en contacto contigo pronto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <img src="https://raw.githubusercontent.com//centricasolucionesdiseno-ux/landing/main/Imagenes/Logos/LogoClaro.png" alt="Céntrica" class="footer-logo-img">
+                </div>
+                <p class="footer-description">
+                    Impulsamos tu éxito a través de la innovación inteligente.
+                </p>
+                <div class="footer-contact-info">
+                    <p>gerenciacomercial@centricasoluciones.com</p>
+                    <p><i data-lucide="phone"></i> +57 300 205 7325</p>
+                    <p><i data-lucide="map-pin"></i> Medellín, Colombia</p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Sobre nosotros</a></li>
+                    <li><a href="terminos.html">Términos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="politicas.html">Políticas internas</a></li>
+                    <li><a href="terservicios.html">Términos de Servicio</a></li>
+                    <li><a href="legal.html">Aviso Legal</a></li>
+                    <li><a href="cookies.html">Cookies</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col-title">Mantente informado</h4>
+                <p class="footer-newsletter-text">
+                    Recibe novedades sobre nuestras soluciones.
+                </p>
+                <form class="footer-newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit">Suscribirse →</button>
+                </form>
+                <p class="footer-unsubscribe">
+                    Puedes darte de baja en cualquier momento.
+                    <br>
+                    <a href="unsubscribe.html" class="footer-unsubscribe-link">Darse de baja de comunicaciones</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="footer-copyright-secondary">© 2026 Céntrica. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Mini-diagnóstico interactivo — lógica propia de esta página
+        document.addEventListener('DOMContentLoaded', function () {
+            const card = document.getElementById('qaQuizCard');
+            if (!card) return;
+
+            const questions = Array.from(card.querySelectorAll('.qa-quiz-question'));
+            const dots = Array.from(card.querySelectorAll('.qa-quiz-dot'));
+            const results = Array.from(card.querySelectorAll('.qa-quiz-result'));
+            const backBtn = document.getElementById('qaQuizBack');
+            const resetBtn = document.getElementById('qaQuizReset');
+            const answers = {};
+            let current = 0;
+
+            function updateDots() {
+                dots.forEach((dot, i) => dot.classList.toggle('filled', i <= current && i < questions.length));
+            }
+
+            function showQuestion(index) {
+                questions.forEach((q, i) => q.classList.toggle('active', i === index));
+                backBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
+                updateDots();
+            }
+
+            function showResult() {
+                const counts = { A: 0, B: 0, C: 0 };
+                Object.values(answers).forEach(v => counts[v]++);
+                let winner = 'B';
+                if (counts.A >= counts.B && counts.A >= counts.C) winner = 'A';
+                else if (counts.C > counts.A && counts.C >= counts.B) winner = 'C';
+
+                questions.forEach(q => q.classList.remove('active'));
+                card.querySelector('.qa-quiz-progress').style.display = 'none';
+                results.forEach(r => r.classList.toggle('active', r.getAttribute('data-result') === winner));
+                backBtn.style.display = 'none';
+                resetBtn.style.display = 'inline-block';
+            }
+
+            function resetQuiz() {
+                Object.keys(answers).forEach(k => delete answers[k]);
+                current = 0;
+                card.querySelectorAll('.qa-quiz-option').forEach(o => o.classList.remove('selected'));
+                results.forEach(r => r.classList.remove('active'));
+                card.querySelector('.qa-quiz-progress').style.display = 'flex';
+                backBtn.style.display = 'inline-block';
+                resetBtn.style.display = 'none';
+                showQuestion(0);
+            }
+
+            questions.forEach((q, qIndex) => {
+                q.querySelectorAll('.qa-quiz-option').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        q.querySelectorAll('.qa-quiz-option').forEach(o => o.classList.remove('selected'));
+                        this.classList.add('selected');
+                        answers[qIndex] = this.getAttribute('data-value');
+
+                        setTimeout(() => {
+                            if (qIndex < questions.length - 1) {
+                                current = qIndex + 1;
+                                showQuestion(current);
+                            } else {
+                                showResult();
+                            }
+                        }, 250);
+                    });
+                });
+            });
+
+            backBtn.addEventListener('click', function () {
+                if (current > 0) {
+                    current -= 1;
+                    showQuestion(current);
+                }
+            });
+
+            resetBtn.addEventListener('click', resetQuiz);
+
+            showQuestion(0);
+        });
+    </script>
+</body>
+</html>
