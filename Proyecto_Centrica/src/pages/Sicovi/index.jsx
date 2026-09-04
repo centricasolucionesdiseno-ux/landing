@@ -1,4 +1,4 @@
-const SICOVI = () => {
+const Sicovi = () => {
   return (
     <section className="section">
       <div className="container">
@@ -9,4 +9,4 @@ const SICOVI = () => {
   );
 };
 
-export default SICOVI;
+export default Sicovi;

@@ -1,0 +1,375 @@
+/* ========== FÁBRICA DE SOFTWARE STYLES ========== */
+
+.fabrica-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Sección Oferta Técnica con fondo azul */
+.section-oferta {
+  background: linear-gradient(135deg, #0a4a8a 0%, #0e58a9 50%, #1a6bc9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-oferta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(74, 158, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(74, 158, 255, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.section-oferta .container {
+  position: relative;
+  z-index: 1;
+}
+
+.section-oferta .section-title {
+  color: white;
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 255, 255, 0.5),
+    0 4px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+}
+
+.section-oferta .section-title span {
+  color: #4a9eff;
+  text-shadow:
+    0 0 30px rgba(74, 158, 255, 0.9),
+    0 0 50px rgba(74, 158, 255, 0.6),
+    0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .section-oferta {
+  background: linear-gradient(135deg, #0a1929 0%, #16213e 50%, #1a2942 100%);
+}
+
+/* Hero Video Styles */
+.hero-video {
+  position: relative;
+  padding: 5rem 2rem;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.hero-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.hero-title span {
+  color: #4a9eff;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Card Highlight Variant */
+.card-highlight {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+}
+
+body.dark-mode .card-highlight {
+  background: #1e1e2e;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-highlight:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(14, 88, 169, 0.2);
+  border-color: rgba(14, 88, 169, 0.3);
+}
+
+body.dark-mode .card-highlight:hover {
+  border-color: rgba(74, 158, 255, 0.3);
+  box-shadow: 0 12px 25px rgba(74, 158, 255, 0.2);
+}
+
+/* SIMAPPE Cards */
+.simappe-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  color: white;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.simappe-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* List Styles inside cards */
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card ul li {
+  margin-bottom: 1rem;
+  padding-left: 0;
+  line-height: 1.6;
+  color: #555;
+}
+
+body.dark-mode .card ul li {
+  color: #ccc;
+}
+
+.card ul li strong {
+  color: #0e58a9;
+  font-weight: 600;
+}
+
+body.dark-mode .card ul li strong {
+  color: #4a9eff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-video {
+    padding: 3rem 1.5rem;
+    min-height: 400px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .card ul {
+    padding-left: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* Animation Classes */
+.animate-section {
+  opacity: 1 !important;
+}
+
+.card-animate {
+  opacity: 1 !important;
+}
+
+/* Section spacing override for tighter layouts */
+.fabrica-page .section {
+  padding: 4rem 0;
+}
+
+.fabrica-page .section:first-of-type {
+  padding-top: 0;
+}
+
+/* Valor para el Cliente - reducir padding superior y fondo gris claro */
+.fabrica-page .section:nth-of-type(2) {
+  padding-top: 2rem;
+  background: linear-gradient(180deg, #f5f7fa 0%, #e8ecf1 100%);
+}
+
+body.dark-mode .fabrica-page .section:nth-of-type(2) {
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+}
+
+/* Brillo para título Valor para el Cliente */
+.fabrica-page .section:nth-of-type(2) .section-title {
+  text-shadow:
+    0 2px 10px rgba(14, 88, 169, 0.3),
+    0 0 20px rgba(14, 88, 169, 0.2);
+}
+
+.fabrica-page .section:nth-of-type(2) .section-title span {
+  text-shadow:
+    0 2px 10px rgba(14, 88, 169, 0.4),
+    0 0 25px rgba(14, 88, 169, 0.3);
+}
+
+/* Icon sizing consistency */
+.card-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.card-icon {
+  min-height: 48px;
+}
+
+/* Button styles specific to this page */
+.fabrica-page .btn {
+  font-size: 1rem;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  display: inline-block;
+}
+
+.fabrica-page .btn-primary {
+  background: #0e58a9;
+  color: white;
+}
+
+.fabrica-page .btn-primary:hover {
+  background: #1a6bc9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.fabrica-page .btn-secondary {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.fabrica-page .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Dark mode adjustments for bg-primary sections */
+body.dark-mode .fabrica-page .bg-primary {
+  background: linear-gradient(135deg, #0a1929 0%, #16213e 100%);
+}
+
+body.dark-mode .fabrica-page .bg-primary .section-title {
+  color: #4a9eff;
+}
+
+/* Ensure images are responsive */
+.fabrica-page img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Pattern Flow Section */
+.card .pattern-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Info badge styling */
+.info-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
