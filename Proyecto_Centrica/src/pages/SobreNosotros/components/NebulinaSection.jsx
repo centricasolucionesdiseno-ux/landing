@@ -1,4 +1,6 @@
 import { Bot, Zap, Shield, Brain, Globe } from 'lucide-react';
+import LazyImage from '../../../components/common/LazyImage';
+import Neutro from '../../../assets/images/Imagenes/Neutro.png';
 
 const NebulinaSection = () => {
   const features = [
@@ -28,7 +30,6 @@ const NebulinaSection = () => {
     <section className="nebulina-section">
       <div className="nebulina-container">
         <div className="nebulina-grid">
-          {/* Lado izquierdo: Información */}
           <div className="nebulina-content">
             <div className="nebulina-badge">
               <Bot size={20} />
@@ -57,12 +58,11 @@ const NebulinaSection = () => {
             </div>
           </div>
 
-          {/* Lado derecho: Imagen/Ilustración de Nebulina */}
           <div className="nebulina-avatar">
             <div className="nebulina-avatar-circle">
               <div className="nebulina-avatar-icon">
-                <img
-                  src="/src/assets/images/Imagenes/Neutro.png"
+                <LazyImage
+                  src={Neutro}
                   style={{ width: '100%', maxWidth: '200px', height: 'auto', borderRadius: '20px' }}
                   alt="Nebulina"
                 />

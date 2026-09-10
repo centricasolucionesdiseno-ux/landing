@@ -1,3 +1,6 @@
+import LazyImage from '../../../components/common/LazyImage';
+import SobreNosotros1 from '../../../assets/images/Imagenes/SobreNosotros1.png';
+
 const VisionSection = () => {
   return (
     <section id="vision" className="section" data-animation="fade-up">
@@ -14,8 +17,8 @@ const VisionSection = () => {
             </p>
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} data-animation="zoom-in" data-delay="0.3">
-            <img
-              src="/src/assets/images/Imagenes/SobreNosotros1.png"
+            <LazyImage
+              src={SobreNosotros1}
               alt="Visión"
               style={{ width: '100%', maxWidth: '500px', height: 'auto', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
             />

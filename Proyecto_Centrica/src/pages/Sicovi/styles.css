@@ -1,0 +1,43 @@
+/* ========== ESTILOS SICOVI ========== */
+
+.sicovi-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ========== CLASES DE ANIMACIÓN ========== */
+.animar-seccion {
+  opacity: 1 !important;
+}
+
+.animar-tarjeta {
+  opacity: 1 !important;
+}
+
+/* ========== CTA ========== */
+.section-cta {
+  text-align: center;
+}
+
+.section-cta h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.section-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .section-cta h2 {
+    font-size: 1.5rem;
+  }
+
+  .section-cta p {
+    font-size: 1rem;
+  }
+}

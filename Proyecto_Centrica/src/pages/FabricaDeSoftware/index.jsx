@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import LazyImage from '../../components/common/LazyImage';
 import Fabrica1 from '../../assets/images/Imagenes/Fabrica1.jpg';
 import Fabrica2 from '../../assets/images/Imagenes/Fabrica2.png';
 import './styles.css';
@@ -143,7 +145,13 @@ const FabricaDeSoftware = () => {
 
   return (
     <div className="fabrica-page">
-      {/* Hero con Video */}
+      <Helmet>
+        <title>Fábrica de Software - Desarrollo a Medida de Alto Nivel | Céntrica</title>
+        <meta name="description" content="Fábrica de software con células de ingeniería (Squads), metodologías ágiles y arquitectura SIMAPPE. Modernización de aplicativos y desarrollo greenfield." />
+        <meta property="og:title" content="Fábrica de Software | Céntrica" />
+        <meta property="og:description" content="Desarrollo de software industrial con estándares corporativos, arquitectura moderna y equipos especializados." />
+        <link rel="canonical" href="https://centricasoluciones.com/fabrica-software" />
+      </Helmet>
       <section className="hero-video" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1600)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="hero-video-overlay"></div>
         <div className="hero-container">
@@ -278,7 +286,7 @@ const FabricaDeSoftware = () => {
           </p>
           <div className="grid-2">
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="card-animate">
-              <img
+              <LazyImage
                 src={Fabrica1}
                 alt="Stack Tecnológico"
                 style={{ width: '100%', maxWidth: '560px', height: 'auto', borderRadius: '20px' }}
@@ -662,7 +670,7 @@ const FabricaDeSoftware = () => {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="card-animate">
-              <img
+              <LazyImage
                 src={Fabrica2}
                 alt="Desarrollo a Medida"
                 style={{ width: '100%', maxWidth: '560px', height: 'auto', borderRadius: '20px' }}
