@@ -853,7 +853,8 @@ body.dark-mode .footer {
 
 .footer-copyright-secondary {
     font-size: 0.8rem;
-    color: #888;
+    color: #ffffff;
+    opacity: 0.95;
 }
 
 @media (max-width: 768px) {

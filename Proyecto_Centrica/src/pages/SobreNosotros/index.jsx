@@ -19,7 +19,7 @@ const SobreNosotros = () => {
       <HeroSection />
       <VisionSection />
       <ValuesSection />
-      <StatsSection />
+      {<StatsSection />}
       <NebulinaSection />
       <CTASection />
     </>

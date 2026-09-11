@@ -1,21 +1,15 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí puedes integrar EmailJS u otra solución
-    console.log('Email suscrito:', email);
-    alert('¡Gracias por suscribirte!');
-    setEmail('');
-  };
-
   return (
     <footer className="footer">
-      <div className="footer-container">
+      <div className="footer-container" style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        maxWidth: '900px',
+        margin: '0 auto'
+      }}>
         <div className="footer-col">
           <div className="footer-logo">
             <img
@@ -28,7 +22,6 @@ const Footer = () => {
             Impulsamos tu éxito a través de la innovación inteligente.
           </p>
           <div className="footer-contact-info">
-            <p>gerenciacomercial@centricasoluciones.com</p>
             <p>
               <Phone size={16} style={{ display: 'inline', marginRight: '8px' }} />
               +57 300 205 7325
@@ -60,7 +53,8 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="footer-col">
+        {/* Newsletter section commented out for future use */}
+        {/* <div className="footer-col">
           <h4 className="footer-col-title">Mantente informado</h4>
           <p className="footer-newsletter-text">
             Recibe novedades sobre nuestras soluciones.
@@ -82,7 +76,7 @@ const Footer = () => {
               Darse de baja de comunicaciones
             </a>
           </p>
-        </div>
+        </div> */}
       </div>
 
       <div className="footer-bottom">
