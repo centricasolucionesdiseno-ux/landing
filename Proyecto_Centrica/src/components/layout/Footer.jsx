@@ -1,93 +1,77 @@
 import { Link } from 'react-router-dom';
-import { Phone, MapPin } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
+import { CONTACTO } from '../../config/agenda';
+import { EmailLink, WhatsAppIcon, WhatsAppLink } from '../common/ContactLinks';
+import LogoLetraClara from '../../assets/images/Imagenes/Logos/LogoModoOscuroLetraClara.png';
 
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <div className="footer-container" style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        maxWidth: '900px',
-        margin: '0 auto'
-      }}>
-        <div className="footer-col">
-          <div className="footer-logo">
-            <img
-              src="/src/assets/images/Imagenes/Logos/LogoClaro.png"
-              alt="Céntrica"
-              className="footer-logo-img"
-            />
-          </div>
-          <p className="footer-description">
-            Impulsamos tu éxito a través de la innovación inteligente.
-          </p>
-          <div className="footer-contact-info">
-            <p>
-              <Phone size={16} style={{ display: 'inline', marginRight: '8px' }} />
-              +57 300 205 7325
-            </p>
-            <p>
-              <MapPin size={16} style={{ display: 'inline', marginRight: '8px' }} />
-              Medellín, Colombia
-            </p>
-          </div>
+const [usuarioCorreo, dominioCorreo] = CONTACTO.correo.split('@');
+
+const NAV_LINKS = [
+  { to: '/', label: 'Sobre nosotros' },
+  { to: '/terminos', label: 'Términos' },
+  { to: '/contacto', label: 'Contacto' }
+];
+
+const LEGAL_LINKS = [
+  { to: '/privacidad', label: 'Política de Privacidad' },
+  { to: '/politicas', label: 'Políticas internas' },
+  { to: '/terservicios', label: 'Términos de Servicio' },
+  { to: '/legal', label: 'Aviso Legal' },
+  { to: '/cookies', label: 'Cookies' }
+];
+
+const FooterLinks = ({ title, links }) => (
+  <div className="footer-col">
+    <h2 className="footer-col-title">{title}</h2>
+    <ul className="footer-links">
+      {links.map((link) => (
+        <li key={link.to}>
+          <Link to={link.to}>{link.label}</Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const Footer = () => (
+  <footer className="footer">
+    <div className="footer-container">
+      <div className="footer-col footer-brand">
+        <div className="footer-logo">
+          <img src={LogoLetraClara} alt="Céntrica" className="footer-logo-img" width="438" height="126" loading="lazy" />
         </div>
-
-        <div className="footer-col">
-          <h4 className="footer-col-title">Navegación</h4>
-          <ul className="footer-links">
-            <li><Link to="/">Sobre nosotros</Link></li>
-            <li><Link to="/terminos">Términos</Link></li>
-            <li><Link to="/contacto">Contacto</Link></li>
-          </ul>
-        </div>
-
-        <div className="footer-col">
-          <h4 className="footer-col-title">Legal</h4>
-          <ul className="footer-links">
-            <li><a href="/privacidad">Política de Privacidad</a></li>
-            <li><a href="/politicas">Políticas internas</a></li>
-            <li><a href="/terservicios">Términos de Servicio</a></li>
-            <li><a href="/legal">Aviso Legal</a></li>
-            <li><a href="/cookies">Cookies</a></li>
-          </ul>
-        </div>
-
-        {/* Newsletter section commented out for future use */}
-        {/* <div className="footer-col">
-          <h4 className="footer-col-title">Mantente informado</h4>
-          <p className="footer-newsletter-text">
-            Recibe novedades sobre nuestras soluciones.
-          </p>
-          <form className="footer-newsletter-form" onSubmit={handleSubmit}>
-            <input
-              type="email"
-              placeholder="Tu correo electrónico"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <button type="submit">Suscribirse →</button>
-          </form>
-          <p className="footer-unsubscribe">
-            Puedes darte de baja en cualquier momento.
-            <br />
-            <a href="/unsubscribe" className="footer-unsubscribe-link">
-              Darse de baja de comunicaciones
-            </a>
-          </p>
-        </div> */}
-      </div>
-
-      <div className="footer-bottom">
-        <div className="footer-bottom-content">
-          <p className="footer-copyright-secondary">
-            © 2026 Céntrica. Todos los derechos reservados.
+        <p className="footer-description">
+          Impulsamos tu éxito a través de la innovación inteligente.
+        </p>
+        <div className="footer-contact-info">
+          <EmailLink className="footer-correo">
+            <Mail size={16} aria-hidden="true" />
+            {/* <wbr> tras la @: en pantallas angostas parte ahí y no a mitad de palabra */}
+            <span>{usuarioCorreo}@<wbr />{dominioCorreo}</span>
+          </EmailLink>
+          <WhatsAppLink>
+            <WhatsAppIcon size={16} />
+            {CONTACTO.telefono}
+          </WhatsAppLink>
+          <p>
+            <MapPin size={16} aria-hidden="true" />
+            Medellín, Colombia
           </p>
         </div>
       </div>
-    </footer>
-  );
-};
+
+      <FooterLinks title="Navegación" links={NAV_LINKS} />
+      <FooterLinks title="Legal" links={LEGAL_LINKS} />
+
+      {/* Newsletter pendiente: los estilos .footer-newsletter-* siguen en layout.css */}
+    </div>
+
+    <div className="footer-bottom">
+      <p className="footer-copyright-secondary">
+        © {new Date().getFullYear()} Céntrica. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+);
 
 export default Footer;

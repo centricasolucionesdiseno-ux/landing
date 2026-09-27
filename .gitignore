@@ -1,0 +1,28 @@
+# Dependencias (se instalan con npm install)
+node_modules/
+
+# Builds
+dist/
+dist-ssr/
+
+# Variables de entorno y archivos locales
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema / editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Instaladores descargados por error dentro del repo
+*.deb
+*.exe
+*.msi

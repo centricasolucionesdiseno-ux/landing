@@ -1,0 +1,41 @@
+import { CONTACTO } from '../config/agenda';
+
+// Solo estos destinos externos: nada del enlace depende de datos sin codificar
+const WHATSAPP_URL = 'https://wa.me/';
+const GMAIL_URL = 'https://mail.google.com/mail/';
+
+// Gmail/WhatsApp Web y los clientes de correo aceptan URLs de ~2.000 caracteres
+const MAX_CUERPO = 1200;
+
+/** Computador (mouse y pantalla ancha): Gmail web. Celular/tablet: app de correo. */
+const esComputador = () =>
+  typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+const recortar = (texto = '') => (texto.length > MAX_CUERPO ? `${texto.slice(0, MAX_CUERPO)}…` : texto);
+
+/** Enlace de WhatsApp (app en el celular, WhatsApp Web/escritorio en el computador). */
+export const enlaceWhatsApp = (mensaje = CONTACTO.mensajeWhatsApp) =>
+  `${WHATSAPP_URL}${CONTACTO.whatsapp}?text=${encodeURIComponent(recortar(mensaje))}`;
+
+/**
+ * Enlace para escribir un correo. En computador abre la ventana de redactar
+ * de Gmail en una pestaña nueva; en celular usa mailto: (app de correo).
+ * Devuelve { href, externo } para decidir target/rel en el <a>.
+ */
+export const enlaceCorreo = ({ para = CONTACTO.correo, asunto = '', cuerpo = '' } = {}) => {
+  if (esComputador()) {
+    const params = new URLSearchParams({ view: 'cm', fs: '1', to: para });
+    if (asunto) params.set('su', asunto);
+    if (cuerpo) params.set('body', recortar(cuerpo));
+    return { href: `${GMAIL_URL}?${params}`, externo: true };
+  }
+  // mailto: necesita %20 (no "+") para los espacios: encodeURIComponent
+  const partes = [
+    asunto && `subject=${encodeURIComponent(asunto)}`,
+    cuerpo && `body=${encodeURIComponent(recortar(cuerpo))}`
+  ].filter(Boolean);
+  return { href: `mailto:${para}${partes.length ? `?${partes.join('&')}` : ''}`, externo: false };
+};
+
+/** Atributos seguros para enlaces que abren otra pestaña (evita tabnabbing y fuga de referer). */
+export const PESTANA_NUEVA = { target: '_blank', rel: 'noopener noreferrer' };

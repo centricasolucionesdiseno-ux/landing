@@ -1,0 +1,437 @@
+/* ========== RESET & BASE ========== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  font-family: 'Open Sans Variable', 'Open Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: rgba(var(--accent-rgb), 0.3);
+}
+
+#root {
+  width: 100%;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* clip (no hidden) para no romper el header sticky */
+  overflow-x: clip;
+}
+
+main {
+  flex: 1;
+}
+
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 2000;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ========== CONTENEDORES ========== */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  /* safe-area: respeta el notch de iPhone en horizontal */
+  padding-inline: max(var(--gutter), env(safe-area-inset-left)) max(var(--gutter), env(safe-area-inset-right));
+}
+
+.section {
+  padding: var(--section-y) 0;
+}
+
+.section-sm {
+  padding: 3rem 0;
+}
+
+.section-lg {
+  padding: 7rem 0;
+}
+
+/* ========== FONDOS ========== */
+.bg-light {
+  background: var(--bg-soft);
+}
+
+.bg-white {
+  background: var(--surface);
+}
+
+/* Secciones azules con "blobs" de luz que se desplazan lentamente */
+.bg-primary,
+.section-glow {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--grad-primary);
+  color: #fff;
+}
+
+.section-glow {
+  background: var(--grad-deep);
+}
+
+.bg-primary::before,
+.bg-primary::after,
+.section-glow::before,
+.section-glow::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: min(520px, 90vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: blob-drift 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.bg-primary::before,
+.section-glow::before {
+  top: -180px;
+  left: -140px;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.35) 0%, transparent 65%);
+}
+
+.bg-primary::after,
+.section-glow::after {
+  right: -160px;
+  bottom: -220px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.14) 0%, transparent 65%);
+  animation-delay: -9s;
+  animation-duration: 22s;
+}
+
+@media (max-width: 768px) {
+  .bg-primary::before,
+  .bg-primary::after,
+  .section-glow::before,
+  .section-glow::after {
+    animation: none;
+  }
+}
+
+@keyframes blob-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 40px) scale(1.15); }
+  100% { transform: translate(-40px, 80px) scale(0.95); }
+}
+
+/* ========== TÍTULOS ========== */
+.section-title {
+  text-align: center;
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 3rem;
+  color: var(--heading);
+  text-wrap: balance;
+}
+
+.section-title span {
+  color: var(--heading-span);
+}
+
+/* Barra de acento bajo el título */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 1rem auto 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--brand), var(--accent));
+  transform-origin: center;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .section-title::after {
+      animation: bar-grow linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 30%;
+    }
+  }
+}
+
+@keyframes bar-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.section-title--light {
+  color: #fff;
+}
+
+.section-title--light span {
+  color: var(--accent);
+}
+
+.section-title--light::after {
+  background: linear-gradient(90deg, #fff, var(--accent));
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: clamp(1rem, 0.95rem + 0.4vw, 1.2rem);
+  color: var(--text-soft);
+  max-width: 800px;
+  margin: -1.75rem auto 3rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.section-subtitle--light {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.section-subtitle--accent {
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.section-subtitle--lg {
+  font-size: clamp(1.2rem, 1rem + 1vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.text-lead {
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--text-muted);
+  text-align: justify;
+  hyphens: auto;
+}
+
+.text-lead + .text-lead {
+  margin-top: 1rem;
+}
+
+.text-justify {
+  text-align: justify;
+  hyphens: auto;
+}
+
+@media (max-width: 600px) {
+  .text-lead,
+  .text-justify {
+    text-align: left;
+  }
+}
+
+/* ========== GRIDS ========== */
+.grid-2,
+.grid-3,
+.grid-auto {
+  display: grid;
+  gap: var(--grid-gap);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Flex en vez de grid: así la card que queda sola en la última fila se
+   centra (p. ej. 3 cards en tablet = 2 arriba + 1 centrada abajo) */
+.grid-auto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.grid-auto > * {
+  flex: 1 1 280px;
+  max-width: calc(50% - var(--grid-gap) / 2);
+}
+
+/* Si hay espacio para 3 columnas, cada card ocupa un tercio */
+@media (min-width: 960px) {
+  .grid-auto > * {
+    max-width: calc((100% - 2 * var(--grid-gap)) / 3);
+  }
+
+  .grid-auto:has(> :nth-child(2):last-child) > *,
+  .grid-auto:has(> :nth-child(4):last-child) > * {
+    max-width: calc(50% - var(--grid-gap) / 2);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-auto > * {
+    max-width: 100%;
+  }
+}
+
+/* Columna de texto + imagen */
+.split {
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+/* Grid de 2 columnas dentro de otra columna */
+.grid-nested {
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* Número impar de cards en 2 columnas: la última va centrada */
+@media (min-width: 901px) {
+  .grid-2 > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - var(--grid-gap)) / 2);
+  }
+}
+
+/* Grid que continúa a otro dentro de la misma sección */
+.grid-follow {
+  margin-top: var(--grid-gap);
+}
+
+@media (max-width: 900px) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-2.grid-nested {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .grid-2.grid-nested {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== APARICIÓN AL HACER SCROLL ==========
+   usePageAnimations pone .reveal-pending solo a lo que está debajo del
+   pliegue y .is-revealed al entrar en pantalla (con retraso escalonado). */
+.reveal-pending {
+  opacity: 0;
+  transform: var(--reveal-from, translateY(40px));
+  transition:
+    opacity 0.8s var(--ease-out) var(--reveal-delay, 0s),
+    transform 0.8s var(--ease-out) var(--reveal-delay, 0s);
+}
+
+[data-reveal='left'] { --reveal-from: translateX(-50px); }
+[data-reveal='right'] { --reveal-from: translateX(50px); }
+[data-reveal='zoom'] { --reveal-from: scale(0.92); }
+
+.reveal-pending.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ========== LOADER ========== */
+.page-loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  /* Pantalla completa: el footer no se ve mientras carga la página, así no
+     "salta" hacia abajo cuando llega el contenido (CLS) */
+  min-height: 100svh;
+  font-size: 1.1rem;
+  color: var(--heading);
+}
+
+.page-loader-spinner {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 4px solid rgba(var(--accent-rgb), 0.2);
+  border-top-color: var(--brand);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========== MOVIMIENTO REDUCIDO ========== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Texto solo para lectores de pantalla */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

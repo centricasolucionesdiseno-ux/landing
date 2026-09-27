@@ -1,0 +1,69 @@
+/* ========== TOKENS ========== */
+:root {
+  /* Marca */
+  --brand: #0e58a9;
+  --brand-light: #1a6bc9;
+  --brand-dark: #0a4a8a;
+  --accent: #4a9eff;
+  --brand-rgb: 14, 88, 169;
+  --accent-rgb: 74, 158, 255;
+
+  /* Superficies y texto (modo claro) */
+  --bg: #ffffff;
+  --bg-soft: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  --surface: #ffffff;
+  --surface-hover: #f5f5f5;
+  --text: #333333;
+  --text-muted: #555555;
+  --text-soft: #666666;
+  --heading: var(--brand);
+  --heading-span: #333333;
+  --border: #e0e0e0;
+  --header-bg: rgba(255, 255, 255, 0.97);
+
+  /* Degradados de secciones azules */
+  --grad-primary: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
+  --grad-deep: linear-gradient(135deg, #0a4a8a 0%, #0e58a9 50%, #1a6bc9 100%);
+
+  /* Sombras */
+  --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.08);
+  --shadow-float: 0 20px 40px rgba(14, 88, 169, 0.18);
+  --shadow-highlight: 0 12px 25px rgba(14, 88, 169, 0.2);
+  --border-float: var(--brand);
+  --border-highlight: rgba(14, 88, 169, 0.3);
+
+  /* Forma y movimiento */
+  --radius: 20px;
+  --radius-sm: 12px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Espaciado fluido */
+  --container: 1200px;
+  --gutter: clamp(1rem, 4vw, 1.5rem);
+  --section-y: clamp(3rem, 7vw, 5rem);
+  --grid-gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+body.dark-mode {
+  --bg: #1a1a1a;
+  --bg-soft: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+  --surface: #1e1e2e;
+  --surface-hover: #2c2c2c;
+  --text: #f0f0f0;
+  --text-muted: #cccccc;
+  --text-soft: #aaaaaa;
+  --heading: var(--accent);
+  --heading-span: #f0f0f0;
+  --border: #333333;
+  --header-bg: rgba(10, 10, 10, 0.96);
+
+  --grad-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  --grad-deep: linear-gradient(135deg, #0a1929 0%, #16213e 50%, #1a2942 100%);
+
+  --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.3);
+  --shadow-float: 0 20px 40px rgba(74, 158, 255, 0.15);
+  --shadow-highlight: 0 12px 25px rgba(74, 158, 255, 0.2);
+  --border-float: var(--accent);
+  --border-highlight: rgba(74, 158, 255, 0.3);
+}

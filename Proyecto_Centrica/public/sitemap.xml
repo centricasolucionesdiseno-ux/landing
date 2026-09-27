@@ -37,8 +37,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://centricasoluciones.com/evaluaciones-calidad</loc>
-    <lastmod>2026-09-09</lastmod>
+    <loc>https://centricasoluciones.com/consultoria-digital</loc>
+    <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -47,6 +47,12 @@
     <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centricasoluciones.com/privacidad</loc>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://centricasoluciones.com/blog</loc>
