@@ -16,7 +16,7 @@ import Concejo500 from '../../assets/images/Imagenes/Sicovi-Concejo-500.webp';
 import Concejo1000 from '../../assets/images/Imagenes/Sicovi-Concejo-1000.webp';
 
 const SEO = {
-  title: 'SICOVI - Sistema de Gestión Legislativa para Concejos | Céntrica',
+  title: 'SICOVI: Gestión Legislativa para Concejos | Céntrica',
   description: 'SICOVI centraliza la gestión legislativa de Concejos Municipales y Departamentales de Colombia. Transparencia, trazabilidad y eficiencia operativa.',
   ogTitle: 'SICOVI - Sistema Concejo Visible | Céntrica',
   ogDescription: 'Plataforma integral de gestión legislativa para la transparencia ciudadana de los Concejos de Colombia.',
@@ -101,7 +101,7 @@ const OTROS_SERVICIOS = [
   },
   {
     icon: Brain,
-    title: 'Análisis con IA',
+    title: 'Soluciones de IA',
     text: 'Implementación de Inteligencia Artificial para automatizar procesos, anticipar escenarios y transformar datos en decisiones precisas.',
     to: '/analisis-ia'
   },

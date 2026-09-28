@@ -8,10 +8,27 @@ export const EMPRESA = {
   domicilio: `${UBICACION.direccion}, Colombia`,
   correo: CONTACTO.correo,
   telefono: CONTACTO.telefono,
-  sitio: 'centricasoluciones.com'
+  sitio: 'centricasoluciones.com',
+  // Ficha pública de la empresa (enlazada desde el footer)
+  ficha: 'https://directorio-empresas.einforma.co/informacion-empresa/centrica-soluciones-innovadoras-sas'
 };
 
 export const PRIVACIDAD = {
+  vigencia: '24 de abril de 2026',
+  actualizacion: '27 de septiembre de 2026'
+};
+
+export const TERMINOS = {
+  vigencia: '24 de abril de 2026',
+  actualizacion: '27 de septiembre de 2026'
+};
+
+export const AVISO_LEGAL = {
+  vigencia: '24 de abril de 2026',
+  actualizacion: '27 de septiembre de 2026'
+};
+
+export const COOKIES = {
   vigencia: '24 de abril de 2026',
   actualizacion: '27 de septiembre de 2026'
 };

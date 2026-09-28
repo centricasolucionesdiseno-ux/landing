@@ -7,9 +7,8 @@ const GMAIL_URL = 'https://mail.google.com/mail/';
 // Gmail/WhatsApp Web y los clientes de correo aceptan URLs de ~2.000 caracteres
 const MAX_CUERPO = 1200;
 
-/** Computador (mouse y pantalla ancha): Gmail web. Celular/tablet: app de correo. */
-const esComputador = () =>
-  typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+/** Computador (mouse): Gmail web. Celular/tablet: app de correo. Ver useMediaQuery. */
+export const CONSULTA_COMPUTADOR = '(hover: hover) and (pointer: fine)';
 
 const recortar = (texto = '') => (texto.length > MAX_CUERPO ? `${texto.slice(0, MAX_CUERPO)}…` : texto);
 
@@ -22,8 +21,8 @@ export const enlaceWhatsApp = (mensaje = CONTACTO.mensajeWhatsApp) =>
  * de Gmail en una pestaña nueva; en celular usa mailto: (app de correo).
  * Devuelve { href, externo } para decidir target/rel en el <a>.
  */
-export const enlaceCorreo = ({ para = CONTACTO.correo, asunto = '', cuerpo = '' } = {}) => {
-  if (esComputador()) {
+export const enlaceCorreo = ({ para = CONTACTO.correo, asunto = '', cuerpo = '', computador = false } = {}) => {
+  if (computador) {
     const params = new URLSearchParams({ view: 'cm', fs: '1', to: para });
     if (asunto) params.set('su', asunto);
     if (cuerpo) params.set('body', recortar(cuerpo));

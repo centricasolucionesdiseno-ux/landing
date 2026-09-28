@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/common/ScrollToTop';
@@ -11,7 +11,8 @@ const MAIN_PAGES = {
   FabricaDeSoftware: () => import('./pages/FabricaDeSoftware'),
   NebulaERP: () => import('./pages/NebulaERP'),
   Sicovi: () => import('./pages/Sicovi'),
-  ConsultoriaDigital: () => import('./pages/ConsultoriaDigital')
+  ConsultoriaDigital: () => import('./pages/ConsultoriaDigital'),
+  AnalisisConIA: () => import('./pages/AnalisisConIA')
 };
 
 const SobreNosotros = lazy(MAIN_PAGES.SobreNosotros);
@@ -20,9 +21,12 @@ const FabricaDeSoftware = lazy(MAIN_PAGES.FabricaDeSoftware);
 const NebulaERP = lazy(MAIN_PAGES.NebulaERP);
 const Sicovi = lazy(MAIN_PAGES.Sicovi);
 const ConsultoriaDigital = lazy(MAIN_PAGES.ConsultoriaDigital);
-const AnalisisConIA = lazy(() => import('./pages/AnalisisConIA'));
+const AnalisisConIA = lazy(MAIN_PAGES.AnalisisConIA);
 const AgendaTuCita = lazy(() => import('./pages/AgendaTuCita'));
 const Privacidad = lazy(() => import('./pages/Privacidad'));
+const TerminosServicio = lazy(() => import('./pages/TerminosServicio'));
+const AvisoLegal = lazy(() => import('./pages/AvisoLegal'));
+const PoliticaCookies = lazy(() => import('./pages/PoliticaCookies'));
 const EnConstruccion = lazy(() => import('./pages/EnConstruccion'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -59,8 +63,9 @@ function App() {
     };
   }, []);
 
+  // El Router lo pone main.jsx (navegador) o entry-server.jsx (HTML del build)
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="App">
         <a className="skip-link" href="#main">Saltar al contenido</a>
@@ -77,6 +82,9 @@ function App() {
               <Route path="/consultoria-digital" element={<ConsultoriaDigital />} />
               <Route path="/contacto" element={<AgendaTuCita />} />
               <Route path="/privacidad" element={<Privacidad />} />
+              <Route path="/terservicios" element={<TerminosServicio />} />
+              <Route path="/legal" element={<AvisoLegal />} />
+              <Route path="/cookies" element={<PoliticaCookies />} />
               <Route path="/blog" element={<EnConstruccion title="Blog" />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
@@ -84,7 +92,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </Router>
+    </>
   );
 }
 

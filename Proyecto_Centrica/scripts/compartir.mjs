@@ -1,6 +1,7 @@
 /**
  * Publica la web con un enlace temporal accesible desde cualquier red:
- *   1. compila el sitio (vite build)
+ *   1. compila el sitio (npm run build: incluye el HTML de cada página y borra
+ *      los archivos internos del build, igual que en producción)
  *   2. lo sirve localmente (vite preview, puerto 4173)
  *   3. abre un túnel de Cloudflare y muestra el enlace https://...trycloudflare.com
  *
@@ -12,6 +13,7 @@ import { spawn, spawnSync } from 'node:child_process';
 const PORT = Number(process.env.PUERTO) || 4173; // PUERTO=4180 npm run compartir, si el 4173 está ocupado
 const isWindows = process.platform === 'win32';
 const npx = isWindows ? 'npx.cmd' : 'npx';
+const npm = isWindows ? 'npm.cmd' : 'npm';
 
 const hasCloudflared = spawnSync('cloudflared', ['--version'], { stdio: 'ignore', shell: isWindows }).status === 0;
 if (!hasCloudflared) {
@@ -24,7 +26,7 @@ if (!hasCloudflared) {
 }
 
 console.log('▸ Compilando el sitio...');
-const build = spawnSync(npx, ['vite', 'build'], { stdio: 'inherit', shell: isWindows });
+const build = spawnSync(npm, ['run', 'build'], { stdio: 'inherit', shell: isWindows });
 if (build.status !== 0) process.exit(build.status ?? 1);
 
 const LOCAL_URL = `http://localhost:${PORT}`;
@@ -92,18 +94,39 @@ const copyToClipboard = (text) =>
     return result.status === 0;
   });
 
-// cloudflared escribe el enlace en stderr; lo mostramos destacado
-let announced = false;
-const findUrl = (chunk) => {
-  const url = chunk.toString().match(/https:\/\/[a-z0-9-]+\.trycloudflare\.com/);
-  if (url && !announced) {
-    announced = true;
-    const copied = copyToClipboard(url[0]);
-    console.log(`\n  ✔ Enlace público: ${url[0]}`);
-    console.log(copied ? '    (copiado al portapapeles: pégalo con Ctrl + V)' : '    Cópialo completo: termina en .trycloudflare.com');
-    console.log('    ⚠ El dominio correcto termina en ".com". Si ves ".co" es un sitio falso.');
-    console.log('    Compártelo con quien quieras. Ctrl + C para cerrarlo.\n');
+// Cloudflare registra el nombre del túnel en el DNS unos segundos después de
+// crearlo. Si se abre antes, el navegador responde "no se encuentra el sitio"
+// y guarda ese error en memoria: se espera a que el enlace responda de verdad.
+const ESPERA_MAX_MS = 90000;
+const esperarDisponible = async (url) => {
+  const limite = Date.now() + ESPERA_MAX_MS;
+  while (Date.now() < limite && !stopping) {
+    try {
+      const respuesta = await fetch(url, { method: 'HEAD', signal: AbortSignal.timeout(5000) });
+      if (respuesta.ok) return true;
+    } catch {
+      // aún no resuelve el DNS o el túnel no está listo: reintentar
+    }
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
+  return false;
+};
+
+// cloudflared escribe el enlace en stderr; lo mostramos destacado cuando ya funciona
+let announced = false;
+const findUrl = async (chunk) => {
+  const url = chunk.toString().match(/https:\/\/[a-z0-9-]+\.trycloudflare\.com/);
+  if (!url || announced) return;
+  announced = true;
+  console.log('▸ Esperando a que el enlace esté disponible en internet (unos segundos)...');
+  const listo = await esperarDisponible(url[0]);
+  if (stopping) return;
+  const copied = copyToClipboard(url[0]);
+  console.log(`\n  ✔ Enlace público: ${url[0]}`);
+  if (!listo) console.log('    (aún no responde: si el navegador dice "no se encuentra", espera y recarga)');
+  console.log(copied ? '    (copiado al portapapeles: pégalo con Ctrl + V)' : '    Cópialo completo: termina en .trycloudflare.com');
+  console.log('    ⚠ El dominio correcto termina en ".com". Si ves ".co" es un sitio falso.');
+  console.log('    Compártelo con quien quieras. Ctrl + C para cerrarlo.\n');
 };
 tunnel.stdout.on('data', findUrl);
 tunnel.stderr.on('data', findUrl);

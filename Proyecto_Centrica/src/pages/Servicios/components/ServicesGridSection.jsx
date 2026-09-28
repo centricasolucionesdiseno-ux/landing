@@ -23,7 +23,7 @@ const SERVICES = [
   },
   {
     icon: Brain,
-    title: 'Análisis con IA',
+    title: 'Soluciones de IA',
     text: 'Implementamos inteligencia artificial para automatizar procesos, anticipar escenarios y transformar datos en decisiones precisas.',
     to: '/analisis-ia'
   },

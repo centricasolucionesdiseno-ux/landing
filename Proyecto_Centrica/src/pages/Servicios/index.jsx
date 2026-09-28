@@ -5,8 +5,8 @@ import ServicesGridSection from './components/ServicesGridSection';
 import ModeloEntregaSection from './components/ModeloEntregaSection';
 
 const SEO = {
-  title: 'Servicios - Soluciones Empresariales | Céntrica',
-  description: 'Descubre nuestros servicios tecnológicos: Fábrica de software, Nebula ERP, Sicovi, Análisis con IA y Consultoría Digital.',
+  title: 'Servicios de Tecnología para Empresas | Céntrica',
+  description: 'Software a la medida, ERP, gestión legislativa, inteligencia artificial y consultoría digital para empresas y entidades públicas en Colombia.',
   ogTitle: 'Servicios | Céntrica',
   ogDescription: 'Soluciones tecnológicas diseñadas para acelerar tu negocio, desde el desarrollo ágil hasta la consultoría estratégica.',
   path: '/servicios'

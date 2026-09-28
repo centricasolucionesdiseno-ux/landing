@@ -1,5 +1,6 @@
 import { CONTACTO } from '../../config/agenda';
-import { enlaceCorreo, enlaceWhatsApp, PESTANA_NUEVA } from '../../utils/contactLinks';
+import { CONSULTA_COMPUTADOR, enlaceCorreo, enlaceWhatsApp, PESTANA_NUEVA } from '../../utils/contactLinks';
+import useMediaQuery from '../../hooks/useMediaQuery';
 
 // Logo de WhatsApp (Simple Icons, 24x24): Lucide 1.x no incluye logos de marcas
 const WHATSAPP_PATH =
@@ -31,7 +32,8 @@ const CorreoPartible = ({ correo }) => {
 
 /** Correo: Gmail en el computador, app de correo en el celular. */
 export const EmailLink = ({ para = CONTACTO.correo, asunto, cuerpo, className = '', children }) => {
-  const { href, externo } = enlaceCorreo({ para, asunto, cuerpo });
+  const computador = useMediaQuery(CONSULTA_COMPUTADOR);
+  const { href, externo } = enlaceCorreo({ para, asunto, cuerpo, computador });
   return (
     <a
       href={href}

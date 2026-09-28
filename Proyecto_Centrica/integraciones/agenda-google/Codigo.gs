@@ -8,7 +8,25 @@
  *   3. envía al gerente un correo con el motivo y los datos de la persona
  * Si no hay espacio libre, igual le avisa al gerente para no perder la solicitud.
  *
- * Instalación: ver README.md
+ * INSTALACIÓN (una vez, con la cuenta del gerente):
+ *  1. script.google.com -> Proyecto nuevo -> pegar este archivo.
+ *  2. Servicios (+) -> Google Calendar API -> Agregar.
+ *  3. Ejecutar probarAgenda() y aceptar los permisos.
+ *  4. Implementar -> Nueva implementación -> Aplicación web
+ *     (Ejecutar como: Yo · Acceso: Cualquier usuario) y copiar la URL /exec
+ *     en VITE_AGENDA_ENDPOINT del archivo .env del sitio.
+ *
+ * SEGURIDAD (el script actúa en nombre de la cuenta del gerente):
+ *  - La invitación que recibe el visitante NO lleva texto escrito por él
+ *    (evita usar la cuenta de la empresa para enviar phishing/spam).
+ *  - Límites globales por hora y por día, y por correo.
+ *  - Verificación anti-bots con Cloudflare Turnstile (recomendado):
+ *    1. En dash.cloudflare.com -> Turnstile, crear un widget para
+ *       centricasoluciones.com y copiar la clave del sitio y la secreta.
+ *    2. Aquí: Configuración del proyecto -> Propiedades del script ->
+ *       agregar TURNSTILE_SECRET = <clave secreta>. Nunca en el código.
+ *    3. En el sitio: VITE_TURNSTILE_SITEKEY = <clave del sitio> en .env.
+ *    Si TURNSTILE_SECRET no está configurada, la verificación se omite.
  */
 
 const CONFIG = {
@@ -27,8 +45,13 @@ const CONFIG = {
   MAX_DIAS_RANGO: 60,
   MAX_DIAS_ADELANTE: 90,
   MAX_SOLICITUDES_POR_CORREO_DIA: 3,
+  MAX_SOLICITUDES_GLOBAL_HORA: 8,
+  MAX_SOLICITUDES_GLOBAL_DIA: 25,
+  MAX_BYTES: 8000, // una solicitud legítima pesa ~1 KB
+  // Turnstile: solo se aceptan verificaciones emitidas para estos dominios
+  DOMINIOS_PERMITIDOS: ['centricasoluciones.com', 'www.centricasoluciones.com'],
   CALENDARIO_FESTIVOS: 'es.co#holiday@group.v.calendar.google.com',
-  SERVICIOS: ['Fábrica de software', 'Nebula ERP', 'Sicovi', 'Análisis con IA', 'Consultoría digital', 'Otro'],
+  SERVICIOS: ['Fábrica de software', 'Nebula ERP', 'Sicovi', 'Soluciones de IA', 'Consultoría digital', 'Otro'],
   CARGOS: ['CEO', 'CTO', 'Director TI', 'Gerente', 'Otro']
 };
 
@@ -36,7 +59,14 @@ const CONFIG = {
 
 function doPost(e) {
   try {
-    const datos = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+    const bruto = (e && e.postData && e.postData.contents) || '';
+    if (bruto.length > CONFIG.MAX_BYTES) {
+      return responder({ ok: false, codigo: 'datos_invalidos', mensaje: 'La solicitud es demasiado grande.' });
+    }
+    const datos = JSON.parse(bruto || '{}');
+    if (!datos || typeof datos !== 'object' || Array.isArray(datos)) {
+      return responder({ ok: false, codigo: 'datos_invalidos', mensaje: 'Solicitud no válida.' });
+    }
 
     // Campo trampa para bots: si viene lleno, se responde "ok" sin hacer nada
     if (datos.website) return responder({ ok: true, estado: 'agendada' });
@@ -44,18 +74,22 @@ function doPost(e) {
     const error = validar(datos);
     if (error) return responder({ ok: false, codigo: 'datos_invalidos', mensaje: error });
 
-    if (superaLimite(datos.correo)) {
+    if (!verificarHumano(datos.turnstile)) {
       return responder({
         ok: false,
-        codigo: 'limite',
-        mensaje: 'Ya recibimos varias solicitudes con este correo hoy. Te contactaremos pronto.'
+        codigo: 'verificacion',
+        mensaje: 'No pudimos verificar que la solicitud la envía una persona. Recarga la página e inténtalo de nuevo.'
       });
     }
 
-    // Evita que dos solicitudes simultáneas tomen el mismo espacio
+    // El lock evita que dos solicitudes simultáneas tomen el mismo espacio o
+    // se salten los límites
     const lock = LockService.getScriptLock();
     lock.waitLock(20000);
     try {
+      const limite = superaLimites(datos.correo);
+      if (limite) return responder({ ok: false, codigo: 'limite', mensaje: limite });
+
       const espacio = buscarEspacio(datos);
       if (!espacio) {
         notificarGerenteSinEspacio(datos);
@@ -94,7 +128,14 @@ function responder(objeto) {
 
 // ---------- Validación ----------
 
-const texto = (valor, max) => (typeof valor === 'string' ? valor.trim().slice(0, max) : '');
+// Caracteres de control, invisibles (zero-width) y de dirección de texto (bidi):
+// sirven para ocultar o disfrazar contenido en correos y asuntos
+const INVISIBLES_RE = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u200B-\u200F\u202A-\u202E\u2060-\u2064\u2066-\u2069\uFEFF]/g;
+const texto = (valor, max, multilinea) => {
+  if (typeof valor !== 'string') return '';
+  const limpio = (multilinea ? valor.replace(/\r\n?/g, '\n') : valor.replace(/[\r\n\t]+/g, ' ')).replace(INVISIBLES_RE, '');
+  return limpio.trim().slice(0, max);
+};
 const FECHA_RE = /^\d{4}-\d{2}-\d{2}$/;
 const CORREO_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -118,7 +159,7 @@ function validar(d) {
   d.empresa = texto(d.empresa, 100);
   d.cargo = texto(d.cargo, 40);
   d.servicio = texto(d.servicio, 60);
-  d.mensaje = texto(d.mensaje, 1000);
+  d.mensaje = texto(d.mensaje, 1000, true);
 
   if (d.nombre.length < 2) return 'Escribe tu nombre completo.';
   if (!CORREO_RE.test(d.correo)) return 'El correo no es válido.';
@@ -138,12 +179,44 @@ function validar(d) {
   return '';
 }
 
-function superaLimite(correo) {
+// Límites globales (hora y día) y por correo. Devuelve el mensaje si se supera.
+function superaLimites(correo) {
   const cache = CacheService.getScriptCache();
-  const clave = 'agenda:' + correo;
-  const cuenta = Number(cache.get(clave) || 0) + 1;
-  cache.put(clave, String(cuenta), 86400);
-  return cuenta > CONFIG.MAX_SOLICITUDES_POR_CORREO_DIA;
+  const ahora = new Date();
+  const hora = 'agenda:global:h:' + Utilities.formatDate(ahora, CONFIG.ZONA_HORARIA, 'yyyyMMddHH');
+  const dia = 'agenda:global:d:' + Utilities.formatDate(ahora, CONFIG.ZONA_HORARIA, 'yyyyMMdd');
+  const porCorreo = 'agenda:correo:' + Utilities.formatDate(ahora, CONFIG.ZONA_HORARIA, 'yyyyMMdd') + ':' + correo;
+  const actuales = cache.getAll([hora, dia, porCorreo]);
+  const n = (clave) => Number(actuales[clave] || 0);
+
+  if (n(hora) >= CONFIG.MAX_SOLICITUDES_GLOBAL_HORA || n(dia) >= CONFIG.MAX_SOLICITUDES_GLOBAL_DIA) {
+    return 'En este momento estamos recibiendo muchas solicitudes. Inténtalo más tarde o escríbenos por correo.';
+  }
+  if (n(porCorreo) >= CONFIG.MAX_SOLICITUDES_POR_CORREO_DIA) {
+    return 'Ya recibimos varias solicitudes con este correo hoy. Te contactaremos pronto.';
+  }
+  const nuevos = {};
+  nuevos[hora] = String(n(hora) + 1);
+  nuevos[dia] = String(n(dia) + 1);
+  nuevos[porCorreo] = String(n(porCorreo) + 1);
+  cache.putAll(nuevos, 90000);
+  return '';
+}
+
+// Cloudflare Turnstile: se verifica del lado de Google, nunca solo en el navegador.
+// Falla cerrado: cualquier error de verificación rechaza la solicitud.
+function verificarHumano(token) {
+  const secreto = PropertiesService.getScriptProperties().getProperty('TURNSTILE_SECRET');
+  if (!secreto) return true; // Turnstile sin configurar (ver instrucciones al inicio)
+  if (typeof token !== 'string' || !token || token.length > 2048) return false;
+  const respuesta = UrlFetchApp.fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'post',
+    payload: { secret: secreto, response: token },
+    muteHttpExceptions: true
+  });
+  if (respuesta.getResponseCode() !== 200) return false;
+  const resultado = JSON.parse(respuesta.getContentText());
+  return resultado.success === true && CONFIG.DOMINIOS_PERMITIDOS.indexOf(resultado.hostname) !== -1;
 }
 
 // ---------- Búsqueda de espacio libre ----------
@@ -190,29 +263,27 @@ function buscarEspacio(d) {
 // ---------- Creación de la reunión ----------
 
 function crearReunion(d, espacio) {
+  // La invitación la recibe el correo que escribió el visitante, que podría no
+  // ser suyo: por eso lleva solo texto fijo de Céntrica, nunca texto del
+  // formulario. Los detalles le llegan únicamente al gerente (notificarGerente).
+  const titulo = d.servicio ? `Reunión con Céntrica · ${d.servicio}` : 'Reunión con Céntrica';
   const descripcion = [
-    d.servicio ? `Servicio de interés: ${d.servicio}` : '',
+    'Reunión virtual con el equipo comercial de Céntrica, agendada desde centricasoluciones.com.',
     '',
-    'Motivo de la cita:',
-    d.mensaje,
-    '',
-    `Solicitada por: ${d.nombre} <${d.correo}>`,
-    `Empresa: ${d.empresa}`,
-    d.cargo ? `Cargo: ${d.cargo}` : '',
-    '',
-    'Agendada desde el formulario "Agenda tu cita" de centricasoluciones.com'
-  ]
-    .filter((linea, i, arr) => linea !== '' || arr[i - 1] !== '')
-    .join('\n');
+    'Si no solicitaste esta reunión, puedes rechazar o ignorar esta invitación.'
+  ].join('\n');
 
   // Servicio avanzado "Google Calendar API": necesario para crear el enlace de Meet
   return Calendar.Events.insert(
     {
-      summary: `Reunión Céntrica · ${d.servicio || 'Asesoría'} · ${d.empresa}`,
+      summary: titulo,
       description: descripcion,
       start: { dateTime: espacio.inicio.toISOString(), timeZone: CONFIG.ZONA_HORARIA },
       end: { dateTime: espacio.fin.toISOString(), timeZone: CONFIG.ZONA_HORARIA },
-      attendees: [{ email: d.correo, displayName: d.nombre }],
+      attendees: [{ email: d.correo }],
+      guestsCanInviteOthers: false,
+      guestsCanModify: false,
+      guestsCanSeeOtherGuests: false,
       conferenceData: {
         createRequest: { requestId: Utilities.getUuid(), conferenceSolutionKey: { type: 'hangoutsMeet' } }
       },

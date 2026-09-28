@@ -412,15 +412,43 @@ section[id] {
   to { transform: rotate(360deg); }
 }
 
-/* ========== MOVIMIENTO REDUCIDO ========== */
+/* ========== MOVIMIENTO REDUCIDO ==========
+   Muchos equipos lo piden sin que el usuario lo sepa (Windows con "Efectos de
+   animación" apagados, modo de mejor rendimiento, escritorio remoto). En vez de
+   dejar la página quieta, se quita solo lo que desplaza o se mueve en bucle
+   (flotaciones, parallax, inclinación 3D, deslizamientos) y se conservan los
+   fundidos suaves y los cambios de color: la página sigue viva sin marear. */
 @media (prefers-reduced-motion: reduce) {
-  *,
+  *:not([data-hero-item]),
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
+
+  *,
+  *::before,
+  *::after {
+    transition-property: opacity, color, background-color, border-color, box-shadow, text-decoration-color !important;
+  }
+
+  /* Aparición al hacer scroll: solo fundido, sin desplazarse ni escalar */
+  .reveal-pending {
+    --reveal-from: none;
+  }
+
+  /* Entrada del hero: fundido escalonado */
+  [data-hero-item] {
+    animation: hero-fade 0.7s ease-out both;
+  }
+
+  [data-hero-item]:nth-child(2) { animation-delay: 0.12s; }
+  [data-hero-item]:nth-child(3) { animation-delay: 0.24s; }
+  [data-hero-item]:nth-child(4) { animation-delay: 0.36s; }
+}
+
+@keyframes hero-fade {
+  from { opacity: 0; }
 }
 
 /* Texto solo para lectores de pantalla */

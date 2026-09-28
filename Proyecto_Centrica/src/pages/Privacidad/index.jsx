@@ -1,13 +1,13 @@
 import {
   Shield, ShieldCheck, Calendar, Building2, Database, CircleCheck, Share2, Lock,
-  Cookie, Users, Ban, EyeOff, UserCheck, Mail
+  Cookie, Users, Ban, EyeOff, UserCheck
 } from 'lucide-react';
 import LegalPage from '../../components/legal/LegalPage';
+import NebulinaAyuda from '../../components/common/NebulinaAyuda';
 import { EmailLink } from '../../components/common/ContactLinks';
 import { heroImage } from '../../utils/heroImages';
 import { EMPRESA, PRIVACIDAD } from '../../config/legal';
-import Nebulina260 from '../../assets/images/Imagenes/Nebulina-Hola-260.webp';
-import Nebulina500 from '../../assets/images/Imagenes/Nebulina-Hola-500.webp';
+import { TURNSTILE_SITEKEY } from '../../config/agenda';
 
 const SEO = {
   title: 'Política de Privacidad y Tratamiento de Datos | Céntrica',
@@ -136,6 +136,12 @@ const SECCIONES = [
             correo corporativo de Céntrica para crear la reunión de Google Meet y enviar las invitaciones.
           </li>
           <li><strong>Proveedor de alojamiento del sitio web:</strong> almacena y entrega las páginas del sitio.</li>
+          {TURNSTILE_SITEKEY && (
+            <li>
+              <strong>Cloudflare (Turnstile):</strong> verifica que el formulario de citas lo envía una persona y no un
+              programa automatizado. Procesa datos técnicos del navegador y no usa cookies.
+            </li>
+          )}
         </ul>
         <p>
           Algunos de estos proveedores almacenan información en servidores ubicados fuera de Colombia (por ejemplo, en Estados
@@ -188,7 +194,7 @@ const SECCIONES = [
         </p>
         <ul>
           <li>Tu preferencia de tema (claro u oscuro).</li>
-          <li>El borrador del formulario de citas, para que no pierdas lo escrito si recargas la página. Se borra al enviar la solicitud.</li>
+          <li>El borrador del formulario de citas, para que no pierdas lo escrito si recargas la página. Se borra al enviar la solicitud o al cerrar la pestaña.</li>
         </ul>
         <p>
           Puedes borrarlos en cualquier momento desde la configuración de tu navegador. Ten en cuenta que el mapa de Google
@@ -240,30 +246,6 @@ const Resumen = () => (
       ))}
     </ul>
   </div>
-);
-
-const NebulinaAyuda = () => (
-  <figure className="nebulina-ayuda" data-reveal="zoom">
-    <div className="nebulina-ayuda-media">
-      <img
-        src={Nebulina500}
-        srcSet={`${Nebulina260} 260w, ${Nebulina500} 500w`}
-        sizes="(max-width: 959px) 220px, 250px"
-        width="500"
-        height="500"
-        alt="Nebulina, la asistente virtual de Céntrica, saludando"
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
-    <figcaption>
-      <strong>¿Dudas sobre tus datos?</strong>
-      <span>Escríbenos y te respondemos en máximo 10 días hábiles.</span>
-      <EmailLink para={EMPRESA.correo} asunto="Habeas data" className="btn btn-primary">
-        <Mail size={18} aria-hidden="true" /> <span>Escribirnos</span>
-      </EmailLink>
-    </figcaption>
-  </figure>
 );
 
 const Privacidad = () => (

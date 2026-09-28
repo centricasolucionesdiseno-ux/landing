@@ -15,7 +15,11 @@ const MapaSection = () => (
           title={`Mapa: oficina de Céntrica en ${UBICACION.direccion}`}
           src={`https://www.google.com/maps?q=${coordenadas}&z=18&hl=es&output=embed`}
           loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
+          // Google solo recibe el dominio, no la dirección completa de la página
+          referrerPolicy="strict-origin-when-cross-origin"
+          // Aislado: puede mostrar el mapa y abrir Google Maps en otra pestaña,
+          // pero no navegar nuestra página, enviar formularios ni abrir diálogos
+          sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
           allowFullScreen
         />
       </div>

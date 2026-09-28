@@ -11,14 +11,15 @@ import FeatureCard from '../../components/ui/FeatureCard';
 import FlipCard from '../../components/ui/FlipCard';
 import MediaFrame from '../../components/ui/MediaFrame';
 import CTASection from '../../components/ui/CTASection';
+import StepsTimeline from '../../components/ui/StepsTimeline';
 import Consultoria560 from '../../assets/images/Imagenes/Consultoria-560.webp';
 import Consultoria1120 from '../../assets/images/Imagenes/Consultoria-1120.webp';
 import Equipo560 from '../../assets/images/Imagenes/Consultoria-Equipo-560.webp';
 import Equipo1120 from '../../assets/images/Imagenes/Consultoria-Equipo-1120.webp';
 
 const SEO = {
-  title: 'Consultoría Digital - Transformación Estratégica | Céntrica',
-  description: 'Consultoría digital para organizaciones: diagnóstico de madurez digital, hoja de ruta tecnológica, transformación de procesos, gestión del cambio, ciberseguridad y analítica de datos.',
+  title: 'Consultoría en Transformación Digital | Céntrica',
+  description: 'Consultoría de transformación digital en Colombia: diagnóstico de madurez, hoja de ruta tecnológica, procesos, gestión del cambio, ciberseguridad y datos.',
   ogTitle: 'Consultoría Digital | Céntrica',
   ogDescription: 'Acompañamos a las organizaciones en su evolución hacia la madurez digital con una adopción tecnológica eficiente, segura y alineada con sus objetivos.',
   path: '/consultoria-digital'
@@ -155,20 +156,7 @@ const ConsultoriaDigital = () => (
     <section className="section">
       <div className="container">
         <SectionHeader title={<>Nuestra <span>Metodología</span></>} />
-        <ol className="steps">
-          {METODOLOGIA.map((paso, index) => (
-            <li key={paso.title} className="card card-highlight step" data-reveal="left">
-              <span className="step-number" aria-hidden="true">{index + 1}</span>
-              <div>
-                <h3 className="step-title">
-                  <span className="visually-hidden">Paso {index + 1}: </span>
-                  {paso.title}
-                </h3>
-                <p className="step-text">{paso.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <StepsTimeline pasos={METODOLOGIA} />
       </div>
     </section>
 

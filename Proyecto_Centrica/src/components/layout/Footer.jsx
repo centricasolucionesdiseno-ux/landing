@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Mail, MapPin } from 'lucide-react';
 import { CONTACTO } from '../../config/agenda';
+import { EMPRESA } from '../../config/legal';
 import { EmailLink, WhatsAppIcon, WhatsAppLink } from '../common/ContactLinks';
 import LogoLetraClara from '../../assets/images/Imagenes/Logos/LogoModoOscuroLetraClara.png';
 
@@ -68,7 +69,11 @@ const Footer = () => (
 
     <div className="footer-bottom">
       <p className="footer-copyright-secondary">
-        © {new Date().getFullYear()} Céntrica. Todos los derechos reservados.
+        ©{' '}
+        <a href={EMPRESA.ficha} target="_blank" rel="noopener noreferrer" className="footer-empresa">
+          Centrica Soluciones Innovadoras S A S
+        </a>
+        . Todos los derechos reservados.
       </p>
     </div>
   </footer>

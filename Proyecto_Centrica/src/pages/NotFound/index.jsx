@@ -2,8 +2,14 @@ import { Compass } from 'lucide-react';
 import Page from '../../components/ui/Page';
 import ActionButton from '../../components/ui/ActionButton';
 
+const SEO = {
+  title: 'Página no encontrada | Céntrica',
+  description: 'La página que buscas no existe o fue movida. Vuelve al inicio para conocer las soluciones de Céntrica.',
+  noindex: true
+};
+
 const NotFound = () => (
-  <Page className="status-page">
+  <Page className="status-page" seo={SEO}>
     <section className="section">
       <div className="container status-content">
         <span className="status-icon" data-reveal="zoom"><Compass size={48} aria-hidden="true" /></span>

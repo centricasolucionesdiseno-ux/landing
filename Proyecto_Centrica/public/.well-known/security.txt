@@ -1,0 +1,6 @@
+# Reporte responsable de vulnerabilidades (RFC 9116)
+# Si encontraste una falla de seguridad en este sitio, escríbenos antes de divulgarla.
+Contact: mailto:gerenciacomercial@centricasoluciones.com
+Expires: 2027-09-27T00:00:00.000Z
+Preferred-Languages: es, en
+Canonical: https://centricasoluciones.com/.well-known/security.txt

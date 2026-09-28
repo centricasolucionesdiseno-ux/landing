@@ -9,7 +9,7 @@ const SERVICES = [
   { to: '/fabrica-software', label: 'Fábrica de software' },
   { to: '/nebula-erp', label: 'Nebula ERP' },
   { to: '/sicovi', label: 'Sicovi' },
-  { to: '/analisis-ia', label: 'Análisis con IA' },
+  { to: '/analisis-ia', label: 'Soluciones de IA' },
   { to: '/consultoria-digital', label: 'Consultoría digital' }
 ];
 
@@ -84,10 +84,10 @@ const Header = () => {
 
       <nav id="main-nav" className="nav" aria-label="Principal">
         <ul className="menu">
-          <li style={{ '--i': 0 }}>
+          <li>
             <NavLink to="/" end onClick={closeMenu}>Sobre nosotros</NavLink>
           </li>
-          <li className={`dropdown${submenuOpen ? ' open' : ''}`} style={{ '--i': 1 }}>
+          <li className={`dropdown${submenuOpen ? ' open' : ''}`}>
             <div className="dropdown-trigger">
               <NavLink to="/servicios" onClick={closeMenu} className={servicesActive ? 'active' : ''}>
                 Servicios
@@ -111,7 +111,7 @@ const Header = () => {
               ))}
             </ul>
           </li>
-          <li style={{ '--i': 2 }}>
+          <li>
             <NavLink to="/contacto" onClick={closeMenu}>Contacto</NavLink>
           </li>
           {/* <li><NavLink to="/blog">Blog</NavLink></li> */}

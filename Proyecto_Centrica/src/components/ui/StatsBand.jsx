@@ -7,12 +7,11 @@ const StatsBand = ({ title, stats }) => (
     <div className="container">
       <SectionHeader title={title} light />
       <div className="stats-grid">
-        {stats.map((stat, index) => (
+        {stats.map((stat) => (
           <div
             key={stat.label}
             className="stat-item"
             data-reveal="zoom"
-            style={{ '--float-delay': `${index * -1.1}s` }}
           >
             <CountUp value={stat.value} className="stat-number" />
             <span className="stat-label">{stat.label}</span>

@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CircleAlert, CircleCheck, Hourglass, LoaderCircle, RotateCcw, Video } from 'lucide-react';
 import { EmailLink } from '../../../components/common/ContactLinks';
+import Turnstile from '../../../components/common/Turnstile';
 import {
-  AGENDA_ENDPOINT, CONTACTO, CARGOS, SERVICIOS, FRANJAS, ZONA_HORARIA,
-  MAX_DIAS_RANGO, MAX_DIAS_ADELANTE, DURACION_MIN
+  AGENDA_ENDPOINT, TURNSTILE_SITEKEY, CONTACTO, CARGOS, SERVICIOS, FRANJAS, ZONA_HORARIA,
+  MAX_DIAS_RANGO, MAX_DIAS_ADELANTE, DURACION_MIN, CLAVE_BORRADOR
 } from '../../../config/agenda';
 
-const BORRADOR = 'agenda-borrador';
 const VACIO = { nombre: '', correo: '', empresa: '', cargo: '', servicio: '', mensaje: '', desde: '', hasta: '', franja: 'cualquiera' };
 const CORREO_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const MAX_MENSAJE = 1000;
@@ -24,10 +24,20 @@ const fechaLegible = (iso) => {
   return texto.charAt(0).toUpperCase() + texto.slice(1);
 };
 
-// El borrador sobrevive a recargas y a cambiar de página; nunca guarda la aceptación de datos
+// El borrador sobrevive a recargas y a cambiar de página, pero vive en
+// sessionStorage: se borra al cerrar la pestaña, así en un computador compartido
+// el siguiente usuario no ve los datos. Nunca guarda la aceptación de datos.
+const almacen = () => window.sessionStorage;
+
+// Solo se aceptan los campos conocidos y de tipo texto (el almacenamiento se
+// puede manipular desde el navegador)
 const cargarBorrador = () => {
   try {
-    const datos = { ...VACIO, ...JSON.parse(localStorage.getItem(BORRADOR) || '{}') };
+    const guardado = JSON.parse(almacen().getItem(CLAVE_BORRADOR) || '{}');
+    const datos = { ...VACIO };
+    Object.keys(VACIO).forEach((campo) => {
+      if (typeof guardado?.[campo] === 'string') datos[campo] = guardado[campo].slice(0, MAX_MENSAJE);
+    });
     if (datos.desde && datos.desde < fechaColombia()) {
       datos.desde = '';
       datos.hasta = '';
@@ -38,7 +48,7 @@ const cargarBorrador = () => {
   }
 };
 
-const validar = (d, acepta) => {
+const validar = (d, acepta, token) => {
   const errores = {};
   const hoy = fechaColombia();
   if (d.nombre.trim().length < 2) errores.nombre = 'Escribe tu nombre completo.';
@@ -52,6 +62,7 @@ const validar = (d, acepta) => {
   else if (diasEntre(hoy, d.hasta) > MAX_DIAS_ADELANTE) errores.hasta = `Máximo ${MAX_DIAS_ADELANTE} días a partir de hoy.`;
   if (d.mensaje.trim().length < 10) errores.mensaje = 'Cuéntanos el motivo de la cita (mínimo 10 caracteres).';
   if (!acepta) errores.acepta = 'Debes aceptar el tratamiento de datos para agendar.';
+  if (TURNSTILE_SITEKEY && !token) errores.turnstile = 'Espera a que termine la verificación de seguridad.';
   return errores;
 };
 
@@ -80,12 +91,16 @@ const Campo = ({ id, label, error, ayuda, className = '', children }) => (
   </div>
 );
 
-const AgendaForm = () => {
-  const [datos, setDatos] = useState(cargarBorrador);
+// El HTML generado en el build trae el formulario vacío; el borrador se
+// recupera al montar en el navegador (ver AgendaTuCita: key según hidratación).
+const AgendaForm = ({ restaurar = true }) => {
+  const [datos, setDatos] = useState(() => (restaurar ? cargarBorrador() : VACIO));
   const [acepta, setAcepta] = useState(false);
   const [trampa, setTrampa] = useState('');
   const [errores, setErrores] = useState({});
   const [estado, setEstado] = useState({ tipo: 'inicial' });
+  const [tokenHumano, setTokenHumano] = useState('');
+  const reiniciarTurnstile = useRef(null);
   const resultadoRef = useRef(null);
 
   const hoy = fechaColombia();
@@ -96,7 +111,7 @@ const AgendaForm = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       try {
-        localStorage.setItem(BORRADOR, JSON.stringify(datos));
+        almacen().setItem(CLAVE_BORRADOR, JSON.stringify(datos));
       } catch {
         // Almacenamiento bloqueado: el formulario funciona igual, sin borrador
       }
@@ -117,6 +132,19 @@ const AgendaForm = () => {
       return resto;
     });
 
+  // Estable (useCallback): el widget de Turnstile no se vuelve a montar en cada render
+  const recibirToken = useCallback((token) => {
+    setTokenHumano(token);
+    if (token) {
+      setErrores((actuales) => {
+        if (!actuales.turnstile) return actuales;
+        const resto = { ...actuales };
+        delete resto.turnstile;
+        return resto;
+      });
+    }
+  }, []);
+
   const actualizar = (event) => {
     const { name, value } = event.target;
     setDatos((actuales) => ({ ...actuales, [name]: value }));
@@ -136,7 +164,7 @@ const AgendaForm = () => {
     event.preventDefault();
     if (enviando) return;
 
-    const encontrados = validar(datos, acepta);
+    const encontrados = validar(datos, acepta, tokenHumano);
     setErrores(encontrados);
     const primero = Object.keys(encontrados)[0];
     if (primero) {
@@ -155,14 +183,14 @@ const AgendaForm = () => {
       // Sin Content-Type propio (text/plain): Apps Script lo acepta sin petición previa CORS
       const respuesta = await fetch(AGENDA_ENDPOINT, {
         method: 'POST',
-        body: JSON.stringify({ ...limpios, acepta, website: trampa }),
+        body: JSON.stringify({ ...limpios, acepta, website: trampa, turnstile: tokenHumano }),
         signal: AbortSignal.timeout(30000)
       });
       const resultado = await respuesta.json();
       if (!resultado.ok) throw new Error(resultado.mensaje || 'No pudimos agendar la cita.');
 
       try {
-        localStorage.removeItem(BORRADOR);
+        almacen().removeItem(CLAVE_BORRADOR);
       } catch {
         // sin almacenamiento, nada que borrar
       }
@@ -173,6 +201,9 @@ const AgendaForm = () => {
         correo: limpios.correo
       });
     } catch (error) {
+      // El token anti-bots sirve una sola vez: pedir uno nuevo para reintentar
+      setTokenHumano('');
+      reiniciarTurnstile.current?.();
       const sinConexion = error.name === 'TimeoutError' || error instanceof TypeError || error instanceof SyntaxError;
       setEstado({ tipo: 'error', mensaje: sinConexion ? 'No pudimos conectar con la agenda en este momento.' : error.message });
     }
@@ -320,6 +351,13 @@ const AgendaForm = () => {
         <label htmlFor="agenda-website">Sitio web</label>
         <input id="agenda-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={trampa} onChange={(event) => setTrampa(event.target.value)} />
       </div>
+
+      {TURNSTILE_SITEKEY && (
+        <div className={`form-group${errores.turnstile ? ' has-error' : ''}`}>
+          <Turnstile sitekey={TURNSTILE_SITEKEY} onToken={recibirToken} reiniciarRef={reiniciarTurnstile} />
+          {errores.turnstile && <p className="form-error"><CircleAlert size={14} aria-hidden="true" /> {errores.turnstile}</p>}
+        </div>
+      )}
 
       {estado.tipo === 'error' && (
         <div className="form-alerta" role="alert">

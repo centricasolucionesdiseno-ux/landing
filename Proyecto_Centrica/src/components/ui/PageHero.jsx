@@ -1,12 +1,14 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import ActionButton from './ActionButton';
+import useMediaQuery from '../../hooks/useMediaQuery';
 
 // El video 1080p solo compensa en portátiles/escritorio (pantalla ancha y
 // mouse), sin ahorro de datos. Celulares y tablets usan la imagen, que pesa
 // una fracción y no gasta datos móviles.
-const canPlayHeroVideo = () =>
-  window.matchMedia('(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)').matches &&
-  !navigator.connection?.saveData;
+// El HTML generado y la primera pintura usan siempre la imagen (es el LCP);
+// el video la reemplaza después con la misma imagen como poster, sin salto.
+const CONSULTA_VIDEO = '(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)';
+const ahorroDatos = () => typeof navigator !== 'undefined' && Boolean(navigator.connection?.saveData);
 
 /**
  * Hero de página con video o imagen de fondo, parallax, orbes animados y
@@ -16,7 +18,8 @@ const canPlayHeroVideo = () =>
  */
 const PageHero = ({ title, subtitle, description, image, video, icon: Icon, compact = false, actions = [] }) => {
   const heroRef = useRef(null);
-  const [showVideo] = useState(() => Boolean(video) && canPlayHeroVideo());
+  const pantallaVideo = useMediaQuery(CONSULTA_VIDEO);
+  const showVideo = Boolean(video) && pantallaVideo && !ahorroDatos();
   const background = image ?? {};
 
   const scrollPastHero = () => {

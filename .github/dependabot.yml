@@ -1,0 +1,12 @@
+# Actualizaciones automáticas de dependencias: GitHub abre un PR cuando hay
+# parches (sobre todo de seguridad). Revisar y probar antes de aceptar.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /Proyecto_Centrica
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      menores-y-parches:
+        update-types: [minor, patch]

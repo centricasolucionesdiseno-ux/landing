@@ -14,11 +14,13 @@ const REVEAL_MS = 800;
  *    ya se ve al entrar nunca parpadea.
  *  - [data-parallax]: parallax del hero en escritorio, con GSAP cargado en
  *    diferido (no bloquea la primera pintura).
+ * Con movimiento reducido las apariciones siguen, pero como fundido (ver
+ * base.css), y no hay parallax.
  */
 export default function usePageAnimations(scopeRef) {
   useLayoutEffect(() => {
     const scope = scopeRef.current;
-    if (!scope || prefersReducedMotion()) return undefined;
+    if (!scope) return undefined;
 
     // ---- Aparición al hacer scroll ----
     const foldLine = window.innerHeight * 0.92;
@@ -63,7 +65,7 @@ export default function usePageAnimations(scopeRef) {
     };
 
     const parallaxTargets = scope.querySelectorAll('[data-parallax]');
-    if (parallaxTargets.length && window.matchMedia('(min-width: 769px)').matches) {
+    if (parallaxTargets.length && !prefersReducedMotion() && window.matchMedia('(min-width: 769px)').matches) {
       loadGsap().then(({ gsap }) => {
         if (cancelled) return;
         gsapContext = gsap.context(() => {

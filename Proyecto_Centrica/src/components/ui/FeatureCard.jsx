@@ -3,9 +3,11 @@ import ActionButton from './ActionButton';
 /**
  * Card interactiva (tilt 3D + spotlight vía data-tilt, aparición vía data-reveal).
  * Variantes: float | highlight | glass (sobre fondos azules) | accent (degradado).
+ * `etiqueta`: texto corto sobre el título (p. ej. "Producto insignia").
  */
 const FeatureCard = ({
   icon: Icon,
+  etiqueta,
   title,
   text,
   note,
@@ -23,6 +25,7 @@ const FeatureCard = ({
         </span>
       </div>
     )}
+    {etiqueta && <span className="card-etiqueta">{etiqueta}</span>}
     {title && <h3 className="card-title">{title}</h3>}
     {text && <p className="card-text">{text}</p>}
     {note && <p className="card-text card-note">{note}</p>}

@@ -1,6 +1,7 @@
 import LazyImage from '../common/LazyImage';
 
-// En móvil la imagen ocupa el ancho del contenedor; en escritorio, su columna (máx. maxWidth)
+// En móvil la imagen ocupa el ancho del contenedor; en escritorio, su columna (máx. maxWidth).
+// maxWidth: 500 o 560 (clases .media-ancho-* en components.css)
 const sizesFor = (maxWidth) => `(max-width: 900px) calc(100vw - 2rem), ${maxWidth}px`;
 
 /**
@@ -18,8 +19,7 @@ const MediaFrame = ({ src, srcSet, alt, width, height, shadow = false, maxWidth 
       alt={alt}
       width={width}
       height={height}
-      className={shadow ? 'media-shadow' : ''}
-      style={{ maxWidth }}
+      className={`media-ancho-${maxWidth}${shadow ? ' media-shadow' : ''}`}
     />
   </div>
 );

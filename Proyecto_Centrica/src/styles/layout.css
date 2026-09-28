@@ -293,6 +293,11 @@ body.dark-mode .icon-btn {
     transition-delay: calc(var(--i, 0) * 60ms);
   }
 
+  /* Entrada escalonada (en CSS y no en style="": la CSP bloquea estilos en línea en el HTML) */
+  .menu > li:nth-child(2) { --i: 1; }
+  .menu > li:nth-child(3) { --i: 2; }
+  .menu > li:nth-child(4) { --i: 3; }
+
   .menu-open .menu > li {
     opacity: 1;
     transform: none;
@@ -486,6 +491,20 @@ body.dark-mode .footer {
   font-size: 0.8rem;
   color: #fff;
   opacity: 0.95;
+}
+
+.footer-empresa {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.45);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.footer-empresa:hover,
+.footer-empresa:focus-visible {
+  text-decoration-color: currentColor;
 }
 
 /* Newsletter (desactivado en el JSX, listo para usar) */

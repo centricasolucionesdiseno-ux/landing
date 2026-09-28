@@ -4,7 +4,14 @@ import ActionButton from '../../components/ui/ActionButton';
 
 /** Página temporal para secciones que aún no tienen contenido. */
 const EnConstruccion = ({ title }) => (
-  <Page className="status-page">
+  <Page
+    className="status-page"
+    seo={{
+      title: `${title} | Céntrica`,
+      description: `${title} de Céntrica: muy pronto encontrarás aquí nuevo contenido.`,
+      noindex: true
+    }}
+  >
     <section className="section">
       <div className="container status-content">
         <span className="status-icon" data-reveal="zoom"><Construction size={48} aria-hidden="true" /></span>

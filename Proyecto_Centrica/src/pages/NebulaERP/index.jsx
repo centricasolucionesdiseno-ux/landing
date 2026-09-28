@@ -18,8 +18,8 @@ import Nebula1 from '../../assets/images/Imagenes/Nebula1.webp';
 import Nebula2 from '../../assets/images/Imagenes/Nebula2.webp';
 
 const SEO = {
-  title: 'Nebula ERP - Sistema de Gestión Empresarial Integral | Céntrica',
-  description: 'Nebula ERP centraliza operaciones financieras, inventarios y administrativas. Gestión empresarial con IA integrada y reportes en tiempo real.',
+  title: 'Nebula ERP: Software de Gestión Empresarial | Céntrica',
+  description: 'Nebula ERP centraliza finanzas, inventarios y procesos administrativos de tu empresa en Colombia, con IA integrada y reportes en tiempo real.',
   ogTitle: 'Nebula ERP - Plataforma de Gestión Empresarial | Céntrica',
   ogDescription: 'ERP integral para gestión financiera, administrativa y tributaria con inteligencia artificial.',
   path: '/nebula-erp'

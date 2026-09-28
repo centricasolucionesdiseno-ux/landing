@@ -1,3 +1,5 @@
+import { existsSync, readFileSync } from 'node:fs'
+import { extname, join, resolve } from 'node:path'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { securityHeaders } from './security.config.js'
@@ -23,11 +25,42 @@ const preloadFont = () => ({
   }
 })
 
+// `vite preview` responde como el hosting: sin "/" final (301), 404.html con
+// código 404 para rutas que no existen (por defecto respondería index.html) y
+// nunca sirve archivos ocultos (.vite, .htaccess...) salvo .well-known.
+const previewComoHosting = () => ({
+  name: 'centrica-preview-hosting',
+  configurePreviewServer(server) {
+    const dist = resolve(server.config.root, server.config.build.outDir)
+    server.middlewares.use((req, res, next) => {
+      const [ruta, consulta = ''] = (req.url ?? '/').split('?')
+      if (/\/\.(?!well-known\/)/.test(decodeURIComponent(ruta))) {
+        res.statusCode = 404
+        res.setHeader('Content-Type', 'text/html; charset=utf-8')
+        return res.end(readFileSync(join(dist, '404.html')))
+      }
+      if (ruta.length > 1 && ruta.endsWith('/')) {
+        res.writeHead(301, { Location: ruta.replace(/\/+$/, '') + (consulta && `?${consulta}`) })
+        return res.end()
+      }
+      const esPagina = extname(ruta) === ''
+      if (esPagina && ruta !== '/' && !existsSync(join(dist, `${decodeURIComponent(ruta)}.html`))) {
+        res.statusCode = 404
+        res.setHeader('Content-Type', 'text/html; charset=utf-8')
+        return res.end(readFileSync(join(dist, '404.html')))
+      }
+      next()
+    })
+  }
+})
+
 export default defineConfig({
-  plugins: [react(), securityHeaders(), preloadFont()],
+  plugins: [react(), securityHeaders(), preloadFont(), previewComoHosting()],
   build: {
     // Sin source maps en producción: no exponer el código fuente
     sourcemap: false,
+    // Lo usa scripts/prerender.mjs para precargar el JS de cada página (se borra después)
+    manifest: true,
     rollupOptions: {
       output: {
         // Vite 8 (rolldown) solo acepta manualChunks como función

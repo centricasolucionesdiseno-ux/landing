@@ -17,8 +17,8 @@ import Equipo560 from '../../assets/images/Imagenes/Equipo-560.webp';
 import Fabrica2 from '../../assets/images/Imagenes/Fabrica2.webp';
 
 const SEO = {
-  title: 'Fábrica de Software - Desarrollo a Medida de Alto Nivel | Céntrica',
-  description: 'Fábrica de software con células de ingeniería (Squads), metodologías ágiles y arquitectura SIMAPPE. Modernización de aplicativos y desarrollo greenfield.',
+  title: 'Fábrica de Software y Desarrollo a la Medida | Céntrica',
+  description: 'Desarrollo de software a la medida en Colombia con squads ágiles y arquitectura SIMAPPE: aplicaciones nuevas y modernización de sistemas existentes.',
   ogTitle: 'Fábrica de Software | Céntrica',
   ogDescription: 'Desarrollo de software industrial con estándares corporativos, arquitectura moderna y equipos especializados.',
   path: '/fabrica-software'
@@ -278,7 +278,7 @@ const FabricaDeSoftware = () => (
           {FLUJO.map((paso, index) => (
             <Fragment key={paso}>
               {index > 0 && <span className="layer-flow-arrow" aria-hidden="true">→</span>}
-              <span className="layer-flow-step" style={{ '--step': index }}>{paso}</span>
+              <span className="layer-flow-step">{paso}</span>
             </Fragment>
           ))}
         </div>

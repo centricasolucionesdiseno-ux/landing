@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { loadGsap } from '../../lib/gsap';
-import { prefersReducedMotion } from '../../utils/motion';
 
 // "+99.9%" -> { prefix: '+', value: 99.9, suffix: '%', decimals: 1 }
 const parseValue = (raw) => {
@@ -17,7 +16,7 @@ const parseValue = (raw) => {
 /**
  * Contador animado que arranca al entrar en pantalla. Escribe directamente
  * en el DOM (sin re-renders por frame), carga GSAP solo cuando hace falta y
- * respeta prefers-reduced-motion.
+ * funciona también con movimiento reducido (el número cambia, nada se desplaza).
  */
 const CountUp = ({ value, className = '' }) => {
   const ref = useRef(null);
@@ -25,7 +24,7 @@ const CountUp = ({ value, className = '' }) => {
   useEffect(() => {
     const el = ref.current;
     const parsed = parseValue(value);
-    if (!el || !parsed || prefersReducedMotion()) return undefined;
+    if (!el || !parsed) return undefined;
 
     const counter = { current: 0 };
     const render = () => {

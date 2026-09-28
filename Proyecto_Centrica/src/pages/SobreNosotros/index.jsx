@@ -7,8 +7,8 @@ import ValuesSection from './components/ValuesSection';
 import NebulinaSection from './components/NebulinaSection';
 
 const SEO = {
-  title: 'Sobre Nosotros - Innovación Inteligente | Céntrica',
-  description: 'Céntrica optimiza la competitividad organizacional con soluciones tecnológicas integrales: automatización, software a medida, análisis de datos e IA.',
+  title: 'Céntrica | Desarrollo de Software, ERP e IA en Medellín',
+  description: 'Empresa de tecnología en Medellín, Colombia: desarrollo de software a la medida, Nebula ERP, SICOVI, inteligencia artificial y consultoría digital.',
   ogTitle: 'Sobre Nosotros | Céntrica',
   ogDescription: 'Impulsamos tu éxito a través de la innovación inteligente con soluciones tecnológicas que transforman organizaciones.',
   path: ''
