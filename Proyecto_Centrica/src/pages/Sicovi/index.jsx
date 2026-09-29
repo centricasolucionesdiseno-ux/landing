@@ -1,6 +1,6 @@
 import {
   Layers, Shield, FileDigit, Eye, Zap, GitPullRequest, Microchip,
-  Users, GitBranch, RefreshCw, Briefcase, Landmark, Building,
+  Users, GitBranch, RefreshCw, Briefcase, Landmark,
   Database, Factory, Repeat, Star, GitMerge, Brain, Cloud, TrendingUp
 } from 'lucide-react';
 import Page from '../../components/ui/Page';
@@ -11,9 +11,10 @@ import FeatureCard from '../../components/ui/FeatureCard';
 import MediaFrame from '../../components/ui/MediaFrame';
 import StatsBand from '../../components/ui/StatsBand';
 import CTASection from '../../components/ui/CTASection';
-import Sicovi2 from '../../assets/images/Imagenes/Sicovi2.webp';
-import Concejo500 from '../../assets/images/Imagenes/Sicovi-Concejo-500.webp';
-import Concejo1000 from '../../assets/images/Imagenes/Sicovi-Concejo-1000.webp';
+import QueEs500 from '../../assets/images/Imagenes/Sicovi-QueEs-500.webp';
+import QueEs1000 from '../../assets/images/Imagenes/Sicovi-QueEs-1000.webp';
+import PorQue560 from '../../assets/images/Imagenes/Sicovi-PorQue-560.webp';
+import PorQue1120 from '../../assets/images/Imagenes/Sicovi-PorQue-1120.webp';
 
 const SEO = {
   title: 'SICOVI: Gestión Legislativa para Concejos | Céntrica',
@@ -50,18 +51,18 @@ const OFERTA_EXTRA = [
 const SECTORES = [
   {
     icon: Landmark,
-    title: 'Sector Público (Principal)',
+    title: 'Concejos Municipales y Departamentales',
     items: [
-      ['Gobierno Local y Concejos', 'Gestión integral de acuerdos, proyectos, sesiones y comisiones con trazabilidad completa.'],
-      ['Ciudadanía', 'Acceso público a información legislativa, fortaleciendo la participación ciudadana y el control social.']
+      ['Gestión legislativa', 'Gestión integral de acuerdos, proyectos, sesiones y comisiones con trazabilidad completa.'],
+      ['Gestión administrativa', 'Automatización del flujo de trabajo interno del Concejo, eliminando silos de información.']
     ]
   },
   {
-    icon: Building,
-    title: 'Sector Privado (Potencial)',
+    icon: Users,
+    title: 'Ciudadanía',
     items: [
-      ['Arquitectura modular', 'Adaptable a organizaciones que requieran trazabilidad documental y gestión de procesos complejos.'],
-      ['Flexibilidad', 'Implementación en corporaciones, ONGs y entidades que necesiten auditoría y transparencia.']
+      ['Transparencia', 'Acceso público a información legislativa en tiempo real.'],
+      ['Participación', 'Fortalece la participación ciudadana y el control social sobre la gestión del Concejo.']
     ]
   }
 ];
@@ -148,10 +149,10 @@ const Sicovi = () => (
             </div>
           </div>
           <MediaFrame
-            src={Concejo1000}
-            srcSet={`${Concejo500} 500w, ${Concejo1000} 1000w`}
+            src={QueEs1000}
+            srcSet={`${QueEs500} 500w, ${QueEs1000} 1000w`}
             width={1000}
-            height={1000}
+            height={800}
             alt="SICOVI Ilustración"
             maxWidth={500}
             shadow
@@ -220,7 +221,14 @@ const Sicovi = () => (
           subtitleClassName="section-subtitle--accent"
         />
         <div className="grid-2 split">
-          <MediaFrame src={Sicovi2} width={1024} height={1024} alt="Flor Centrica" reveal="left" />
+          <MediaFrame
+            src={PorQue1120}
+            srcSet={`${PorQue560} 560w, ${PorQue1120} 1120w`}
+            width={1120}
+            height={897}
+            alt="Arquitectura base de SICOVI"
+            reveal="left"
+          />
           <div className="grid-2 grid-nested">
             {ACELERACION.map((item) => <FeatureCard key={item.title} variant="highlight" {...item} />)}
           </div>
