@@ -469,7 +469,7 @@ body.dark-mode .card:hover .card-icon-badge {
 
 /* Variante vidrio (sobre fondos azules) */
 .card-glass {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--on-blue-surface);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #fff;
   text-align: center;
@@ -732,7 +732,7 @@ body.dark-mode .card-callout {
   padding: 1.75rem 1rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--on-blue-surface-soft);
   color: #fff;
   transition: transform 0.4s var(--ease-out), background-color 0.4s, border-color 0.4s;
 }
@@ -1122,7 +1122,7 @@ body.dark-mode .form-error {
   margin-bottom: 1.25rem;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--on-blue-surface);
   color: #fff;
   box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.5);
   animation: hero-in 0.8s var(--ease-out) both, icon-pulse 3s ease-out 1s infinite;
@@ -1180,6 +1180,7 @@ body.dark-mode .form-error {
 
 .carrusel-pista {
   display: flex;
+  list-style: none;
   gap: var(--hueco);
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -1196,12 +1197,6 @@ body.dark-mode .form-error {
 
 .carrusel-pista::-webkit-scrollbar {
   display: none;
-}
-
-.carrusel-pista:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 4px;
-  border-radius: var(--radius);
 }
 
 .carrusel-slide {

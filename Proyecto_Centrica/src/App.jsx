@@ -12,7 +12,8 @@ const MAIN_PAGES = {
   NebulaERP: () => import('./pages/NebulaERP'),
   Sicovi: () => import('./pages/Sicovi'),
   ConsultoriaDigital: () => import('./pages/ConsultoriaDigital'),
-  AnalisisConIA: () => import('./pages/AnalisisConIA')
+  AnalisisConIA: () => import('./pages/AnalisisConIA'),
+  EvaluacionesCalidad: () => import('./pages/EvaluacionesCalidad')
 };
 
 const SobreNosotros = lazy(MAIN_PAGES.SobreNosotros);
@@ -22,6 +23,7 @@ const NebulaERP = lazy(MAIN_PAGES.NebulaERP);
 const Sicovi = lazy(MAIN_PAGES.Sicovi);
 const ConsultoriaDigital = lazy(MAIN_PAGES.ConsultoriaDigital);
 const AnalisisConIA = lazy(MAIN_PAGES.AnalisisConIA);
+const EvaluacionesCalidad = lazy(MAIN_PAGES.EvaluacionesCalidad);
 const AgendaTuCita = lazy(() => import('./pages/AgendaTuCita'));
 const Privacidad = lazy(() => import('./pages/Privacidad'));
 const TerminosServicio = lazy(() => import('./pages/TerminosServicio'));
@@ -79,6 +81,7 @@ function App() {
               <Route path="/nebula-erp" element={<NebulaERP />} />
               <Route path="/sicovi" element={<Sicovi />} />
               <Route path="/analisis-ia" element={<AnalisisConIA />} />
+              <Route path="/evaluaciones-calidad" element={<EvaluacionesCalidad />} />
               <Route path="/consultoria-digital" element={<ConsultoriaDigital />} />
               <Route path="/contacto" element={<AgendaTuCita />} />
               <Route path="/privacidad" element={<Privacidad />} />

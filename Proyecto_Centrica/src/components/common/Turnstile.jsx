@@ -26,7 +26,7 @@ const cargarTurnstile = () => {
 
 /**
  * Verificación anti-bots de Cloudflare (sin cookies, casi siempre invisible).
- * El token se valida en el servidor (Apps Script); aquí solo se obtiene.
+ * El token se valida en el servidor (api/agenda en Hostinger); aquí solo se obtiene.
  * `reiniciarRef.current()` pide un token nuevo: cada token sirve una sola vez.
  */
 const Turnstile = ({ sitekey, onToken, reiniciarRef }) => {

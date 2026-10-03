@@ -76,7 +76,7 @@ const BENEFICIOS = [
 ];
 
 const POR_QUE = [
-  { icon: Briefcase, title: 'Experiencia Multisectorial', text: 'Más de 50 proyectos exitosos en diversos sectores y tamaños de organización.' },
+  { icon: Briefcase, title: 'Experiencia Multisectorial', text: 'Conocimiento de los retos de diversos sectores y tamaños de organización, aplicado a cada proyecto.' },
   { icon: Users, title: 'Equipo Senior', text: 'Consultores con amplia experiencia en estrategia, tecnología y negocio.' },
   { icon: Target, title: 'Enfoque en Resultados', text: 'Nos medimos por el impacto real en su negocio, no solo por entregables.' },
   { icon: Handshake, title: 'Acompañamiento Continuo', text: 'Estamos con usted en cada fase, desde la estrategia hasta la ejecución.' }

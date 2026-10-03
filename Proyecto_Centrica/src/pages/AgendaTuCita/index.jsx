@@ -8,10 +8,10 @@ import NebulinaAyuda from '../../components/common/NebulinaAyuda';
 import { useHidratado } from '../../hooks/useMediaQuery';
 
 const SEO = {
-  title: 'Contacto: Agenda una Reunión por Google Meet | Céntrica',
+  title: 'Contacto: Agenda una Reunión Virtual | Céntrica',
   description: 'Agenda una reunión virtual con nuestro gerente comercial o visítanos en Belén, Medellín. Cuéntanos tu proyecto de software, ERP o inteligencia artificial.',
   ogTitle: 'Contacto | Céntrica',
-  ogDescription: 'Hablemos de tu proyecto: agenda una reunión por Google Meet con Céntrica.',
+  ogDescription: 'Hablemos de tu proyecto: agenda una reunión virtual con Céntrica.',
   path: '/contacto'
 };
 
@@ -42,7 +42,7 @@ const AgendaTuCita = () => {
             <div id="contacto-form" className="card contacto-form-card" data-reveal="right">
               <h2 className="contacto-form-titulo">Agenda tu <span>cita</span></h2>
               <p className="contacto-form-intro">
-                Elige el rango de fechas que te sirve y te enviaremos la invitación a una reunión por Google Meet con nuestro gerente comercial.
+                Elige el día que te sirve. Nuestro gerente comercial confirma la hora y te envía la invitación a una reunión por videollamada.
               </p>
               <AgendaForm key={hidratado ? 'navegador' : 'html'} restaurar={hidratado} />
             </div>

@@ -1,0 +1,2 @@
+# Esta carpeta va FUERA de public_html. Si por error se sube dentro, no se sirve nada.
+Require all denied

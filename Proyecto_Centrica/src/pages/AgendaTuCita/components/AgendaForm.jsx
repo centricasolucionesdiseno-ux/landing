@@ -1,65 +1,75 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CircleAlert, CircleCheck, Hourglass, LoaderCircle, RotateCcw, Video } from 'lucide-react';
+import { ArrowRight, CalendarClock, CircleAlert, LoaderCircle, MailCheck, RotateCcw } from 'lucide-react';
 import { EmailLink } from '../../../components/common/ContactLinks';
 import Turnstile from '../../../components/common/Turnstile';
 import {
   AGENDA_ENDPOINT, TURNSTILE_SITEKEY, CONTACTO, CARGOS, SERVICIOS, FRANJAS, ZONA_HORARIA,
-  MAX_DIAS_RANGO, MAX_DIAS_ADELANTE, DURACION_MIN, CLAVE_BORRADOR
+  MAX_DIAS_ADELANTE, CLAVE_BORRADOR, BORRADOR_HORAS, RESPUESTA_DIAS_HABILES
 } from '../../../config/agenda';
 
-const VACIO = { nombre: '', correo: '', empresa: '', cargo: '', servicio: '', mensaje: '', desde: '', hasta: '', franja: 'cualquiera' };
-const CORREO_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const VACIO = { nombre: '', correo: '', empresa: '', cargo: '', servicio: '', mensaje: '', fecha: '', franja: 'cualquiera' };
+// usuario@dominio.tld: las partes del dominio no contienen puntos (sin retroceso costoso)
+const CORREO_RE = /^[^\s@]+@(?:[^\s@.]+\.)+[^\s@.]{2,}$/;
 const MAX_MENSAJE = 1000;
 
 // 'YYYY-MM-DD' de hoy en Colombia (+ n días), sin depender de la zona del visitante
 const fechaColombia = (sumarDias = 0) =>
   new Intl.DateTimeFormat('en-CA', { timeZone: ZONA_HORARIA }).format(new Date(Date.now() + sumarDias * 86400000));
-const diasEntre = (desde, hasta) => Math.round((Date.parse(hasta) - Date.parse(desde)) / 86400000);
+// 0 = domingo, 6 = sábado (mediodía UTC: el mismo día en cualquier zona)
+const diaSemana = (fecha) => new Date(`${fecha}T12:00:00Z`).getUTCDay();
 
-const fechaLegible = (iso) => {
-  const texto = new Intl.DateTimeFormat('es-CO', {
-    timeZone: ZONA_HORARIA, weekday: 'long', day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit'
-  }).format(new Date(iso));
+// "Lunes 6 de octubre"
+const fechaLegible = (fecha) => {
+  const texto = new Intl.DateTimeFormat('es-CO', { timeZone: 'UTC', weekday: 'long', day: 'numeric', month: 'long' })
+    .format(new Date(`${fecha}T12:00:00Z`))
+    .replace(',', '');
   return texto.charAt(0).toUpperCase() + texto.slice(1);
 };
 
-// El borrador sobrevive a recargas y a cambiar de página, pero vive en
-// sessionStorage: se borra al cerrar la pestaña, así en un computador compartido
-// el siguiente usuario no ve los datos. Nunca guarda la aceptación de datos.
-const almacen = () => window.sessionStorage;
+// El borrador vive en localStorage para sobrevivir a recargas, a cambiar de
+// página y a cerrar la pestaña, pero vence a las BORRADOR_HORAS horas para no
+// dejar datos en un computador compartido. Nunca guarda la aceptación de datos.
+const almacen = () => window.localStorage;
+const tieneDatos = (d) => Object.keys(VACIO).some((campo) => campo !== 'franja' && d[campo].trim() !== '');
+
+const borrarBorrador = () => {
+  try {
+    almacen().removeItem(CLAVE_BORRADOR);
+  } catch {
+    // Almacenamiento bloqueado: no hay nada que borrar
+  }
+};
 
 // Solo se aceptan los campos conocidos y de tipo texto (el almacenamiento se
-// puede manipular desde el navegador)
+// puede manipular desde el navegador). Devuelve null si no hay borrador útil.
 const cargarBorrador = () => {
   try {
-    const guardado = JSON.parse(almacen().getItem(CLAVE_BORRADOR) || '{}');
+    const guardado = JSON.parse(almacen().getItem(CLAVE_BORRADOR) || 'null');
+    if (!guardado || typeof guardado.guardado !== 'number' || Date.now() - guardado.guardado > BORRADOR_HORAS * 3600000) {
+      borrarBorrador();
+      return null;
+    }
     const datos = { ...VACIO };
     Object.keys(VACIO).forEach((campo) => {
-      if (typeof guardado?.[campo] === 'string') datos[campo] = guardado[campo].slice(0, MAX_MENSAJE);
+      if (typeof guardado.datos?.[campo] === 'string') datos[campo] = guardado.datos[campo].slice(0, MAX_MENSAJE);
     });
-    if (datos.desde && datos.desde < fechaColombia()) {
-      datos.desde = '';
-      datos.hasta = '';
-    }
-    return datos;
+    if (datos.fecha && datos.fecha <= fechaColombia()) datos.fecha = '';
+    return tieneDatos(datos) ? datos : null;
   } catch {
-    return VACIO;
+    return null;
   }
 };
 
 const validar = (d, acepta, token) => {
   const errores = {};
-  const hoy = fechaColombia();
   if (d.nombre.trim().length < 2) errores.nombre = 'Escribe tu nombre completo.';
   if (!CORREO_RE.test(d.correo.trim())) errores.correo = 'Escribe un correo válido, p. ej. juan@empresa.com.';
   if (d.empresa.trim().length < 2) errores.empresa = 'Escribe el nombre de tu empresa.';
-  if (!d.desde) errores.desde = 'Elige desde qué fecha te sirve.';
-  else if (d.desde < hoy) errores.desde = 'No puede ser una fecha pasada.';
-  if (!d.hasta) errores.hasta = 'Elige hasta qué fecha te sirve.';
-  else if (d.desde && d.hasta < d.desde) errores.hasta = 'Debe ser igual o posterior a la fecha inicial.';
-  else if (d.desde && diasEntre(d.desde, d.hasta) > MAX_DIAS_RANGO) errores.hasta = `El rango no puede superar ${MAX_DIAS_RANGO} días.`;
-  else if (diasEntre(hoy, d.hasta) > MAX_DIAS_ADELANTE) errores.hasta = `Máximo ${MAX_DIAS_ADELANTE} días a partir de hoy.`;
+  if (!d.fecha) errores.fecha = 'Elige el día de la cita.';
+  else if (d.fecha <= fechaColombia()) errores.fecha = 'Elige una fecha a partir de mañana.';
+  else if (d.fecha > fechaColombia(MAX_DIAS_ADELANTE)) errores.fecha = `Máximo ${MAX_DIAS_ADELANTE} días a partir de hoy.`;
+  else if ([0, 6].includes(diaSemana(d.fecha))) errores.fecha = 'Elige un día de lunes a viernes.';
   if (d.mensaje.trim().length < 10) errores.mensaje = 'Cuéntanos el motivo de la cita (mínimo 10 caracteres).';
   if (!acepta) errores.acepta = 'Debes aceptar el tratamiento de datos para agendar.';
   if (TURNSTILE_SITEKEY && !token) errores.turnstile = 'Espera a que termine la verificación de seguridad.';
@@ -69,12 +79,13 @@ const validar = (d, acepta, token) => {
 // Alternativa si la agenda en línea falla: correo al gerente con los datos ya escritos
 const cuerpoCorreo = (d) => {
   const franja = FRANJAS.find((f) => f.value === d.franja)?.label ?? '';
+  const cargo = d.cargo ? ` (${d.cargo})` : '';
   const cuerpo = [
     `Nombre: ${d.nombre}`,
-    `Empresa: ${d.empresa}${d.cargo ? ` (${d.cargo})` : ''}`,
+    `Empresa: ${d.empresa}${cargo}`,
     `Correo: ${d.correo}`,
     d.servicio ? `Servicio de interés: ${d.servicio}` : '',
-    `Fechas posibles: ${d.desde || '?'} a ${d.hasta || '?'} (${franja})`,
+    `Fecha: ${d.fecha || '?'} (${franja})`,
     '',
     d.mensaje
   ].filter(Boolean).join('\n');
@@ -92,9 +103,11 @@ const Campo = ({ id, label, error, ayuda, className = '', children }) => (
 );
 
 // El HTML generado en el build trae el formulario vacío; el borrador se
-// recupera al montar en el navegador (ver AgendaTuCita: key según hidratación).
+// busca al montar en el navegador (ver AgendaTuCita: key según hidratación).
 const AgendaForm = ({ restaurar = true }) => {
-  const [datos, setDatos] = useState(() => (restaurar ? cargarBorrador() : VACIO));
+  // Si quedó una solicitud a medias, primero se pregunta si continuar o cancelar
+  const [pendiente, setPendiente] = useState(() => (restaurar ? cargarBorrador() : null));
+  const [datos, setDatos] = useState(VACIO);
   const [acepta, setAcepta] = useState(false);
   const [trampa, setTrampa] = useState('');
   const [errores, setErrores] = useState({});
@@ -102,27 +115,39 @@ const AgendaForm = ({ restaurar = true }) => {
   const [tokenHumano, setTokenHumano] = useState('');
   const reiniciarTurnstile = useRef(null);
   const resultadoRef = useRef(null);
+  // Momento en que se mostró el formulario: el servidor rechaza envíos instantáneos (bots)
+  const [montadoEn] = useState(() => Date.now());
 
-  const hoy = fechaColombia();
-  const limite = fechaColombia(MAX_DIAS_ADELANTE);
   const enviando = estado.tipo === 'enviando';
 
-  // Guardar el borrador mientras se escribe
+  // Guardar el borrador mientras se escribe (no mientras se decide qué hacer con el anterior)
   useEffect(() => {
+    if (pendiente) return undefined;
     const timer = setTimeout(() => {
       try {
-        almacen().setItem(CLAVE_BORRADOR, JSON.stringify(datos));
+        if (tieneDatos(datos)) almacen().setItem(CLAVE_BORRADOR, JSON.stringify({ datos, guardado: Date.now() }));
+        else almacen().removeItem(CLAVE_BORRADOR);
       } catch {
         // Almacenamiento bloqueado: el formulario funciona igual, sin borrador
       }
     }, 400);
     return () => clearTimeout(timer);
-  }, [datos]);
+  }, [datos, pendiente]);
 
   // Al mostrar el resultado, llevar el foco allí (lectores de pantalla y móvil)
   useEffect(() => {
-    if (['agendada', 'pendiente'].includes(estado.tipo)) resultadoRef.current?.focus();
+    if (estado.tipo === 'por_confirmar') resultadoRef.current?.focus();
   }, [estado.tipo]);
+
+  const continuarPendiente = () => {
+    setDatos(pendiente);
+    setPendiente(null);
+  };
+
+  const cancelarPendiente = () => {
+    borrarBorrador();
+    setPendiente(null);
+  };
 
   const quitarError = (nombre) =>
     setErrores((actuales) => {
@@ -151,13 +176,19 @@ const AgendaForm = ({ restaurar = true }) => {
     quitarError(name);
   };
 
+  // El lector de pantalla lee el error si lo hay; si no, la ayuda del campo
+  const descripcionDe = (nombre, ayuda) => {
+    if (errores[nombre]) return `agenda-${nombre}-error`;
+    return ayuda ? `agenda-${nombre}-ayuda` : undefined;
+  };
+
   const propsCampo = (nombre, { ayuda = false } = {}) => ({
     id: `agenda-${nombre}`,
     name: nombre,
     value: datos[nombre],
     onChange: actualizar,
     'aria-invalid': errores[nombre] ? true : undefined,
-    'aria-describedby': errores[nombre] ? `agenda-${nombre}-error` : ayuda ? `agenda-${nombre}-ayuda` : undefined
+    'aria-describedby': descripcionDe(nombre, ayuda)
   });
 
   const enviar = async (event) => {
@@ -172,34 +203,20 @@ const AgendaForm = ({ restaurar = true }) => {
       return;
     }
 
-    if (!AGENDA_ENDPOINT) {
-      setEstado({ tipo: 'error', mensaje: 'La agenda en línea todavía no está conectada.' });
-      return;
-    }
-
     setEstado({ tipo: 'enviando' });
     const limpios = Object.fromEntries(Object.entries(datos).map(([k, v]) => [k, v.trim()]));
     try {
-      // Sin Content-Type propio (text/plain): Apps Script lo acepta sin petición previa CORS
       const respuesta = await fetch(AGENDA_ENDPOINT, {
         method: 'POST',
-        body: JSON.stringify({ ...limpios, acepta, website: trampa, turnstile: tokenHumano }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...limpios, acepta, website: trampa, turnstile: tokenHumano, tiempo: Date.now() - montadoEn }),
         signal: AbortSignal.timeout(30000)
       });
       const resultado = await respuesta.json();
-      if (!resultado.ok) throw new Error(resultado.mensaje || 'No pudimos agendar la cita.');
+      if (!resultado.ok) throw new Error(resultado.mensaje || 'No pudimos enviar la solicitud.');
 
-      try {
-        almacen().removeItem(CLAVE_BORRADOR);
-      } catch {
-        // sin almacenamiento, nada que borrar
-      }
-      setEstado({
-        tipo: resultado.estado === 'pendiente' ? 'pendiente' : 'agendada',
-        inicio: resultado.inicio,
-        meet: typeof resultado.meet === 'string' && resultado.meet.startsWith('https://meet.google.com/') ? resultado.meet : '',
-        correo: limpios.correo
-      });
+      borrarBorrador();
+      setEstado({ tipo: 'por_confirmar', correo: limpios.correo, venceHoras: Number(resultado.venceHoras) || 24 });
     } catch (error) {
       // El token anti-bots sirve una sola vez: pedir uno nuevo para reintentar
       setTokenHumano('');
@@ -216,37 +233,51 @@ const AgendaForm = ({ restaurar = true }) => {
     setEstado({ tipo: 'inicial' });
   };
 
-  if (estado.tipo === 'agendada' || estado.tipo === 'pendiente') {
-    const agendada = estado.tipo === 'agendada';
+  if (pendiente) {
     return (
-      <div className="agenda-resultado" aria-live="polite">
-        <span className={`agenda-resultado-icono${agendada ? ' is-ok' : ''}`} aria-hidden="true">
-          {agendada ? <CircleCheck size={44} /> : <Hourglass size={40} />}
+      <section className="agenda-resultado agenda-pendiente" aria-labelledby="agenda-pendiente-titulo">
+        <span className="agenda-resultado-icono" aria-hidden="true">
+          <CalendarClock size={40} />
         </span>
-        <h3 className="agenda-resultado-titulo" tabIndex={-1} ref={resultadoRef}>
-          {agendada ? '¡Tu cita quedó agendada!' : '¡Recibimos tu solicitud!'}
+        <h3 id="agenda-pendiente-titulo" className="agenda-resultado-titulo">
+          Tienes un agendamiento pendiente
         </h3>
-        {agendada && estado.inicio && (
-          <p className="agenda-resultado-fecha">
-            {fechaLegible(estado.inicio)}
-            <span>Hora de Colombia · {DURACION_MIN} minutos por Google Meet</span>
-          </p>
-        )}
         <p className="agenda-resultado-texto">
-          {agendada ? (
-            <>Te enviamos la invitación con el enlace de la reunión a <strong>{estado.correo}</strong>. Revisa también la carpeta de spam.</>
-          ) : (
-            <>No había espacios libres en las fechas que elegiste. Nuestro gerente comercial ya tiene tus datos y te escribirá a <strong>{estado.correo}</strong> para coordinar la reunión.</>
-          )}
+          Empezaste a solicitar una cita
+          {pendiente.fecha && <> para el <strong>{fechaLegible(pendiente.fecha).toLowerCase()}</strong></>}
+          {pendiente.servicio && <> sobre <strong>{pendiente.servicio}</strong></>}
+          {' '}y no la enviaste. ¿Quieres seguir con ella o cancelarla?
         </p>
         <div className="agenda-resultado-acciones">
-          {estado.meet && (
-            <a className="btn btn-primary" href={estado.meet} target="_blank" rel="noopener noreferrer">
-              <Video size={18} aria-hidden="true" /> <span>Abrir enlace de Meet</span>
-            </a>
-          )}
+          <button type="button" className="btn btn-primary" onClick={continuarPendiente}>
+            <span>Seguir con mi solicitud</span> <ArrowRight className="btn-arrow" size={18} aria-hidden="true" />
+          </button>
+          <button type="button" className="btn-link" onClick={cancelarPendiente}>
+            <RotateCcw size={16} aria-hidden="true" /> Cancelarla y empezar de nuevo
+          </button>
+        </div>
+      </section>
+    );
+  }
+
+  if (estado.tipo === 'por_confirmar') {
+    return (
+      <div className="agenda-resultado" aria-live="polite">
+        <span className="agenda-resultado-icono is-ok" aria-hidden="true">
+          <MailCheck size={42} />
+        </span>
+        <h3 className="agenda-resultado-titulo" tabIndex={-1} ref={resultadoRef}>¡Revisa tu correo!</h3>
+        <p className="agenda-resultado-texto">
+          Te enviamos un enlace a <strong>{estado.correo}</strong> para confirmar tu solicitud. Vence en {estado.venceHoras} horas;
+          si no lo ves, revisa la carpeta de spam.
+        </p>
+        <p className="agenda-resultado-texto">
+          Cuando la confirmes, nuestro gerente comercial la revisará y te enviará la invitación con el enlace de la videollamada
+          en máximo {RESPUESTA_DIAS_HABILES} días hábiles.
+        </p>
+        <div className="agenda-resultado-acciones">
           <button type="button" className="btn-link" onClick={reiniciar}>
-            <RotateCcw size={16} aria-hidden="true" /> Agendar otra cita
+            <RotateCcw size={16} aria-hidden="true" /> Solicitar otra cita
           </button>
         </div>
       </div>
@@ -285,20 +316,9 @@ const AgendaForm = ({ restaurar = true }) => {
 
       <fieldset className="form-fieldset">
         <legend className="form-label">¿Cuándo te sirve la cita? *</legend>
-        <div className="form-row">
-          <Campo id="agenda-desde" label="Desde" error={errores.desde} className="form-group--compact">
-            <input type="date" className="form-input" min={hoy} max={limite} {...propsCampo('desde')} />
-          </Campo>
-          <Campo
-            id="agenda-hasta"
-            label="Hasta"
-            error={errores.hasta}
-            ayuda={`Máximo ${MAX_DIAS_RANGO} días de rango`}
-            className="form-group--compact"
-          >
-            <input type="date" className="form-input" min={datos.desde || hoy} max={limite} {...propsCampo('hasta', { ayuda: true })} />
-          </Campo>
-        </div>
+        <Campo id="agenda-fecha" label="Día" error={errores.fecha} ayuda="De lunes a viernes, a partir de mañana" className="form-group--compact">
+          <input type="date" className="form-input" min={fechaColombia(1)} max={fechaColombia(MAX_DIAS_ADELANTE)} {...propsCampo('fecha', { ayuda: true })} />
+        </Campo>
 
         <div className="franjas" role="radiogroup" aria-label="Franja horaria preferida">
           {FRANJAS.map((franja) => (
@@ -309,7 +329,7 @@ const AgendaForm = ({ restaurar = true }) => {
             </label>
           ))}
         </div>
-        <p className="form-hint">Buscamos el primer espacio libre de lunes a viernes (hora de Colombia) y te enviamos la invitación de Google Meet.</p>
+        <p className="form-hint">Hora de Colombia. Nuestro gerente comercial confirma la hora exacta y te envía la invitación con el enlace de la videollamada.</p>
       </fieldset>
 
       <Campo
@@ -374,9 +394,9 @@ const AgendaForm = ({ restaurar = true }) => {
 
       <button type="submit" className="btn btn-primary form-submit" disabled={enviando} aria-busy={enviando}>
         {enviando ? (
-          <><LoaderCircle className="spin" size={18} aria-hidden="true" /> <span>Agendando tu cita...</span></>
+          <><LoaderCircle className="spin" size={18} aria-hidden="true" /> <span>Enviando solicitud...</span></>
         ) : (
-          <><span>Agendar cita</span> <ArrowRight className="btn-arrow" size={18} aria-hidden="true" /></>
+          <><span>Solicitar cita</span> <ArrowRight className="btn-arrow" size={18} aria-hidden="true" /></>
         )}
       </button>
     </form>

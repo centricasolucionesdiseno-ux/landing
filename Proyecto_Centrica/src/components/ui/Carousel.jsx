@@ -88,9 +88,8 @@ const Carousel = ({ items, etiqueta, intervalo = 6000 }) => {
   };
 
   return (
-    <div
+    <section
       className={`carrusel${desborda ? ' is-desborda' : ''}`}
-      role="region"
       aria-roledescription="carrusel"
       aria-label={etiqueta}
       onMouseEnter={() => setPausado(true)}
@@ -98,26 +97,24 @@ const Carousel = ({ items, etiqueta, intervalo = 6000 }) => {
       onFocus={() => setPausado(true)}
       onBlur={() => setPausado(false)}
     >
-      <div
+      {/* Lista: el lector de pantalla anuncia "elemento 2 de 4". Sin tabIndex:
+          con elementos ocultos aparecen las flechas, que se usan con teclado */}
+      <ul
         className="carrusel-pista"
         ref={pistaRef}
-        tabIndex={desborda ? 0 : -1}
         onPointerDown={() => setUsado(true)}
         onWheel={() => setUsado(true)}
       >
         {items.map((item, indice) => (
-          <div
+          <li
             key={item.key}
             className="carrusel-slide"
             ref={(el) => { slidesRef.current[indice] = el; }}
-            role="group"
-            aria-roledescription="diapositiva"
-            aria-label={`${indice + 1} de ${items.length}`}
           >
             {item.contenido}
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {desborda && (
         <div className="carrusel-controles">
@@ -141,7 +138,7 @@ const Carousel = ({ items, etiqueta, intervalo = 6000 }) => {
           </button>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

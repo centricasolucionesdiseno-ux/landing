@@ -1,4 +1,4 @@
-import { Briefcase, Cloud, Landmark, Brain, TrendingUp } from 'lucide-react';
+import { Briefcase, Cloud, Landmark, Brain, ShieldCheck, TrendingUp } from 'lucide-react';
 import SectionHeader from '../../../components/ui/SectionHeader';
 import FeatureCard from '../../../components/ui/FeatureCard';
 
@@ -26,6 +26,12 @@ const SERVICES = [
     title: 'Soluciones de IA',
     text: 'Implementamos inteligencia artificial para automatizar procesos, anticipar escenarios y transformar datos en decisiones precisas.',
     to: '/analisis-ia'
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Evaluaciones de calidad',
+    text: 'Pruebas funcionales, de rendimiento y seguridad, automatización y auditoría de código para garantizar la excelencia en cada entrega.',
+    to: '/evaluaciones-calidad'
   },
   {
     icon: TrendingUp,

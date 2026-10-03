@@ -20,7 +20,14 @@ const SSR = resolve(RAIZ, 'node_modules/.cache/prerender');
 const MANIFIESTO = resolve(DIST, '.vite/manifest.json');
 
 const { render, RUTAS, datosEstructurados, SITE_URL, DOMINIOS_EXTERNOS } = await import(pathToFileURL(resolve(SSR, 'entry-server.js')).href);
-const plantilla = await readFile(resolve(DIST, 'index.html'), 'utf8');
+// El <title> de respaldo de index.html (con su línea) se quita: cada página trae el suyo
+const quitarTitulo = (html) => {
+  const inicio = html.indexOf('<title>');
+  const fin = html.indexOf('</title>');
+  if (inicio === -1 || fin === -1) return html;
+  return html.slice(0, html.lastIndexOf('\n', inicio)) + html.slice(fin + '</title>'.length);
+};
+const plantilla = quitarTitulo(await readFile(resolve(DIST, 'index.html'), 'utf8'));
 const manifiesto = JSON.parse(await readFile(MANIFIESTO, 'utf8'));
 
 // React 19 emite al inicio las etiquetas que van en <head> (<title>, <meta>,
@@ -29,7 +36,7 @@ const ETIQUETA_HEAD = /^(?:<title>[^<]*<\/title>|<meta\b[^>]*\/?>|<link\b[^>]*\/
 const separar = (html) => {
   let head = '';
   let resto = html;
-  for (let m = resto.match(ETIQUETA_HEAD); m; m = resto.match(ETIQUETA_HEAD)) {
+  for (let m = ETIQUETA_HEAD.exec(resto); m; m = ETIQUETA_HEAD.exec(resto)) {
     head += m[0];
     resto = resto.slice(m[0].length);
   }
@@ -37,10 +44,10 @@ const separar = (html) => {
 };
 
 const decodificar = (texto = '') =>
-  texto.replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+  texto.replaceAll('&quot;', '"').replaceAll('&#x27;', "'").replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&amp;', '&');
 
 // JSON dentro de <script>: sin "<" literal para que nunca cierre la etiqueta
-const jsonSeguro = (datos) => JSON.stringify(datos).replace(/</g, '\\u003c');
+const jsonSeguro = (datos) => JSON.stringify(datos).replaceAll('<', String.raw`\u003c`);
 
 // Precarga el JS de la página (y lo que importa) para hidratar antes
 const precargas = (carpeta) => {
@@ -61,59 +68,95 @@ const precargas = (carpeta) => {
 
 const contar = (html, regex) => (html.match(regex) ?? []).length;
 
+// SEO: un solo título, descripción, canonical (si se indexa) y <h1>
+const erroresSeo = (head, cuerpo, indexable) => [
+  contar(head, /<title>/g) !== 1 && 'debe tener exactamente un <title>',
+  contar(head, /<meta name="description"/g) !== 1 && 'debe tener exactamente una meta description',
+  indexable && contar(head, /<link rel="canonical"/g) !== 1 && 'debe tener exactamente un canonical',
+  contar(cuerpo, /<h1[\s>]/g) !== 1 && 'debe tener exactamente un <h1>'
+].filter(Boolean);
+
+// La CSP (security.config.js) bloquea scripts y estilos en línea
+const erroresContenido = (cuerpo) => [
+  /<script\b/.test(cuerpo) && 'tiene <script> en el contenido',
+  /\sstyle="/.test(cuerpo) && 'tiene atributos style="" (usar clases CSS)',
+  /<template\b|hidden id="S:/.test(cuerpo) && 'tiene contenido sin terminar de Suspense'
+].filter(Boolean);
+
+const PESTANA_SEGURA = /rel="[^"]*noopener[^"]*noreferrer|rel="[^"]*noreferrer[^"]*noopener/;
+
+// Enlace externo: solo https, solo dominios autorizados y, si abre otra
+// pestaña, con noopener noreferrer (sin tabnabbing ni fuga de la URL de origen)
+const erroresEnlace = (etiqueta, href) => {
+  const url = decodificar(href);
+  if (/^(mailto|tel):/i.test(url)) return [];
+  if (!URL.canParse(url)) return [`enlace inválido: ${url}`];
+  const destino = new URL(url);
+  return [
+    destino.protocol !== 'https:' && `enlace sin https: ${url}`,
+    destino.protocol === 'https:' && !DOMINIOS_EXTERNOS.includes(destino.hostname) && `enlace a dominio no autorizado: ${destino.hostname}`,
+    etiqueta.includes('target="_blank"') && !PESTANA_SEGURA.test(etiqueta) && `enlace a otra pestaña sin noopener noreferrer: ${destino.hostname}`
+  ].filter(Boolean);
+};
+
+const ENLACE_EXTERNO = /<a\b[^>]*\shref="([a-z][a-z0-9+.-]*:[^"]*)"[^>]*>/gi;
+
 const validar = (nombre, head, cuerpo, { indexable }) => {
-  const errores = [];
-  if (contar(head, /<title>/g) !== 1) errores.push('debe tener exactamente un <title>');
-  if (contar(head, /<meta name="description"/g) !== 1) errores.push('debe tener exactamente una meta description');
-  if (indexable && contar(head, /<link rel="canonical"/g) !== 1) errores.push('debe tener exactamente un canonical');
-  if (contar(cuerpo, /<h1[\s>]/g) !== 1) errores.push('debe tener exactamente un <h1>');
-  // La CSP (security.config.js) bloquea scripts y estilos en línea
-  if (/<script\b/.test(cuerpo)) errores.push('tiene <script> en el contenido');
-  if (/\sstyle="/.test(cuerpo)) errores.push('tiene atributos style="" (usar clases CSS)');
-  if (/<template\b|hidden id="S:/.test(cuerpo)) errores.push('tiene contenido sin terminar de Suspense');
-  // Enlaces externos: solo https, solo dominios autorizados y, si abren otra
-  // pestaña, con noopener noreferrer (sin tabnabbing ni fuga de la URL de origen)
-  for (const [etiqueta, href] of cuerpo.matchAll(/<a\b[^>]*\shref="([a-z][a-z0-9+.-]*:[^"]*)"[^>]*>/gi)) {
-    const url = decodificar(href);
-    if (/^(mailto|tel):/i.test(url)) continue;
-    let destino;
-    try { destino = new URL(url); } catch { errores.push(`enlace inválido: ${url}`); continue; }
-    if (destino.protocol !== 'https:') errores.push(`enlace sin https: ${url}`);
-    else if (!DOMINIOS_EXTERNOS.includes(destino.hostname)) errores.push(`enlace a dominio no autorizado: ${destino.hostname}`);
-    if (/target="_blank"/.test(etiqueta) && !/rel="[^"]*noopener[^"]*noreferrer|rel="[^"]*noreferrer[^"]*noopener/.test(etiqueta)) {
-      errores.push(`enlace a otra pestaña sin noopener noreferrer: ${destino.hostname}`);
-    }
-  }
+  const errores = [
+    ...erroresSeo(head, cuerpo, indexable),
+    ...erroresContenido(cuerpo),
+    ...[...cuerpo.matchAll(ENLACE_EXTERNO)].flatMap(([etiqueta, href]) => erroresEnlace(etiqueta, href))
+  ];
   if (errores.length) throw new Error(`${nombre}: ${errores.join(', ')}`);
 };
 
 // data-ruta: main.jsx solo hidrata si el HTML corresponde a la URL abierta
-const armar = ({ head, cuerpo, jsonLd, modulos, ruta }) =>
-  plantilla
-    .replace('</head>', `    ${head}${modulos}${jsonLd ? `\n    <script type="application/ld+json">${jsonSeguro(jsonLd)}</script>` : ''}\n  </head>`)
+const armar = ({ head, cuerpo, jsonLd, modulos, ruta }) => {
+  const datos = jsonLd ? `\n    <script type="application/ld+json">${jsonSeguro(jsonLd)}</script>` : '';
+  return plantilla
+    .replace('</head>', `    ${head}${modulos}${datos}\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root" data-ruta="${ruta}">${cuerpo}</div>`);
+};
 
 const archivoDe = (path) => (path === '/' ? 'index.html' : `${path.slice(1)}.html`);
 
+// git se ejecuta por ruta absoluta (no se busca en el PATH, que podría estar manipulado)
+const GIT = [
+  process.env.GIT_BIN,
+  '/usr/bin/git',
+  '/usr/local/bin/git',
+  '/opt/homebrew/bin/git',
+  String.raw`C:\Program Files\Git\cmd\git.exe`
+].find((ruta) => ruta && existsSync(ruta));
+
+const hoy = () => new Date().toISOString().slice(0, 10);
+
 // Fecha del último cambio de la página en git (para el sitemap); si no hay git, hoy
 const ultimaModificacion = (carpeta) => {
+  if (!GIT) return hoy();
   try {
-    const fecha = execFileSync('git', ['log', '-1', '--format=%cs', '--', `src/pages/${carpeta}`], { cwd: RAIZ, encoding: 'utf8' }).trim();
-    if (fecha) return fecha;
+    return execFileSync(GIT, ['log', '-1', '--format=%cs', '--', `src/pages/${carpeta}`], { cwd: RAIZ, encoding: 'utf8' }).trim() || hoy();
   } catch {
-    // Sin git (por ejemplo, en algunos servicios de despliegue)
+    // Repositorio sin historial (por ejemplo, en algunos servicios de despliegue)
+    return hoy();
   }
-  return new Date().toISOString().slice(0, 10);
 };
 
-const sitemap = [];
+const entradaSitemap = (ruta) => [
+  '  <url>',
+  `    <loc>${SITE_URL}${ruta.path}</loc>`,
+  `    <lastmod>${ultimaModificacion(ruta.carpeta)}</lastmod>`,
+  `    <changefreq>${ruta.frecuencia}</changefreq>`,
+  `    <priority>${ruta.prioridad.toFixed(1)}</priority>`,
+  '  </url>'
+].join('\n');
 
-for (const ruta of RUTAS) {
+const generarPagina = async (ruta) => {
   const { head, cuerpo } = separar(await render(ruta.path));
   validar(ruta.path, head, cuerpo, { indexable: !ruta.noindex });
   const seo = {
-    title: decodificar(head.match(/<title>([^<]*)<\/title>/)?.[1]),
-    description: decodificar(head.match(/<meta name="description" content="([^"]*)"/)?.[1])
+    title: decodificar(/<title>([^<]*)<\/title>/.exec(head)?.[1]),
+    description: decodificar(/<meta name="description" content="([^"]*)"/.exec(head)?.[1])
   };
   const html = armar({
     head,
@@ -123,19 +166,12 @@ for (const ruta of RUTAS) {
     ruta: ruta.path
   });
   await writeFile(resolve(DIST, archivoDe(ruta.path)), html);
-
-  if (!ruta.noindex) {
-    sitemap.push([
-      '  <url>',
-      `    <loc>${SITE_URL}${ruta.path}</loc>`,
-      `    <lastmod>${ultimaModificacion(ruta.carpeta)}</lastmod>`,
-      `    <changefreq>${ruta.frecuencia}</changefreq>`,
-      `    <priority>${ruta.prioridad.toFixed(1)}</priority>`,
-      '  </url>'
-    ].join('\n'));
-  }
   console.log(`  ✓ ${archivoDe(ruta.path)}`);
-}
+};
+
+// Las páginas se generan en paralelo; el sitemap conserva el orden de RUTAS
+await Promise.all(RUTAS.map(generarPagina));
+const sitemap = RUTAS.filter((ruta) => !ruta.noindex).map(entradaSitemap);
 
 // 404: el hosting la sirve con código 404 para cualquier ruta que no exista
 {

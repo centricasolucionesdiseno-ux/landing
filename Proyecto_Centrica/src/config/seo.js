@@ -37,6 +37,7 @@ export const RUTAS = [
   { path: '/nebula-erp', carpeta: 'NebulaERP', miga: 'Nebula ERP', padre: '/servicios', servicio: true, prioridad: 0.9, frecuencia: 'monthly' },
   { path: '/sicovi', carpeta: 'Sicovi', miga: 'SICOVI', padre: '/servicios', servicio: true, prioridad: 0.9, frecuencia: 'monthly' },
   { path: '/analisis-ia', carpeta: 'AnalisisConIA', miga: 'Soluciones de IA', padre: '/servicios', servicio: true, prioridad: 0.9, frecuencia: 'monthly' },
+  { path: '/evaluaciones-calidad', carpeta: 'EvaluacionesCalidad', miga: 'Evaluaciones de calidad', padre: '/servicios', servicio: true, prioridad: 0.9, frecuencia: 'monthly' },
   { path: '/consultoria-digital', carpeta: 'ConsultoriaDigital', miga: 'Consultoría digital', padre: '/servicios', servicio: true, prioridad: 0.9, frecuencia: 'monthly' },
   { path: '/contacto', carpeta: 'AgendaTuCita', miga: 'Contacto', prioridad: 0.8, frecuencia: 'monthly' },
   { path: '/privacidad', carpeta: 'Privacidad', miga: 'Política de privacidad', prioridad: 0.3, frecuencia: 'yearly' },

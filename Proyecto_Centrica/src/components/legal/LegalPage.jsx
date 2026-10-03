@@ -159,8 +159,6 @@ const LegalPage = ({ seo, hero, secciones, resumen, lateral, pie, className = ''
                     <div
                       id={`${id}-contenido`}
                       className="legal-item-cuerpo"
-                      role="region"
-                      aria-labelledby={`${id}-boton`}
                       inert={!abierta}
                     >
                       <div className="legal-item-interior">

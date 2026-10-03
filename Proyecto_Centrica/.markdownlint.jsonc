@@ -1,0 +1,8 @@
+// Reglas de markdownlint del proyecto (las usa la extensión de VS Code y markdownlint-cli2).
+{
+  "default": true,
+  // Texto a 80 columnas; las tablas y los bloques de código no se pueden partir sin romperse
+  "MD013": { "line_length": 80, "tables": false, "code_blocks": false },
+  // Tablas con un espacio a cada lado de las barras: | a | b |
+  "MD060": { "style": "compact" }
+}

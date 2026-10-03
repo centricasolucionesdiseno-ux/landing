@@ -8,7 +8,7 @@ import LegalPage from '../../components/legal/LegalPage';
 import NebulinaAyuda from '../../components/common/NebulinaAyuda';
 import { heroImage } from '../../utils/heroImages';
 import { STORAGE_KEY as CLAVE_TEMA } from '../../hooks/useTheme';
-import { CLAVE_BORRADOR, TURNSTILE_SITEKEY } from '../../config/agenda';
+import { BORRADOR_HORAS, CLAVE_BORRADOR, TURNSTILE_SITEKEY } from '../../config/agenda';
 import { EMPRESA, COOKIES } from '../../config/legal';
 
 const SEO = {
@@ -37,9 +37,9 @@ const ALMACENADO = [
   },
   {
     nombre: CLAVE_BORRADOR,
-    tipo: 'Almacenamiento de sesión',
-    finalidad: 'Conservar lo que escribes en el formulario de citas si recargas la página. Nunca guarda tu autorización de datos.',
-    duracion: 'Se borra al cerrar la pestaña',
+    tipo: 'Almacenamiento local',
+    finalidad: 'Conservar lo que escribes en el formulario de citas si recargas o sales de la página, para preguntarte si quieres continuar. Nunca guarda tu autorización de datos.',
+    duracion: `${BORRADOR_HORAS} horas, o hasta que envíes o canceles la solicitud`,
     titular: 'Céntrica'
   },
   {
@@ -87,6 +87,8 @@ const BorrarDatos = () => {
   const borrar = () => {
     try {
       localStorage.removeItem(CLAVE_TEMA);
+      localStorage.removeItem(CLAVE_BORRADOR);
+      // Versiones anteriores del sitio guardaban el borrador por sesión
       sessionStorage.removeItem(CLAVE_BORRADOR);
       setMensaje('Listo: borramos tu preferencia de tema y el borrador del formulario. La próxima vez que abras el sitio lo verás en modo claro.');
     } catch {

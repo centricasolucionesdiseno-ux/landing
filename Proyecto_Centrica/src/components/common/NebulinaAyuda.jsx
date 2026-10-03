@@ -11,7 +11,7 @@ import Nebulina500 from '../../assets/images/Imagenes/Nebulina-Hola-500.webp';
  */
 const NebulinaAyuda = ({
   titulo = '¿Dudas sobre tus datos?',
-  texto = 'Escríbenos y te respondemos en máximo 10 días hábiles.',
+  texto = 'Escríbenos y te respondemos en máximo 2 días hábiles.',
   asunto = 'Habeas data',
   className = ''
 }) => (

@@ -110,7 +110,7 @@ const SECCIONES = [
       <>
         <p>Usamos tus datos únicamente para las finalidades que te informamos al recogerlos:</p>
         <ul>
-          <li>Agendar, confirmar y realizar la reunión que solicitaste, incluida la invitación de Google Meet que te enviamos por correo.</li>
+          <li>Agendar, confirmar y realizar la reunión que solicitaste, incluida la invitación con el enlace de la videollamada que te enviamos por correo.</li>
           <li>Responder tus consultas y dar seguimiento comercial a tu solicitud.</li>
           <li>Enviarte propuestas o información relacionada con el servicio que te interesa.</li>
           <li>Mantener la seguridad del sitio y prevenir el uso abusivo de los formularios.</li>
@@ -132,10 +132,13 @@ const SECCIONES = [
         <p>Para prestar el servicio nos apoyamos en proveedores que actúan como encargados del tratamiento, siguiendo nuestras instrucciones:</p>
         <ul>
           <li>
-            <strong>Google (Google Workspace):</strong> cuando agendas una cita, tus datos se registran en el calendario y el
-            correo corporativo de Céntrica para crear la reunión de Google Meet y enviar las invitaciones.
+            <strong>Jitsi Meet (8x8):</strong> plataforma de la videollamada. Solo recibe los datos técnicos de la conexión
+            cuando entras a la reunión; no le enviamos tus datos de contacto.
           </li>
-          <li><strong>Proveedor de alojamiento del sitio web:</strong> almacena y entrega las páginas del sitio.</li>
+          <li>
+            <strong>Hostinger (alojamiento y correo):</strong> almacena y entrega las páginas del sitio, guarda tu solicitud de
+            cita y envía los correos de confirmación. Las solicitudes que no confirmas se borran a los 7 días.
+          </li>
           {TURNSTILE_SITEKEY && (
             <li>
               <strong>Cloudflare (Turnstile):</strong> verifica que el formulario de citas lo envía una persona y no un
@@ -194,7 +197,7 @@ const SECCIONES = [
         </p>
         <ul>
           <li>Tu preferencia de tema (claro u oscuro).</li>
-          <li>El borrador del formulario de citas, para que no pierdas lo escrito si recargas la página. Se borra al enviar la solicitud o al cerrar la pestaña.</li>
+          <li>El borrador del formulario de citas, para que no pierdas lo escrito si recargas o sales de la página. Se borra al enviar o cancelar la solicitud, o a las 48 horas.</li>
         </ul>
         <p>
           Puedes borrarlos en cualquier momento desde la configuración de tu navegador. Ten en cuenta que el mapa de Google

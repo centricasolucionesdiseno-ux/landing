@@ -3,13 +3,15 @@ import { loadGsap } from '../../lib/gsap';
 
 // "+99.9%" -> { prefix: '+', value: 99.9, suffix: '%', decimals: 1 }
 const parseValue = (raw) => {
-  const match = String(raw).match(/^([^\d]*)(\d+(?:\.\d+)?)(.*)$/);
-  if (!match) return null;
+  const text = String(raw);
+  const start = text.search(/\d/);
+  if (start === -1) return null;
+  const number = /^\d+(?:\.\d+)?/.exec(text.slice(start))[0];
   return {
-    prefix: match[1],
-    value: Number(match[2]),
-    suffix: match[3],
-    decimals: (match[2].split('.')[1] || '').length
+    prefix: text.slice(0, start),
+    value: Number(number),
+    suffix: text.slice(start + number.length),
+    decimals: (number.split('.')[1] || '').length
   };
 };
 

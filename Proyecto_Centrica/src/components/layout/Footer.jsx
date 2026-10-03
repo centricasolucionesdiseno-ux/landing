@@ -73,7 +73,7 @@ const Footer = () => (
         <a href={EMPRESA.ficha} target="_blank" rel="noopener noreferrer" className="footer-empresa">
           Centrica Soluciones Innovadoras S A S
         </a>
-        . Todos los derechos reservados.
+        {'. Todos los derechos reservados.'}
       </p>
     </div>
   </footer>

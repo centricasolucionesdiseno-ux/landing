@@ -21,6 +21,15 @@
   --border: #e0e0e0;
   --header-bg: rgba(255, 255, 255, 0.97);
 
+  /* Superficies translúcidas sobre secciones azules (siempre con texto blanco) */
+  --on-blue-surface: rgba(255, 255, 255, 0.12);
+  --on-blue-surface-soft: rgba(255, 255, 255, 0.06);
+  --on-blue-field: rgba(255, 255, 255, 0.08);
+
+  /* Estado correcto (confirmaciones): contraste AA sobre el fondo de la página */
+  --success: #137333;
+  --success-rgb: 19, 115, 51;
+
   /* Degradados de secciones azules */
   --grad-primary: linear-gradient(135deg, #0e58a9 0%, #1a6bc9 100%);
   --grad-deep: linear-gradient(135deg, #0a4a8a 0%, #0e58a9 50%, #1a6bc9 100%);
@@ -57,6 +66,8 @@ body.dark-mode {
   --heading-span: #f0f0f0;
   --border: #333333;
   --header-bg: rgba(10, 10, 10, 0.96);
+  --success: #5bb974;
+  --success-rgb: 91, 185, 116;
 
   --grad-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   --grad-deep: linear-gradient(135deg, #0a1929 0%, #16213e 50%, #1a2942 100%);

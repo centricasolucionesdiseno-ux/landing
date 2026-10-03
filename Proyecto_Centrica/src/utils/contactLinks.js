@@ -33,7 +33,8 @@ export const enlaceCorreo = ({ para = CONTACTO.correo, asunto = '', cuerpo = '',
     asunto && `subject=${encodeURIComponent(asunto)}`,
     cuerpo && `body=${encodeURIComponent(recortar(cuerpo))}`
   ].filter(Boolean);
-  return { href: `mailto:${para}${partes.length ? `?${partes.join('&')}` : ''}`, externo: false };
+  const consulta = partes.length ? `?${partes.join('&')}` : '';
+  return { href: `mailto:${para}${consulta}`, externo: false };
 };
 
 /** Atributos seguros para enlaces que abren otra pestaña (evita tabnabbing y fuga de referer). */

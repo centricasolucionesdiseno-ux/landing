@@ -25,6 +25,12 @@ const preloadFont = () => ({
   }
 })
 
+const sinBarraFinal = (ruta) => {
+  let limpia = ruta
+  while (limpia.endsWith('/')) limpia = limpia.slice(0, -1)
+  return limpia || '/'
+}
+
 // `vite preview` responde como el hosting: sin "/" final (301), 404.html con
 // código 404 para rutas que no existen (por defecto respondería index.html) y
 // nunca sirve archivos ocultos (.vite, .htaccess...) salvo .well-known.
@@ -40,7 +46,7 @@ const previewComoHosting = () => ({
         return res.end(readFileSync(join(dist, '404.html')))
       }
       if (ruta.length > 1 && ruta.endsWith('/')) {
-        res.writeHead(301, { Location: ruta.replace(/\/+$/, '') + (consulta && `?${consulta}`) })
+        res.writeHead(301, { Location: sinBarraFinal(ruta) + (consulta && `?${consulta}`) })
         return res.end()
       }
       const esPagina = extname(ruta) === ''
@@ -74,6 +80,11 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 1000,
     cssCodeSplit: true
+  },
+  // En `npm run dev`, /api (backend PHP de citas) se envía a un PHP local:
+  // ver integraciones/agenda-hostinger/README.md
+  server: {
+    proxy: { '/api': 'http://127.0.0.1:8080' }
   },
   // Enlace público temporal con `npm run compartir` (túnel de Cloudflare).
   // Solo se autorizan los dominios del túnel, no cualquier host.

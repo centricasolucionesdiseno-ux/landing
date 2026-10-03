@@ -10,10 +10,11 @@ const SERVICES = [
   { to: '/nebula-erp', label: 'Nebula ERP' },
   { to: '/sicovi', label: 'Sicovi' },
   { to: '/analisis-ia', label: 'Soluciones de IA' },
+  { to: '/evaluaciones-calidad', label: 'Evaluaciones de calidad' },
   { to: '/consultoria-digital', label: 'Consultoría digital' }
 ];
 
-const SERVICE_PATHS = ['/servicios', ...SERVICES.map((service) => service.to)];
+const SERVICE_PATHS = new Set(['/servicios', ...SERVICES.map((service) => service.to)]);
 const DESKTOP_QUERY = '(min-width: 961px)';
 
 const Header = () => {
@@ -74,7 +75,7 @@ const Header = () => {
   }, [menuOpen]);
 
   const headerClasses = ['header', scrolled && 'is-scrolled', menuOpen && 'menu-open'].filter(Boolean).join(' ');
-  const servicesActive = SERVICE_PATHS.includes(pathname);
+  const servicesActive = SERVICE_PATHS.has(pathname);
 
   return (
     <header className={headerClasses}>
