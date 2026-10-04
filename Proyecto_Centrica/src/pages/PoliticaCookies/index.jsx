@@ -60,7 +60,7 @@ const ALMACENADO = [
   {
     nombre: 'Cookies de Google Maps',
     tipo: 'Cookies de terceros',
-    finalidad: 'Mostrar el mapa de nuestra oficina en la página de Contacto. Solo se cargan al llegar a esa sección.',
+    finalidad: 'Mostrar el mapa de nuestra oficina en la página de Contacto. Solo se cargan si pulsas «Ver mapa interactivo».',
     duracion: 'La que defina Google',
     titular: 'Google'
   },

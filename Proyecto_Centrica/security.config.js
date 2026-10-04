@@ -11,7 +11,18 @@
  * Principio: cada dominio externo se permite solo en la directiva que lo necesita.
  */
 
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+
 const TURNSTILE = 'https://challenges.cloudflare.com';
+
+// Script del tema (evita el parpadeo del modo oscuro): va incrustado en el HTML
+// y la CSP lo permite solo por su hash SHA-256. Si alguien cambia una sola
+// letra del script sin recompilar, el navegador lo bloquea.
+const SCRIPT_INICIAL = new URL('./src/theme-init.js', import.meta.url);
+const ETIQUETA_SCRIPT_INICIAL = '<script src="/theme-init.js"></script>';
+const leerScriptInicial = () => readFileSync(SCRIPT_INICIAL, 'utf8').trim();
+const hashDe = (codigo) => `'sha256-${createHash('sha256').update(codigo).digest('base64')}'`;
 
 const baseDirectives = () => ({
   'default-src': ["'self'"],
@@ -39,8 +50,9 @@ const baseDirectives = () => ({
 // inyectar HTML o scripts en la página (XSS del lado del cliente), aunque apareciera
 // una falla en el código o en una dependencia. El script de Turnstile no es
 // compatible con Trusted Types, por eso solo va cuando no se usa.
-const directives = ({ turnstile }) => {
+const directives = ({ turnstile, scriptInicial }) => {
   const csp = baseDirectives();
+  if (scriptInicial) csp['script-src'].push(hashDe(scriptInicial));
   if (turnstile) {
     csp['script-src'].push(TURNSTILE);
     csp['frame-src'].push(TURNSTILE);
@@ -82,6 +94,10 @@ const headers = (opciones) => ({
   'Origin-Agent-Cluster': '?1'
 });
 
+// Respuestas de texto que vale la pena comprimir (las imágenes WebP y las
+// fuentes WOFF2 ya vienen comprimidas)
+const TIPOS_COMPRIMIBLES = 'text/html text/css text/plain text/xml application/javascript application/json application/xml image/svg+xml';
+
 // Los archivos de /assets llevan hash en el nombre: se pueden cachear un año
 const ASSETS_CACHE = 'public, max-age=31536000, immutable';
 
@@ -105,6 +121,18 @@ const apacheHtaccess = (opciones) =>
   [
     '# Generado en el build desde security.config.js — no editar a mano',
     'Options -Indexes',
+    '',
+    '# Codificación declarada en la cabecera HTTP (el navegador no tiene que adivinarla)',
+    'AddDefaultCharset UTF-8',
+    'AddCharset UTF-8 .html .css .js .json .svg .xml .txt',
+    '',
+    '# Compresión del texto: Brotli si el servidor lo tiene, si no gzip',
+    '<IfModule mod_brotli.c>',
+    `  AddOutputFilterByType BROTLI_COMPRESS ${TIPOS_COMPRIMIBLES}`,
+    '</IfModule>',
+    '<IfModule mod_deflate.c>',
+    `  AddOutputFilterByType DEFLATE ${TIPOS_COMPRIMIBLES}`,
+    '</IfModule>',
     '',
     '# Archivos ocultos (.git, .env, ...) nunca se sirven, por si se suben por error',
     String.raw`<FilesMatch "^\.">`,
@@ -150,13 +178,28 @@ const apacheHtaccess = (opciones) =>
     ''
   ].join('\n');
 
+/** Incrusta el script del tema en index.html (en desarrollo y en el build) */
+export function scriptInicialEnLinea() {
+  return {
+    name: 'centrica-script-inicial',
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html) {
+        if (!html.includes(ETIQUETA_SCRIPT_INICIAL)) throw new Error(`index.html debe incluir ${ETIQUETA_SCRIPT_INICIAL}`);
+        return html.replace(ETIQUETA_SCRIPT_INICIAL, `<script>${leerScriptInicial()}</script>`);
+      }
+    }
+  };
+}
+
 export function securityHeaders() {
-  const opciones = { turnstile: false };
+  const opciones = { turnstile: false, scriptInicial: '' };
   return {
     name: 'centrica-security-headers',
     apply: 'build',
     configResolved(config) {
       opciones.turnstile = Boolean(config.env.VITE_TURNSTILE_SITEKEY);
+      opciones.scriptInicial = leerScriptInicial();
     },
     // Justo después de <meta charset>: el charset debe ir primero y la CSP
     // antes de cualquier script o estilo

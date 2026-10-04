@@ -14,8 +14,10 @@ desde Medellín para Colombia.**
 ![MySQL](https://img.shields.io/badge/MySQL-Hostinger-4479a1?logo=mysql&logoColor=white)
 ![Cloudflare](https://img.shields.io/badge/Cloudflare-Turnstile%20%2B%20DDoS-f38020?logo=cloudflare&logoColor=white)
 ![SonarQube](https://img.shields.io/badge/SonarQube-0%20incidencias-4e9bcd?logo=sonarqubeserver&logoColor=white)
+![Lighthouse](https://img.shields.io/badge/Lighthouse%20m%C3%B3vil-95%E2%80%9397-2ea44f?logo=lighthouse&logoColor=white)
 ![Responsive](https://img.shields.io/badge/Responsive-100%25-2ea44f)
 
+[Resumen](#-resumen-ejecutivo) ·
 [Qué incluye](#-qué-incluye) ·
 [Nebulina](#-nebulina-la-asistente-virtual) ·
 [Agenda](#-agenda-de-citas) ·
@@ -25,6 +27,37 @@ desde Medellín para Colombia.**
 [Documentación](#-documentación)
 
 </div>
+
+---
+
+## 📊 Resumen ejecutivo
+
+**Estado:** el sitio está terminado y verificado. Para publicarlo solo falta la
+configuración del servidor en Hostinger y Cloudflare
+([pendientes](#-próximos-pasos)).
+
+| Indicador | Resultado |
+| --- | --- |
+| Rendimiento (Lighthouse, celular) | **95–97** / 100 |
+| Accesibilidad y SEO | **100** / 100 en todas las páginas medidas |
+| Estabilidad visual (CLS) | **0**: nada salta mientras carga |
+| Tiempo de carga del contenido principal (LCP, celular) | **2,5–2,8 s** |
+| Calidad del código (SonarQube) | **0** incidencias |
+| Vulnerabilidades en dependencias | **0** |
+| Página de Contacto | **−60 %** de peso (761 → 306 KB) con el mapa bajo demanda |
+
+### Valor para el negocio
+
+- 🎯 **Más oportunidades comerciales:** Nebulina atiende a cada visitante,
+  recomienda el servicio adecuado y lo lleva a agendar o a hablar con el
+  gerente; la agenda solo le entrega al gerente solicitudes reales y
+  confirmadas.
+- 🔒 **Menor riesgo:** los datos de los clientes viajan y se guardan cifrados,
+  y el sitio resiste spam y ataques de saturación.
+- ⚡ **Mejor posicionamiento:** carga rápida, SEO técnico completo y
+  accesibilidad total, factores que Google premia.
+- 🧩 **Bajo costo de mantenimiento:** sin dependencias de terceros para
+  funcionar y con documentación para cada parte.
 
 ---
 
@@ -41,7 +74,7 @@ Todo corre en **Hostinger**, sin depender de cuentas de Google.
 | 🤖 | **Nebulina** | Asistente virtual flotante en todas las páginas: entiende preguntas escritas con errores, recuerda la conversación, recomienda soluciones y conecta con el gerente. Parpadea. |
 | 📅 | **Agenda de citas** | Doble confirmación por correo, aprobación del gerente, calendario propio con festivos de Colombia, invitación `.ics` y videollamada de Jitsi Meet. |
 | 🔒 | **Seguridad** | Datos personales cifrados (AES-256-GCM, una clave por cliente), anti-spam en capas, CSP estricta y protección DDoS con Cloudflare. |
-| ⚡ | **Rendimiento** | Prerenderizado, carga diferida por página, imágenes WebP por tamaño de pantalla y el chat descargado solo al abrirlo. |
+| ⚡ | **Rendimiento** | Prerenderizado, carga diferida por página, imágenes WebP por tamaño de pantalla, mapa y chat descargados solo cuando se usan, y compresión Brotli/gzip. |
 | 🔎 | **SEO** | Metadatos por página, datos estructurados Schema.org, migas de pan, sitemap y URL canónicas. |
 | ✅ | **Calidad** | 0 incidencias en SonarQube (JS, CSS, HTML y PHP), ESLint con reglas de SonarJS y Markdown verificado con markdownlint. |
 
@@ -255,6 +288,22 @@ landing/
 | [README de la aplicación](Proyecto_Centrica/README.md) | Detalle técnico completo: arquitectura, rendimiento, SEO, accesibilidad y cómo agregar páginas |
 | [Guía del backend](Proyecto_Centrica/integraciones/agenda-hostinger/README.md) | Instalación en Hostinger, estructura del código PHP y pruebas locales |
 | [Seguridad](Proyecto_Centrica/integraciones/agenda-hostinger/SEGURIDAD.md) | Controles, protección DDoS, operación y riesgos residuales |
+
+---
+
+## ✅ Próximos pasos
+
+Configuración del servidor antes de publicar (detalle en la
+[guía del backend](Proyecto_Centrica/integraciones/agenda-hostinger/README.md)):
+
+- [ ] Base de datos MySQL, buzón `agenda@centricasoluciones.com` y `config.php`
+      en Hostinger.
+- [ ] Claves de Cloudflare Turnstile y `clave_cifrado` (con copia en un gestor
+      de contraseñas).
+- [ ] Dominio detrás de Cloudflare con límite de peticiones para `/api/*`.
+- [ ] Prueba de punta a punta con los servicios reales.
+- [ ] Validación comercial de las cifras publicadas y revisión legal de las
+      políticas de privacidad y cookies.
 
 ---
 

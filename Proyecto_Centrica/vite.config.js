@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs'
 import { extname, join, resolve } from 'node:path'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
-import { securityHeaders } from './security.config.js'
+import { scriptInicialEnLinea, securityHeaders } from './security.config.js'
 
 const VENDOR_CHUNKS = {
   'vendor-react': ['react', 'react-dom', 'react-router', 'scheduler'],
@@ -61,7 +61,7 @@ const previewComoHosting = () => ({
 })
 
 export default defineConfig({
-  plugins: [react(), securityHeaders(), preloadFont(), previewComoHosting()],
+  plugins: [react(), scriptInicialEnLinea(), securityHeaders(), preloadFont(), previewComoHosting()],
   build: {
     // Sin source maps en producción: no exponer el código fuente
     sourcemap: false,

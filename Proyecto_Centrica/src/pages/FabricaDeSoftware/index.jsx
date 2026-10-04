@@ -15,6 +15,7 @@ import CTASection from '../../components/ui/CTASection';
 import Equipo984 from '../../assets/images/Imagenes/Equipo-984.webp';
 import Equipo560 from '../../assets/images/Imagenes/Equipo-560.webp';
 import Fabrica2 from '../../assets/images/Imagenes/Fabrica2.webp';
+import Fabrica2Chica from '../../assets/images/Imagenes/Fabrica2-512.webp';
 
 const SEO = {
   title: 'Fábrica de Software y Desarrollo a la Medida | Céntrica',
@@ -207,7 +208,7 @@ const FabricaDeSoftware = () => (
             srcSet={`${Equipo560} 560w, ${Equipo984} 984w`}
             width={984}
             height={738}
-            alt="Equipo de Céntrica"
+            alt="Equipo de Céntrica trabajando en la oficina"
             reveal="left"
             shadow
           />
@@ -310,7 +311,14 @@ const FabricaDeSoftware = () => (
           <div className="grid-2 grid-nested">
             {A_MEDIDA.map((item) => <FeatureCard key={item.title} variant="highlight" {...item} />)}
           </div>
-          <MediaFrame src={Fabrica2} width={1024} height={1024} alt="Desarrollo a Medida" reveal="right" />
+          <MediaFrame
+            src={Fabrica2}
+            srcSet={`${Fabrica2Chica} 512w, ${Fabrica2} 1024w`}
+            width={1024}
+            height={1024}
+            alt="Desarrollo a Medida"
+            reveal="right"
+          />
         </div>
       </div>
     </section>

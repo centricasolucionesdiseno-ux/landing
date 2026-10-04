@@ -54,7 +54,7 @@ características:
 | **Nebulina** | Asistente virtual flotante en todas las páginas: responde según la página y el contexto, tolera errores de escritura, recuerda la conversación, recomienda soluciones, agenda con el servicio preseleccionado y conecta con el gerente por WhatsApp o correo. |
 | **Estado del formulario** | El borrador se conserva mientras la pestaña esté abierta. Si alguien sale sin enviar, al volver ve el aviso *"Tienes un agendamiento pendiente"* y elige si continuar o cancelar. |
 | **Anti-spam** | Siete capas de protección para que al gerente solo le lleguen solicitudes reales. Las detallo en [Protección contra abuso](#protección-contra-abuso). |
-| **Rendimiento** | Prerenderizado, carga diferida por página, imágenes WebP en varios tamaños, video solo en escritorio y fuentes alojadas en el propio sitio. |
+| **Rendimiento** | Prerenderizado, carga diferida por página, imágenes WebP en varios tamaños, mapa de Google bajo demanda, compresión Brotli/gzip y fuentes alojadas en el propio sitio. Lighthouse móvil: 95–97. |
 | **SEO** | Metadatos por página, datos estructurados (Schema.org), migas de pan, sitemap y URL canónicas. |
 | **Seguridad** | CSP estricta, cabeceras HTTP, lista blanca de enlaces externos, datos personales cifrados con AES-256-GCM (una clave por cliente), límites anti-abuso atómicos y protección DDoS con Cloudflare. |
 | **Contenido legal** | Política de privacidad (Ley 1581 de 2012), cookies, términos de servicio y aviso legal. |
@@ -163,7 +163,6 @@ Proyecto_Centrica/
 ├── public/
 │   ├── api/agenda/                    # Puntos de entrada PHP (se copian a dist/)
 │   ├── robots.txt, favicon, og-centrica.jpg
-│   └── theme-init.js                  # Aplica el tema antes de pintar (sin parpadeo)
 ├── scripts/
 │   ├── prerender.mjs                  # HTML estático por página + sitemap
 │   └── compartir.mjs                  # Enlace público temporal
@@ -320,9 +319,26 @@ de inactividad también se ajustan ahí.
 
 ## Rendimiento
 
+Medición con Lighthouse en modo celular (red y CPU limitadas), sobre el build
+de producción:
+
+| Página | Rendimiento | Accesibilidad | Buenas prácticas | SEO | LCP | CLS | Peso |
+| --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Inicio | 95 | 100 | 96\* | 100 | 2,7 s | 0 | 353 KB |
+| Contacto | 97 | 100 | 100 | 100 | 2,5 s | 0 | 306 KB |
+| Nebula ERP | 96 | 100 | 100 | 100 | 2,7 s | 0 | 337 KB |
+| Fábrica de software | 95 | 100 | 100 | 100 | 2,8 s | 0 | 375 KB |
+
+\*En local, la extensión Console Ninja de VS Code inyecta un script en la
+página de inicio y Lighthouse marca la declaración de `charset`. El HTML que se
+publica no tiene ese script.
+
 | Técnica | Detalle |
 | --- | --- |
 | HTML prerenderizado | La primera pintura no espera a JavaScript. |
+| Script del tema incrustado | Evita el parpadeo del modo oscuro sin una petición extra que bloquee la pintura; la CSP lo autoriza por su hash. |
+| Mapa bajo demanda | Google Maps (~400 KB) se carga solo al pulsar "Ver mapa interactivo": Contacto pasó de 761 KB a 306 KB y Google no instala cookies hasta entonces. |
+| Compresión | Brotli o gzip para HTML, CSS, JS, JSON y SVG, y `charset` declarado en la cabecera (`.htaccess`). |
 | Carga diferida por página | Cada página solo descarga su propio código (unos 10 KB por página de servicio). |
 | Imágenes WebP responsivas | Entre 2 y 4 anchos por imagen. Cada pantalla descarga solo el suyo, con `width` y `height` declarados para que el contenido no salte. |
 | Video del hero | Solo en escritorio con mouse y sin ahorro de datos. En celular se usa la imagen. |
@@ -347,8 +363,9 @@ de inactividad también se ajustan ahí.
 ## Seguridad
 
 - **CSP estricta.** Defino cada dominio externo solo en la directiva que lo
-  necesita. Sin scripts ni estilos en línea, y sin manejadores de eventos en
-  atributos. Cuando Turnstile no está activo, también activo *Trusted Types*.
+  necesita, sin `unsafe-inline` ni `unsafe-eval`. El único script en línea (el
+  del tema) se autoriza por su hash SHA-256, calculado en cada build. Cuando
+  Turnstile no está activo, también activo *Trusted Types*.
 - **Cabeceras HTTP.** HSTS, `X-Frame-Options`, `Referrer-Policy`,
   `Permissions-Policy`, COOP y CORP, generadas para Apache (`.htaccess`) y para
   Netlify o Cloudflare Pages (`_headers`).
@@ -421,6 +438,9 @@ domains/centricasoluciones.com/
 - [ ] Confirmar que el gerente tiene una cuenta de GitHub o Facebook para abrir
       las salas de Jitsi.
 - [ ] Crear el widget de Cloudflare Turnstile y configurar sus dos claves.
+- [ ] Generar `clave_cifrado` y guardarla también en un gestor de
+      contraseñas; poner el dominio detrás de Cloudflare con una regla de
+      límite para `/api/*` y activar `detras_de_cloudflare`.
 - [ ] Revisar los textos de la sección "Conoce a Nebulina": hoy dicen
       "impulsado por inteligencia artificial" y "aprendizaje continuo", pero
       Nebulina es un asistente guiado.

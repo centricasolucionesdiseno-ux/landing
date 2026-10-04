@@ -1,5 +1,6 @@
 import MediaFrame from '../../../components/ui/MediaFrame';
 import SobreNosotros1 from '../../../assets/images/Imagenes/SobreNosotros1.webp';
+import SobreNosotros500 from '../../../assets/images/Imagenes/SobreNosotros1-500.webp';
 
 const VisionSection = () => (
   <section id="vision" className="section">
@@ -15,7 +16,15 @@ const VisionSection = () => (
             y la implementación de IA para mantenerte un paso adelante.
           </p>
         </div>
-        <MediaFrame src={SobreNosotros1} width={1000} height={1000} alt="Visión" maxWidth={500} shadow />
+        <MediaFrame
+          src={SobreNosotros1}
+          srcSet={`${SobreNosotros500} 500w, ${SobreNosotros1} 1000w`}
+          width={1000}
+          height={1000}
+          alt="Visión"
+          maxWidth={500}
+          shadow
+        />
       </div>
     </div>
   </section>

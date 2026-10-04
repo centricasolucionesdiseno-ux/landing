@@ -828,11 +828,50 @@ body.dark-mode .step-number {
   background: var(--surface);
 }
 
-.mapa-frame iframe {
+.mapa-frame iframe,
+.mapa-vista {
   display: block;
   width: 100%;
   height: clamp(300px, 45vw, 450px);
   border: 0;
+}
+
+/* Antes de cargar el mapa: misma altura (nada salta al cargarlo) */
+.mapa-vista {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(var(--accent-rgb), 0.16), transparent 60%),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(var(--brand-rgb), 0.06) 39px 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(var(--brand-rgb), 0.06) 39px 40px),
+    var(--surface);
+}
+
+.mapa-vista-icono {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(var(--accent-rgb), 0.14);
+  color: var(--heading);
+}
+
+.mapa-vista-direccion {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mapa-vista-nota {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-soft);
 }
 
 .mapa-acciones {

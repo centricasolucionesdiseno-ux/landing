@@ -1,5 +1,6 @@
 // Aplica el tema guardado antes del primer render para evitar el parpadeo.
-// Archivo externo (no inline) para cumplir la Content-Security-Policy.
+// En el build se incrusta en el HTML (sin una petición extra que bloquee la
+// pintura) y la CSP lo autoriza solo por su hash: ver security.config.js.
 try {
   if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode');
 } catch {

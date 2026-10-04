@@ -16,6 +16,8 @@ import StatsBand from '../../components/ui/StatsBand';
 import CTASection from '../../components/ui/CTASection';
 import Nebula1 from '../../assets/images/Imagenes/Nebula1.webp';
 import Nebula2 from '../../assets/images/Imagenes/Nebula2.webp';
+import Nebula1Chica from '../../assets/images/Imagenes/Nebula1-500.webp';
+import Nebula2Chica from '../../assets/images/Imagenes/Nebula2-512.webp';
 
 const SEO = {
   title: 'Nebula ERP: Software de Gestión Empresarial | Céntrica',
@@ -186,7 +188,15 @@ const NebulaERP = () => (
               en lo que realmente importa: hacer crecer su negocio.
             </p>
           </div>
-          <MediaFrame src={Nebula1} width={1000} height={1000} alt="Nebula ERP Ilustración" maxWidth={500} shadow />
+          <MediaFrame
+            src={Nebula1}
+            srcSet={`${Nebula1Chica} 500w, ${Nebula1} 1000w`}
+            width={1000}
+            height={1000}
+            alt="Nebula ERP Ilustración"
+            maxWidth={500}
+            shadow
+          />
         </div>
       </div>
     </section>
@@ -297,7 +307,14 @@ const NebulaERP = () => (
       <div className="container">
         <SectionHeader title={<>¿Por qué <span>Nebula ERP</span>?</>} />
         <div className="grid-2 split">
-          <MediaFrame src={Nebula2} width={1024} height={1024} alt="Nebula ERP" reveal="left" />
+          <MediaFrame
+            src={Nebula2}
+            srcSet={`${Nebula2Chica} 512w, ${Nebula2} 1024w`}
+            width={1024}
+            height={1024}
+            alt="Nebula ERP"
+            reveal="left"
+          />
           <div className="grid-2 grid-nested">
             {POR_QUE.map((item) => <FeatureCard key={item.title} variant="highlight" {...item} />)}
           </div>

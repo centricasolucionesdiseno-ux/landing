@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, Moon, Sun, X } from 'lucide-react';
 import useTheme from '../../hooks/useTheme';
-import LogoColor from '../../assets/images/Imagenes/Logos/LogoColor.png';
+import LogoColor from '../../assets/images/Imagenes/Logos/LogoColor.webp';
 import LogoLetraClara from '../../assets/images/Imagenes/Logos/LogoModoOscuroLetraClara.png';
 
 const SERVICES = [
