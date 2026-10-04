@@ -10,6 +10,7 @@ import SectionHeader from '../../components/ui/SectionHeader';
 import FeatureCard from '../../components/ui/FeatureCard';
 import MediaFrame from '../../components/ui/MediaFrame';
 import StatsBand from '../../components/ui/StatsBand';
+import { PESTANA_NUEVA } from '../../utils/contactLinks';
 import CTASection from '../../components/ui/CTASection';
 import QueEs500 from '../../assets/images/Imagenes/Sicovi-QueEs-500.webp';
 import QueEs1000 from '../../assets/images/Imagenes/Sicovi-QueEs-1000.webp';
@@ -18,43 +19,43 @@ import PorQue1120 from '../../assets/images/Imagenes/Sicovi-PorQue-1120.webp';
 
 const SEO = {
   title: 'SICOVI: Gestión Legislativa para Concejos | Céntrica',
-  description: 'SICOVI centraliza la gestión legislativa de Concejos Municipales y Departamentales de Colombia. Transparencia, trazabilidad y eficiencia operativa.',
+  description: 'SICOVI centraliza la gestión legislativa de Concejos Municipales y Asambleas Departamentales de Colombia. Transparencia, trazabilidad y eficiencia operativa.',
   ogTitle: 'SICOVI - Sistema Concejo Visible | Céntrica',
-  ogDescription: 'Plataforma integral de gestión legislativa para la transparencia ciudadana de los Concejos de Colombia.',
+  ogDescription: 'Plataforma integral de gestión legislativa para la transparencia ciudadana de los Concejos y Asambleas de Colombia.',
   path: '/sicovi'
 };
 
 const PILARES = [
-  { icon: Layers, title: 'Unifica', text: 'Centraliza información de acuerdos, proyectos, sesiones, comisiones y agenda en un solo punto de acceso.' },
-  { icon: Shield, title: 'Garantiza', text: 'Trazabilidad completa y acceso público a todos los procesos del Concejo en tiempo real.' },
-  { icon: FileDigit, title: 'Digitaliza', text: 'Elimina silos de información y automatiza el flujo de trabajo interno del Concejo.' }
+  { icon: Layers, title: 'Unifica', text: 'Centraliza información de acuerdos u ordenanzas, proyectos, sesiones, comisiones y agenda en un solo punto de acceso.' },
+  { icon: Shield, title: 'Garantiza', text: 'Trazabilidad completa y acceso público a todos los procesos de la corporación en tiempo real.' },
+  { icon: FileDigit, title: 'Digitaliza', text: 'Elimina silos de información y automatiza el flujo de trabajo interno de la corporación.' }
 ];
 
 const VALOR = [
-  { icon: Eye, title: 'Transparencia Total', text: 'Acceso ciudadano en línea a acuerdos, proyectos, sesiones y toda la actividad legislativa del Concejo.' },
+  { icon: Eye, title: 'Transparencia Total', text: 'Acceso ciudadano en línea a acuerdos, ordenanzas, proyectos, sesiones y toda la actividad legislativa de la corporación.' },
   { icon: Zap, title: 'Eficiencia Operativa', text: 'Centralización de procesos que reduce duplicidades y tiempos administrativos de manera significativa.' },
   { icon: GitPullRequest, title: 'Trazabilidad y Control', text: 'Seguimiento digital completo de cada etapa legislativa con auditoría y respaldo permanente.' },
   { icon: Microchip, title: 'Modernización Tecnológica', text: 'Plataforma robusta, escalable y basada en estándares abiertos de última generación.' }
 ];
 
 const OFERTA = [
-  { icon: Users, title: 'Organización Especializada', text: 'Equipos funcionales (Squads) especializados por módulo: acuerdos, proyectos, sesiones, agenda y comisiones.' },
+  { icon: Users, title: 'Organización Especializada', text: 'Equipos funcionales (Squads) especializados por módulo: acuerdos y ordenanzas, proyectos, sesiones, agenda y comisiones.' },
   { icon: GitBranch, title: 'Metodologías Ágiles', text: 'Trabajamos con Scrum/Kanban combinadas con DevOps para entregas rápidas, confiables y continuas.' },
   { icon: RefreshCw, title: 'Modernización Continua', text: 'Actualización constante de la plataforma con nuevas funcionalidades y mejoras de rendimiento.' }
 ];
 
 const OFERTA_EXTRA = [
-  { icon: GitPullRequest, title: 'Desarrollo Greenfield', text: 'Creación de nuevos módulos desde cero, adaptados a las necesidades específicas del Concejo.' },
+  { icon: GitPullRequest, title: 'Desarrollo Greenfield', text: 'Creación de nuevos módulos desde cero, adaptados a las necesidades específicas de cada Concejo o Asamblea.' },
   { icon: Briefcase, title: 'Consultoría Técnica', text: 'Acompañamiento técnico-funcional continuo para optimizar procesos y maximizar el valor de la inversión.' }
 ];
 
 const SECTORES = [
   {
     icon: Landmark,
-    title: 'Concejos Municipales y Departamentales',
+    title: 'Concejos Municipales y Asambleas Departamentales',
     items: [
-      ['Gestión legislativa', 'Gestión integral de acuerdos, proyectos, sesiones y comisiones con trazabilidad completa.'],
-      ['Gestión administrativa', 'Automatización del flujo de trabajo interno del Concejo, eliminando silos de información.']
+      ['Gestión legislativa', 'Gestión integral de acuerdos u ordenanzas, proyectos, sesiones y comisiones con trazabilidad completa.'],
+      ['Gestión administrativa', 'Automatización del flujo de trabajo interno de la corporación, eliminando silos de información.']
     ]
   },
   {
@@ -62,14 +63,14 @@ const SECTORES = [
     title: 'Ciudadanía',
     items: [
       ['Transparencia', 'Acceso público a información legislativa en tiempo real.'],
-      ['Participación', 'Fortalece la participación ciudadana y el control social sobre la gestión del Concejo.']
+      ['Participación', 'Fortalece la participación ciudadana y el control social sobre la gestión de concejales y diputados.']
     ]
   }
 ];
 
 const MULTI_TENENCIA = [
   { icon: Database, title: 'Flexibilidad de Datos', text: 'Soportamos múltiples motores de base de datos (PostgreSQL, Oracle, SQL Server) para adaptarnos a la infraestructura existente.' },
-  { icon: Shield, title: 'Aislamiento Total', text: 'Cada Concejo posee su propia base de datos física o esquema lógico aislado. No hay mezcla de información.' },
+  { icon: Shield, title: 'Aislamiento Total', text: 'Cada Concejo o Asamblea posee su propia base de datos física o esquema lógico aislado. No hay mezcla de información.' },
   { icon: Zap, title: 'Conmutación Transparente', text: 'El sistema conmuta entre bases de datos en milisegundos, ofreciendo una experiencia unificada y segura.' }
 ];
 
@@ -80,11 +81,24 @@ const ACELERACION = [
   { icon: GitMerge, title: 'CI/CD integrado', text: 'Nuevas funcionalidades se incorporan con el mismo pipeline de calidad.' }
 ];
 
+// Datos públicos del Concejo: módulos e historial en SIMI, su Sistema de
+// Información Misional; aprobaciones y citaciones en su informe de gestión 2024
+const FUENTE_ESTADISTICAS = (
+  <>
+    Fuente:{' '}
+    <a href="https://simi.concejodemedellin.gov.co/" {...PESTANA_NUEVA}>SIMI, Sistema de Información Misional del Concejo de Medellín</a>
+    {' '}e{' '}
+    <a href="https://www.concejodemedellin.gov.co/blog/2025/03/27/importantes-logros-en-la-gestion-del-concejo-de-medellin-durante-2024/" {...PESTANA_NUEVA}>
+      informe de gestión 2024 del Concejo
+    </a>.
+  </>
+);
+
 const STATS = [
-  { value: '-70%', label: 'Reducción en tiempos de gestión documental' },
-  { value: '+100%', label: 'Mayor participación ciudadana' },
-  { value: '-85%', label: 'Disminución de errores administrativos' },
-  { value: '100%', label: 'Plataforma oficial de gestión legislativa' }
+  { value: '6', label: 'Módulos de consulta ciudadana en línea' },
+  { value: 'Desde 2008', label: 'Historial legislativo consultable', animar: false },
+  { value: '21', label: 'Proyectos de acuerdo aprobados en 2024' },
+  { value: '27', label: 'Citaciones de control político en 2024' }
 ];
 
 const OTROS_SERVICIOS = [
@@ -120,7 +134,7 @@ const Sicovi = () => (
       image={heroImage('Sicovi')}
       title="SICOVI"
       subtitle="Sistema Concejo Visible"
-      description="Plataforma unificada de gestión legislativa y administrativa para la transparencia ciudadana de los Concejos Municipales y Departamentales de Colombia."
+      description="Plataforma unificada de gestión legislativa y administrativa para la transparencia ciudadana de los Concejos Municipales y Asambleas Departamentales de Colombia."
       actions={[
         { label: 'Solicitar información', to: '/contacto' },
         { label: 'Conocer más', targetId: 'valor', variant: 'secondary' }
@@ -134,7 +148,7 @@ const Sicovi = () => (
           <div>
             <h2 className="section-title" data-reveal>¿Qué es <span>SICOVI</span>?</h2>
             <p className="text-lead" data-reveal>
-              Plataforma integral de los Concejos Municipales y Departamentales de Colombia que centraliza, gestiona y da visibilidad a toda la actividad legislativa y administrativa, transformando la transparencia en acción.
+              Plataforma integral de los Concejos Municipales y Asambleas Departamentales de Colombia que centraliza, gestiona y da visibilidad a toda la actividad legislativa y administrativa, transformando la transparencia en acción.
             </p>
             <div className="icon-list">
               {PILARES.map(({ icon: Icon, title, text }) => (
@@ -236,7 +250,11 @@ const Sicovi = () => (
       </div>
     </section>
 
-    <StatsBand title={<>Impacto en el <span>Concejo de Medellín</span></>} stats={STATS} />
+    <StatsBand
+      title={<>SICOVI en el <span>Concejo de Medellín</span></>}
+      stats={STATS}
+      fuente={FUENTE_ESTADISTICAS}
+    />
 
     {/* Otros servicios */}
     <section className="section">
@@ -249,7 +267,7 @@ const Sicovi = () => (
     </section>
 
     <CTASection
-      title="¿Listo para transformar la gestión legislativa de su Concejo?"
+      title="¿Listo para transformar la gestión legislativa de su Concejo o Asamblea?"
       text="Contáctenos y descubra cómo SICOVI puede llevar la transparencia y eficiencia a su entidad."
       label="Solicitar información técnica"
     />

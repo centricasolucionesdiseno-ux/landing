@@ -12,7 +12,10 @@ export const DOMINIOS_EXTERNOS = [
   'mail.google.com',
   'www.google.com',
   'policies.google.com',
-  'www.cloudflare.com'
+  'www.cloudflare.com',
+  // Fuente de las cifras de SICOVI en el Concejo de Medellín
+  'www.concejodemedellin.gov.co',
+  'simi.concejodemedellin.gov.co'
 ];
 export const SITE_NAME = 'Céntrica';
 

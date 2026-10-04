@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Centrica\Agenda\Acciones;
 
-use Centrica\Agenda\Antiabuso;
 use Centrica\Agenda\Aplicacion;
 use Centrica\Agenda\Fechas;
+use Centrica\Agenda\Limites;
 use Centrica\Agenda\PlantillaCorreo;
 use Centrica\Agenda\Reglas;
 use Centrica\Agenda\Solicitudes;
@@ -20,8 +20,6 @@ use Centrica\Agenda\Validador;
  */
 final class SolicitarCita
 {
-    private const DATOS_INVALIDOS = 'datos_invalidos';
-
     public function __construct(private readonly Aplicacion $app)
     {
     }
@@ -29,21 +27,18 @@ final class SolicitarCita
     public function atender(): never
     {
         $respuesta = $this->app->respuesta;
-        if (!$this->app->peticion->esPost()) {
-            $respuesta->metodoNoPermitido('POST');
-        }
-        $entrada = $this->leerEntrada();
+        $entrada = EntradaFormulario::leer($this->app);
 
-        // Campo trampa para bots: se responde con éxito para no darles pistas
-        if (!empty($entrada['website'])) {
+        // Bots: se responde con éxito para no darles pistas
+        if (EntradaFormulario::esBot($entrada)) {
             $respuesta->json(['ok' => true, 'estado' => Solicitudes::POR_CONFIRMAR]);
         }
-        if (!is_int($entrada['tiempo'] ?? null) || $entrada['tiempo'] < Antiabuso::MIN_MS_FORMULARIO) {
-            $respuesta->error(self::DATOS_INVALIDOS, 'Revisa los datos y vuelve a enviar el formulario.', 422);
+        if (EntradaFormulario::demasiadoRapido($entrada)) {
+            $respuesta->error(EntradaFormulario::DATOS_INVALIDOS, 'Revisa los datos y vuelve a enviar el formulario.', 422);
         }
         [$datos, $error] = (new Validador())->validar($entrada);
         if ($error !== '') {
-            $respuesta->error(self::DATOS_INVALIDOS, $error, 422);
+            $respuesta->error(EntradaFormulario::DATOS_INVALIDOS, $error, 422);
         }
 
         $antiabuso = $this->app->antiabuso();
@@ -52,29 +47,11 @@ final class SolicitarCita
         }
         $this->app->solicitudes()->borrarSinConfirmarAntesDe(Fechas::utc(Reglas::DIAS_BORRAR_SIN_CONFIRMAR * 86400));
         $ipHash = $antiabuso->hashIp($this->app->peticion->ip());
-        $limite = $antiabuso->limiteSuperado($datos['correo'], $ipHash);
+        $limite = $antiabuso->limiteSuperado($this->app->solicitudes(), Limites::agenda(), $datos['correo'], $ipHash);
         if ($limite !== '') {
             $respuesta->error('limite', $limite, 429);
         }
         $this->registrar($datos, $ipHash);
-    }
-
-    /** @return array<string, mixed> cuerpo JSON del formulario */
-    private function leerEntrada(): array
-    {
-        $respuesta = $this->app->respuesta;
-        if (!$this->app->antiabuso()->origenPermitido($this->app->peticion->origen())) {
-            $respuesta->error('origen', 'Solicitud no permitida.', 403);
-        }
-        $cuerpo = $this->app->peticion->cuerpo(Antiabuso::MAX_BYTES);
-        if (strlen($cuerpo) > Antiabuso::MAX_BYTES) {
-            $respuesta->error(self::DATOS_INVALIDOS, 'La solicitud es demasiado grande.', 413);
-        }
-        $entrada = json_decode($cuerpo, true);
-        if (!is_array($entrada) || array_is_list($entrada)) {
-            $respuesta->error(self::DATOS_INVALIDOS, 'Solicitud no válida.', 400);
-        }
-        return $entrada;
     }
 
     /** @param array<string, string> $datos */

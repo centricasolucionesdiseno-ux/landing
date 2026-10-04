@@ -111,7 +111,7 @@ const SECCIONES = [
         <p>Usamos tus datos únicamente para las finalidades que te informamos al recogerlos:</p>
         <ul>
           <li>Agendar, confirmar y realizar la reunión que solicitaste, incluida la invitación con el enlace de la videollamada que te enviamos por correo.</li>
-          <li>Responder tus consultas y dar seguimiento comercial a tu solicitud.</li>
+          <li>Responder tus consultas, incluidos los mensajes que nos dejas en el chat de Nebulina, y dar seguimiento comercial a tu solicitud.</li>
           <li>Enviarte propuestas o información relacionada con el servicio que te interesa.</li>
           <li>Mantener la seguridad del sitio y prevenir el uso abusivo de los formularios.</li>
           <li>Cumplir obligaciones legales y requerimientos de autoridades competentes.</li>

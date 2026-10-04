@@ -9,6 +9,7 @@ import NebulinaAyuda from '../../components/common/NebulinaAyuda';
 import { heroImage } from '../../utils/heroImages';
 import { STORAGE_KEY as CLAVE_TEMA } from '../../hooks/useTheme';
 import { BORRADOR_HORAS, CLAVE_BORRADOR, TURNSTILE_SITEKEY } from '../../config/agenda';
+import { CLAVE_CONVERSACION, CLAVE_SALUDO } from '../../config/nebulina';
 import { EMPRESA, COOKIES } from '../../config/legal';
 
 const SEO = {
@@ -40,6 +41,20 @@ const ALMACENADO = [
     tipo: 'Almacenamiento local',
     finalidad: 'Conservar lo que escribes en el formulario de citas si recargas o sales de la página, para preguntarte si quieres continuar. Nunca guarda tu autorización de datos.',
     duracion: `${BORRADOR_HORAS} horas, o hasta que envíes o canceles la solicitud`,
+    titular: 'Céntrica'
+  },
+  {
+    nombre: CLAVE_SALUDO,
+    tipo: 'Almacenamiento de sesión',
+    finalidad: 'Recordar que ya viste el saludo de Nebulina, para no mostrártelo en cada página.',
+    duracion: 'Se borra al cerrar la pestaña',
+    titular: 'Céntrica'
+  },
+  {
+    nombre: CLAVE_CONVERSACION,
+    tipo: 'Almacenamiento de sesión',
+    finalidad: 'Conservar tu conversación con Nebulina si recargas o cambias de página. Solo está en tu navegador: no la guardamos en nuestros servidores.',
+    duracion: 'Se borra al cerrar la pestaña o al pulsar "Nueva conversación"',
     titular: 'Céntrica'
   },
   {
@@ -90,6 +105,8 @@ const BorrarDatos = () => {
       localStorage.removeItem(CLAVE_BORRADOR);
       // Versiones anteriores del sitio guardaban el borrador por sesión
       sessionStorage.removeItem(CLAVE_BORRADOR);
+      sessionStorage.removeItem(CLAVE_SALUDO);
+      sessionStorage.removeItem(CLAVE_CONVERSACION);
       setMensaje('Listo: borramos tu preferencia de tema y el borrador del formulario. La próxima vez que abras el sitio lo verás en modo claro.');
     } catch {
       setMensaje('Tu navegador tiene bloqueado el almacenamiento, así que no hay nada guardado.');

@@ -7,10 +7,9 @@ import {
   AGENDA_ENDPOINT, TURNSTILE_SITEKEY, CONTACTO, CARGOS, SERVICIOS, FRANJAS, ZONA_HORARIA,
   MAX_DIAS_ADELANTE, CLAVE_BORRADOR, BORRADOR_HORAS, RESPUESTA_DIAS_HABILES
 } from '../../../config/agenda';
+import { esCorreoValido } from '../../../utils/validacion';
 
 const VACIO = { nombre: '', correo: '', empresa: '', cargo: '', servicio: '', mensaje: '', fecha: '', franja: 'cualquiera' };
-// usuario@dominio.tld: las partes del dominio no contienen puntos (sin retroceso costoso)
-const CORREO_RE = /^[^\s@]+@(?:[^\s@.]+\.)+[^\s@.]{2,}$/;
 const MAX_MENSAJE = 1000;
 
 // 'YYYY-MM-DD' de hoy en Colombia (+ n días), sin depender de la zona del visitante
@@ -31,7 +30,14 @@ const fechaLegible = (fecha) => {
 // página y a cerrar la pestaña, pero vence a las BORRADOR_HORAS horas para no
 // dejar datos en un computador compartido. Nunca guarda la aceptación de datos.
 const almacen = () => window.localStorage;
-const tieneDatos = (d) => Object.keys(VACIO).some((campo) => campo !== 'franja' && d[campo].trim() !== '');
+// La franja y el servicio tienen valor sin que la persona escriba nada: no cuentan como borrador
+const tieneDatos = (d) => Object.keys(VACIO).some((campo) => !['franja', 'servicio'].includes(campo) && d[campo].trim() !== '');
+
+// Servicio preseleccionado desde el chat de Nebulina: /contacto?servicio=Nebula%20ERP
+const servicioDeLaUrl = () => {
+  const servicio = new URLSearchParams(window.location.search).get('servicio');
+  return SERVICIOS.includes(servicio) ? servicio : '';
+};
 
 const borrarBorrador = () => {
   try {
@@ -64,7 +70,7 @@ const cargarBorrador = () => {
 const validar = (d, acepta, token) => {
   const errores = {};
   if (d.nombre.trim().length < 2) errores.nombre = 'Escribe tu nombre completo.';
-  if (!CORREO_RE.test(d.correo.trim())) errores.correo = 'Escribe un correo válido, p. ej. juan@empresa.com.';
+  if (!esCorreoValido(d.correo)) errores.correo = 'Escribe un correo válido, p. ej. juan@empresa.com.';
   if (d.empresa.trim().length < 2) errores.empresa = 'Escribe el nombre de tu empresa.';
   if (!d.fecha) errores.fecha = 'Elige el día de la cita.';
   else if (d.fecha <= fechaColombia()) errores.fecha = 'Elige una fecha a partir de mañana.';
@@ -107,7 +113,7 @@ const Campo = ({ id, label, error, ayuda, className = '', children }) => (
 const AgendaForm = ({ restaurar = true }) => {
   // Si quedó una solicitud a medias, primero se pregunta si continuar o cancelar
   const [pendiente, setPendiente] = useState(() => (restaurar ? cargarBorrador() : null));
-  const [datos, setDatos] = useState(VACIO);
+  const [datos, setDatos] = useState(() => (restaurar ? { ...VACIO, servicio: servicioDeLaUrl() } : VACIO));
   const [acepta, setAcepta] = useState(false);
   const [trampa, setTrampa] = useState('');
   const [errores, setErrores] = useState({});

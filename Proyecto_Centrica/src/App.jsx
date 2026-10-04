@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/common/ScrollToTop';
+import Nebulina from './components/nebulina/Nebulina';
 import useCardInteractions from './hooks/useCardInteractions';
 
 const MAIN_PAGES = {
@@ -94,6 +95,8 @@ function App() {
           </Suspense>
         </main>
         <Footer />
+        {/* Asistente flotante en todas las páginas (solo en el navegador) */}
+        <Nebulina />
       </div>
     </>
   );

@@ -11,7 +11,7 @@ use PDOException;
  * Acceso a la tabla agenda_solicitudes. Estados:
  * por_confirmar -> por_aprobar -> agendada | rechazada
  */
-final class Solicitudes
+final class Solicitudes implements RegistroDeEnvios
 {
     public const POR_CONFIRMAR = 'por_confirmar';
     public const POR_APROBAR = 'por_aprobar';

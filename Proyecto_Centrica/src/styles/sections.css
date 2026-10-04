@@ -336,6 +336,31 @@ body.dark-mode .nebulina-title {
   font-weight: 600;
 }
 
+/* "¡Ya estoy en línea!": abre el chat de Nebulina */
+.bubble-accion {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--heading);
+  color: var(--heading);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.bubble-accion:hover {
+  background: var(--heading);
+  color: var(--surface);
+  transform: translateY(-2px);
+}
+
+.bubble-accion:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .bubble-typing {
   display: inline-flex;
   gap: 4px;

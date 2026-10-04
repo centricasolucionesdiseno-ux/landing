@@ -772,10 +772,38 @@ body.dark-mode .card-callout {
   50% { translate: 0 -10px; }
 }
 
+/* Valores con texto ("Desde 2008"): un poco más pequeños para no desbordar la tarjeta */
+.stat-number--texto {
+  font-size: clamp(2rem, 1.6rem + 1.6vw, 2.75rem);
+}
+
 .stat-label {
   max-width: 24ch;
   font-size: 1rem;
   opacity: 0.9;
+}
+
+/* De dónde salen las cifras */
+.stats-fuente {
+  max-width: 70ch;
+  margin: 2rem auto 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #fff;
+  opacity: 0.85;
+}
+
+.stats-fuente a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.stats-fuente a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 /* ========== CTA ========== */

@@ -1,5 +1,6 @@
-import { Bot, Zap, Shield, Brain, Globe } from 'lucide-react';
+import { Bot, Zap, Shield, Brain, Globe, MessageCircle } from 'lucide-react';
 import NebulinaBot from './NebulinaBot';
+import { abrirNebulina } from '../../../components/nebulina/abrirNebulina';
 
 const FEATURES = [
   { icon: Zap, title: 'Respuestas instantáneas', description: 'Obtén información en tiempo real sin esperas.' },
@@ -48,9 +49,10 @@ const NebulinaSection = () => (
             <div className="bubble bubble-1" data-reveal="right">
               <p>¡Hola! Soy Nebulina 👋</p>
             </div>
-            <div className="bubble bubble-2" data-reveal="right">
-              <p>Estaré disponible muy pronto</p>
-            </div>
+            <button type="button" className="bubble bubble-2 bubble-accion" onClick={abrirNebulina} data-reveal="right">
+              <MessageCircle size={16} aria-hidden="true" />
+              <span>¡Ya estoy en línea! Escríbeme</span>
+            </button>
             <div className="bubble bubble-typing" data-reveal="right" aria-hidden="true">
               <span /><span /><span />
             </div>

@@ -12,10 +12,6 @@ final class Antiabuso
 {
     public const MAX_BYTES = 8000;           // una solicitud legítima pesa ~1 KB
     public const MIN_MS_FORMULARIO = 3000;   // nadie llena el formulario en menos de 3 s
-    private const LIMITE_IP_HORA = 3;
-    private const LIMITE_IP_DIA = 6;
-    private const LIMITE_CORREO_DIA = 3;
-    private const LIMITE_GLOBAL_DIA = 30;    // solicitudes nuevas al día, sumando las de cualquier visitante
     private const URL_TURNSTILE = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
     private const MAX_TOKEN = 2048;
     private const HORA = 3600;
@@ -23,7 +19,6 @@ final class Antiabuso
 
     public function __construct(
         private readonly Configuracion $config,
-        private readonly Solicitudes $solicitudes,
         private readonly ClienteHttp $http
     ) {
     }
@@ -46,19 +41,19 @@ final class Antiabuso
     }
 
     /** Mensaje para el visitante si supera algún límite; vacío si puede continuar */
-    public function limiteSuperado(string $correo, string $ipHash): string
+    public function limiteSuperado(RegistroDeEnvios $registro, Limites $limites, string $correo, string $ipHash): string
     {
         $haceUnaHora = Fechas::utc(self::HORA);
         $haceUnDia = Fechas::utc(self::DIA);
-        $sitioSaturado = $this->solicitudes->contarCreadasDesde($haceUnDia) >= self::LIMITE_GLOBAL_DIA;
-        $ipExcedida = $this->solicitudes->contarPorIpDesde($ipHash, $haceUnaHora) >= self::LIMITE_IP_HORA
-            || $this->solicitudes->contarPorIpDesde($ipHash, $haceUnDia) >= self::LIMITE_IP_DIA;
-        $correoExcedido = $this->solicitudes->contarPorCorreoDesde($correo, $haceUnDia) >= self::LIMITE_CORREO_DIA;
+        $sitioSaturado = $registro->contarCreadasDesde($haceUnDia) >= $limites->globalDia;
+        $ipExcedida = $registro->contarPorIpDesde($ipHash, $haceUnaHora) >= $limites->porIpHora
+            || $registro->contarPorIpDesde($ipHash, $haceUnDia) >= $limites->porIpDia;
+        $correoExcedido = $registro->contarPorCorreoDesde($correo, $haceUnDia) >= $limites->porCorreoDia;
 
         return match (true) {
             $sitioSaturado => 'En este momento estamos recibiendo muchas solicitudes. Inténtalo más tarde o escríbenos por correo.',
-            $ipExcedida => 'Ya recibimos varias solicitudes desde tu conexión. Inténtalo más tarde.',
-            $correoExcedido => 'Ya recibimos varias solicitudes con este correo hoy. Revisa tu bandeja de entrada (y la carpeta de spam).',
+            $ipExcedida => 'Ya recibimos varios envíos desde tu conexión. Inténtalo más tarde.',
+            $correoExcedido => 'Ya recibimos varios envíos con este correo hoy. Te responderemos pronto; revisa también la carpeta de spam.',
             default => '',
         };
     }

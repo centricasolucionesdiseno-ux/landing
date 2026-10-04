@@ -33,3 +33,17 @@ CREATE TABLE IF NOT EXISTS agenda_solicitudes (
   KEY ix_ip (ip_hash, creada_en),
   KEY ix_creada (creada_en)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Mensajes enviados al gerente desde el chat de Nebulina. Solo se guarda lo
+-- necesario para los límites anti-abuso; el mensaje viaja por correo. Se
+-- borran a los 30 días.
+CREATE TABLE IF NOT EXISTS nebulina_mensajes (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  correo VARCHAR(120) NOT NULL,
+  ip_hash CHAR(64) NOT NULL,
+  creada_en DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  KEY ix_correo (correo, creada_en),
+  KEY ix_ip (ip_hash, creada_en),
+  KEY ix_creada (creada_en)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

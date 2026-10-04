@@ -48,6 +48,7 @@ agenda-privado/
     ├── Acciones/           Un caso de uso por punto de entrada
     │   ├── SolicitarCita.php       POST del formulario
     │   ├── ConfirmarSolicitud.php  Enlace de confirmación del visitante
+    │   ├── EnviarMensaje.php       Mensaje al gerente desde el chat de Nebulina
     │   └── GestionarSolicitud.php  Aprobar o rechazar (gerente)
     ├── Solicitudes.php     Repositorio: toda la SQL de la tabla
     ├── Calendario.php      Horas libres del día

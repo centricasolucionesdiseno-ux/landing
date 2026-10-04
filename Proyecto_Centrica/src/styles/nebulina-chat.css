@@ -1,0 +1,387 @@
+/* ========== NEBULINA · panel del chat ==========
+   Se descarga solo al abrir el chat (ver components/nebulina/NebulinaChat.jsx). */
+.nebulina-chat {
+  --nebulina-burbuja: #eef4fb;
+  /* Sin los estilos por defecto del navegador para <dialog> */
+  position: static;
+  inset: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(380px, calc(100vw - 2rem));
+  height: min(600px, calc(100dvh - 7.5rem));
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+  color: var(--text);
+  transform-origin: bottom right;
+}
+
+body.dark-mode .nebulina-chat {
+  --nebulina-burbuja: #26263a;
+}
+
+.nebulina-chat:not([open]) {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nebulina-chat {
+    animation: nebulina-abrir 0.35s var(--ease-out) both;
+  }
+}
+
+@keyframes nebulina-abrir {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+}
+
+/* Cabecera con el degradado de las secciones azules */
+.nebulina-chat-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  background: var(--grad-primary);
+  color: #fff;
+}
+
+.nebulina-chat-avatar {
+  width: 44px;
+  height: 44px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  background: #eaf2fc;
+}
+
+.nebulina-chat-titulo {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #fff;
+}
+
+.nebulina-chat-estado {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 0.78rem;
+  opacity: 0.9;
+}
+
+.nebulina-chat-estado span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--nebulina-en-linea);
+}
+
+.nebulina-chat-botones {
+  display: flex;
+  gap: 0.35rem;
+  margin-left: auto;
+}
+
+.nebulina-chat-boton {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--on-blue-surface);
+  color: #fff;
+  cursor: pointer;
+}
+
+.nebulina-chat-boton:hover {
+  background: var(--on-blue-field);
+}
+
+.nebulina-chat-boton:focus-visible,
+.nebulina-chip:focus-visible,
+.nebulina-chat-entrada button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Conversación */
+.nebulina-chat-log {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.nebulina-mensaje {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  max-width: 88%;
+}
+
+.nebulina-mensaje--visitante {
+  align-self: flex-end;
+}
+
+.nebulina-mensaje-avatar {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #eaf2fc;
+}
+
+.nebulina-mensaje-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  background: var(--nebulina-burbuja);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.nebulina-mensaje-cuerpo p {
+  margin: 0;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.nebulina-mensaje--visitante .nebulina-mensaje-cuerpo {
+  border-radius: 16px;
+  border-bottom-right-radius: 4px;
+  background: var(--brand);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nebulina-mensaje {
+    animation: hero-in 0.35s var(--ease-out) both;
+  }
+}
+
+/* Nebulina está escribiendo... */
+.nebulina-escribiendo {
+  display: flex;
+  gap: 4px;
+  align-self: flex-start;
+  margin-left: 2.25rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 16px;
+  background: var(--nebulina-burbuja);
+}
+
+.nebulina-escribiendo span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-soft);
+  animation: nebulina-punto 1.2s infinite ease-in-out;
+}
+
+.nebulina-escribiendo span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.nebulina-escribiendo span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes nebulina-punto {
+  0%, 60%, 100% { opacity: 0.35; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* Respuestas sugeridas y accesos */
+.nebulina-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: 2.25rem;
+}
+
+.nebulina-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--heading);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--heading);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nebulina-chip:hover {
+  background: var(--heading);
+  color: var(--surface);
+}
+
+.nebulina-chip--whatsapp {
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.nebulina-chip--whatsapp:hover {
+  background: var(--success);
+  color: #fff;
+}
+
+/* Caja para escribir */
+.nebulina-chat-entrada {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.nebulina-chat-entrada input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.nebulina-chat-entrada input:focus {
+  border-color: var(--heading);
+  outline: 2px solid rgba(var(--accent-rgb), 0.35);
+}
+
+.nebulina-chat-entrada button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  cursor: pointer;
+}
+
+.nebulina-chat-entrada button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Mensaje para el gerente */
+.nebulina-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 0.88rem;
+}
+
+.nebulina-formulario-intro {
+  margin: 0 0 0.35rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.nebulina-formulario label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.nebulina-formulario input[type='text'],
+.nebulina-formulario input[type='email'],
+.nebulina-formulario textarea {
+  width: 100%;
+  margin-bottom: 0.35rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.nebulina-formulario input:focus,
+.nebulina-formulario textarea:focus {
+  border-color: var(--heading);
+  outline: 2px solid rgba(var(--accent-rgb), 0.35);
+}
+
+.nebulina-formulario-acepta {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+}
+
+.nebulina-formulario-acepta input {
+  margin-top: 0.2rem;
+}
+
+.nebulina-formulario-acepta label {
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.nebulina-formulario-acepta a {
+  color: var(--heading);
+}
+
+.nebulina-formulario-error {
+  display: flex;
+  gap: 0.4rem;
+  align-items: flex-start;
+  margin: 0;
+  color: #c5221f;
+}
+
+body.dark-mode .nebulina-formulario-error {
+  color: #ff8a80;
+}
+
+.nebulina-formulario-acciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.nebulina-formulario-acciones .btn {
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9rem;
+}
+
+/* Celular: el panel ocupa casi toda la pantalla */
+@media (max-width: 600px) {
+  .nebulina-chat {
+    position: fixed;
+    inset: auto 0.5rem max(0.5rem, env(safe-area-inset-bottom));
+    width: auto;
+    height: min(85dvh, 640px);
+  }
+}

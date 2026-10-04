@@ -18,7 +18,7 @@ const SERVICES = [
   {
     icon: Landmark,
     title: 'Sicovi',
-    text: 'Plataforma unificada de gestión legislativa y administrativa para Concejos Municipales y Departamentales de Colombia.',
+    text: 'Plataforma unificada de gestión legislativa y administrativa para Concejos Municipales y Asambleas Departamentales de Colombia.',
     to: '/sicovi'
   },
   {

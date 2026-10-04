@@ -13,6 +13,7 @@ use Throwable;
  */
 final class Aplicacion
 {
+    private ?BaseDatos $bd = null;
     private ?Solicitudes $solicitudes = null;
     private ?Correo $correo = null;
 
@@ -41,7 +42,17 @@ final class Aplicacion
 
     public function solicitudes(): Solicitudes
     {
-        return $this->solicitudes ??= new Solicitudes(new BaseDatos($this->config));
+        return $this->solicitudes ??= new Solicitudes($this->baseDatos());
+    }
+
+    public function mensajes(): Mensajes
+    {
+        return new Mensajes($this->baseDatos());
+    }
+
+    private function baseDatos(): BaseDatos
+    {
+        return $this->bd ??= new BaseDatos($this->config);
     }
 
     public function correo(): Correo
@@ -56,7 +67,7 @@ final class Aplicacion
 
     public function antiabuso(): Antiabuso
     {
-        return new Antiabuso($this->config, $this->solicitudes(), new ClienteHttp());
+        return new Antiabuso($this->config, new ClienteHttp());
     }
 
     public function invitacion(): Invitacion

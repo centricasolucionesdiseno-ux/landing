@@ -33,6 +33,7 @@ características:
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Arquitectura](#arquitectura)
 - [Agenda de citas](#agenda-de-citas)
+- [Nebulina, la asistente virtual](#nebulina-la-asistente-virtual)
 - [Rendimiento](#rendimiento)
 - [SEO](#seo)
 - [Seguridad](#seguridad)
@@ -50,6 +51,7 @@ características:
 | **Migración** | Pasé las páginas HTML originales a componentes React reutilizables, con un sistema de diseño común (tokens de color, modo claro/oscuro, tarjetas, hero, carrusel, línea de tiempo). |
 | **Nueva página** | Agregué *Evaluaciones de Calidad* (`/evaluaciones-calidad`), que había quedado fuera de la migración. |
 | **Agenda de citas** | Reemplacé la integración con Google por un backend PHP en Hostinger. Tiene confirmación por correo, panel de aprobación para el gerente, calendario propio con festivos de Colombia, invitación `.ics` y sala de Jitsi Meet por cita. |
+| **Nebulina** | Asistente virtual flotante en todas las páginas: responde según la página y el contexto, tolera errores de escritura, recuerda la conversación, recomienda soluciones, agenda con el servicio preseleccionado y conecta con el gerente por WhatsApp o correo. |
 | **Estado del formulario** | El borrador se guarda 48 horas. Si alguien sale sin enviar, al volver ve el aviso *"Tienes un agendamiento pendiente"* y elige si continuar o cancelar. |
 | **Anti-spam** | Siete capas de protección para que al gerente solo le lleguen solicitudes reales. Las detallo en [Protección contra abuso](#protección-contra-abuso). |
 | **Rendimiento** | Prerenderizado, carga diferida por página, imágenes WebP en varios tamaños, video solo en escritorio y fuentes alojadas en el propio sitio. |
@@ -170,8 +172,9 @@ Proyecto_Centrica/
 │   │   ├── common/                    # Utilidades (imagen diferida, Turnstile, enlaces…)
 │   │   ├── layout/                    # Header y Footer
 │   │   ├── legal/                     # Plantilla de páginas legales
+│   │   ├── nebulina/                  # Asistente virtual (burbuja, chat y motor)
 │   │   └── ui/                        # Hero, tarjetas, carrusel, línea de tiempo, CTA…
-│   ├── config/                        # agenda.js, seo.js (rutas), legal.js
+│   ├── config/                        # agenda.js, nebulina.js, seo.js, legal.js
 │   ├── hooks/                         # Tema, animaciones, media queries
 │   ├── pages/                         # Una carpeta por página
 │   ├── styles/                        # tokens, base, layout, componentes, secciones
@@ -276,6 +279,43 @@ confirmadas se borran a los 7 días.
 
 ---
 
+## Nebulina, la asistente virtual
+
+Nebulina es un asistente **guiado** (sin servicios de IA externos): entiende
+lo que escribe el visitante por palabras clave y responde con el contenido real
+del sitio. No da precios ni plazos cerrados y siempre ofrece hablar con el
+gerente.
+
+| Capacidad | Detalle |
+| --- | --- |
+| Contexto por página | Saluda según la hora y la página, y sugiere las preguntas más útiles de esa página. |
+| Lenguaje natural | Ignora tildes, mayúsculas y signos; tolera errores de escritura ("facturasion") y plurales. |
+| Memoria | Recuerda el nombre ("me llamo Ana"), el servicio del que se habla ("¿y cuánto cuesta?") y los temas consultados. |
+| Recomendación | "¿Qué solución necesito?" orienta según la necesidad del visitante. |
+| Agenda | "Agendar una reunión" abre `/contacto` con el servicio ya elegido en el formulario. |
+| Contacto con el gerente | WhatsApp con el mensaje ya escrito, llamada o mensaje al correo del gerente con los temas consultados. |
+| Conversación persistente | Sigue al recargar o navegar (solo en la pestaña); botón de "Nueva conversación". |
+| Inactividad | Sin interacción tras una respuesta, pregunta "¿Sigues por aquí?" a los 60 s; sin respuesta, se despide y cierra a los 45 s, sin perder la conversación. |
+
+**Cómo amplío lo que sabe.** Todo el conocimiento vive en
+`src/config/nebulina.js`: cada tema tiene sus palabras clave, su respuesta y
+sus botones. Para agregar uno, creo el tema en `TEMAS` y, si quiero sugerirlo
+en una página, lo agrego en `PAGINAS` y su texto en `ETIQUETAS`. Los tiempos
+de inactividad también se ajustan ahí.
+
+**Rendimiento y seguridad.**
+
+- La burbuja aparece después de cargar la página y no forma parte del HTML que
+  leen los buscadores. El chat (unos 14 KB) se descarga solo al abrirlo.
+- Todo el texto se pinta como texto, nunca como HTML: lo que escriba el
+  visitante no puede inyectar código. Lo guardado en el navegador se valida al
+  leerlo.
+- El mensaje al gerente pasa por las mismas protecciones de la agenda
+  (Turnstile, campo trampa, origen, límites) y solo se envía al correo del
+  gerente, nunca a terceros.
+
+---
+
 ## Rendimiento
 
 | Técnica | Detalle |
@@ -375,6 +415,9 @@ domains/centricasoluciones.com/
 - [ ] Confirmar que el gerente tiene una cuenta de GitHub o Facebook para abrir
       las salas de Jitsi.
 - [ ] Crear el widget de Cloudflare Turnstile y configurar sus dos claves.
+- [ ] Revisar los textos de la sección "Conoce a Nebulina": hoy dicen
+      "impulsado por inteligencia artificial" y "aprendizaje continuo", pero
+      Nebulina es un asistente guiado.
 - [ ] Hacer una prueba completa de punta a punta con los servicios reales
       (correo, MySQL e invitación `.ics` en Outlook y en el celular).
 - [ ] Validar con el área comercial las cifras publicadas en las tarjetas de
