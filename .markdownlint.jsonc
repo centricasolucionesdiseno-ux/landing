@@ -1,0 +1,12 @@
+// Reglas de markdownlint para el README de la raíz del repositorio.
+{
+  "default": true,
+  // Texto a 80 columnas; las tablas y los bloques de código no se pueden partir sin romperse
+  "MD013": { "line_length": 80, "tables": false, "code_blocks": false },
+  // Tablas con un espacio a cada lado de las barras: | a | b |
+  "MD060": { "style": "compact" },
+  // HTML permitido para el diseño del README en GitHub (banner, columnas, secciones plegables)
+  "MD033": { "allowed_elements": ["div", "img", "table", "tr", "td", "details", "summary", "b", "br"] },
+  // El README empieza con el banner, no con un título
+  "MD041": false
+}

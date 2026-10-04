@@ -3,6 +3,7 @@ import { X } from 'lucide-react';
 import { useHidratado } from '../../hooks/useMediaQuery';
 import { CLAVE_SALUDO, SEGUNDOS_SALUDO } from '../../config/nebulina';
 import { EVENTO_ABRIR } from './abrirNebulina';
+import Parpados from './Parpados';
 import Avatar from '../../assets/images/Imagenes/Nebulina-Avatar-128.webp';
 import '../../styles/nebulina.css';
 
@@ -104,7 +105,10 @@ const Nebulina = () => {
         {abierto ? (
           <X size={26} aria-hidden="true" />
         ) : (
-          <img src={Avatar} width="128" height="128" alt="" decoding="async" />
+          <>
+            <img src={Avatar} width="128" height="128" alt="" decoding="async" />
+            <Parpados variante="avatar" />
+          </>
         )}
         {!abierto && <span className="nebulina-lanzador-estado" aria-hidden="true" />}
       </button>

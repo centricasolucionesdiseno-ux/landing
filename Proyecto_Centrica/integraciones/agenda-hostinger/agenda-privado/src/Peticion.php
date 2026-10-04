@@ -15,13 +15,14 @@ final class Peticion
     public function __construct(
         private readonly array $consulta,
         private readonly array $formulario,
-        private readonly array $servidor
+        private readonly array $servidor,
+        private readonly bool $detrasDeCloudflare = false
     ) {
     }
 
-    public static function actual(): self
+    public static function actual(bool $detrasDeCloudflare = false): self
     {
-        return new self($_GET, $_POST, $_SERVER);
+        return new self($_GET, $_POST, $_SERVER, $detrasDeCloudflare);
     }
 
     public function metodo(): string
@@ -50,9 +51,16 @@ final class Peticion
         return (string) ($this->servidor['HTTP_ORIGIN'] ?? '');
     }
 
+    /** IP real del visitante (la de Cloudflare solo se reemplaza si el proxy es de confianza) */
     public function ip(): string
     {
-        return (string) ($this->servidor['REMOTE_ADDR'] ?? '');
+        return ProxyConfiable::ipDelVisitante($this->servidor, $this->detrasDeCloudflare);
+    }
+
+    /** Sec-Fetch-Site que envían los navegadores modernos ('' si no la envían) */
+    public function sitioDeOrigen(): string
+    {
+        return (string) ($this->servidor['HTTP_SEC_FETCH_SITE'] ?? '');
     }
 
     /** Cuerpo crudo, leyendo como máximo $maximo + 1 bytes para detectar si se pasa */

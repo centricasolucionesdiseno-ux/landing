@@ -38,9 +38,9 @@ const ALMACENADO = [
   },
   {
     nombre: CLAVE_BORRADOR,
-    tipo: 'Almacenamiento local',
+    tipo: 'Almacenamiento de sesión',
     finalidad: 'Conservar lo que escribes en el formulario de citas si recargas o sales de la página, para preguntarte si quieres continuar. Nunca guarda tu autorización de datos.',
-    duracion: `${BORRADOR_HORAS} horas, o hasta que envíes o canceles la solicitud`,
+    duracion: `Se borra al cerrar la pestaña, al enviar o cancelar la solicitud, o a las ${BORRADOR_HORAS} horas`,
     titular: 'Céntrica'
   },
   {

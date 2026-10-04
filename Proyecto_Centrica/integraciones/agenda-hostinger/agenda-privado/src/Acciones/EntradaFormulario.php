@@ -14,6 +14,10 @@ use Centrica\Agenda\Aplicacion;
 final class EntradaFormulario
 {
     public const DATOS_INVALIDOS = 'datos_invalidos';
+    // El formulario más complejo (lista de temas del chat) tiene 2 niveles
+    private const PROFUNDIDAD_JSON = 4;
+    // Lo que envía el navegador cuando la petición nace en el propio sitio
+    private const MISMO_SITIO = ['', 'same-origin'];
 
     private function __construct()
     {
@@ -27,14 +31,15 @@ final class EntradaFormulario
         if (!$app->peticion->esPost()) {
             $respuesta->metodoNoPermitido('POST');
         }
-        if (!$app->antiabuso()->origenPermitido($app->peticion->origen())) {
+        $mismoSitio = in_array($app->peticion->sitioDeOrigen(), self::MISMO_SITIO, true);
+        if (!$mismoSitio || !$app->antiabuso()->origenPermitido($app->peticion->origen())) {
             $respuesta->error('origen', 'Solicitud no permitida.', 403);
         }
         $cuerpo = $app->peticion->cuerpo(Antiabuso::MAX_BYTES);
         if (strlen($cuerpo) > Antiabuso::MAX_BYTES) {
             $respuesta->error(self::DATOS_INVALIDOS, 'La solicitud es demasiado grande.', 413);
         }
-        $entrada = json_decode($cuerpo, true);
+        $entrada = json_decode($cuerpo, true, self::PROFUNDIDAD_JSON);
         if (!is_array($entrada) || array_is_list($entrada)) {
             $respuesta->error(self::DATOS_INVALIDOS, 'Solicitud no válida.', 400);
         }

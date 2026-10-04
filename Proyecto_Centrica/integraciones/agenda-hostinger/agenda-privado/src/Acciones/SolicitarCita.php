@@ -45,20 +45,25 @@ final class SolicitarCita
         if (!$antiabuso->esHumano($entrada['turnstile'] ?? null, $this->app->peticion->ip())) {
             $respuesta->error('verificacion', 'No pudimos verificar que la solicitud la envía una persona. Recarga la página e inténtalo de nuevo.', 403);
         }
-        $this->app->solicitudes()->borrarSinConfirmarAntesDe(Fechas::utc(Reglas::DIAS_BORRAR_SIN_CONFIRMAR * 86400));
+        $solicitudes = $this->app->solicitudes();
+        $solicitudes->borrarSinConfirmarAntesDe(Fechas::utc(Reglas::DIAS_BORRAR_SIN_CONFIRMAR * 86400));
         $ipHash = $antiabuso->hashIp($this->app->peticion->ip());
-        $limite = $antiabuso->limiteSuperado($this->app->solicitudes(), Limites::agenda(), $datos['correo'], $ipHash);
+        $token = Token::nuevo();
+
+        // Contar y registrar es atómico: peticiones simultáneas no pueden saltarse el límite
+        [$limite, $id] = $this->app->bloqueo()->conCandado('agenda', static function () use ($antiabuso, $solicitudes, $datos, $ipHash, $token) {
+            $limite = $antiabuso->limiteSuperado($solicitudes, Limites::agenda(), $datos['correo'], $ipHash);
+            return $limite !== '' ? [$limite, 0] : ['', $solicitudes->crear($datos, Token::hash($token), $ipHash)];
+        });
         if ($limite !== '') {
             $respuesta->error('limite', $limite, 429);
         }
-        $this->registrar($datos, $ipHash);
+        $this->enviarYResponder($datos, $token, $id);
     }
 
     /** @param array<string, string> $datos */
-    private function registrar(array $datos, string $ipHash): never
+    private function enviarYResponder(array $datos, string $token, int $id): never
     {
-        $token = Token::nuevo();
-        $id = $this->app->solicitudes()->crear($datos, Token::hash($token), $ipHash);
         if (!$this->enviarConfirmacion($datos, $token)) {
             // Sin correo de confirmación la solicitud no sirve: se borra para que pueda reintentar
             $this->app->solicitudes()->borrar($id);

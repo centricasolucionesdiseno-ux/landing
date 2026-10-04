@@ -52,11 +52,11 @@ características:
 | **Nueva página** | Agregué *Evaluaciones de Calidad* (`/evaluaciones-calidad`), que había quedado fuera de la migración. |
 | **Agenda de citas** | Reemplacé la integración con Google por un backend PHP en Hostinger. Tiene confirmación por correo, panel de aprobación para el gerente, calendario propio con festivos de Colombia, invitación `.ics` y sala de Jitsi Meet por cita. |
 | **Nebulina** | Asistente virtual flotante en todas las páginas: responde según la página y el contexto, tolera errores de escritura, recuerda la conversación, recomienda soluciones, agenda con el servicio preseleccionado y conecta con el gerente por WhatsApp o correo. |
-| **Estado del formulario** | El borrador se guarda 48 horas. Si alguien sale sin enviar, al volver ve el aviso *"Tienes un agendamiento pendiente"* y elige si continuar o cancelar. |
+| **Estado del formulario** | El borrador se conserva mientras la pestaña esté abierta. Si alguien sale sin enviar, al volver ve el aviso *"Tienes un agendamiento pendiente"* y elige si continuar o cancelar. |
 | **Anti-spam** | Siete capas de protección para que al gerente solo le lleguen solicitudes reales. Las detallo en [Protección contra abuso](#protección-contra-abuso). |
 | **Rendimiento** | Prerenderizado, carga diferida por página, imágenes WebP en varios tamaños, video solo en escritorio y fuentes alojadas en el propio sitio. |
 | **SEO** | Metadatos por página, datos estructurados (Schema.org), migas de pan, sitemap y URL canónicas. |
-| **Seguridad** | Política de seguridad de contenido (CSP) estricta, cabeceras HTTP, lista blanca de enlaces externos y endurecimiento de npm. |
+| **Seguridad** | CSP estricta, cabeceras HTTP, lista blanca de enlaces externos, datos personales cifrados con AES-256-GCM (una clave por cliente), límites anti-abuso atómicos y protección DDoS con Cloudflare. |
 | **Contenido legal** | Política de privacidad (Ley 1581 de 2012), cookies, términos de servicio y aviso legal. |
 
 ---
@@ -269,12 +269,13 @@ confirmadas se borran a los 7 días.
 
 ### Borrador del formulario
 
-- Lo escrito se guarda en `localStorage` mientras el usuario escribe. Nunca
+- Lo escrito se guarda en `sessionStorage` mientras el usuario escribe. Nunca
   guardo la aceptación de datos personales.
 - Si el usuario cambia de página, recarga o cierra la pestaña sin enviar, al
   volver ve el aviso **"Tienes un agendamiento pendiente"** con dos opciones:
   *Seguir con mi solicitud* o *Cancelarla y empezar de nuevo*.
-- El borrador se borra al enviar, al cancelar o a las 48 horas. Así está
+- El borrador se borra al cerrar la pestaña, al enviar o al cancelar (en un
+  computador compartido, el siguiente usuario no ve los datos). Así está
   declarado en la Política de Cookies.
 
 ---
@@ -296,6 +297,7 @@ gerente.
 | Contacto con el gerente | WhatsApp con el mensaje ya escrito, llamada o mensaje al correo del gerente con los temas consultados. |
 | Conversación persistente | Sigue al recargar o navegar (solo en la pestaña); botón de "Nueva conversación". |
 | Inactividad | Sin interacción tras una respuesta, pregunta "¿Sigues por aquí?" a los 60 s; sin respuesta, se despide y cierra a los 45 s, sin perder la conversación. |
+| Parpadeo | Nebulina parpadea en todas sus imágenes con CSS puro (sin JavaScript); se desactiva con "reducir movimiento". |
 
 **Cómo amplío lo que sabe.** Todo el conocimiento vive en
 `src/config/nebulina.js`: cada tema tiene sus palabras clave, su respuesta y
@@ -356,6 +358,10 @@ de inactividad también se ajustan ahí.
   está en la lista blanca (`DOMINIOS_EXTERNOS`).
 - **Dependencias.** Ningún paquete ejecuta scripts al instalarse, y `npm run
   seguridad` audita las vulnerabilidades.
+- **Backend.** Datos personales cifrados en la base (AES-256-GCM, una clave
+  por cliente), límites anti-abuso atómicos, errores sin datos sensibles en
+  los registros y protección DDoS con Cloudflare. Detalle en
+  [`integraciones/agenda-hostinger/SEGURIDAD.md`](integraciones/agenda-hostinger/SEGURIDAD.md).
 
 ---
 
@@ -432,5 +438,4 @@ domains/centricasoluciones.com/
 
 **Santiago Calle Londoño**, desarrollo e implementación del sitio web de
 Céntrica Soluciones Innovadoras S.A.S.
-
 © 2026 Céntrica Soluciones Innovadoras S.A.S. Todos los derechos reservados.

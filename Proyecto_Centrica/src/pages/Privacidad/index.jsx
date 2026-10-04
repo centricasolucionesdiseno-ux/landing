@@ -197,7 +197,7 @@ const SECCIONES = [
         </p>
         <ul>
           <li>Tu preferencia de tema (claro u oscuro).</li>
-          <li>El borrador del formulario de citas, para que no pierdas lo escrito si recargas o sales de la página. Se borra al enviar o cancelar la solicitud, o a las 48 horas.</li>
+          <li>El borrador del formulario de citas, para que no pierdas lo escrito si recargas o sales de la página. Se borra al cerrar la pestaña, al enviar o cancelar la solicitud.</li>
         </ul>
         <p>
           Puedes borrarlos en cualquier momento desde la configuración de tu navegador. Ten en cuenta que el mapa de Google

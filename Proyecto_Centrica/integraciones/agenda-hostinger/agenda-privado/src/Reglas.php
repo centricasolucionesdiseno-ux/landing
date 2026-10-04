@@ -34,6 +34,8 @@ final class Reglas
     public const HORAS_CONFIRMAR = 24;
     /** Las solicitudes no confirmadas se borran pasado este tiempo (minimización de datos) */
     public const DIAS_BORRAR_SIN_CONFIRMAR = 7;
+    /** El enlace del gerente deja de funcionar pasado este tiempo desde la confirmación */
+    public const DIAS_ENLACE_GERENTE = 30;
 
     private function __construct()
     {

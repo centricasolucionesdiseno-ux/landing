@@ -1303,3 +1303,69 @@ body.dark-mode .form-error {
     scroll-behavior: smooth;
   }
 }
+
+/* ========== NEBULINA: PARPADEO (solo CSS) ==========
+   Dos párpados del color de su piel bajan y suben sobre la imagen. Posición
+   y tamaño en % de cada imagen, medidos sobre sus ojos. */
+.nebulina-parpados {
+  --nebulina-piel: #c3cbdc;
+  --nebulina-pestanas: #2a3548;
+  --nebulina-retraso: 0s;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.nebulina-parpado {
+  position: absolute;
+  border-bottom: 2px solid var(--nebulina-pestanas);
+  border-radius: 50%;
+  background: var(--nebulina-piel);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nebulina-parpado {
+    animation: nebulina-parpadeo 5.2s ease-in-out infinite;
+    animation-delay: var(--nebulina-retraso);
+  }
+}
+
+/* Abierta casi todo el tiempo; el parpadeo dura ~0,2 s */
+@keyframes nebulina-parpadeo {
+  0%, 92%, 100% { transform: scaleY(0); }
+  94% { transform: scaleY(1); }
+}
+
+/* Avatar (burbuja flotante y chat) */
+.nebulina-parpados--avatar .nebulina-parpado { border-bottom-width: 1px; }
+.nebulina-parpados--avatar .nebulina-parpado--izq { left: 33.4%; top: 53%; width: 23.5%; height: 21.5%; }
+.nebulina-parpados--avatar .nebulina-parpado--der { left: 67.5%; top: 52%; width: 19%; height: 21%; }
+
+/* Nebulina saludando (tarjeta de ayuda, Soluciones de IA) */
+.nebulina-parpados--hola { --nebulina-retraso: 1.3s; }
+.nebulina-parpados--hola .nebulina-parpado--izq { left: 23.7%; top: 31.7%; width: 11.4%; height: 9%; }
+.nebulina-parpados--hola .nebulina-parpado--der { left: 39.9%; top: 31.4%; width: 9%; height: 9.2%; }
+
+/* Cuerpo completo (sección "Conoce a Nebulina") */
+.nebulina-parpados--cuerpo { --nebulina-piel: #beccdc; --nebulina-retraso: 2.6s; }
+.nebulina-parpados--cuerpo .nebulina-parpado--izq { left: 19.45%; top: 21.5%; width: 15.5%; height: 7%; }
+.nebulina-parpados--cuerpo .nebulina-parpado--der { left: 43.4%; top: 21.25%; width: 17.4%; height: 6.9%; }
+
+/* Contenedor de una imagen de Nebulina con párpados (mismo tamaño que la imagen) */
+.nebulina-viva {
+  position: relative;
+  display: block;
+}
+
+.nebulina-viva > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media print {
+  .nebulina-parpados { display: none; }
+}

@@ -9,6 +9,7 @@ import { SEGUNDOS_CERRAR_SIN_RESPUESTA, SEGUNDOS_PREGUNTAR_SI_SIGUE, SERVICIOS }
 import { bienvenida, cambioDePagina, paginaDe, pausaEscribiendo, respuestaDeTema, respuestaInactividad, responder, servicioDeTema } from './motor';
 import { borrarConversacion, cargarConversacion, conTema, guardarConversacion, MEMORIA_INICIAL } from './memoria';
 import MensajeGerente from './MensajeGerente';
+import Parpados from './Parpados';
 import Avatar from '../../assets/images/Imagenes/Nebulina-Avatar-128.webp';
 import '../../styles/nebulina-chat.css';
 
@@ -226,7 +227,10 @@ const NebulinaChat = ({ abierto, onCerrar }) => {
     // <dialog> no modal: el resto de la página sigue usable con el chat abierto
     <dialog id="nebulina-chat" ref={dialogoRef} className="nebulina-chat" open={abierto} aria-labelledby="nebulina-chat-titulo">
       <header className="nebulina-chat-cabecera">
-        <img className="nebulina-chat-avatar" src={Avatar} width="128" height="128" alt="" />
+        <span className="nebulina-viva nebulina-chat-avatar">
+          <img src={Avatar} width="128" height="128" alt="" />
+          <Parpados variante="avatar" />
+        </span>
         <div>
           <h2 id="nebulina-chat-titulo" className="nebulina-chat-titulo">Nebulina</h2>
           <p className="nebulina-chat-estado"><span aria-hidden="true" /> En línea · Asistente virtual de Céntrica</p>

@@ -12,6 +12,7 @@ import MediaFrame from '../../components/ui/MediaFrame';
 import StepsTimeline from '../../components/ui/StepsTimeline';
 import Carousel from '../../components/ui/Carousel';
 import CTASection from '../../components/ui/CTASection';
+import Parpados from '../../components/nebulina/Parpados';
 import Nebulina260 from '../../assets/images/Imagenes/Nebulina-Hola-260.webp';
 import Nebulina500 from '../../assets/images/Imagenes/Nebulina-Hola-500.webp';
 import Lente560 from '../../assets/images/Imagenes/IA-Lente-560.webp';
@@ -147,16 +148,19 @@ const SolucionesIA = () => (
           </div>
           <div className="media-frame" data-reveal="zoom">
             <div className="nebulina-ayuda-media ia-nebulina">
-              <img
-                src={Nebulina500}
-                srcSet={`${Nebulina260} 260w, ${Nebulina500} 500w`}
-                sizes="(max-width: 900px) 70vw, 420px"
-                width="500"
-                height="500"
-                alt="Nebulina, la asistente virtual con IA de Céntrica"
-                loading="lazy"
-                decoding="async"
-              />
+              <span className="nebulina-viva">
+                <img
+                  src={Nebulina500}
+                  srcSet={`${Nebulina260} 260w, ${Nebulina500} 500w`}
+                  sizes="(max-width: 900px) 70vw, 420px"
+                  width="500"
+                  height="500"
+                  alt="Nebulina, la asistente virtual con IA de Céntrica"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <Parpados variante="hola" />
+              </span>
             </div>
           </div>
         </div>

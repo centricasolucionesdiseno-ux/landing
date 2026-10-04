@@ -26,10 +26,11 @@ const fechaLegible = (fecha) => {
   return texto.charAt(0).toUpperCase() + texto.slice(1);
 };
 
-// El borrador vive en localStorage para sobrevivir a recargas, a cambiar de
-// página y a cerrar la pestaña, pero vence a las BORRADOR_HORAS horas para no
-// dejar datos en un computador compartido. Nunca guarda la aceptación de datos.
-const almacen = () => window.localStorage;
+// El borrador vive en sessionStorage: sobrevive a recargas y a cambiar de
+// página, y se borra al cerrar la pestaña (en un computador compartido el
+// siguiente usuario no ve los datos). Además vence a las BORRADOR_HORAS horas
+// y nunca guarda la aceptación de datos.
+const almacen = () => window.sessionStorage;
 // La franja y el servicio tienen valor sin que la persona escriba nada: no cuentan como borrador
 const tieneDatos = (d) => Object.keys(VACIO).some((campo) => !['franja', 'servicio'].includes(campo) && d[campo].trim() !== '');
 

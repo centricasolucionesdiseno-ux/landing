@@ -25,3 +25,6 @@ dist-ssr
 
 # Backend de citas: credenciales del servidor (nunca al repositorio)
 integraciones/agenda-hostinger/agenda-privado/config.php
+# Archivos que el backend crea al funcionar (candados de envíos)
+integraciones/agenda-hostinger/agenda-privado/bloqueos/
+*.lock

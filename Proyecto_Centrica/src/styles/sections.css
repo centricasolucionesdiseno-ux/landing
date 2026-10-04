@@ -1376,15 +1376,13 @@ body.dark-mode .step-number {
   animation: halo-pulse 4s ease-in-out infinite;
 }
 
-.nebulina-ayuda-media img {
-  width: 100%;
-  height: auto;
+.nebulina-ayuda-media .nebulina-viva {
   animation: media-float 5s ease-in-out infinite;
   transition: scale 0.5s var(--ease-spring), rotate 0.5s var(--ease-spring);
   will-change: translate;
 }
 
-.nebulina-ayuda:hover .nebulina-ayuda-media img {
+.nebulina-ayuda:hover .nebulina-ayuda-media .nebulina-viva {
   scale: 1.04;
   rotate: -2deg;
 }

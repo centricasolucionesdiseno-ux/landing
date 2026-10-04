@@ -31,4 +31,12 @@ return [
 
     // Clave para anonimizar las IP antes de guardarlas. openssl rand -hex 32
     'sal_ip' => '',
+
+    // Clave maestra del cifrado de datos personales (AES-256-GCM). openssl rand -hex 32
+    // ¡Guárdala también fuera del servidor! Si se pierde, los datos cifrados no se recuperan.
+    'clave_cifrado' => '',
+
+    // true si el dominio pasa por Cloudflare (protección DDoS): así se usa la IP
+    // real del visitante para los límites, solo si la conexión viene de Cloudflare
+    'detras_de_cloudflare' => false,
 ];

@@ -1,7 +1,9 @@
 -- Tabla de solicitudes de cita. Ejecutar una vez en phpMyAdmin (hPanel ->
 -- Bases de datos -> phpMyAdmin -> pestaña SQL).
 -- Los tokens de los enlaces se guardan como hash SHA-256: quien lea la base de
--- datos no puede confirmar ni aprobar solicitudes.
+-- datos no puede confirmar ni aprobar solicitudes. Los datos personales
+-- (nombre, correo, empresa, cargo, mensaje) se guardan cifrados con
+-- AES-256-GCM y una clave por cliente; del correo solo se busca su huella HMAC.
 
 CREATE TABLE IF NOT EXISTS agenda_solicitudes (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -9,10 +11,11 @@ CREATE TABLE IF NOT EXISTS agenda_solicitudes (
   estado VARCHAR(20) NOT NULL,
   token_confirmar CHAR(64) NOT NULL,
   token_gestion CHAR(64) NOT NULL,
-  nombre VARCHAR(80) NOT NULL,
-  correo VARCHAR(120) NOT NULL,
-  empresa VARCHAR(100) NOT NULL,
-  cargo VARCHAR(40) NOT NULL DEFAULT '',
+  nombre TEXT NOT NULL,
+  correo TEXT NOT NULL,
+  correo_huella CHAR(64) NOT NULL,
+  empresa TEXT NOT NULL,
+  cargo TEXT NOT NULL,
   servicio VARCHAR(60) NOT NULL DEFAULT '',
   mensaje TEXT NOT NULL,
   fecha DATE NOT NULL,
@@ -29,21 +32,21 @@ CREATE TABLE IF NOT EXISTS agenda_solicitudes (
   UNIQUE KEY uk_inicio (inicio),
   KEY ix_token_confirmar (token_confirmar),
   KEY ix_token_gestion (token_gestion),
-  KEY ix_correo (correo, creada_en),
+  KEY ix_correo (correo_huella, creada_en),
   KEY ix_ip (ip_hash, creada_en),
   KEY ix_creada (creada_en)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Mensajes enviados al gerente desde el chat de Nebulina. Solo se guarda lo
--- necesario para los límites anti-abuso; el mensaje viaja por correo. Se
--- borran a los 30 días.
+-- necesario para los límites anti-abuso (huellas, ningún dato personal); el
+-- mensaje viaja por correo. Se borran a los 30 días.
 CREATE TABLE IF NOT EXISTS nebulina_mensajes (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  correo VARCHAR(120) NOT NULL,
+  correo_huella CHAR(64) NOT NULL,
   ip_hash CHAR(64) NOT NULL,
   creada_en DATETIME NOT NULL,
   PRIMARY KEY (id),
-  KEY ix_correo (correo, creada_en),
+  KEY ix_correo (correo_huella, creada_en),
   KEY ix_ip (ip_hash, creada_en),
   KEY ix_creada (creada_en)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

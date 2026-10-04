@@ -51,11 +51,18 @@ body.dark-mode .nebulina-chat {
 }
 
 .nebulina-chat-avatar {
+  flex-shrink: 0;
   width: 44px;
   height: 44px;
+  overflow: hidden;
   border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
   background: #eaf2fc;
+}
+
+/* Párpados del chat: un poco de retraso para no parpadear a la par de la burbuja */
+.nebulina-chat-avatar .nebulina-parpados {
+  --nebulina-retraso: 1.9s;
 }
 
 .nebulina-chat-titulo {

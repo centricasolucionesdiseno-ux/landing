@@ -44,7 +44,7 @@ export const FRANJAS = [
 ];
 
 export const ZONA_HORARIA = 'America/Bogota';
-// Clave del borrador del formulario en localStorage (la Política de Cookies la lista)
+// Clave del borrador del formulario en sessionStorage (la Política de Cookies la lista)
 export const CLAVE_BORRADOR = 'agenda-borrador';
 // El borrador se borra solo pasado este tiempo
 export const BORRADOR_HORAS = 48;

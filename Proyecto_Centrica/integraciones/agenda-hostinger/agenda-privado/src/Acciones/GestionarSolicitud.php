@@ -44,6 +44,10 @@ final class GestionarSolicitud
         if ($solicitud === null || $solicitud['estado'] === Solicitudes::POR_CONFIRMAR) {
             $this->app->respuesta->pagina('Enlace no válido', '<p>Este enlace no existe o la solicitud ya se borró.</p>', 404);
         }
+        // Un enlace con datos personales no puede servir para siempre (p. ej. si el correo se reenvía)
+        if ($solicitud['confirmada_en'] < Fechas::utc(Reglas::DIAS_ENLACE_GERENTE * 86400)) {
+            $this->app->respuesta->pagina('Enlace vencido', '<p>Por seguridad, este enlace venció. Los datos de la solicitud están en el correo de aviso.</p>', 410);
+        }
         $this->solicitud = $solicitud;
         $this->token = (string) $peticion->token();
 

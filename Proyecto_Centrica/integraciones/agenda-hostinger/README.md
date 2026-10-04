@@ -65,6 +65,11 @@ Los archivos de `public/api/agenda/*.php` (los únicos dentro de `public_html`)
 solo cargan la autocarga y ejecutan su acción. El código pasa el análisis de
 SonarQube/SonarLint (perfil *Sonar way*) sin incidencias.
 
+## Seguridad
+
+Los controles, la configuración contra DDoS y los riesgos residuales están en
+[`SEGURIDAD.md`](SEGURIDAD.md).
+
 ## Protección contra abuso
 
 | Capa | Dónde |
@@ -88,8 +93,10 @@ SonarQube/SonarLint (perfil *Sonar way*) sin incidencias.
 3. **Buzón remitente.** En *Correos*, crear `agenda@centricasoluciones.com`
    (SMTP `smtp.hostinger.com`, puerto 465, SSL). Verificar que el dominio tenga
    **SPF, DKIM y DMARC** activos para que los correos no lleguen a spam.
-4. **Clave de anonimización.** Generarla con `openssl rand -hex 32` para
-   `sal_ip`.
+4. **Claves.** Generar dos claves distintas con `openssl rand -hex 32`:
+   una para `sal_ip` (anonimiza las IP) y otra para `clave_cifrado` (cifra los
+   datos personales). Guardar `clave_cifrado` también en un gestor de
+   contraseñas: si se pierde, los datos cifrados no se pueden recuperar.
 5. **Turnstile.** En dash.cloudflare.com, abrir **Turnstile** y crear un widget
    para `centricasoluciones.com`.
    - La clave del sitio va en `VITE_TURNSTILE_SITEKEY` del `.env`, antes de `npm

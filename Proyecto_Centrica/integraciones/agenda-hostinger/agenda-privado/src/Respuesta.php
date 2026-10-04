@@ -11,6 +11,10 @@ namespace Centrica\Agenda;
 final class Respuesta
 {
     private const HOJA_ESTILOS = '/api/agenda/estilo.css';
+    // Defensa en profundidad: cada respuesta trae su propia política, aunque el
+    // .htaccess no se aplique. Las páginas solo cargan su hoja de estilos.
+    private const CSP_API = "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'";
+    private const CSP_PAGINA = "default-src 'none'; style-src 'self'; img-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'";
 
     public function __construct(private readonly bool $esApi)
     {
@@ -69,7 +73,12 @@ final class Respuesta
     private static function cabeceras(int $codigo, string $tipo): void
     {
         http_response_code($codigo);
+        header_remove('X-Powered-By');
         header("Content-Type: $tipo; charset=utf-8");
+        header('Content-Security-Policy: ' . ($tipo === 'text/html' ? self::CSP_PAGINA : self::CSP_API));
+        header('X-Content-Type-Options: nosniff');
+        header('X-Frame-Options: DENY');
+        header('Cross-Origin-Resource-Policy: same-origin');
         header('Cache-Control: no-store');
         header('X-Robots-Tag: noindex, nofollow');
         header('Referrer-Policy: no-referrer');

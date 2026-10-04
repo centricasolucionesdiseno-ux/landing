@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import NebulinaCuerpo from '../../../assets/images/Imagenes/Nebulina-cuerpo.webp';
+import Parpados from '../../../components/nebulina/Parpados';
 
 // Paleta tomada del PNG original de Nebulina
 const LINE = '#2a3548';
@@ -110,6 +111,7 @@ const NebulinaBot = () => {
           loading="lazy"
           decoding="async"
         />
+        <Parpados variante="cuerpo" />
         <span className="nebulina-bot-glow" aria-hidden="true" />
       </div>
       <span className="nebulina-bot-shadow" aria-hidden="true" />

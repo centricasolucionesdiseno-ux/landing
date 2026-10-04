@@ -51,15 +51,22 @@ final class EnviarMensaje
         $mensajes = $this->app->mensajes();
         $mensajes->borrarAntesDe(Fechas::utc(self::DIAS_CONSERVAR * 86400));
         $ipHash = $antiabuso->hashIp($this->app->peticion->ip());
-        $limite = $antiabuso->limiteSuperado($mensajes, Limites::chat(), $datos['correo'], $ipHash);
+
+        // Contar y registrar es atómico (y el registro va antes del envío):
+        // peticiones simultáneas no pueden saltarse el límite
+        [$limite, $id] = $this->app->bloqueo()->conCandado('chat', static function () use ($antiabuso, $mensajes, $datos, $ipHash) {
+            $limite = $antiabuso->limiteSuperado($mensajes, Limites::chat(), $datos['correo'], $ipHash);
+            return $limite !== '' ? [$limite, 0] : ['', $mensajes->registrar($datos['correo'], $ipHash)];
+        });
         if ($limite !== '') {
             $respuesta->error('limite', $limite, 429);
         }
 
         if (!$this->avisarGerente($datos)) {
+            // El envío falló: el registro se quita para que pueda reintentar
+            $mensajes->borrar($id);
             $respuesta->error('correo', 'No pudimos enviar tu mensaje en este momento.', 502);
         }
-        $mensajes->registrar($datos['correo'], $ipHash);
         $respuesta->json(['ok' => true]);
     }
 

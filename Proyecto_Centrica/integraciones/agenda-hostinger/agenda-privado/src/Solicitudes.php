@@ -10,6 +10,9 @@ use PDOException;
 /**
  * Acceso a la tabla agenda_solicitudes. Estados:
  * por_confirmar -> por_aprobar -> agendada | rechazada
+ *
+ * Los datos personales se guardan cifrados (cada cliente con su clave, ver
+ * Cifrado) y se descifran solo al leer una solicitud por su token.
  */
 final class Solicitudes implements RegistroDeEnvios
 {
@@ -18,21 +21,25 @@ final class Solicitudes implements RegistroDeEnvios
     public const AGENDADA = 'agendada';
     public const RECHAZADA = 'rechazada';
     private const VIOLACION_UNICA = '23000';
+    /** Datos personales: nunca se guardan en claro */
+    private const CIFRADOS = ['nombre', 'correo', 'empresa', 'cargo', 'mensaje'];
 
-    public function __construct(private readonly BaseDatos $bd)
+    public function __construct(private readonly BaseDatos $bd, private readonly Cifrado $cifrado)
     {
     }
 
     /** @param array<string, string> $datos datos ya validados del formulario */
     public function crear(array $datos, string $hashConfirmar, string $ipHash): int
     {
+        $publico = bin2hex(random_bytes(16));
+        $cifrar = fn(string $campo) => $this->cifrado->cifrar($datos[$campo], $campo, $publico);
         $this->bd->consulta(
-            'INSERT INTO agenda_solicitudes (publico, estado, token_confirmar, token_gestion, nombre, correo, empresa, cargo,
-             servicio, mensaje, fecha, franja, ip_hash, creada_en) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            'INSERT INTO agenda_solicitudes (publico, estado, token_confirmar, token_gestion, nombre, correo, correo_huella, empresa,
+             cargo, servicio, mensaje, fecha, franja, ip_hash, creada_en) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
             [
-                bin2hex(random_bytes(16)), self::POR_CONFIRMAR, $hashConfirmar, Token::hash(Token::nuevo()),
-                $datos['nombre'], $datos['correo'], $datos['empresa'], $datos['cargo'], $datos['servicio'],
-                $datos['mensaje'], $datos['fecha'], $datos['franja'], $ipHash, Fechas::utc(),
+                $publico, self::POR_CONFIRMAR, $hashConfirmar, Token::hash(Token::nuevo()),
+                $cifrar('nombre'), $cifrar('correo'), $this->cifrado->huellaCorreo($datos['correo']), $cifrar('empresa'),
+                $cifrar('cargo'), $datos['servicio'], $cifrar('mensaje'), $datos['fecha'], $datos['franja'], $ipHash, Fechas::utc(),
             ]
         );
         return $this->bd->ultimoId();
@@ -67,7 +74,7 @@ final class Solicitudes implements RegistroDeEnvios
 
     public function contarPorCorreoDesde(string $correo, string $desde): int
     {
-        return $this->contar('correo = ? AND creada_en >= ?', [$correo, $desde]);
+        return $this->contar('correo_huella = ? AND creada_en >= ?', [$this->cifrado->huellaCorreo($correo), $desde]);
     }
 
     public function borrarSinConfirmarAntesDe(string $fecha): void
@@ -130,7 +137,20 @@ final class Solicitudes implements RegistroDeEnvios
             return null;
         }
         $fila = $this->bd->consulta("SELECT * FROM agenda_solicitudes WHERE $columna = ?", [Token::hash($token)])->fetch();
-        return $fila ?: null;
+        return $fila ? $this->descifrar($fila) : null;
+    }
+
+    /**
+     * @param array<string, mixed> $fila
+     * @return array<string, mixed>
+     */
+    private function descifrar(array $fila): array
+    {
+        foreach (self::CIFRADOS as $campo) {
+            $fila[$campo] = $this->cifrado->descifrar((string) $fila[$campo], $campo, (string) $fila['publico']);
+        }
+        unset($fila['correo_huella']);
+        return $fila;
     }
 
     /** @param list<mixed> $parametros */
