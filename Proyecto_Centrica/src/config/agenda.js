@@ -20,6 +20,9 @@ export const CONTACTO = {
   horario: 'Lunes a Viernes: 8:00 AM - 6:00 PM'
 };
 
+// Horario de atención (hora de Colombia): lo usan Nebulina y los datos estructurados de Google
+export const HORARIO_ATENCION = { abre: 8, cierra: 18, dias: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'] };
+
 // Redes sociales: se muestran solo las que tengan URL
 export const REDES = [
   { red: 'LinkedIn', url: '' },

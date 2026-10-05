@@ -1,7 +1,8 @@
 # Endurecimiento del backend (Apache, antes de que la petición llegue a PHP):
 # lo que no es necesario se rechaza aquí, lo más barato posible.
 
-# Ninguna petición legítima pesa más de 8 KB (el PHP vuelve a comprobarlo)
+# Apache corta en 16 KB, antes de llegar a PHP; el PHP rechaza todo lo que
+# pase de 8 KB (ninguna petición legítima se acerca a ese tamaño)
 LimitRequestBody 16384
 
 # Solo GET y POST

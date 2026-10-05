@@ -320,7 +320,8 @@ Configuración del servidor antes de publicar (detalle en la
 
 <div align="center">
 
-**Santiago Calle Londoño** · Desarrollo e implementación
+Hecho por **Santiago Calle Londoño** (desarrollo e implementación)<br/>
+e **Isabela García Ángel** (diseño web, UX/UI)
 
 © 2026 Céntrica Soluciones Innovadoras S.A.S. Todos los derechos reservados.
 

@@ -3,12 +3,10 @@
  * base de conocimiento, con el contexto de la conversación (servicio, nombre
  * y si estamos en horario de atención).
  */
-import { CONTACTO, ZONA_HORARIA } from '../../../config/agenda';
+import { CONTACTO, HORARIO_ATENCION, ZONA_HORARIA } from '../../../config/agenda';
 import { INACTIVIDAD, PAGINAS, SERVICIOS, SIN_RESPUESTA, TEMAS } from '../../../config/nebulina';
 import { paginaDe, servicioDeTema } from './intenciones';
 
-const HORA_APERTURA = 8;
-const HORA_CIERRE = 18;
 
 // ---------- Horario ----------
 
@@ -22,7 +20,7 @@ const ahoraEnColombia = (fecha) => {
 
 export const enHorario = (fecha = new Date()) => {
   const { hora, diaHabil } = ahoraEnColombia(fecha);
-  return diaHabil && hora >= HORA_APERTURA && hora < HORA_CIERRE;
+  return diaHabil && hora >= HORARIO_ATENCION.abre && hora < HORARIO_ATENCION.cierra;
 };
 
 const saludoSegunHora = (fecha) => {

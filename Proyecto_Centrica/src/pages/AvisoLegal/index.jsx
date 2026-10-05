@@ -11,7 +11,7 @@ import { EMPRESA, AVISO_LEGAL } from '../../config/legal';
 
 const SEO = {
   title: 'Aviso Legal | Céntrica',
-  description: 'Aviso legal del sitio web de Céntrica: titular del sitio, condiciones de uso, propiedad intelectual, limitación de responsabilidad y legislación aplicable en Colombia.',
+  description: 'Aviso legal de Céntrica: titular del sitio, condiciones de uso, propiedad intelectual, responsabilidad y legislación aplicable en Colombia.',
   ogTitle: 'Aviso Legal | Céntrica',
   ogDescription: 'Información legal y condiciones de uso del sitio web de Céntrica.',
   path: '/legal'

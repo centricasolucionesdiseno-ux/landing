@@ -11,8 +11,9 @@ import { SERVICIOS } from '../../config/nebulina/servicios';
 const SEO = {
   title: 'Céntrica | Desarrollo de Software, ERP e IA en Medellín',
   description: 'Empresa de tecnología en Medellín, Colombia: desarrollo de software a la medida, Nebula ERP, SICOVI, inteligencia artificial y consultoría digital.',
-  ogTitle: 'Sobre Nosotros | Céntrica',
-  ogDescription: 'Impulsamos tu éxito a través de la innovación inteligente con soluciones tecnológicas que transforman organizaciones.',
+  // Lo que se ve al compartir el enlace (redes, WhatsApp): marca + qué hacemos
+  ogTitle: 'Céntrica | Software, ERP e IA para empresas y entidades públicas',
+  ogDescription: 'Desarrollo de software a la medida, Nebula ERP, SICOVI, inteligencia artificial y consultoría digital desde Medellín para toda Colombia.',
   path: ''
 };
 

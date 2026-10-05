@@ -10,7 +10,7 @@ import { EMPRESA, TERMINOS } from '../../config/legal';
 
 const SEO = {
   title: 'Términos de Servicio | Céntrica',
-  description: 'Condiciones de uso de los servicios y soluciones digitales de Céntrica: alcance, uso permitido, responsabilidad, propiedad intelectual, protección de datos y legislación aplicable.',
+  description: 'Términos de servicio de Céntrica: alcance, uso permitido, responsabilidad, propiedad intelectual, protección de datos y legislación aplicable.',
   ogTitle: 'Términos de Servicio | Céntrica',
   ogDescription: 'Condiciones que regulan el acceso y uso de las soluciones digitales de Céntrica.',
   path: '/terservicios'

@@ -430,8 +430,16 @@ base64 dentro del JavaScript principal.
 - Título, descripción, Open Graph y Twitter Card propios en cada página.
 - URL canónicas: HTTPS, sin `www`, sin `.html` y sin barra final, con
   redirección 301.
-- Datos estructurados Schema.org en JSON-LD: `Organization`, `WebSite`,
-  `WebPage`, `BreadcrumbList` y `Service`.
+- Datos estructurados Schema.org en JSON-LD: `Organization` +
+  `ProfessionalService` (negocio local en Medellín, con dirección,
+  coordenadas, horario de atención, punto de contacto comercial y catálogo de
+  los 6 servicios), `WebSite`, `WebPage`, `BreadcrumbList` y `Service`. Las
+  redes sociales se agregan solas (`sameAs`) cuando tengan URL en
+  `config/agenda.js`.
+- Descripciones de máximo 160 caracteres para que Google no las recorte, y un
+  título propio para compartir en redes y WhatsApp.
+- El blog en construcción y el 404 van con `noindex`.
+- Lighthouse: 100 en SEO en todas las páginas, en celular y escritorio.
 - `sitemap.xml` generado en cada build, `robots.txt` y un 404 real (no una
   página vacía con código 200).
 
@@ -535,8 +543,12 @@ domains/centricasoluciones.com/
 
 ---
 
-## Autor
+## Autores
 
-**Santiago Calle Londoño**, desarrollo e implementación del sitio web de
-Céntrica Soluciones Innovadoras S.A.S.
+| Autor | Rol |
+| --- | --- |
+| **Santiago Calle Londoño** | Desarrollo e implementación |
+| **Isabela García Ángel** | Diseño web (UX/UI) |
+
+Sitio web de Céntrica Soluciones Innovadoras S.A.S.
 © 2026 Céntrica Soluciones Innovadoras S.A.S. Todos los derechos reservados.

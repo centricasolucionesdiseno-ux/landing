@@ -1,4 +1,4 @@
-import { CONTACTO, UBICACION } from './agenda';
+import { CONTACTO, HORARIO_ATENCION, REDES, UBICACION } from './agenda';
 import { EMPRESA } from './legal';
 
 export const SITE_URL = 'https://centricasoluciones.com';
@@ -74,7 +74,32 @@ const organizacion = () => ({
   },
   geo: { '@type': 'GeoCoordinates', latitude: UBICACION.lat, longitude: UBICACION.lng },
   areaServed: { '@type': 'Country', name: 'Colombia' },
-  knowsLanguage: 'es'
+  knowsLanguage: 'es',
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: HORARIO_ATENCION.dias,
+    opens: `${String(HORARIO_ATENCION.abre).padStart(2, '0')}:00`,
+    closes: `${String(HORARIO_ATENCION.cierra).padStart(2, '0')}:00`
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    telephone: CONTACTO.telefono.replace(/\s+/g, ''),
+    email: CONTACTO.correo,
+    areaServed: 'CO',
+    availableLanguage: 'es'
+  },
+  // Catálogo de servicios: cada página de servicio del sitio
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de tecnología',
+    itemListElement: RUTAS.filter((ruta) => ruta.servicio).map((ruta) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: ruta.miga, url: `${SITE_URL}${ruta.path}` }
+    }))
+  },
+  // Perfiles oficiales: solo los que ya tienen URL (config/agenda.js)
+  ...(REDES.some((red) => red.url) && { sameAs: REDES.filter((red) => red.url).map((red) => red.url) })
 });
 
 /** JSON-LD de una página: empresa + sitio + migas de pan (+ servicio). */
