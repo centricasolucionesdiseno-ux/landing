@@ -51,10 +51,10 @@ características:
 | **Migración** | Pasé las páginas HTML originales a componentes React reutilizables, con un sistema de diseño común (tokens de color, modo claro/oscuro, tarjetas, hero, carrusel, línea de tiempo). |
 | **Nueva página** | Agregué *Evaluaciones de Calidad* (`/evaluaciones-calidad`), que había quedado fuera de la migración. |
 | **Agenda de citas** | Reemplacé la integración con Google por un backend PHP en Hostinger. Tiene confirmación por correo, panel de aprobación para el gerente, calendario propio con festivos de Colombia, invitación `.ics` y sala de Jitsi Meet por cita. |
-| **Nebulina** | Asistente virtual flotante en todas las páginas: responde según la página y el contexto, tolera errores de escritura, recuerda la conversación, recomienda soluciones, agenda con el servicio preseleccionado y conecta con el gerente por WhatsApp o correo. |
+| **Nebulina** | Asistente virtual y asesora comercial en todas las páginas, por texto o por voz: invita según la página, hace un diagnóstico de 3 preguntas, responde objeciones, propone servicios complementarios, agenda con el servicio preseleccionado y le entrega al gerente el perfil del cliente. |
 | **Estado del formulario** | El borrador se conserva mientras la pestaña esté abierta. Si alguien sale sin enviar, al volver ve el aviso *"Tienes un agendamiento pendiente"* y elige si continuar o cancelar. |
 | **Anti-spam** | Siete capas de protección para que al gerente solo le lleguen solicitudes reales. Las detallo en [Protección contra abuso](#protección-contra-abuso). |
-| **Rendimiento** | Prerenderizado, carga diferida por página, imágenes WebP en varios tamaños, mapa de Google bajo demanda, compresión Brotli/gzip y fuentes alojadas en el propio sitio. Lighthouse móvil: 95–97. |
+| **Rendimiento** | Prerenderizado, carga diferida por página, heros en AVIF, imágenes WebP en varios tamaños, mapa de Google bajo demanda, compresión Brotli/gzip y fuentes alojadas en el propio sitio. Lighthouse móvil: 97, con LCP bajo 2,5 s. |
 | **SEO** | Metadatos por página, datos estructurados (Schema.org), migas de pan, sitemap y URL canónicas. |
 | **Seguridad** | CSP estricta, cabeceras HTTP, lista blanca de enlaces externos, datos personales cifrados con AES-256-GCM (una clave por cliente), límites anti-abuso atómicos y protección DDoS con Cloudflare. |
 | **Contenido legal** | Política de privacidad (Ley 1581 de 2012), cookies, términos de servicio y aviso legal. |
@@ -171,9 +171,9 @@ Proyecto_Centrica/
 │   │   ├── common/                    # Utilidades (imagen diferida, Turnstile, enlaces…)
 │   │   ├── layout/                    # Header y Footer
 │   │   ├── legal/                     # Plantilla de páginas legales
-│   │   ├── nebulina/                  # Asistente virtual (burbuja, chat y motor)
+│   │   ├── nebulina/                  # Asistente virtual: burbuja, chat, memoria, recorrido y motor/
 │   │   └── ui/                        # Hero, tarjetas, carrusel, línea de tiempo, CTA…
-│   ├── config/                        # agenda.js, nebulina.js, seo.js, legal.js
+│   ├── config/                        # agenda.js, seo.js, legal.js y nebulina/ (conocimiento por áreas)
 │   ├── hooks/                         # Tema, animaciones, media queries
 │   ├── pages/                         # Una carpeta por página
 │   ├── styles/                        # tokens, base, layout, componentes, secciones
@@ -202,7 +202,8 @@ flowchart LR
 - **Prerenderizado e hidratación.** Cada ruta de `src/config/seo.js` se genera
   como HTML completo. El navegador lo muestra de inmediato y React lo "hidrata"
   después. El build **falla** si una página sale sin `<h1>`, con etiquetas
-  duplicadas o con un enlace a un dominio externo no autorizado.
+  duplicadas, con un enlace a un dominio externo no autorizado o si la base de
+  conocimiento de Nebulina tiene una referencia rota.
 - **Carga diferida.** Cada página es un paquete JavaScript independiente. Cuando
   el navegador queda libre, precargo las páginas principales para que navegar
   entre ellas sea instantáneo.
@@ -282,35 +283,103 @@ confirmadas se borran a los 7 días.
 ## Nebulina, la asistente virtual
 
 Nebulina es un asistente **guiado** (sin servicios de IA externos): entiende
-lo que escribe el visitante por palabras clave y responde con el contenido real
-del sitio. No da precios ni plazos cerrados y siempre ofrece hablar con el
-gerente.
+lo que el visitante escribe o le dice por voz y responde con el contenido real
+del sitio. No da precios ni plazos cerrados, no inventa cifras y siempre
+ofrece hablar con el gerente.
 
 | Capacidad | Detalle |
 | --- | --- |
 | Contexto por página | Saluda según la hora y la página, y sugiere las preguntas más útiles de esa página. |
-| Lenguaje natural | Ignora tildes, mayúsculas y signos; tolera errores de escritura ("facturasion") y plurales. |
+| Lenguaje natural | Ignora tildes, mayúsculas, signos y muletillas ("eh", "este", "o sea"); tolera errores de escritura ("facturasion"), plurales y confusiones de sonido (b/v, s/z/c, h muda, ll/y). |
+| Intención y contexto | En "¿cuánto cuesta SICOVI?" entiende que la pregunta es el precio y SICOVI el contexto: responde sobre SICOVI y lo deja preseleccionado al agendar. |
+| Dos preguntas a la vez | "¿Qué es SICOVI y cuánto cuesta?": responde la principal y ofrece la otra como botón ("También: ¿Qué es SICOVI?"). |
+| Hablar por voz | Botón de micrófono para dictar la pregunta y parlante para oír las respuestas. Si le hablas, te responde hablando. Ver [Voz](#voz). |
 | Memoria | Recuerda el nombre ("me llamo Ana"), el servicio del que se habla ("¿y cuánto cuesta?") y los temas consultados. |
-| Recomendación | "¿Qué solución necesito?" orienta según la necesidad del visitante. |
 | Agenda | "Agendar una reunión" abre `/contacto` con el servicio ya elegido en el formulario. |
-| Contacto con el gerente | WhatsApp con el mensaje ya escrito, llamada o mensaje al correo del gerente con los temas consultados. |
-| Conversación persistente | Sigue al recargar o navegar (solo en la pestaña); botón de "Nueva conversación". |
+| Contacto con el gerente | WhatsApp con el mensaje ya escrito (incluye el perfil), llamada o mensaje al correo del gerente con el perfil y los temas consultados. |
+| Conversación persistente | Sigue al recargar o navegar (solo en la pestaña); botón de "Nueva conversación". Si el almacenamiento se llena, conserva los mensajes más recientes en vez de perder la conversación. |
 | Inactividad | Sin interacción tras una respuesta, pregunta "¿Sigues por aquí?" a los 60 s; sin respuesta, se despide y cierra a los 45 s, sin perder la conversación. |
 | Parpadeo | Nebulina parpadea en todas sus imágenes con CSS puro (sin JavaScript); se desactiva con "reducir movimiento". |
 
-**Cómo amplío lo que sabe.** Todo el conocimiento vive en
-`src/config/nebulina.js`: cada tema tiene sus palabras clave, su respuesta y
-sus botones. Para agregar uno, creo el tema en `TEMAS` y, si quiero sugerirlo
-en una página, lo agrego en `PAGINAS` y su texto en `ETIQUETAS`. Los tiempos
-de inactividad también se ajustan ahí.
+### Voz
+
+Usa las capacidades del propio navegador (Web Speech API), sin servicios ni
+claves de Céntrica. Céntrica nunca recibe el audio: al chat solo llega el texto.
+
+| Navegador | Dictado (hablarle) | Lectura en voz alta |
+| --- | --- | --- |
+| Edge | Nativo | Voces neuronales (p. ej. Salomé, Colombia) |
+| Chrome (escritorio y Android) | Nativo | Voces de Google |
+| Safari (Mac, iPhone, iPad) | Nativo | Voces de Apple; en iPhone se habilita con el primer toque |
+| Firefox, Opera, Brave | Nebulina explica cómo dictar con el teclado del sistema (micrófono del teclado del celular, Windows + H, Fn dos veces en Mac) y deja la caja lista | Voces del sistema, si son naturales |
+
+- **Voz humanizada:** elige la voz más natural disponible (neuronal, femenina y
+  con acento latino si existe) y lee frase por frase, con pausas naturales.
+  Las voces robóticas (eSpeak) se descartan: si es lo único que hay, el
+  parlante no aparece.
+- **Privacidad:** la primera vez que se usa el micrófono, Nebulina explica cómo
+  procesa la voz cada navegador; está declarado en la Política de Privacidad.
+  El micrófono solo lo puede pedir el propio sitio (`Permissions-Policy:
+  microphone=(self)`), nunca un iframe.
+- **Preferencia recordada:** si el visitante activa la lectura, se recuerda en
+  ese equipo (`nebulina-voz` en `localStorage`, declarado en la Política de
+  Cookies).
+
+**Comprensión verificada:** 58 preguntas en lenguaje hablado (con muletillas
+y errores de dictado como "sí covi" o "e r p"), 40 preguntas nuevas que no se
+usaron para ajustarla y las 614 palabras clave de la base: 100 % de aciertos.
+
+### Asesora comercial
+
+Nebulina siempre busca el siguiente paso comercial, con tono amable y sin
+insistir: cada recurso se usa como máximo una vez por conversación.
+
+| Recurso | Cómo funciona |
+| --- | --- |
+| Invitación proactiva | Con el chat cerrado, tras unos segundos en una página ofrece algo concreto de esa página ("¿Sabías que Nebula ERP trae facturación electrónica DIAN?"). Al pulsarla, el chat abre respondiendo justo eso. Máximo 2 por visita, nunca repetida, ninguna más si el visitante cierra una o ya abrió el chat, y solo con la pestaña visible. |
+| Diagnóstico en 3 preguntas | Tipo de organización, necesidad y urgencia (con botones o escribiendo, p. ej. "una alcaldía"). Recomienda el servicio y el siguiente paso según la urgencia. |
+| Perfil para el gerente | Las respuestas del diagnóstico llegan en el correo del gerente; si el cliente lo necesita cuanto antes, el asunto dice **Prioritario**. |
+| Objeciones | "Es muy caro", "ya tengo un sistema", "lo voy a pensar" y "¿por qué ustedes?" tienen respuestas empáticas con un siguiente paso. |
+| Venta cruzada | Cuando el visitante profundiza en un servicio, menciona el que lo complementa (p. ej. Fábrica de software → Evaluaciones de calidad). |
+| Cierre suave | Tras 3 preguntas de interés, invita a una reunión de 30 minutos sin costo. |
+| Recorrido | Si el visitante pasa por varios servicios, propone integrarlos en una sola propuesta. |
+
+### Cómo amplío lo que sabe
+
+El conocimiento está en `src/config/nebulina/`, dividido por áreas:
+
+| Archivo | Contenido |
+| --- | --- |
+| `temas/*.js` | Un archivo por área (empresa, cada servicio, comercial, ventas, conversación). Cada tema tiene etiqueta, palabras clave, respuesta y botones. "Céntrica en cifras" usa las mismas fuentes que la página, así nunca se contradicen. |
+| `paginas.js` | Qué dice y qué sugiere Nebulina en cada página. |
+| `proactivo.js` | Invitaciones por página, sus tiempos y sus topes. |
+| `ventas.js` | Diagnóstico, recomendaciones, venta cruzada, cierre suave y recorrido. |
+| `ajustes.js`, `servicios.js` | Endpoint, claves de almacenamiento, tiempos de inactividad y líneas de negocio. |
+| `validar.js` | Revisa que cada botón, sugerencia e invitación apunte a algo que existe. |
+
+Para agregar un tema, lo escribo en el archivo de su área y, si quiero
+sugerirlo, lo agrego en `paginas.js`. Si me equivoco en una referencia, la
+consola lo avisa en desarrollo y el build se detiene.
+
+El motor (`src/components/nebulina/motor/`) también está dividido: `texto.js`
+(normalización, alias del dictado, muletillas y comparación fonética),
+`intenciones.js` (qué pidió el visitante, con prioridad para la intención y
+detección del servicio mencionado), `respuestas.js` (arma párrafos y botones)
+y `ventas.js` (recursos comerciales). Son funciones puras, sin React, fáciles
+de probar. La voz vive aparte: `voz.js` (navegador) y `useVoz.js` (estado del
+micrófono y de la lectura).
 
 **Rendimiento y seguridad.**
 
 - La burbuja aparece después de cargar la página y no forma parte del HTML que
-  leen los buscadores. El chat (unos 14 KB) se descarga solo al abrirlo.
+  leen los buscadores. El chat, su conocimiento y la voz (unos 23 KB
+  comprimidos) se descargan solo al abrirlo; en la carga inicial solo van las
+  invitaciones.
 - Todo el texto se pinta como texto, nunca como HTML: lo que escriba el
-  visitante no puede inyectar código. Lo guardado en el navegador se valida al
-  leerlo.
+  visitante no puede inyectar código. Lo guardado en el navegador (conversación
+  y recorrido, solo en la pestaña) se valida al leerlo.
+- El servidor solo acepta los valores conocidos del diagnóstico; cualquier otro
+  se descarta antes de llegar al correo.
 - El mensaje al gerente pasa por las mismas protecciones de la agenda
   (Turnstile, campo trampa, origen, límites) y solo se envía al correo del
   gerente, nunca a terceros.
@@ -319,19 +388,26 @@ de inactividad también se ajustan ahí.
 
 ## Rendimiento
 
-Medición con Lighthouse en modo celular (red y CPU limitadas), sobre el build
-de producción:
+Medición con Lighthouse 13 en modo celular (red y CPU limitadas), sobre el
+build de producción servido como en Hostinger (Brotli, `charset` y caché del
+`.htaccess`). Mediana de 3 corridas, con la versión anterior medida de forma
+intercalada en las mismas condiciones:
 
-| Página | Rendimiento | Accesibilidad | Buenas prácticas | SEO | LCP | CLS | Peso |
+| Página | Rendimiento | Accesibilidad | Buenas prácticas | SEO | LCP antes → ahora | CLS | Peso antes → ahora |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| Inicio | 95 | 100 | 96\* | 100 | 2,7 s | 0 | 353 KB |
-| Contacto | 97 | 100 | 100 | 100 | 2,5 s | 0 | 306 KB |
-| Nebula ERP | 96 | 100 | 100 | 100 | 2,7 s | 0 | 337 KB |
-| Fábrica de software | 95 | 100 | 100 | 100 | 2,8 s | 0 | 375 KB |
+| Inicio | 97 | 100 | 100 | 100 | 2,48 → **2,41 s** | 0 | 313 → **288 KB** |
+| Nebula ERP | 97 | 100 | 100 | 100 | 2,48 → **2,40 s** | 0 | 316 → **290 KB** |
+| Fábrica de software | 97 | 100 | 100 | 100 | 2,63 → **2,48 s** | 0 | 355 → **311 KB** |
+| SICOVI | 97 | 100 | 100 | 100 | 2,48 → **2,40 s** | 0 | 318 → **280 KB** |
 
-\*En local, la extensión Console Ninja de VS Code inyecta un script en la
-página de inicio y Lighthouse marca la declaración de `charset`. El HTML que se
-publica no tiene ese script.
+Todas las páginas medidas quedan bajo la meta de 2,5 s de LCP de Google, sin
+errores en la consola.
+
+**Decisiones tomadas con medición.** Probé y descarté tres cambios que
+parecían mejoras pero empeoraban la primera pintura en el celular: incrustar
+todo el CSS en el HTML (+100 ms de FCP), repartir los íconos por página (de 13
+a 30 archivos en la carga inicial) y un avatar de 3 KB que Vite incrustaba en
+base64 dentro del JavaScript principal.
 
 | Técnica | Detalle |
 | --- | --- |
@@ -340,7 +416,8 @@ publica no tiene ese script.
 | Mapa bajo demanda | Google Maps (~400 KB) se carga solo al pulsar "Ver mapa interactivo": Contacto pasó de 761 KB a 306 KB y Google no instala cookies hasta entonces. |
 | Compresión | Brotli o gzip para HTML, CSS, JS, JSON y SVG, y `charset` declarado en la cabecera (`.htaccess`). |
 | Carga diferida por página | Cada página solo descarga su propio código (unos 10 KB por página de servicio). |
-| Imágenes WebP responsivas | Entre 2 y 4 anchos por imagen. Cada pantalla descarga solo el suyo, con `width` y `height` declarados para que el contenido no salte. |
+| Heros en AVIF | La imagen principal de cada página (el LCP) en AVIF cuando ahorra al menos 15 % (8 de 12 heros, entre 18 y 41 % menos), con WebP de respaldo y precarga desde el `<head>` solo para navegadores que la soportan. |
+| Imágenes WebP responsivas | Entre 3 y 4 anchos por imagen, incluido uno de 720 px para celulares de alta densidad (antes descargaban la de 1000–1120 px). Cada pantalla descarga solo el suyo, con `width` y `height` declarados para que el contenido no salte. |
 | Video del hero | Solo en escritorio con mouse y sin ahorro de datos. En celular se usa la imagen. |
 | Recursos propios | Fuentes, íconos e imágenes se sirven desde el mismo dominio, sin CDN de terceros. |
 | Caché | Recursos con hash cacheados un año (`immutable`). El HTML se revalida en cada visita. |
@@ -447,8 +524,12 @@ domains/centricasoluciones.com/
 - [ ] Hacer una prueba completa de punta a punta con los servicios reales
       (correo, MySQL e invitación `.ics` en Outlook y en el celular).
 - [ ] Validar con el área comercial las cifras publicadas en las tarjetas de
-      beneficios (por ejemplo, porcentajes de reducción de defectos) y el
-      contador de proyectos de la página de inicio.
+      beneficios (por ejemplo, los porcentajes de Nebula ERP y de reducción de
+      defectos). La sección "Céntrica en cifras" del inicio ya solo muestra
+      datos verificables.
+- [ ] Revisar el `og:title` de la página de inicio ("Sobre Nosotros |
+      Céntrica"): es el título que aparece al compartir el enlace en redes y
+      WhatsApp.
 - [ ] Revisión legal de la Política de Privacidad y la de Cookies, actualizadas
       para Hostinger y Jitsi Meet.
 

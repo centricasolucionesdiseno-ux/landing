@@ -15,8 +15,10 @@ import CTASection from '../../components/ui/CTASection';
 import Parpados from '../../components/nebulina/Parpados';
 import Nebulina260 from '../../assets/images/Imagenes/Nebulina-Hola-260.webp';
 import Nebulina500 from '../../assets/images/Imagenes/Nebulina-Hola-500.webp';
+import Nebulina400 from '../../assets/images/Imagenes/Nebulina-Hola-400.webp';
 import Lente560 from '../../assets/images/Imagenes/IA-Lente-560.webp';
 import Lente942 from '../../assets/images/Imagenes/IA-Lente-942.webp';
+import Lente720 from '../../assets/images/Imagenes/IA-Lente-720.webp';
 
 const SEO = {
   title: 'Inteligencia Artificial para Empresas | Céntrica',
@@ -151,7 +153,7 @@ const SolucionesIA = () => (
               <span className="nebulina-viva">
                 <img
                   src={Nebulina500}
-                  srcSet={`${Nebulina260} 260w, ${Nebulina500} 500w`}
+                  srcSet={`${Nebulina260} 260w, ${Nebulina400} 400w, ${Nebulina500} 500w`}
                   sizes="(max-width: 900px) 70vw, 420px"
                   width="500"
                   height="500"
@@ -210,7 +212,7 @@ const SolucionesIA = () => (
         <div className="grid-2 split">
           <MediaFrame
             src={Lente942}
-            srcSet={`${Lente560} 560w, ${Lente942} 942w`}
+            srcSet={`${Lente560} 560w, ${Lente720} 720w, ${Lente942} 942w`}
             width={942}
             height={942}
             alt="Lente que analiza datos y genera predicciones"

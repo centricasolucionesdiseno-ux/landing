@@ -1,8 +1,9 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { useHidratado } from '../../hooks/useMediaQuery';
-import { CLAVE_SALUDO, SEGUNDOS_SALUDO } from '../../config/nebulina';
 import { EVENTO_ABRIR } from './abrirNebulina';
+import { invitacionPara, registrarChatAbierto, registrarInvitacion, registrarRechazo, registrarVisita } from './recorrido';
 import Parpados from './Parpados';
 import Avatar from '../../assets/images/Imagenes/Nebulina-Avatar-128.webp';
 import '../../styles/nebulina.css';
@@ -12,40 +13,34 @@ import '../../styles/nebulina.css';
 const cargarChat = () => import('./NebulinaChat');
 const NebulinaChat = lazy(cargarChat);
 
-const saludoVisto = () => {
-  try {
-    return window.sessionStorage.getItem(CLAVE_SALUDO) === '1';
-  } catch {
-    return true; // sin almacenamiento: mejor no insistir con el saludo
-  }
-};
-
-const marcarSaludoVisto = () => {
-  try {
-    window.sessionStorage.setItem(CLAVE_SALUDO, '1');
-  } catch {
-    // almacenamiento bloqueado: el saludo podría repetirse, sin consecuencias
-  }
-};
-
 /**
  * Burbuja flotante de Nebulina, presente en todas las páginas. Solo se pinta
  * en el navegador (no forma parte del HTML generado ni afecta el SEO).
+ *
+ * Con el chat cerrado, si el visitante se queda un rato en una página,
+ * Nebulina lo invita con algo concreto de esa página (ver proactivo.js).
  */
 const Nebulina = () => {
   const hidratado = useHidratado();
+  const { pathname } = useLocation();
   const [abierto, setAbierto] = useState(false);
   // Una vez abierto se mantiene montado: la conversación sigue al cambiar de página
   const [montado, setMontado] = useState(false);
-  const [saludo, setSaludo] = useState(false);
+  // Invitación visible: { ruta, texto, tema }. Solo se muestra en la página donde salió
+  const [invitacion, setInvitacion] = useState(null);
+  // Tema con el que arranca el chat si se abrió desde una invitación
+  const [temaInicial, setTemaInicial] = useState(null);
   const lanzadorRef = useRef(null);
 
-  const abrir = useCallback(() => {
+  const abrir = useCallback((tema = null) => {
+    setTemaInicial((actual) => actual ?? tema);
     setMontado(true);
     setAbierto(true);
-    setSaludo(false);
-    marcarSaludoVisto();
+    setInvitacion(null);
+    registrarChatAbierto();
   }, []);
+
+  const abrirSinTema = useCallback(() => abrir(), [abrir]);
 
   // enfocar = false cuando se cierra solo por inactividad: no interrumpe lo que el visitante hace en la página
   const cerrar = useCallback((enfocar = true) => {
@@ -53,39 +48,53 @@ const Nebulina = () => {
     if (enfocar) lanzadorRef.current?.focus();
   }, []);
 
-  const cerrarSaludo = () => {
-    setSaludo(false);
-    marcarSaludoVisto();
+  const rechazarInvitacion = () => {
+    setInvitacion(null);
+    registrarRechazo();
   };
 
   useEffect(() => {
-    window.addEventListener(EVENTO_ABRIR, abrir);
-    return () => window.removeEventListener(EVENTO_ABRIR, abrir);
-  }, [abrir]);
+    window.addEventListener(EVENTO_ABRIR, abrirSinTema);
+    return () => window.removeEventListener(EVENTO_ABRIR, abrirSinTema);
+  }, [abrirSinTema]);
 
-  // Saludo de bienvenida una vez por sesión, pasados unos segundos
+  // Recorrido: qué servicios ha visto (para invitar y proponer soluciones combinadas)
   useEffect(() => {
-    if (!hidratado || saludoVisto()) return undefined;
-    const timer = setTimeout(() => setSaludo(true), SEGUNDOS_SALUDO * 1000);
+    if (hidratado) registrarVisita(pathname);
+  }, [hidratado, pathname]);
+
+  // Invitación proactiva tras unos segundos en la página (con topes, ver recorrido.js)
+  useEffect(() => {
+    if (!hidratado || montado) return undefined;
+    const elegida = invitacionPara(pathname);
+    if (!elegida) return undefined;
+    const timer = setTimeout(() => {
+      // Solo si sigue mirando la página y nada cambió mientras tanto
+      if (document.visibilityState !== 'visible' || !invitacionPara(pathname)) return;
+      registrarInvitacion(pathname);
+      setInvitacion({ ruta: pathname, texto: elegida.texto, tema: elegida.tema });
+    }, elegida.segundos * 1000);
     return () => clearTimeout(timer);
-  }, [hidratado]);
+  }, [hidratado, montado, pathname]);
 
   if (!hidratado) return null;
+
+  const invitacionVisible = invitacion?.ruta === pathname && !abierto;
 
   return (
     <div className="nebulina-flotante">
       {montado && (
         <Suspense fallback={null}>
-          <NebulinaChat abierto={abierto} onCerrar={cerrar} />
+          <NebulinaChat abierto={abierto} onCerrar={cerrar} temaInicial={temaInicial} />
         </Suspense>
       )}
 
-      {saludo && !abierto && (
+      {invitacionVisible && (
         <div className="nebulina-saludo">
-          <button type="button" className="nebulina-saludo-texto" onClick={abrir}>
-            ¡Hola! Soy Nebulina 👋 ¿Te ayudo a encontrar algo?
+          <button type="button" className="nebulina-saludo-texto" onClick={() => abrir(invitacion.tema)} onPointerEnter={cargarChat}>
+            {invitacion.texto}
           </button>
-          <button type="button" className="nebulina-saludo-cerrar" onClick={cerrarSaludo} aria-label="Cerrar saludo">
+          <button type="button" className="nebulina-saludo-cerrar" onClick={rechazarInvitacion} aria-label="Cerrar invitación">
             <X size={14} aria-hidden="true" />
           </button>
         </div>
@@ -95,7 +104,7 @@ const Nebulina = () => {
         type="button"
         ref={lanzadorRef}
         className={`nebulina-lanzador${abierto ? ' is-abierto' : ''}`}
-        onClick={abierto ? () => cerrar() : abrir}
+        onClick={abierto ? () => cerrar() : abrirSinTema}
         onPointerEnter={cargarChat}
         onFocus={cargarChat}
         aria-expanded={abierto}

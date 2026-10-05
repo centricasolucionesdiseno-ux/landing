@@ -7,6 +7,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 
 export { RUTAS, datosEstructurados, SITE_URL, DOMINIOS_EXTERNOS } from './config/seo';
+export { validarConocimiento } from './config/nebulina/validar';
 
 const arbol = (url) => (
   <StrictMode>

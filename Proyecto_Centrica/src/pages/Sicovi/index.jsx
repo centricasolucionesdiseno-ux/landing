@@ -14,8 +14,10 @@ import { PESTANA_NUEVA } from '../../utils/contactLinks';
 import CTASection from '../../components/ui/CTASection';
 import QueEs500 from '../../assets/images/Imagenes/Sicovi-QueEs-500.webp';
 import QueEs1000 from '../../assets/images/Imagenes/Sicovi-QueEs-1000.webp';
+import QueEs720 from '../../assets/images/Imagenes/Sicovi-QueEs-720.webp';
 import PorQue560 from '../../assets/images/Imagenes/Sicovi-PorQue-560.webp';
 import PorQue1120 from '../../assets/images/Imagenes/Sicovi-PorQue-1120.webp';
+import PorQue720 from '../../assets/images/Imagenes/Sicovi-PorQue-720.webp';
 
 const SEO = {
   title: 'SICOVI: Gestión Legislativa para Concejos | Céntrica',
@@ -164,7 +166,7 @@ const Sicovi = () => (
           </div>
           <MediaFrame
             src={QueEs1000}
-            srcSet={`${QueEs500} 500w, ${QueEs1000} 1000w`}
+            srcSet={`${QueEs500} 500w, ${QueEs720} 720w, ${QueEs1000} 1000w`}
             width={1000}
             height={800}
             alt="SICOVI Ilustración"
@@ -237,7 +239,7 @@ const Sicovi = () => (
         <div className="grid-2 split">
           <MediaFrame
             src={PorQue1120}
-            srcSet={`${PorQue560} 560w, ${PorQue1120} 1120w`}
+            srcSet={`${PorQue560} 560w, ${PorQue720} 720w, ${PorQue1120} 1120w`}
             width={1120}
             height={897}
             alt="Arquitectura base de SICOVI"

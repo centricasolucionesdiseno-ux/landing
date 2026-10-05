@@ -9,7 +9,7 @@ import NebulinaAyuda from '../../components/common/NebulinaAyuda';
 import { heroImage } from '../../utils/heroImages';
 import { STORAGE_KEY as CLAVE_TEMA } from '../../hooks/useTheme';
 import { BORRADOR_HORAS, CLAVE_BORRADOR, TURNSTILE_SITEKEY } from '../../config/agenda';
-import { CLAVE_CONVERSACION, CLAVE_SALUDO } from '../../config/nebulina';
+import { CLAVE_CONVERSACION, CLAVE_RECORRIDO, CLAVE_SALUDO_ANTERIOR, CLAVE_VOZ } from '../../config/nebulina/ajustes';
 import { EMPRESA, COOKIES } from '../../config/legal';
 
 const SEO = {
@@ -22,7 +22,7 @@ const SEO = {
 
 const RESUMEN = [
   { icon: EyeOff, texto: 'No usamos cookies de analítica, publicidad ni redes sociales.' },
-  { icon: HardDrive, texto: 'Solo guardamos tu tema preferido y el borrador del formulario de citas.' },
+  { icon: HardDrive, texto: 'Solo guardamos tu tema preferido, el borrador del formulario de citas, tu conversación con Nebulina y si quieres que te lea en voz alta.' },
   { icon: MapPin, texto: 'El mapa de Google en Contacto puede instalar sus propias cookies.' },
   { icon: BellRing, texto: 'Si algún día usamos cookies opcionales, te pediremos permiso antes.' }
 ];
@@ -44,16 +44,23 @@ const ALMACENADO = [
     titular: 'Céntrica'
   },
   {
-    nombre: CLAVE_SALUDO,
+    nombre: CLAVE_VOZ,
+    tipo: 'Almacenamiento local',
+    finalidad: 'Recordar que pediste que Nebulina lea sus respuestas en voz alta. Solo guarda esa preferencia, nunca audio.',
+    duracion: 'Hasta que la desactives con el botón del parlante o la borres',
+    titular: 'Céntrica'
+  },
+  {
+    nombre: CLAVE_RECORRIDO,
     tipo: 'Almacenamiento de sesión',
-    finalidad: 'Recordar que ya viste el saludo de Nebulina, para no mostrártelo en cada página.',
+    finalidad: 'Recordar qué servicios has visto en esta visita y qué sugerencias de Nebulina ya te mostramos, para recomendarte lo que te interesa sin repetirnos ni insistir. Solo está en tu navegador.',
     duracion: 'Se borra al cerrar la pestaña',
     titular: 'Céntrica'
   },
   {
     nombre: CLAVE_CONVERSACION,
     tipo: 'Almacenamiento de sesión',
-    finalidad: 'Conservar tu conversación con Nebulina si recargas o cambias de página. Solo está en tu navegador: no la guardamos en nuestros servidores.',
+    finalidad: 'Conservar tu conversación con Nebulina (incluidas tus respuestas al diagnóstico) si recargas o cambias de página. Solo está en tu navegador: no la guardamos en nuestros servidores, salvo lo que decidas enviarle al gerente.',
     duracion: 'Se borra al cerrar la pestaña o al pulsar "Nueva conversación"',
     titular: 'Céntrica'
   },
@@ -103,11 +110,13 @@ const BorrarDatos = () => {
     try {
       localStorage.removeItem(CLAVE_TEMA);
       localStorage.removeItem(CLAVE_BORRADOR);
+      localStorage.removeItem(CLAVE_VOZ);
       // Versiones anteriores del sitio guardaban el borrador por sesión
       sessionStorage.removeItem(CLAVE_BORRADOR);
-      sessionStorage.removeItem(CLAVE_SALUDO);
+      sessionStorage.removeItem(CLAVE_SALUDO_ANTERIOR);
+      sessionStorage.removeItem(CLAVE_RECORRIDO);
       sessionStorage.removeItem(CLAVE_CONVERSACION);
-      setMensaje('Listo: borramos tu preferencia de tema y el borrador del formulario. La próxima vez que abras el sitio lo verás en modo claro.');
+      setMensaje('Listo: borramos tu preferencia de tema, el borrador del formulario, tu conversación con Nebulina y su preferencia de voz. La próxima vez que abras el sitio lo verás en modo claro.');
     } catch {
       setMensaje('Tu navegador tiene bloqueado el almacenamiento, así que no hay nada guardado.');
     }

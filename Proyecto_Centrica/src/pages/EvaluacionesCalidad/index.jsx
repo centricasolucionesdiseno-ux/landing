@@ -15,6 +15,7 @@ import Carousel from '../../components/ui/Carousel';
 import CTASection from '../../components/ui/CTASection';
 import Pruebas560 from '../../assets/images/Imagenes/Calidad-Pruebas-560.webp';
 import Pruebas1120 from '../../assets/images/Imagenes/Calidad-Pruebas-1120.webp';
+import Pruebas720 from '../../assets/images/Imagenes/Calidad-Pruebas-720.webp';
 
 const SEO = {
   title: 'Evaluaciones de Calidad de Software y QA | Céntrica',
@@ -146,7 +147,7 @@ const EvaluacionesCalidad = () => (
           </div>
           <MediaFrame
             src={Pruebas1120}
-            srcSet={`${Pruebas560} 560w, ${Pruebas1120} 1120w`}
+            srcSet={`${Pruebas560} 560w, ${Pruebas720} 720w, ${Pruebas1120} 1120w`}
             width={1120}
             height={747}
             alt="Persona señalando la pantalla de un portátil mientras revisa un software"

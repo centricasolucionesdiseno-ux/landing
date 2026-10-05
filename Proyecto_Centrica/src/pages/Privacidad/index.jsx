@@ -99,6 +99,15 @@ const SECCIONES = [
           servidos desde coverr.co. Al cargarlos, esos proveedores pueden recibir datos técnicos de tu navegador según sus
           propias políticas de privacidad.
         </p>
+        <h3>Hablar con Nebulina por voz</h3>
+        <p>
+          Es opcional y solo se activa cuando pulsas el micrófono del chat (tu navegador te pedirá permiso). La conversión
+          de tu voz a texto la hace tu navegador: si puede, en tu propio equipo; en algunos navegadores (como Chrome, Edge o
+          Safari) el audio puede procesarse en los servidores de su fabricante, según sus políticas de privacidad. Céntrica
+          nunca recibe ni guarda tu audio: al chat solo llega el texto. La lectura de respuestas en voz alta usa la voz más
+          natural de tu navegador; algunas (como las de Edge o Chrome) se generan en los servidores de su fabricante a partir
+          del texto de la respuesta.
+        </p>
       </>
     )
   },

@@ -17,7 +17,9 @@ import CTASection from '../../components/ui/CTASection';
 import Nebula1 from '../../assets/images/Imagenes/Nebula1.webp';
 import Nebula2 from '../../assets/images/Imagenes/Nebula2.webp';
 import Nebula1Chica from '../../assets/images/Imagenes/Nebula1-500.webp';
+import Nebula1Media from '../../assets/images/Imagenes/Nebula1-720.webp';
 import Nebula2Chica from '../../assets/images/Imagenes/Nebula2-512.webp';
+import Nebula2Media from '../../assets/images/Imagenes/Nebula2-720.webp';
 
 const SEO = {
   title: 'Nebula ERP: Software de Gestión Empresarial | Céntrica',
@@ -190,7 +192,7 @@ const NebulaERP = () => (
           </div>
           <MediaFrame
             src={Nebula1}
-            srcSet={`${Nebula1Chica} 500w, ${Nebula1} 1000w`}
+            srcSet={`${Nebula1Chica} 500w, ${Nebula1Media} 720w, ${Nebula1} 1000w`}
             width={1000}
             height={1000}
             alt="Nebula ERP Ilustración"
@@ -309,7 +311,7 @@ const NebulaERP = () => (
         <div className="grid-2 split">
           <MediaFrame
             src={Nebula2}
-            srcSet={`${Nebula2Chica} 512w, ${Nebula2} 1024w`}
+            srcSet={`${Nebula2Chica} 512w, ${Nebula2Media} 720w, ${Nebula2} 1024w`}
             width={1024}
             height={1024}
             alt="Nebula ERP"

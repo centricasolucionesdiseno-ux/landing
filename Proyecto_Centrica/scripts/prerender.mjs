@@ -6,7 +6,8 @@
  * navegador la pinta antes de descargar React. Luego React la "hidrata".
  *
  * Genera: dist/index.html, dist/<ruta>.html, dist/404.html y dist/sitemap.xml.
- * Si una página sale con etiquetas duplicadas o sin <h1>, el build falla.
+ * Si una página sale con etiquetas duplicadas o sin <h1>, o si la base de
+ * conocimiento de Nebulina tiene referencias rotas, el build falla.
  */
 import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
@@ -19,7 +20,12 @@ const DIST = resolve(RAIZ, 'dist');
 const SSR = resolve(RAIZ, 'node_modules/.cache/prerender');
 const MANIFIESTO = resolve(DIST, '.vite/manifest.json');
 
-const { render, RUTAS, datosEstructurados, SITE_URL, DOMINIOS_EXTERNOS } = await import(pathToFileURL(resolve(SSR, 'entry-server.js')).href);
+const { render, RUTAS, datosEstructurados, SITE_URL, DOMINIOS_EXTERNOS, validarConocimiento } = await import(pathToFileURL(resolve(SSR, 'entry-server.js')).href);
+
+// Base de conocimiento de Nebulina: un botón o sugerencia que apunte a un tema
+// inexistente detiene el build en vez de llegar a producción
+const problemasNebulina = validarConocimiento();
+if (problemasNebulina.length) throw new Error(`Nebulina: revisa la base de conocimiento\n- ${problemasNebulina.join('\n- ')}`);
 // El <title> de respaldo de index.html (con su línea) se quita: cada página trae el suyo
 const quitarTitulo = (html) => {
   const inicio = html.indexOf('<title>');

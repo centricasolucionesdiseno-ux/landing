@@ -15,7 +15,7 @@ export const EMPRESA = {
 
 export const PRIVACIDAD = {
   vigencia: '24 de abril de 2026',
-  actualizacion: '27 de septiembre de 2026'
+  actualizacion: '4 de octubre de 2026'
 };
 
 export const TERMINOS = {
@@ -30,5 +30,5 @@ export const AVISO_LEGAL = {
 
 export const COOKIES = {
   vigencia: '24 de abril de 2026',
-  actualizacion: '27 de septiembre de 2026'
+  actualizacion: '4 de octubre de 2026'
 };

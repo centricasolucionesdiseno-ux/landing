@@ -14,7 +14,7 @@ desde Medellín para Colombia.**
 ![MySQL](https://img.shields.io/badge/MySQL-Hostinger-4479a1?logo=mysql&logoColor=white)
 ![Cloudflare](https://img.shields.io/badge/Cloudflare-Turnstile%20%2B%20DDoS-f38020?logo=cloudflare&logoColor=white)
 ![SonarQube](https://img.shields.io/badge/SonarQube-0%20incidencias-4e9bcd?logo=sonarqubeserver&logoColor=white)
-![Lighthouse](https://img.shields.io/badge/Lighthouse%20m%C3%B3vil-95%E2%80%9397-2ea44f?logo=lighthouse&logoColor=white)
+![Lighthouse](https://img.shields.io/badge/Lighthouse%20m%C3%B3vil-97-2ea44f?logo=lighthouse&logoColor=white)
 ![Responsive](https://img.shields.io/badge/Responsive-100%25-2ea44f)
 
 [Resumen](#-resumen-ejecutivo) ·
@@ -38,20 +38,21 @@ configuración del servidor en Hostinger y Cloudflare
 
 | Indicador | Resultado |
 | --- | --- |
-| Rendimiento (Lighthouse, celular) | **95–97** / 100 |
+| Rendimiento (Lighthouse, celular) | **97** / 100 |
 | Accesibilidad y SEO | **100** / 100 en todas las páginas medidas |
 | Estabilidad visual (CLS) | **0**: nada salta mientras carga |
-| Tiempo de carga del contenido principal (LCP, celular) | **2,5–2,8 s** |
+| Tiempo de carga del contenido principal (LCP, celular) | **2,40–2,48 s**, bajo la meta de 2,5 s de Google |
+| Peso de las páginas | **−8 a −12 %** con heros en AVIF e imágenes a la medida del celular |
 | Calidad del código (SonarQube) | **0** incidencias |
 | Vulnerabilidades en dependencias | **0** |
 | Página de Contacto | **−60 %** de peso (761 → 306 KB) con el mapa bajo demanda |
 
 ### Valor para el negocio
 
-- 🎯 **Más oportunidades comerciales:** Nebulina atiende a cada visitante,
-  recomienda el servicio adecuado y lo lleva a agendar o a hablar con el
-  gerente; la agenda solo le entrega al gerente solicitudes reales y
-  confirmadas.
+- 🎯 **Más oportunidades comerciales:** Nebulina invita a cada visitante,
+  lo diagnostica, recomienda el servicio adecuado y lo lleva a agendar o a
+  hablar con el gerente, que recibe el perfil del cliente y ve primero los
+  urgentes; la agenda solo le entrega solicitudes reales y confirmadas.
 - 🔒 **Menor riesgo:** los datos de los clientes viajan y se guardan cifrados,
   y el sitio resiste spam y ataques de saturación.
 - ⚡ **Mejor posicionamiento:** carga rápida, SEO técnico completo y
@@ -71,7 +72,7 @@ Todo corre en **Hostinger**, sin depender de cuentas de Google.
 | | Área | Qué hace |
 | :-: | --- | --- |
 | 🌐 | **Sitio** | 14 páginas responsive (servicios, contacto, legales y blog), modo claro y oscuro, animaciones que respetan "reducir movimiento". |
-| 🤖 | **Nebulina** | Asistente virtual flotante en todas las páginas: entiende preguntas escritas con errores, recuerda la conversación, recomienda soluciones y conecta con el gerente. Parpadea. |
+| 🤖 | **Nebulina** | Asistente virtual y asesora comercial en todas las páginas: invita según la página, diagnostica en 3 preguntas, responde objeciones, propone servicios complementarios y le entrega al gerente el perfil del cliente. Parpadea. |
 | 📅 | **Agenda de citas** | Doble confirmación por correo, aprobación del gerente, calendario propio con festivos de Colombia, invitación `.ics` y videollamada de Jitsi Meet. |
 | 🔒 | **Seguridad** | Datos personales cifrados (AES-256-GCM, una clave por cliente), anti-spam en capas, CSP estricta y protección DDoS con Cloudflare. |
 | ⚡ | **Rendimiento** | Prerenderizado, carga diferida por página, imágenes WebP por tamaño de pantalla, mapa y chat descargados solo cuando se usan, y compresión Brotli/gzip. |
@@ -115,15 +116,24 @@ flowchart LR
 Nebulina vive en una burbuja flotante en todas las páginas y acompaña al
 visitante mientras navega.
 
-- 💬 **Entiende lo que escriben**, sin importar tildes ni mayúsculas, y tolera
-  errores ("facturasion", "nomnia").
+- 💬 **Entiende lo que escriben o le dicen**, sin importar tildes, muletillas
+  ni errores ("facturasion", "sí covi"), y distingue la intención del tema:
+  en "¿cuánto cuesta SICOVI?" responde el precio de SICOVI.
+- 🎙️ **Se le puede hablar:** micrófono para dictar y lectura en voz alta con
+  la voz más natural del navegador (neuronal y femenina si existe). Si le
+  hablas, te responde hablando. En navegadores sin dictado explica cómo usar
+  el del teclado.
 - 🧭 **Sabe en qué página estás** y sugiere las preguntas más útiles de esa
   página; si cambias de página, lo nota.
 - 🧠 **Recuerda** tu nombre y el servicio del que hablaban ("¿y cuánto
   cuesta?").
-- 🎯 **Recomienda** la solución adecuada y **agenda** con el servicio ya
-  elegido.
-- 🙋 **Conecta con el gerente** por WhatsApp, llamada o un mensaje a su correo.
+- 🎯 **Diagnostica en 3 preguntas** (organización, necesidad, urgencia),
+  recomienda la solución y **agenda** con el servicio ya elegido.
+- 💼 **Vende con tacto:** invita según la página, responde objeciones ("es
+  muy caro", "ya tengo un sistema"), propone servicios complementarios y
+  cierra con una reunión sin costo, sin repetirse ni insistir.
+- 🙋 **Conecta con el gerente** por WhatsApp, llamada o un mensaje a su
+  correo, con el perfil del cliente incluido.
 - ⏱️ Si no respondes, pregunta *"¿Sigues por aquí?"* y luego se despide sin
   perder la conversación.
 - 😉 **Parpadea** en todas sus imágenes, solo con CSS.
@@ -139,7 +149,7 @@ visitante mientras navega.
    [¿Tiene facturación electrónica?]
    [Quiero una demostración]
 
-🙂 ¿y cuánto cuesta?
+🎙️ «eh, ¿y cuánto cuesta?»
 
 👋 Cada proyecto de Nebula ERP se
    cotiza a la medida...
@@ -152,8 +162,9 @@ visitante mientras navega.
 </table>
 
 Todo lo que sabe está en
-[`src/config/nebulina.js`](Proyecto_Centrica/src/config/nebulina.js): agregar
-un tema es escribir sus palabras clave, su respuesta y sus botones.
+[`src/config/nebulina/`](Proyecto_Centrica/src/config/nebulina/), un archivo
+por área: agregar un tema es escribir sus palabras clave, su respuesta y sus
+botones. Si un botón apunta a algo que no existe, el build se detiene.
 
 ---
 
@@ -214,7 +225,7 @@ Detalle, configuración y riesgos residuales en
 git clone https://github.com/centricasolucionesdiseno-ux/landing.git
 cd landing/Proyecto_Centrica
 npm install
-npm run dev          # http://localhost:5173
+npm run dev        
 ```
 
 <details>

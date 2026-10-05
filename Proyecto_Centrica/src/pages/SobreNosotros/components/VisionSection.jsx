@@ -1,6 +1,7 @@
 import MediaFrame from '../../../components/ui/MediaFrame';
 import SobreNosotros1 from '../../../assets/images/Imagenes/SobreNosotros1.webp';
 import SobreNosotros500 from '../../../assets/images/Imagenes/SobreNosotros1-500.webp';
+import SobreNosotros720 from '../../../assets/images/Imagenes/SobreNosotros1-720.webp';
 
 const VisionSection = () => (
   <section id="vision" className="section">
@@ -18,7 +19,7 @@ const VisionSection = () => (
         </div>
         <MediaFrame
           src={SobreNosotros1}
-          srcSet={`${SobreNosotros500} 500w, ${SobreNosotros1} 1000w`}
+          srcSet={`${SobreNosotros500} 500w, ${SobreNosotros720} 720w, ${SobreNosotros1} 1000w`}
           width={1000}
           height={1000}
           alt="Visión"

@@ -14,8 +14,10 @@ import CTASection from '../../components/ui/CTASection';
 import StepsTimeline from '../../components/ui/StepsTimeline';
 import Consultoria560 from '../../assets/images/Imagenes/Consultoria-560.webp';
 import Consultoria1120 from '../../assets/images/Imagenes/Consultoria-1120.webp';
+import Consultoria720 from '../../assets/images/Imagenes/Consultoria-720.webp';
 import Equipo560 from '../../assets/images/Imagenes/Consultoria-Equipo-560.webp';
 import Equipo1120 from '../../assets/images/Imagenes/Consultoria-Equipo-1120.webp';
+import Equipo720 from '../../assets/images/Imagenes/Consultoria-Equipo-720.webp';
 
 const SEO = {
   title: 'Consultoría en Transformación Digital | Céntrica',
@@ -131,7 +133,7 @@ const ConsultoriaDigital = () => (
           </div>
           <MediaFrame
             src={Consultoria1120}
-            srcSet={`${Consultoria560} 560w, ${Consultoria1120} 1120w`}
+            srcSet={`${Consultoria560} 560w, ${Consultoria720} 720w, ${Consultoria1120} 1120w`}
             width={1120}
             height={747}
             alt="Equipo de consultoría trabajando en una reunión"
@@ -177,7 +179,7 @@ const ConsultoriaDigital = () => (
         <div className="grid-2 split">
           <MediaFrame
             src={Equipo1120}
-            srcSet={`${Equipo560} 560w, ${Equipo1120} 1120w`}
+            srcSet={`${Equipo560} 560w, ${Equipo720} 720w, ${Equipo1120} 1120w`}
             width={1120}
             height={747}
             alt="Consultor explicando un tablero de planificación"

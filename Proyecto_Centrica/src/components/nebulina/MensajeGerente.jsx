@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { CircleAlert, LoaderCircle, SendHorizontal } from 'lucide-react';
 import Turnstile from '../common/Turnstile';
 import { RESPUESTA_DIAS_HABILES, TURNSTILE_SITEKEY } from '../../config/agenda';
-import { NEBULINA_ENDPOINT } from '../../config/nebulina';
+import { NEBULINA_ENDPOINT } from '../../config/nebulina/ajustes';
 import { esCorreoValido } from '../../utils/validacion';
 
 const MAX_MENSAJE = 1000;
@@ -21,7 +21,7 @@ const validar = ({ nombre, correo, mensaje }, acepta, token) => {
  * el servidor (Hostinger); al visitante no se le envía nada, así el formulario
  * no sirve para mandar correos a terceros.
  */
-const MensajeGerente = ({ pagina, temas = [], nombreInicial = '', onEnviado, onCancelar }) => {
+const MensajeGerente = ({ pagina, temas = [], perfil = {}, nombreInicial = '', onEnviado, onCancelar }) => {
   const [datos, setDatos] = useState({ nombre: nombreInicial, correo: '', mensaje: '' });
   const [acepta, setAcepta] = useState(false);
   const [trampa, setTrampa] = useState('');
@@ -59,6 +59,8 @@ const MensajeGerente = ({ pagina, temas = [], nombreInicial = '', onEnviado, onC
           pagina,
           // Temas que consultó en el chat: le dan contexto al gerente
           temas,
+          // Respuestas del diagnóstico (tipo de organización, necesidad, urgencia)
+          perfil,
           acepta,
           website: trampa,
           turnstile: token,

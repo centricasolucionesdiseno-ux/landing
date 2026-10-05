@@ -5,6 +5,8 @@ import HeroSection from './components/HeroSection';
 import VisionSection from './components/VisionSection';
 import ValuesSection from './components/ValuesSection';
 import NebulinaSection from './components/NebulinaSection';
+import { RESPUESTA_DIAS_HABILES } from '../../config/agenda';
+import { SERVICIOS } from '../../config/nebulina/servicios';
 
 const SEO = {
   title: 'Céntrica | Desarrollo de Software, ERP e IA en Medellín',
@@ -14,11 +16,14 @@ const SEO = {
   path: ''
 };
 
+// Solo datos verificables, que el propio sitio respalda: las líneas de
+// servicio, los sectores que atendemos, el plazo de respuesta que
+// comunicamos al agendar y nuestra sede
 const STATS = [
-  { value: '5', label: '+ años de experiencia' },
-  { value: '50', label: '+ proyectos entregados' },
-  { value: '100', label: '% clientes satisfechos' },
-  { value: '24', label: '/7 soporte dedicado' }
+  { value: String(Object.keys(SERVICIOS).length), label: 'Líneas de solución: software, ERP, SICOVI, IA, calidad y consultoría' },
+  { value: '2', label: 'Sectores atendidos: empresas privadas y entidades públicas' },
+  { value: String(RESPUESTA_DIAS_HABILES), label: 'Días hábiles como máximo para responder tu solicitud' },
+  { value: 'Medellín', label: 'Sede principal, en Antioquia, Colombia', animar: false }
 ];
 
 const SobreNosotros = () => (
@@ -26,7 +31,7 @@ const SobreNosotros = () => (
     <HeroSection />
     <VisionSection />
     <ValuesSection />
-    <StatsBand title={<>Nuestro <span>impacto</span></>} stats={STATS} />
+    <StatsBand title={<>Céntrica <span>en cifras</span></>} stats={STATS} />
     <NebulinaSection />
     <CTASection
       id="contacto"

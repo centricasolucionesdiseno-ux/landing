@@ -81,9 +81,11 @@ const headers = (opciones) => ({
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
-  // Funciones del navegador que el sitio nunca usa: bloqueadas para todos, incluidos iframes
+  // Funciones del navegador que el sitio nunca usa: bloqueadas para todos, incluidos iframes.
+  // El micrófono solo para el propio sitio (dictado por voz a Nebulina, siempre a
+  // petición del visitante); ningún iframe (mapa, Turnstile) puede usarlo.
   'Permissions-Policy': [
-    'camera=()', 'microphone=()', 'geolocation=()', 'payment=()', 'usb=()', 'serial=()', 'hid=()',
+    'camera=()', 'microphone=(self)', 'geolocation=()', 'payment=()', 'usb=()', 'serial=()', 'hid=()',
     'bluetooth=()', 'midi=()', 'accelerometer=()', 'gyroscope=()', 'magnetometer=()',
     'display-capture=()', 'xr-spatial-tracking=()', 'browsing-topics=()'
   ].join(', '),

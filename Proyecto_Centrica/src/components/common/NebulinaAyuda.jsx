@@ -4,6 +4,7 @@ import { EMPRESA } from '../../config/legal';
 import Parpados from '../nebulina/Parpados';
 import Nebulina260 from '../../assets/images/Imagenes/Nebulina-Hola-260.webp';
 import Nebulina500 from '../../assets/images/Imagenes/Nebulina-Hola-500.webp';
+import Nebulina400 from '../../assets/images/Imagenes/Nebulina-Hola-400.webp';
 
 /**
  * Tarjeta de Nebulina con enlace de correo (Gmail en el computador, app de
@@ -21,7 +22,7 @@ const NebulinaAyuda = ({
       <span className="nebulina-viva">
         <img
           src={Nebulina500}
-          srcSet={`${Nebulina260} 260w, ${Nebulina500} 500w`}
+          srcSet={`${Nebulina260} 260w, ${Nebulina400} 400w, ${Nebulina500} 500w`}
           sizes="(max-width: 959px) 220px, 250px"
           width="500"
           height="500"

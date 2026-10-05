@@ -296,6 +296,36 @@ body.dark-mode .nebulina-chat {
   cursor: default;
 }
 
+/* Micrófono: contorno mientras está quieto, relleno y pulso mientras escucha
+   (rojo de grabación: contraste 5.6:1 con el ícono blanco) */
+:root {
+  --nebulina-grabando: #c62828;
+  --nebulina-grabando-rgb: 198, 40, 40;
+}
+
+.nebulina-chat-entrada .nebulina-microfono {
+  border: 2px solid var(--brand);
+  background: transparent;
+  color: var(--brand);
+}
+
+.nebulina-chat-entrada .nebulina-microfono.is-escuchando {
+  border-color: transparent;
+  background: var(--nebulina-grabando);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .nebulina-microfono.is-escuchando {
+    animation: nebulina-escucha 1.4s ease-out infinite;
+  }
+}
+
+@keyframes nebulina-escucha {
+  0% { box-shadow: 0 0 0 0 rgba(var(--nebulina-grabando-rgb), 0.45); }
+  100% { box-shadow: 0 0 0 12px rgba(var(--nebulina-grabando-rgb), 0); }
+}
+
 /* Mensaje para el gerente */
 .nebulina-formulario {
   display: flex;

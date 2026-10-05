@@ -24,6 +24,41 @@ final class EnviarMensaje
     private const TEMA_RE = '/^[a-z_]{1,40}$/';
     private const MAX_TEMAS = 10;
 
+    /**
+     * Diagnóstico de Nebulina: únicas respuestas aceptadas y cómo se leen en
+     * el correo. Deben coincidir con PERFIL en src/config/nebulina/ventas.js.
+     */
+    private const PERFIL = [
+        'organizacion' => [
+            'titulo' => 'Tipo de organización',
+            'opciones' => [
+                'privada' => 'Empresa privada',
+                'publica' => 'Entidad pública',
+                'emprendimiento' => 'Emprendimiento o startup',
+                'otra' => 'Otra organización',
+            ],
+        ],
+        'necesidad' => [
+            'titulo' => 'Necesidad principal',
+            'opciones' => [
+                'medida' => 'Crear o modernizar un sistema',
+                'erp' => 'Ordenar finanzas, nómina o inventarios',
+                'legislativa' => 'Gestionar un Concejo o una Asamblea',
+                'ia' => 'Automatizar con inteligencia artificial',
+                'calidad' => 'Probar y asegurar su software',
+                'asesoria' => 'Aún no lo tiene claro',
+            ],
+        ],
+        'urgencia' => [
+            'titulo' => 'Urgencia',
+            'opciones' => [
+                'ya' => 'Lo antes posible',
+                'pronto' => 'En 1 a 3 meses',
+                'explorando' => 'Solo está explorando',
+            ],
+        ],
+    ];
+
     public function __construct(private readonly Aplicacion $app)
     {
     }
@@ -70,7 +105,7 @@ final class EnviarMensaje
         $respuesta->json(['ok' => true]);
     }
 
-    /** @return array<string, string> */
+    /** @return array{nombre: string, correo: string, mensaje: string, pagina: string, temas: string, perfil: array<string, string>} */
     private static function limpiar(array $entrada): array
     {
         $pagina = Texto::limpiar($entrada['pagina'] ?? '', 61);
@@ -81,7 +116,29 @@ final class EnviarMensaje
             // Página y temas solo se aceptan con su formato: nada más llega al correo
             'pagina' => preg_match(self::RUTA_RE, $pagina) === 1 ? $pagina : '/',
             'temas' => self::temas($entrada['temas'] ?? []),
+            'perfil' => self::perfil($entrada['perfil'] ?? []),
         ];
+    }
+
+    /**
+     * Respuestas del diagnóstico, ya en texto legible. Solo se aceptan valores
+     * de la lista: lo demás se descarta sin error (el mensaje sigue siendo válido).
+     *
+     * @return array<string, string> título => respuesta
+     */
+    private static function perfil(mixed $perfil): array
+    {
+        if (!is_array($perfil)) {
+            return [];
+        }
+        $legible = [];
+        foreach (self::PERFIL as $campo => ['titulo' => $titulo, 'opciones' => $opciones]) {
+            $valor = $perfil[$campo] ?? null;
+            if (is_string($valor) && isset($opciones[$valor])) {
+                $legible[$titulo] = $opciones[$valor];
+            }
+        }
+        return $legible;
     }
 
     /** Temas consultados en el chat ("nebula_dian" -> "nebula dian"), separados por comas */
@@ -95,7 +152,19 @@ final class EnviarMensaje
         return implode(', ', array_unique($legibles));
     }
 
-    /** @param array<string, string> $datos */
+    /**
+     * Si el cliente dijo que lo necesita cuanto antes, el asunto lo destaca
+     * para que el gerente lo atienda primero.
+     *
+     * @param array<string, string> $perfil
+     */
+    private static function prefijoAsunto(array $perfil): string
+    {
+        $urgente = self::PERFIL['urgencia']['opciones']['ya'];
+        return ($perfil[self::PERFIL['urgencia']['titulo']] ?? '') === $urgente ? 'Prioritario · ' : '';
+    }
+
+    /** @param array{nombre: string, correo: string, mensaje: string} $datos */
     private static function primerError(array $datos, bool $acepta): string
     {
         return match (true) {
@@ -107,7 +176,7 @@ final class EnviarMensaje
         };
     }
 
-    /** @param array<string, string> $datos */
+    /** @param array{nombre: string, correo: string, mensaje: string, pagina: string, temas: string, perfil: array<string, string>} $datos */
     private function avisarGerente(array $datos): bool
     {
         $pagina = $this->app->url($datos['pagina']);
@@ -115,6 +184,7 @@ final class EnviarMensaje
             'Nombre' => $datos['nombre'],
             'Correo' => $datos['correo'],
             'Desde la página' => $pagina,
+            ...$datos['perfil'],
             'Temas consultados en el chat' => $datos['temas'] !== '' ? $datos['temas'] : '—',
             'Mensaje' => $datos['mensaje'],
         ];
@@ -127,7 +197,7 @@ final class EnviarMensaje
 
         return $this->app->correo()->enviar(
             para: $this->app->correoGerente(),
-            asunto: "Mensaje de {$datos['nombre']} desde el chat de Nebulina",
+            asunto: self::prefijoAsunto($datos['perfil']) . "Mensaje de {$datos['nombre']} desde el chat de Nebulina",
             html: PlantillaCorreo::html(
                 'Nuevo mensaje desde el chat',
                 PlantillaCorreo::parrafo(Texto::html($datos['nombre']) . ' te dejó un mensaje desde el chat de Nebulina en el sitio web.')

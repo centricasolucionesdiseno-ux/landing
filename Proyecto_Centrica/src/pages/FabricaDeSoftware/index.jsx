@@ -14,8 +14,10 @@ import MediaFrame from '../../components/ui/MediaFrame';
 import CTASection from '../../components/ui/CTASection';
 import Equipo984 from '../../assets/images/Imagenes/Equipo-984.webp';
 import Equipo560 from '../../assets/images/Imagenes/Equipo-560.webp';
+import Equipo720 from '../../assets/images/Imagenes/Equipo-720.webp';
 import Fabrica2 from '../../assets/images/Imagenes/Fabrica2.webp';
 import Fabrica2Chica from '../../assets/images/Imagenes/Fabrica2-512.webp';
+import Fabrica2Media from '../../assets/images/Imagenes/Fabrica2-720.webp';
 
 const SEO = {
   title: 'Fábrica de Software y Desarrollo a la Medida | Céntrica',
@@ -205,7 +207,7 @@ const FabricaDeSoftware = () => (
         <div className="grid-2 split">
           <MediaFrame
             src={Equipo984}
-            srcSet={`${Equipo560} 560w, ${Equipo984} 984w`}
+            srcSet={`${Equipo560} 560w, ${Equipo720} 720w, ${Equipo984} 984w`}
             width={984}
             height={738}
             alt="Equipo de Céntrica trabajando en la oficina"
@@ -313,7 +315,7 @@ const FabricaDeSoftware = () => (
           </div>
           <MediaFrame
             src={Fabrica2}
-            srcSet={`${Fabrica2Chica} 512w, ${Fabrica2} 1024w`}
+            srcSet={`${Fabrica2Chica} 512w, ${Fabrica2Media} 720w, ${Fabrica2} 1024w`}
             width={1024}
             height={1024}
             alt="Desarrollo a Medida"
