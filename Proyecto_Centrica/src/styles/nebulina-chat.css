@@ -12,7 +12,10 @@
   display: flex;
   flex-direction: column;
   width: min(380px, calc(100vw - 2rem));
-  height: min(600px, calc(100dvh - 7.5rem));
+  /* Hasta 600px, sin pasar nunca por debajo del menú superior
+     (vh de respaldo para navegadores sin dvh) */
+  height: min(600px, calc(100vh - var(--nebulina-reserva-arriba) - var(--nebulina-margen-abajo)));
+  height: min(600px, calc(100dvh - var(--nebulina-reserva-arriba) - var(--nebulina-margen-abajo)));
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -419,6 +422,7 @@ body.dark-mode .nebulina-formulario-error {
     position: fixed;
     inset: auto 0.5rem max(0.5rem, env(safe-area-inset-bottom));
     width: auto;
-    height: min(85dvh, 640px);
+    height: min(640px, calc(100vh - var(--nebulina-reserva-arriba) - max(0.5rem, env(safe-area-inset-bottom))));
+    height: min(640px, calc(100dvh - var(--nebulina-reserva-arriba) - max(0.5rem, env(safe-area-inset-bottom))));
   }
 }

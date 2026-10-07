@@ -31,6 +31,8 @@ const Nebulina = () => {
   // Tema con el que arranca el chat si se abrió desde una invitación
   const [temaInicial, setTemaInicial] = useState(null);
   const lanzadorRef = useRef(null);
+  // La burbuja está oculta con el chat abierto: el foco vuelve a ella cuando reaparece
+  const enfocarAlCerrar = useRef(false);
 
   const abrir = useCallback((tema = null) => {
     setTemaInicial((actual) => actual ?? tema);
@@ -44,9 +46,15 @@ const Nebulina = () => {
 
   // enfocar = false cuando se cierra solo por inactividad: no interrumpe lo que el visitante hace en la página
   const cerrar = useCallback((enfocar = true) => {
+    enfocarAlCerrar.current = enfocar;
     setAbierto(false);
-    if (enfocar) lanzadorRef.current?.focus();
   }, []);
+
+  useEffect(() => {
+    if (abierto || !enfocarAlCerrar.current) return;
+    enfocarAlCerrar.current = false;
+    lanzadorRef.current?.focus();
+  }, [abierto]);
 
   const rechazarInvitacion = () => {
     setInvitacion(null);
