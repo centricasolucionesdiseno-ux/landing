@@ -14,12 +14,12 @@ import FlipCard from '../../components/ui/FlipCard';
 import MediaFrame from '../../components/ui/MediaFrame';
 import StatsBand from '../../components/ui/StatsBand';
 import CTASection from '../../components/ui/CTASection';
-import Nebula1 from '../../assets/images/Imagenes/Nebula1.webp';
-import Nebula2 from '../../assets/images/Imagenes/Nebula2.webp';
-import Nebula1Chica from '../../assets/images/Imagenes/Nebula1-500.webp';
-import Nebula1Media from '../../assets/images/Imagenes/Nebula1-720.webp';
-import Nebula2Chica from '../../assets/images/Imagenes/Nebula2-512.webp';
-import Nebula2Media from '../../assets/images/Imagenes/Nebula2-720.webp';
+import QueEs500 from '../../assets/images/Imagenes/Nebula-QueEs-500.webp';
+import QueEs720 from '../../assets/images/Imagenes/Nebula-QueEs-720.webp';
+import QueEs1000 from '../../assets/images/Imagenes/Nebula-QueEs-1000.webp';
+import PorQue560 from '../../assets/images/Imagenes/Nebula-PorQue-560.webp';
+import PorQue720 from '../../assets/images/Imagenes/Nebula-PorQue-720.webp';
+import PorQue1120 from '../../assets/images/Imagenes/Nebula-PorQue-1120.webp';
 
 const SEO = {
   title: 'Nebula ERP: Software de Gestión Empresarial | Céntrica',
@@ -191,11 +191,11 @@ const NebulaERP = () => (
             </p>
           </div>
           <MediaFrame
-            src={Nebula1}
-            srcSet={`${Nebula1Chica} 500w, ${Nebula1Media} 720w, ${Nebula1} 1000w`}
+            src={QueEs1000}
+            srcSet={`${QueEs500} 500w, ${QueEs720} 720w, ${QueEs1000} 1000w`}
             width={1000}
             height={1000}
-            alt="Nebula ERP Ilustración"
+            alt="Nebula ERP en portátil, tablet y celular: facturación, tesorería e inicio de sesión"
             maxWidth={500}
             shadow
           />
@@ -310,11 +310,11 @@ const NebulaERP = () => (
         <SectionHeader title={<>¿Por qué <span>Nebula ERP</span>?</>} />
         <div className="grid-2 split">
           <MediaFrame
-            src={Nebula2}
-            srcSet={`${Nebula2Chica} 512w, ${Nebula2Media} 720w, ${Nebula2} 1024w`}
-            width={1024}
-            height={1024}
-            alt="Nebula ERP"
+            src={PorQue1120}
+            srcSet={`${PorQue560} 560w, ${PorQue720} 720w, ${PorQue1120} 1120w`}
+            width={1120}
+            height={902}
+            alt="Equipo revisando los módulos de Nebula ERP en una pantalla de la oficina"
             reveal="left"
           />
           <div className="grid-2 grid-nested">
