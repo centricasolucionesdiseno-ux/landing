@@ -18,9 +18,9 @@ export const WhatsAppLink = ({ mensaje, className = '', children }) => (
     href={enlaceWhatsApp(mensaje)}
     {...PESTANA_NUEVA}
     className={className}
-    aria-label={`Escribir por WhatsApp al ${CONTACTO.telefono} (se abre en una pestaña nueva)`}
+    aria-label={`Escribir por WhatsApp al ${CONTACTO.whatsappVisible} (se abre en una pestaña nueva)`}
   >
-    {children ?? CONTACTO.telefono}
+    {children ?? CONTACTO.whatsappVisible}
   </a>
 );
 

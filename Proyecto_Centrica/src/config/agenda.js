@@ -9,12 +9,16 @@ export const AGENDA_ENDPOINT = import.meta.env.VITE_AGENDA_ENDPOINT || '/api/age
 // La clave secreta va SOLO en config.php del servidor, nunca aquí.
 export const TURNSTILE_SITEKEY = import.meta.env.VITE_TURNSTILE_SITEKEY || '';
 
+const NUMERO_WHATSAPP = { visible: '+57 304 415 1202', internacional: '573044151202' };
+
 export const CONTACTO = {
   correo: 'gerenciacomercial@centricasoluciones.com',
-  telefono: '+57 300 205 7325',
-  telefonoEnlace: 'tel:+573002057325',
+  telefono: NUMERO_WHATSAPP.visible,
+  telefonoEnlace: `tel:+${NUMERO_WHATSAPP.internacional}`,
+  telefonoRespaldo: '300027886',
   // WhatsApp: número en formato internacional, sin "+" ni espacios
-  whatsapp: '573002057325',
+  whatsapp: NUMERO_WHATSAPP.internacional,
+  whatsappVisible: NUMERO_WHATSAPP.visible,
   mensajeWhatsApp: 'Hola, me gustaría recibir información sobre los servicios de Céntrica.',
   oficina: 'Cra. 82C #30-35, Belén, Medellín, Antioquia',
   horario: 'Lunes a Viernes: 8:00 AM - 6:00 PM'

@@ -1,4 +1,4 @@
-import { Clock, Mail, MapPin } from 'lucide-react';
+import { Clock, Mail, MapPin, Phone } from 'lucide-react';
 import { CONTACTO, REDES } from '../../../config/agenda';
 import { EmailLink, WhatsAppIcon, WhatsAppLink } from '../../../components/common/ContactLinks';
 
@@ -11,7 +11,8 @@ const LOGOS = {
 
 const DATOS = [
   { icon: Mail, titulo: 'Email', valor: CONTACTO.correo, tipo: 'correo' },
-  { icon: WhatsAppIcon, titulo: 'WhatsApp', valor: CONTACTO.telefono, tipo: 'whatsapp' },
+  { icon: WhatsAppIcon, titulo: 'WhatsApp', tipo: 'whatsapp' },
+  { icon: Phone, titulo: 'Teléfono de respaldo', valor: CONTACTO.telefonoRespaldo },
   { icon: MapPin, titulo: 'Oficina', valor: CONTACTO.oficina },
   { icon: Clock, titulo: 'Horario de atención', valor: CONTACTO.horario }
 ];

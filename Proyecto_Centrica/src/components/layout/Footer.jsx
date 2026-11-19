@@ -52,7 +52,7 @@ const Footer = () => (
           </EmailLink>
           <WhatsAppLink>
             <WhatsAppIcon size={16} />
-            {CONTACTO.telefono}
+            {CONTACTO.whatsappVisible}
           </WhatsAppLink>
           <p>
             <MapPin size={16} aria-hidden="true" />

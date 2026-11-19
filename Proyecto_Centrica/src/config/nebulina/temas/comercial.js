@@ -37,7 +37,7 @@ export const TEMAS_COMERCIAL = {
   },
   telefono: {
     palabras: ['telefono', 'celular', 'numero', 'llamar', 'llamarlos', 'marcar', 'me pueden llamar', 'llamenme', 'numero de telefono', 'me llaman'],
-    respuesta: [`Nuestro número es ${CONTACTO.telefono} (también es WhatsApp). 📞 {horario}`],
+    respuesta: [`Puedes llamarnos al ${CONTACTO.telefono} o escribirnos por WhatsApp al ${CONTACTO.whatsappVisible}. 📞 {horario}`],
     acciones: [LLAMAR, WHATSAPP]
   },
   horario: {
